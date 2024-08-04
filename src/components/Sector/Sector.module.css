@@ -1,9 +1,9 @@
-.circle {
+.sector {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  border: 50px solid #1A2A38;
+  background: green;
   border-radius: 50%;
 }

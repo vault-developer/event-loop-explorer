@@ -1,9 +1,9 @@
-import styles from './Circle.module.css';
+import styles from './Sector.module.css';
 
-function Circle() {
+function Sector() {
   return (
-    <div className={styles.circle}/>
+    <div className={styles.sector}/>
   );
 }
 
-export default Circle;
+export default Sector;
