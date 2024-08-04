@@ -1,9 +1,11 @@
+@import '../../variables.css';
+
 .circleInner {
   position: absolute;
-  top: 50px;
-  left: 50px;
-  right: 50px;
-  bottom: 50px;
-  background: #131f2a;
+  top: var(--circle-border-width);
+  left: var(--circle-border-width);
+  right: var(--circle-border-width);
+  bottom: var(--circle-border-width);
+  background: var(--base-background);
   border-radius: 50%;
 }

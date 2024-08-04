@@ -1,4 +1,8 @@
 :root {
   --circle-radius: 300px;
-  --circlle-diameter: 600px;
+  --circle-diameter: 600px;
+  --circle-border-width: 50px;
+
+  --circle-background: #1A2A38;
+  --base-background: #131f2a;
 }

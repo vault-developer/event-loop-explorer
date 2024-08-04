@@ -1,5 +1,7 @@
+@import '../../variables.css';
+
 .container {
   position: relative;
-  width: 600px;
-  height: 600px;
+  width: var(--circle-diameter);
+  height: var(--circle-diameter);
 }
