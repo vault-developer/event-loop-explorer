@@ -1,20 +1,20 @@
-.sectorBase {
+.sector {
+  height: 300px;
+  width: 600px;
+  overflow: hidden;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 50%;
-  background: #796A67;
+  transform-origin: 50% 100%;
+  transform: rotate(0deg);
 }
 
-.sector {
+.sector:before {
+  height: inherit;
+  width: inherit;
   position: absolute;
-  top: 0;
+  content: "";
+  border-radius: 300px 300px 0 0;
+  background-color: crimson;
+  transform-origin: 50% 100%;
+  transform: rotate(150deg);
   left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 50%;
-  background: linear-gradient(5deg, #1A2A38 50%, transparent 50%),
-  linear-gradient(175deg, #1A2A38 50%, transparent 50%);
 }
