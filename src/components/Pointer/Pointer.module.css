@@ -1,0 +1,20 @@
+.pointerBase {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: green;
+}
+
+.pointer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(5deg, #1A2A38 50%, transparent 50%),
+  linear-gradient(175deg, #1A2A38 50%, transparent 50%);
+}

@@ -2,6 +2,7 @@ import CircleOuter from './CircleOuter/CircleOuter.tsx';
 import Container from "./Container/Container.tsx";
 import CircleInner from "./CircleInner/CircleInner.tsx";
 import Sector from "./Sector/Sector.tsx";
+import Pointer from "./Pointer/Pointer.tsx";
 
 function EventLoop() {
 
@@ -11,6 +12,7 @@ function EventLoop() {
       <Container>
         <CircleOuter/>
         <Sector/>
+        <Pointer/>
         <CircleInner/>
       </Container>
     </>

@@ -6,7 +6,6 @@ function Sector() {
       <div className={styles.sectorBase}/>
       <div className={styles.sector}/>
     </>
-
   );
 }
 
