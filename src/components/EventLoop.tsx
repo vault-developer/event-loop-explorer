@@ -10,8 +10,8 @@ function EventLoop() {
       <p>Event Loop</p>
       <Container>
         <CircleOuter/>
-        <CircleInner/>
         <Sector/>
+        <CircleInner/>
       </Container>
     </>
   );

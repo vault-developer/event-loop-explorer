@@ -2,7 +2,11 @@ import styles from './Sector.module.css';
 
 function Sector() {
   return (
-    <div className={styles.sector}/>
+    <>
+      <div className={styles.sectorBase}/>
+      <div className={styles.sector}/>
+    </>
+
   );
 }
 
