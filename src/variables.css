@@ -3,8 +3,13 @@
   --circle-diameter: 600px;
   --circle-border-width: 50px;
 
-  --circle-pointer-color: #4D7DA8;
+  --circle-pointer-color: white;
+  --base-background: #131f2a;
+
   --circle-background: #1A2A38;
 
-  --base-background: #131f2a;
+  --circle-disabled-microtask: #3A5E7E;
+  --circle-disabled-task: #589D7C;
+  --circle-disabled-render: #875531;
+
 }

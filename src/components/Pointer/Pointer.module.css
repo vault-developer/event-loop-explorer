@@ -16,7 +16,7 @@
   content: "";
   border-radius: var(--circle-radius) var(--circle-radius) 0 0;
   background-color: var(--circle-pointer-color);
-  opacity: 50%;
+  opacity: 25%;
   transform-origin: 50% 100%;
   transform: rotate(160deg);
   left: 0;
