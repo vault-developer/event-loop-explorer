@@ -2,14 +2,16 @@ import styles from './Pointer.module.css';
 import {useEffect, useRef} from "react";
 
 function Pointer() {
-  const sectorRef = useRef<HTMLDivElement>(null);
+  const sectorInnerRef = useRef<HTMLDivElement>(null);
+  const sectorOuterRef = useRef<HTMLDivElement>(null);
   let angle = 0;
 
   useEffect(() => {
     const animate = () => {
-      if (sectorRef.current) {
-        sectorRef.current.style.transform = `rotate(${angle}deg)`;
-        angle += 0.5 % 360; // Adjust this value to change the speed
+      if (sectorInnerRef.current && sectorOuterRef.current) {
+        sectorInnerRef.current.style.transform = `rotate(${angle}deg)`;
+        sectorOuterRef.current.style.transform = `rotate(${angle}deg)`;
+        angle += 0.5 % 360;
       }
       requestAnimationFrame(animate);
     };
@@ -18,7 +20,11 @@ function Pointer() {
   }, []);
 
   return (
-      <div className={styles.sector} ref={sectorRef}/>
+    <>
+      <div className={styles.sectorWithInnerBorder} ref={sectorInnerRef}/>
+      <div className={styles.sectorWithOuterBorder} ref={sectorOuterRef}/>
+    </>
+
   );
 }
 
