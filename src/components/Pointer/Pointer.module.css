@@ -6,7 +6,7 @@
   overflow: hidden;
   position: absolute;
   transform-origin: 50% 100%;
-  transform: rotate(90deg);
+  transform: rotate(0deg);
   border-bottom: 4px solid transparent;
   border-image: linear-gradient(to right, transparent 50%, var(--circle-pointer-color) 50%);
   border-image-slice: 1;
@@ -35,8 +35,7 @@
   overflow: hidden;
   position: absolute;
   transform-origin: 50% 100%;
-  transform: rotate(90deg);
-  border-bottom: 4px solid transparent;
+  transform: rotate(-0.5deg);
   border-image: linear-gradient(to right, transparent 50%, var(--circle-pointer-color) 50%);
   border-image-slice: 1;
   box-sizing: border-box;
@@ -47,9 +46,8 @@
     position: absolute;
     content: "";
     border-radius: 254px 254px 0 0;
-    border-bottom: 4px solid var(--circle-pointer-color);
     transform-origin: 50% 100%;
-    transform: rotate(160deg);
+    transform: rotate(161deg);
     border-left: 4px solid var(--circle-pointer-color);
     box-sizing: border-box;
     left: 0;

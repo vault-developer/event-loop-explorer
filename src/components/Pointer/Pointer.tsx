@@ -9,7 +9,7 @@ function Pointer() {
   useEffect(() => {
     const animate = () => {
       if (sectorInnerRef.current && sectorOuterRef.current) {
-        sectorInnerRef.current.style.transform = `rotate(${angle}deg)`;
+        sectorInnerRef.current.style.transform = `rotate(${angle-0.5}deg)`;
         sectorOuterRef.current.style.transform = `rotate(${angle}deg)`;
         angle += 0.5 % 360;
       }
