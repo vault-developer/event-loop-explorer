@@ -7,7 +7,7 @@
   position: absolute;
   transform-origin: 50% 100%;
   transform: rotate(90deg);
-  border-bottom: 2px solid transparent;
+  border-bottom: 4px solid transparent;
   border-image: linear-gradient(to right, transparent 50%, var(--circle-pointer-color) 50%);
   border-image-slice: 1;
   box-sizing: border-box;
@@ -18,25 +18,25 @@
     position: absolute;
     content: "";
     border-radius: var(--circle-radius) var(--circle-radius) 0 0;
-    border-bottom: 2px solid var(--circle-pointer-color);
+    border-bottom: 4px solid var(--circle-pointer-color);
     transform-origin: 50% 100%;
     transform: rotate(160deg);
-    border-left: 2px solid var(--circle-pointer-color);
+    border-left: 4px solid var(--circle-pointer-color);
     box-sizing: border-box;
     left: 0;
   }
 }
 
 .sectorWithInnerBorder {
-  height: 252px;
-  width: 504px;
-  left: 48px;
-  top: 48px;
+  height: 254px;
+  width: 508px;
+  left: 46px;
+  top: 46px;
   overflow: hidden;
   position: absolute;
   transform-origin: 50% 100%;
   transform: rotate(90deg);
-  border-bottom: 2px solid transparent;
+  border-bottom: 4px solid transparent;
   border-image: linear-gradient(to right, transparent 50%, var(--circle-pointer-color) 50%);
   border-image-slice: 1;
   box-sizing: border-box;
@@ -46,11 +46,11 @@
     width: inherit;
     position: absolute;
     content: "";
-    border-radius: 252px 252px 0 0;
-    border-bottom: 2px solid var(--circle-pointer-color);
+    border-radius: 254px 254px 0 0;
+    border-bottom: 4px solid var(--circle-pointer-color);
     transform-origin: 50% 100%;
     transform: rotate(160deg);
-    border-left: 2px solid var(--circle-pointer-color);
+    border-left: 4px solid var(--circle-pointer-color);
     box-sizing: border-box;
     left: 0;
   }
