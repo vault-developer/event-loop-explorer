@@ -4,6 +4,7 @@
   --circle-radius: 300px;
   --circle-diameter: 600px;
   --circle-border-width: 50px;
+  --circle-pointer-border-width: 4px;
 
   --circle-pointer-color: white;
   --base-background: #131f2a;
