@@ -1,10 +1,11 @@
 import CircleOuter from './CircleOuter/CircleOuter.tsx';
-import Container from "./Container/Container.tsx";
+import CircleContainer from "./CircleContainer/CircleContainer.tsx";
 import CircleInner from "./CircleInner/CircleInner.tsx";
 import Sector from "./Sector/Sector.tsx";
 import Pointer from "./Pointer/Pointer.tsx";
 import {useEventLoopState} from "../store/store.ts";
 import {EVENT_LOOP_SECTORS_POSITION_DEGREE} from "../constants.ts";
+import Controls from "./Controls/Controls.tsx";
 
 function EventLoop() {
   const render = useEventLoopState(state => state.immutable.render);
@@ -13,7 +14,7 @@ function EventLoop() {
   return (
     <>
       <p>Event Loop</p>
-      <Container>
+      <CircleContainer>
         <CircleOuter/>
 
         <Sector colorVar='--circle-disabled-microtask' degree={EVENT_LOOP_SECTORS_POSITION_DEGREE.microtask4}/>
@@ -26,7 +27,8 @@ function EventLoop() {
 
         <Pointer/>
         <CircleInner/>
-      </Container>
+      </CircleContainer>
+      <Controls/>
     </>
   );
 }
