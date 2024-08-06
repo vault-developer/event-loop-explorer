@@ -1,35 +1,30 @@
-import { create } from 'zustand'
+import {create} from 'zustand'
+import {EventLoopState} from "./store.types.ts";
 
-export interface EventLoopMutatedState {
-  render: boolean;
-  task: boolean;
-  microtask: boolean;
-}
-export const useEventLoopMutatedState = create<EventLoopMutatedState>(() => ({
-  render: false,
-  task: false,
-  microtask: false,
-}));
-
-export interface EventLoopState extends EventLoopMutatedState {
-  setRender: (isNeeded: boolean) => void;
-  setTask: (isNeeded: boolean) => void;
-  setMicrotask: (isNeeded: boolean) => void;
-}
-export const useEventLoopState = create<EventLoopState>((set) => ({
-  render: false,
-  task: false,
-  microtask: false,
-  setRender: isNeeded => {
-    set((state) => ({ ...state, render: isNeeded }));
-    useEventLoopMutatedState.getState().render = isNeeded;
+export const useEventLoopState = create<EventLoopState>((set, get) => ({
+  mutable: {
+    render: false,
+    task: false,
+    microtask: false,
   },
-  setTask: isNeeded => {
-    set((state) => ({ ...state, task: isNeeded }));
-    useEventLoopMutatedState.getState().task = isNeeded;
+  immutable: {
+    render: false,
+    task: false,
+    microtask: false,
   },
-  setMicrotask: isNeeded => {
-    set((state) => ({ ...state, microtask: isNeeded }));
-    useEventLoopMutatedState.getState().microtask = isNeeded;
+  setState: (value, property) => {
+    set((state) => {
+      state.mutable[property] = value;
+      return {
+        ...state,
+        immutable: {
+          ...state.immutable,
+          [property]: value
+        }
+      };
+    });
   },
+  setRender: isNeeded => get().setState(isNeeded, 'render'),
+  setTask: isNeeded => get().setState(isNeeded, 'task'),
+  setMicrotask: isNeeded => get().setState(isNeeded, 'microtask'),
 }));

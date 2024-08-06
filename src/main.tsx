@@ -8,3 +8,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <App />
   </React.StrictMode>,
 )
+
+
+//TODO:
+// ADD stop/pause button
+// ADD microtask and task buttons
+// ADD надписи на секторах
+// вынести константу задержки в константы

@@ -1,12 +1,12 @@
 import styles from './Pointer.module.css';
 import {useEffect, useRef} from "react";
-import {useEventLoopMutatedState, useEventLoopState} from "../../store/store.ts";
+import {useEventLoopState} from "../../store/store.ts";
 import {EVENT_LOOP_INNER_SECTOR_OFFSET, EVENT_LOOP_SECTORS_POSITION_DEGREE} from "../../constants.ts";
 
 const renderSectorPosition = EVENT_LOOP_SECTORS_POSITION_DEGREE.render + EVENT_LOOP_INNER_SECTOR_OFFSET;
 
 function Pointer() {
-  const eventLoopMutatedState = useEventLoopMutatedState(state => state);
+  const eventLoopMutableState = useEventLoopState(state => state.mutable);
   const setRender = useEventLoopState(state => state.setRender);
 
   const sectorInnerRef = useRef<HTMLDivElement>(null);
@@ -16,7 +16,7 @@ function Pointer() {
   useEffect(() => {
     const animate = async () => {
       if (sectorInnerRef.current && sectorOuterRef.current) {
-        if (eventLoopMutatedState.render && angle === renderSectorPosition) {
+        if (eventLoopMutableState.render && angle === renderSectorPosition) {
           await new Promise(resolve => setTimeout(resolve, 3000));
           setRender(false);
         }

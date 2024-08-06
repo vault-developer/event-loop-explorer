@@ -7,7 +7,7 @@ import {useEventLoopState} from "../store/store.ts";
 import {EVENT_LOOP_SECTORS_POSITION_DEGREE} from "../constants.ts";
 
 function EventLoop() {
-  const render = useEventLoopState(state => state.render);
+  const render = useEventLoopState(state => state.immutable.render);
   const colorVarRender = render ? '--circle-enabled-render' : '--circle-disabled-render';
 
   return (
