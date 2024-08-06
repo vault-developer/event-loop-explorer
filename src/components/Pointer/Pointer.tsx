@@ -7,8 +7,11 @@ const renderSectorPosition = EVENT_LOOP_SECTORS_POSITION_DEGREE.render + EVENT_L
 let angle = 0;
 
 function Pointer() {
-  const eventLoopMutableState = useEventLoopState(state => state.mutable);
   const setRender = useEventLoopState(state => state.setRender);
+  const setTask = useEventLoopState(state => state.setTask);
+  const setMicrotask = useEventLoopState(state => state.setMicrotask);
+
+  const eventLoopMutableState = useEventLoopState(state => state.mutable);
   const {enabled} = useEventLoopState(state => state.immutable);
   const mutable = useEventLoopState(state => state.mutable);
 
@@ -22,6 +25,16 @@ function Pointer() {
         if (eventLoopMutableState.render && angle === renderSectorPosition) {
           await new Promise(resolve => setTimeout(resolve, 3000));
           setRender(false);
+        }
+
+        if (eventLoopMutableState.task && EVENT_LOOP_SECTORS_POSITION_DEGREE.task === angle) {
+          await new Promise(resolve => setTimeout(resolve, 3000));
+          setTask(false);
+        }
+
+        if (eventLoopMutableState.microtask && EVENT_LOOP_SECTORS_POSITION_DEGREE.microtasks.includes(angle)) {
+          await new Promise(resolve => setTimeout(resolve, 3000));
+          setMicrotask(false);
         }
 
         sectorInnerRef.current.style.transform = `rotate(${angle-EVENT_LOOP_INNER_SECTOR_OFFSET}deg)`;

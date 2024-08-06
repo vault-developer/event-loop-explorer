@@ -7,6 +7,8 @@ import {useEventLoopState} from "../store/store.ts";
 import {EVENT_LOOP_SECTORS_POSITION_DEGREE} from "../constants.ts";
 import Controls from "./Controls/Controls.tsx";
 
+const {microtasks, task, render: renderDegree} = EVENT_LOOP_SECTORS_POSITION_DEGREE;
+
 function EventLoop() {
   const render = useEventLoopState(state => state.immutable.render);
   const colorVarRender = render ? '--circle-enabled-render' : '--circle-disabled-render';
@@ -17,13 +19,13 @@ function EventLoop() {
       <CircleContainer>
         <CircleOuter/>
 
-        <Sector colorVar='--circle-disabled-microtask' degree={EVENT_LOOP_SECTORS_POSITION_DEGREE.microtask4}/>
-        <Sector colorVar={colorVarRender} degree={EVENT_LOOP_SECTORS_POSITION_DEGREE.render}/>
-        <Sector colorVar='--circle-disabled-microtask' degree={EVENT_LOOP_SECTORS_POSITION_DEGREE.microtask1}/>
+        <Sector colorVar='--circle-disabled-microtask' degree={microtasks[3]}/>
+        <Sector colorVar={colorVarRender} degree={renderDegree}/>
+        <Sector colorVar='--circle-disabled-microtask' degree={microtasks[0]}/>
 
-        <Sector colorVar='--circle-disabled-microtask' degree={EVENT_LOOP_SECTORS_POSITION_DEGREE.microtask2}/>
-        <Sector colorVar='--circle-disabled-task' degree={EVENT_LOOP_SECTORS_POSITION_DEGREE.task}/>
-        <Sector colorVar='--circle-disabled-microtask' degree={EVENT_LOOP_SECTORS_POSITION_DEGREE.microtask3}/>
+        <Sector colorVar='--circle-disabled-microtask' degree={microtasks[1]}/>
+        <Sector colorVar='--circle-disabled-task' degree={task}/>
+        <Sector colorVar='--circle-disabled-microtask' degree={microtasks[2]}/>
 
         <Pointer/>
         <CircleInner/>

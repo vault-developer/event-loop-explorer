@@ -11,7 +11,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 
 //TODO:
-// ADD stop/pause button
-// ADD microtask and task buttons
+// Change microtaks and tasks colors
 // ADD надписи на секторах
 // вынести константу задержки в константы
