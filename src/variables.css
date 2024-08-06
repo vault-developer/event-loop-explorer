@@ -13,6 +13,7 @@
 
   --circle-disabled-microtask: #3A5E7E;
   --circle-disabled-task: #498367;
-  --circle-disabled-render: #875531;
 
+  --circle-disabled-render: #875531;
+  --circle-enabled-render: #d5600c;
 }
