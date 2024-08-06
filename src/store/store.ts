@@ -6,11 +6,13 @@ export const useEventLoopState = create<EventLoopState>((set, get) => ({
     render: false,
     task: false,
     microtask: false,
+    enabled: true,
   },
   immutable: {
     render: false,
     task: false,
     microtask: false,
+    enabled: true,
   },
   setState: (value, property) => {
     set((state) => {
@@ -27,4 +29,5 @@ export const useEventLoopState = create<EventLoopState>((set, get) => ({
   setRender: isNeeded => get().setState(isNeeded, 'render'),
   setTask: isNeeded => get().setState(isNeeded, 'task'),
   setMicrotask: isNeeded => get().setState(isNeeded, 'microtask'),
+  setEnabled: isEnabled => get().setState(isEnabled, 'enabled'),
 }));

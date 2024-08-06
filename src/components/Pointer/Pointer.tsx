@@ -4,17 +4,20 @@ import {useEventLoopState} from "../../store/store.ts";
 import {EVENT_LOOP_INNER_SECTOR_OFFSET, EVENT_LOOP_SECTORS_POSITION_DEGREE} from "../../constants.ts";
 
 const renderSectorPosition = EVENT_LOOP_SECTORS_POSITION_DEGREE.render + EVENT_LOOP_INNER_SECTOR_OFFSET;
+let angle = 0;
 
 function Pointer() {
   const eventLoopMutableState = useEventLoopState(state => state.mutable);
   const setRender = useEventLoopState(state => state.setRender);
+  const {enabled} = useEventLoopState(state => state.immutable);
+  const mutable = useEventLoopState(state => state.mutable);
 
   const sectorInnerRef = useRef<HTMLDivElement>(null);
   const sectorOuterRef = useRef<HTMLDivElement>(null);
-  let angle = 0;
 
   useEffect(() => {
     const animate = async () => {
+      if (!mutable.enabled) return;
       if (sectorInnerRef.current && sectorOuterRef.current) {
         if (eventLoopMutableState.render && angle === renderSectorPosition) {
           await new Promise(resolve => setTimeout(resolve, 3000));
@@ -30,7 +33,7 @@ function Pointer() {
     };
 
     animate();
-  }, []);
+  }, [enabled]);
 
   return (
     <>
