@@ -3,7 +3,6 @@ import {useEffect, useRef} from "react";
 import {useEventLoopState} from "../../store/store.ts";
 import {EVENT_LOOP_INNER_SECTOR_OFFSET, EVENT_LOOP_SECTORS_POSITION_DEGREE} from "../../constants.ts";
 
-const renderSectorPosition = EVENT_LOOP_SECTORS_POSITION_DEGREE.render + EVENT_LOOP_INNER_SECTOR_OFFSET;
 let angle = 0;
 
 function Pointer() {
@@ -11,7 +10,6 @@ function Pointer() {
   const setTask = useEventLoopState(state => state.setTask);
   const setMicrotask = useEventLoopState(state => state.setMicrotask);
 
-  const eventLoopMutableState = useEventLoopState(state => state.mutable);
   const {enabled} = useEventLoopState(state => state.immutable);
   const mutable = useEventLoopState(state => state.mutable);
 
@@ -22,17 +20,18 @@ function Pointer() {
     const animate = async () => {
       if (!mutable.enabled) return;
       if (sectorInnerRef.current && sectorOuterRef.current) {
-        if (eventLoopMutableState.render && angle === renderSectorPosition) {
+        const angleWithOffset = angle - EVENT_LOOP_INNER_SECTOR_OFFSET;
+        if (mutable.render && angleWithOffset === EVENT_LOOP_SECTORS_POSITION_DEGREE.render) {
           await new Promise(resolve => setTimeout(resolve, 3000));
           setRender(false);
         }
 
-        if (eventLoopMutableState.task && EVENT_LOOP_SECTORS_POSITION_DEGREE.task === angle) {
+        if (mutable.task && EVENT_LOOP_SECTORS_POSITION_DEGREE.task === angleWithOffset) {
           await new Promise(resolve => setTimeout(resolve, 3000));
           setTask(false);
         }
 
-        if (eventLoopMutableState.microtask && EVENT_LOOP_SECTORS_POSITION_DEGREE.microtasks.includes(angle)) {
+        if (mutable.microtask && EVENT_LOOP_SECTORS_POSITION_DEGREE.microtasks.includes(angleWithOffset)) {
           await new Promise(resolve => setTimeout(resolve, 3000));
           setMicrotask(false);
         }
@@ -53,7 +52,6 @@ function Pointer() {
       <div className={styles.sectorWithInnerBorder} ref={sectorInnerRef}/>
       <div className={styles.sectorWithOuterBorder} ref={sectorOuterRef}/>
     </>
-
   );
 }
 

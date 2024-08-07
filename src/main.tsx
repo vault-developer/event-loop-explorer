@@ -11,6 +11,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 
 //TODO:
-// Change microtaks and tasks colors
 // ADD надписи на секторах
 // вынести константу задержки в константы
+// if editor is not working, make just constructor to select order of commands
