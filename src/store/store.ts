@@ -1,7 +1,7 @@
 import {create} from 'zustand'
 import {EventLoopState} from "./store.types.ts";
 
-export const useEventLoopState = create<EventLoopState>((set, get) => ({
+export const useEventLoopState = create<EventLoopState>(set => ({
   mutable: {
     render: false,
     task: false,
@@ -26,8 +26,4 @@ export const useEventLoopState = create<EventLoopState>((set, get) => ({
       };
     });
   },
-  setRender: isNeeded => get().setState(isNeeded, 'render'),
-  setTask: isNeeded => get().setState(isNeeded, 'task'),
-  setMicrotask: isNeeded => get().setState(isNeeded, 'microtask'),
-  setEnabled: isEnabled => get().setState(isEnabled, 'enabled'),
 }));
