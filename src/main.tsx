@@ -11,6 +11,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 
 //TODO:
-// ADD надписи на секторах: simplify circleLabels
-// вынести константу задержки в константы
 // if editor is not working, make just constructor to select order of commands

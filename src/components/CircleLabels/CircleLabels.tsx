@@ -16,14 +16,14 @@ const enhancedEvents = events.map(event => {
 function CircleLabels() {
   return (
     <div className={styles.circleLabels}>
-      {enhancedEvents.map(({title, leftOffset, topOffset}) => (
+      {enhancedEvents.map(({title, leftOffset, topOffset, degree}) => (
         <p style={{
           position: "absolute",
           left: `${leftOffset}px`,
           top: `${topOffset}px`,
           margin: 0,
           transform: 'translate(-50%, -50%)',
-        }}>{title}</p>
+        }} key={degree}>{title}</p>
       ))}
     </div>
   );
