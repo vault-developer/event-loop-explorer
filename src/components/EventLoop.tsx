@@ -6,6 +6,7 @@ import Pointer from "./Pointer/Pointer.tsx";
 import {useEventLoopState} from "../store/store.ts";
 import {EVENT_LOOP_SECTORS_POSITION_DEGREE} from "../constants.ts";
 import Controls from "./Controls/Controls.tsx";
+import CircleLabels from "./CircleLabels/CircleLabels.tsx";
 
 const {
   microtasks: microtaskDegrees,
@@ -35,6 +36,7 @@ function EventLoop() {
 
         <Pointer/>
         <CircleInner/>
+        <CircleLabels/>
       </CircleContainer>
       <Controls/>
     </>
