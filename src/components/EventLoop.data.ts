@@ -1,10 +1,6 @@
-interface Event {
-  title: string;
-  type: 'task' | 'microtask' | 'render';
-  degree: number;
-}
+import {EventInterface} from "./EventLoop.types.ts";
 
-export const events: Event[] = [
+export const events: EventInterface[] = [
   {title: 'R', type: 'render', degree: 0},
   {title: 'T', type: 'task', degree: 180},
   {title: 'MT', type: 'microtask', degree: 330},

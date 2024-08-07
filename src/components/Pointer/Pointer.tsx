@@ -1,9 +1,17 @@
 import styles from './Pointer.module.css';
 import {useEffect, useRef} from "react";
 import {useEventLoopState} from "../../store/store.ts";
-import {EVENT_LOOP_INNER_SECTOR_OFFSET, EVENT_LOOP_SECTORS_POSITION_DEGREE} from "../../constants.ts";
+import {EVENT_LOOP_INNER_SECTOR_OFFSET} from "../../constants.ts";
+import {events} from "../EventLoop.data.ts";
+import {EventInterface} from "../EventLoop.types.ts";
 
-let angle = 0;
+let angle = 360 - 10;
+
+const stops = new Set(events.map(event => event.degree));
+const typeByStop = events.reduce((acc, event) => {
+  acc[event.degree] = event.type;
+  return acc;
+}, {} as Record<number, EventInterface['type']>);
 
 function Pointer() {
   const setState = useEventLoopState(state => state.setState);
@@ -17,26 +25,18 @@ function Pointer() {
     const animate = async () => {
       if (!mutable.enabled) return;
       if (sectorInnerRef.current && sectorOuterRef.current) {
-        const angleWithOffset = angle - EVENT_LOOP_INNER_SECTOR_OFFSET;
-        if (mutable.render && angleWithOffset === EVENT_LOOP_SECTORS_POSITION_DEGREE.render) {
-          await new Promise(resolve => setTimeout(resolve, 3000));
-          setState(false, 'render');
+        const angleWithOffset = angle + EVENT_LOOP_INNER_SECTOR_OFFSET;
+        if (stops.has(angleWithOffset)) {
+          const type = typeByStop[angleWithOffset];
+          if (mutable[type]) {
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            setState(false, type);
+          }
         }
-
-        if (mutable.task && EVENT_LOOP_SECTORS_POSITION_DEGREE.task === angleWithOffset) {
-          await new Promise(resolve => setTimeout(resolve, 3000));
-          setState(false, 'task');
-        }
-
-        if (mutable.microtask && EVENT_LOOP_SECTORS_POSITION_DEGREE.microtasks.includes(angleWithOffset)) {
-          await new Promise(resolve => setTimeout(resolve, 3000));
-          setState(false, 'microtask');
-        }
-
-        sectorInnerRef.current.style.transform = `rotate(${angle-EVENT_LOOP_INNER_SECTOR_OFFSET}deg)`;
-        sectorOuterRef.current.style.transform = `rotate(${angle}deg)`;
-        angle += 0.5;
-        if (angle > 360) angle-=360;
+        sectorInnerRef.current.style.transform = `rotate(${360 - angle + 10 - EVENT_LOOP_INNER_SECTOR_OFFSET}deg)`;
+        sectorOuterRef.current.style.transform = `rotate(${360 - angle + 10}deg)`;
+        angle -= 0.5;
+        if (angleWithOffset < 0) angle += 360;
       }
       requestAnimationFrame(animate);
     };
