@@ -6,7 +6,11 @@ import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-solarized_dark";
 
 function EditorComponent() {
-  const [text, setText] = useState("console.log(123)");
+  const [text, setText] = useState(`
+    console.log(1);
+    setTimeout(()=>console.log(2));
+    console.log(3);
+  `);
 
   return (
     <div style={{

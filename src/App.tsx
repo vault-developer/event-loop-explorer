@@ -11,10 +11,10 @@ function App() {
       </div>
       <div className={styles.callstack}>CallStack</div>
       <div className={styles.console}>Console</div>
-      <div>Web api</div>
-      <div>Tasks Queue</div>
-      <div>mTasks Queue</div>
-      <div>Render steps</div>
+      <div className={styles.webApi}>Web api</div>
+      <div className={styles.render}>Render steps</div>
+      <div className={styles.tasks}>Tasks Queue</div>
+      <div className={styles.microTasks}>mTasks Queue</div>
       <div className={styles.eventLoop}>
         <EventLoop/>
       </div>
