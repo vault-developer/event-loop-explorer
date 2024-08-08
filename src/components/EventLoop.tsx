@@ -12,7 +12,7 @@ function EventLoop() {
   const immutable = useEventLoopState(state => state.immutable);
   return (
     <>
-      <p>Event Loop</p>
+      <p style={{marginBottom: 50}}>Event Loop</p>
       <CircleContainer>
         <CircleOuter/>
 

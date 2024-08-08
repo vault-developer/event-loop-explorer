@@ -28,7 +28,7 @@
 }
 
 .eventLoop {
-  grid-row: 4 / 13;
+  grid-row: 5 / 13;
   display: flex;
   flex-direction: column;
   justify-content: center;

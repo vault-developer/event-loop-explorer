@@ -11,8 +11,9 @@ function App() {
       <div>Web api</div>
       <div>Tasks Queue</div>
       <div>mTasks Queue</div>
+      <div>Render steps</div>
       <div className={styles.eventLoop}>
-        <EventLoop />
+        <EventLoop/>
       </div>
     </div>
   )

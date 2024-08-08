@@ -9,6 +9,7 @@ function Controls() {
       display: "flex",
       justifyContent: 'space-around',
       zIndex: 1,
+      gap: 20
     }}>
       <button onClick={() => setState(!mutable.enabled, 'enabled')}>run/stop</button>
       <button onClick={() => setState(true, 'render')}>active render</button>
