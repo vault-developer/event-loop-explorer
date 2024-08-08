@@ -11,4 +11,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 
 //TODO:
-// if editor is not working, make just constructor to select order of commands
+// add validation to the editor text
+// add examples (multiple things)
+// add AST parser
+// generate an array of events based on parser
+// add UI to visualise events

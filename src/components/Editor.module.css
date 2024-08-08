@@ -1,0 +1,14 @@
+.editor {
+  & :global(.ace_gutter) {
+    background: var(--circle-background);
+  }
+
+  & :global(.ace_gutter-active-line) {
+    background:  var(--circle-background);
+  }
+
+  & :global(.ace_content) {
+    background:  var(--base-background);
+  }
+}
+

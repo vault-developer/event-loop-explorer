@@ -1,10 +1,12 @@
-import Editor from '@monaco-editor/react';
-import {useRef} from "react";
+import AceEditor from "react-ace";
+import {useState} from "react";
+import styles from './Editor.module.css'
 
-// TODO: replace with ACE editor
-// https://securingsincity.github.io/react-ace/
+import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/theme-solarized_dark";
+
 function EditorComponent() {
-  const editorRef = useRef(null);
+  const [text, setText] = useState("console.log(123)");
 
   return (
     <div style={{
@@ -15,8 +17,9 @@ function EditorComponent() {
       <div style={{
         display: "flex",
         justifyContent: "space-around",
+        alignItems: "center",
       }}>
-        <div>
+        <div style={{marginBottom: 20, marginTop: 20}}>
           <label htmlFor="cars" style={{marginRight: 10}}>choose an example:</label>
           <select name="cars" id="cars">
             <option value="volvo">Volvo</option>
@@ -25,27 +28,23 @@ function EditorComponent() {
             <option value="audi">Audi</option>
           </select>
         </div>
-        <button
-          onClick={() => console.log(editorRef.current!.getValue())}
-          style={{marginBottom: 20}}
-        >
+        <button onClick={() => console.log(text)}>
           run code
         </button>
       </div>
       <div style={{flex: 1}}>
-        <Editor
-          theme={'vs-dark'}
-          options={{
-            minimap: {enabled: false} // Disable the minimap
-          }}
-          onMount={editor => editorRef.current = editor}
-          defaultLanguage="javascript"
-          defaultValue="setTimeout(()=>console.log(1), 500);"
+        <AceEditor
+          width={"100%"}
+          value={text}
+          height={"100%"}
+          mode="javascript"
+          theme="solarized_dark"
+          fontSize={16}
+          onChange={setText}
+          className={styles.editor}
         />
       </div>
-
     </div>
-
   );
 }
 
