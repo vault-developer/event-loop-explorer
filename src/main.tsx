@@ -11,8 +11,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 
 //TODO:
-// add validation to the editor text
 // add examples (multiple things)
+// ACE syntax validation via webworker https://github.com/ajaxorg/ace/wiki/Syntax-validation
 // add AST parser
 // generate an array of events based on parser
 // add UI to visualise events

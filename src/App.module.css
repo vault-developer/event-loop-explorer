@@ -1,5 +1,3 @@
-
-
 .layout {
   flex: 1;
   display: grid;
@@ -9,7 +7,9 @@
   padding: 20px;
 
   &>* {
-    border: 1px solid var(--circle-disabled-microtask);
+    border: 1px solid var(--circle-background);
+    background:  var(--base-background);
+    border-radius: 15px;
     margin: 0;
     padding: 10px;
   }

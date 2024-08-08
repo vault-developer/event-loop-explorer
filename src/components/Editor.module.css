@@ -1,14 +1,21 @@
 .editor {
-  & :global(.ace_gutter) {
-    background: var(--circle-background);
-  }
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
 
-  & :global(.ace_gutter-active-line) {
-    background:  var(--circle-background);
-  }
+    & :global(.ace_gutter) {
+        background: var(--circle-background);
+    }
 
-  & :global(.ace_content) {
-    background:  var(--base-background);
-  }
+    & :global(.ace_gutter-active-line) {
+        background: var(--circle-background);
+    }
+
+    & :global(.ace_content) {
+        background: var(--base-background);
+    }
+
+    & :global(.ace_scroller) {
+        border-bottom-right-radius: 15px;
+    }
 }
 

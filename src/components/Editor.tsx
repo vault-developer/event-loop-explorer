@@ -39,6 +39,7 @@ function EditorComponent() {
           height={"100%"}
           mode="javascript"
           theme="solarized_dark"
+          showPrintMargin={false}
           fontSize={16}
           onChange={setText}
           className={styles.editor}

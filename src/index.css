@@ -1,23 +1,23 @@
 html {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #131f2a;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: var(--general-base-background);
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
 }
 
 #root {
-  min-width: 1280px;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
+    min-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
 }
 
