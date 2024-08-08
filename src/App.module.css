@@ -1,0 +1,36 @@
+
+
+.layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 2fr 1fr 3fr;
+  grid-template-rows: repeat(12, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+
+  &>* {
+    border: 1px solid var(--circle-disabled-microtask);
+    margin: 0;
+    padding: 10px;
+  }
+}
+
+.editor {
+  grid-row: 1 / 13;
+}
+
+.callstack {
+  grid-row: 1 / 7
+}
+
+.console {
+  grid-row: 7 / 13;
+}
+
+.eventLoop {
+  grid-row: 4 / 13;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

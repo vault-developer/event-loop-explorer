@@ -12,3 +12,12 @@ body {
   min-height: 100vh;
 }
 
+#root {
+  min-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+

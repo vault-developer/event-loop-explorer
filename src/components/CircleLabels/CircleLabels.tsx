@@ -4,8 +4,8 @@ import {events} from "../EventLoop.data.ts";
 const enhancedEvents = events.map(event => {
   const cos = Math.cos(event.degree * Math.PI / 180);
   const sin = Math.sin(event.degree * Math.PI / 180);
-  const leftOffset = 300 + cos * (300 - 25);
-  const topOffset = 300 + sin * (300 - 25);
+  const leftOffset = 200 + cos * (200 - 25);
+  const topOffset = 200 + sin * (200 - 25);
   return {
     ...event,
     leftOffset,
