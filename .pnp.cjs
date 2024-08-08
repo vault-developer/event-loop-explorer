@@ -27,6 +27,7 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@monaco-editor/react", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:4.6.0"],\
           ["@types/react", "npm:18.3.3"],\
           ["@types/react-dom", "npm:18.3.0"],\
           ["@typescript-eslint/eslint-plugin", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:7.18.0"],\
@@ -696,6 +697,60 @@ const RAW_RUNTIME_STATE =
           ["@jridgewell/trace-mapping", "npm:0.3.25"],\
           ["@jridgewell/resolve-uri", "npm:3.1.2"],\
           ["@jridgewell/sourcemap-codec", "npm:1.5.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@monaco-editor/loader", [\
+      ["npm:1.4.0", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@monaco-editor-loader-npm-1.4.0-4aa209f578-10c0.zip/node_modules/@monaco-editor/loader/",\
+        "packageDependencies": [\
+          ["@monaco-editor/loader", "npm:1.4.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:229f647388448595ab5a44738acc98814a3422e7ff892fb82e1dd4c84557ed9526c7f41f4f64311e2a4cf4692add19285d64712dba9f941edbb29e13c192dd04#npm:1.4.0", {\
+        "packageLocation": "./.yarn/__virtual__/@monaco-editor-loader-virtual-7f0c0eb6bc/3/AppData/Local/Yarn/Berry/cache/@monaco-editor-loader-npm-1.4.0-4aa209f578-10c0.zip/node_modules/@monaco-editor/loader/",\
+        "packageDependencies": [\
+          ["@monaco-editor/loader", "virtual:229f647388448595ab5a44738acc98814a3422e7ff892fb82e1dd4c84557ed9526c7f41f4f64311e2a4cf4692add19285d64712dba9f941edbb29e13c192dd04#npm:1.4.0"],\
+          ["@types/monaco-editor", null],\
+          ["monaco-editor", null],\
+          ["state-local", "npm:1.0.7"]\
+        ],\
+        "packagePeers": [\
+          "@types/monaco-editor",\
+          "monaco-editor"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@monaco-editor/react", [\
+      ["npm:4.6.0", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@monaco-editor-react-npm-4.6.0-aabad3ef41-10c0.zip/node_modules/@monaco-editor/react/",\
+        "packageDependencies": [\
+          ["@monaco-editor/react", "npm:4.6.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:4.6.0", {\
+        "packageLocation": "./.yarn/__virtual__/@monaco-editor-react-virtual-229f647388/3/AppData/Local/Yarn/Berry/cache/@monaco-editor-react-npm-4.6.0-aabad3ef41-10c0.zip/node_modules/@monaco-editor/react/",\
+        "packageDependencies": [\
+          ["@monaco-editor/react", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:4.6.0"],\
+          ["@monaco-editor/loader", "virtual:229f647388448595ab5a44738acc98814a3422e7ff892fb82e1dd4c84557ed9526c7f41f4f64311e2a4cf4692add19285d64712dba9f941edbb29e13c192dd04#npm:1.4.0"],\
+          ["@types/monaco-editor", null],\
+          ["@types/react", "npm:18.3.3"],\
+          ["@types/react-dom", "npm:18.3.0"],\
+          ["monaco-editor", null],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/monaco-editor",\
+          "@types/react-dom",\
+          "@types/react",\
+          "monaco-editor",\
+          "react-dom",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1908,6 +1963,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["event-loop-explainer", "workspace:."],\
+          ["@monaco-editor/react", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:4.6.0"],\
           ["@types/react", "npm:18.3.3"],\
           ["@types/react-dom", "npm:18.3.0"],\
           ["@typescript-eslint/eslint-plugin", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:7.18.0"],\
@@ -3211,6 +3267,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["ssri", "npm:10.0.6"],\
           ["minipass", "npm:7.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["state-local", [\
+      ["npm:1.0.7", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/state-local-npm-1.0.7-9005e49ea6-10c0.zip/node_modules/state-local/",\
+        "packageDependencies": [\
+          ["state-local", "npm:1.0.7"]\
         ],\
         "linkType": "HARD"\
       }]\

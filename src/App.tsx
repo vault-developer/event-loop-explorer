@@ -1,11 +1,14 @@
 import styles from './App.module.css'
 import EventLoop from "./components/EventLoop/EventLoop.tsx";
+import Editor from "./components/Editor.tsx";
 
 function App() {
   return (
     <div className={styles.layout}>
 
-      <div className={styles.editor}>Editor</div>
+      <div className={styles.editor}>
+        <Editor/>
+      </div>
       <div className={styles.callstack}>CallStack</div>
       <div className={styles.console}>Console</div>
       <div>Web api</div>

@@ -16,6 +16,7 @@
 }
 
 .editor {
+  padding: 0;
   grid-row: 1 / 13;
 }
 
