@@ -1,7 +1,7 @@
 import styles from './Pointer.module.css';
 import {useEffect, useRef} from "react";
-import {useEventLoopState} from "../../store/store.ts";
-import {EVENT_LOOP_INNER_SECTOR_OFFSET} from "../../constants.ts";
+import {useEventLoopState} from "../../../store/store.ts";
+import {EVENT_LOOP_INNER_SECTOR_OFFSET} from "../../../constants.ts";
 import {events} from "../EventLoop.data.ts";
 import {EventInterface} from "../EventLoop.types.ts";
 

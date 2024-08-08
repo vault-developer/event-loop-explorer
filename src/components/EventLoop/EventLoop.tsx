@@ -3,7 +3,7 @@ import CircleContainer from "./CircleContainer/CircleContainer.tsx";
 import CircleInner from "./CircleInner/CircleInner.tsx";
 import Sector from "./Sector/Sector.tsx";
 import Pointer from "./Pointer/Pointer.tsx";
-import {useEventLoopState} from "../store/store.ts";
+import {useEventLoopState} from "../../store/store.ts";
 import Controls from "./Controls/Controls.tsx";
 import CircleLabels from "./CircleLabels/CircleLabels.tsx";
 import {events} from "./EventLoop.data.ts";

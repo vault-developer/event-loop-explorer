@@ -1,5 +1,5 @@
 import styles from './App.module.css'
-import EventLoop from "./components/EventLoop.tsx";
+import EventLoop from "./components/EventLoop/EventLoop.tsx";
 
 function App() {
   return (

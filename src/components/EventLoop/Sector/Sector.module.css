@@ -1,4 +1,4 @@
-@import '../../variables.css';
+@import '../../../variables.css';
 
 .sector {
   height: var(--circle-radius);

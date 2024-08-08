@@ -1,4 +1,4 @@
-import {useEventLoopState} from "../../store/store.ts";
+import {useEventLoopState} from "../../../store/store.ts";
 
 function Controls() {
   const setState = useEventLoopState(state => state.setState);
