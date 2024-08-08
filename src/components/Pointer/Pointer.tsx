@@ -5,7 +5,7 @@ import {EVENT_LOOP_INNER_SECTOR_OFFSET} from "../../constants.ts";
 import {events} from "../EventLoop.data.ts";
 import {EventInterface} from "../EventLoop.types.ts";
 
-let angle = 360 - 10;
+let angle = 100 - 10;
 
 const stops = new Set(events.map(event => event.degree));
 const typeByStop = events.reduce((acc, event) => {

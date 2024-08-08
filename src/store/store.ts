@@ -6,13 +6,13 @@ export const useEventLoopState = create<EventLoopState>(set => ({
     render: false,
     task: false,
     microtask: false,
-    enabled: true,
+    enabled: false,
   },
   immutable: {
     render: false,
     task: false,
     microtask: false,
-    enabled: true,
+    enabled: false,
   },
   setState: (value, property) => {
     set((state) => {

@@ -6,7 +6,7 @@
   overflow: hidden;
   position: absolute;
   transform-origin: 50% 100%;
-  transform: rotate(0deg);
+  transform: rotate(280deg);
   border-bottom: var(--circle-pointer-border-width) solid transparent;
   border-image: linear-gradient(to right, transparent 50%, var(--circle-pointer-color) 50%);
   border-image-slice: 1;
@@ -35,7 +35,7 @@
   overflow: hidden;
   position: absolute;
   transform-origin: 50% 100%;
-  transform: rotate(-0.5deg);
+  transform: rotate(279.5deg);
   border-image: linear-gradient(to right, transparent 50%, var(--circle-pointer-color) 50%);
   border-image-slice: 1;
   box-sizing: border-box;
