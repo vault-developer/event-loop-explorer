@@ -57,6 +57,13 @@ function foo3() {
 function foo4() {
   console.log('foo4');
 }
-foo1();`
+function foo5(param1) {
+  console.log(param1);
+}
+
+console.log('global');
+setTimeout(() => console.log('global:1'), 500); 
+foo1();
+foo5('foo5:1');`
   }
 ];

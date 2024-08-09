@@ -20,10 +20,7 @@ function EditorComponent() {
     setText(selectedExample);
   }
 
-  const onRun = () => {
-    console.log('will execute:', text);
-    parse(text);
-  }
+  const onRun = () => parse(text);
 
   return (
     <div style={{
