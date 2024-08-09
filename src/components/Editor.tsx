@@ -37,7 +37,7 @@ function EditorComponent() {
           <label htmlFor="examples" style={{marginRight: 10}}>choose an example:</label>
           <select name="examples" onChange={onSelect}>
             {codeExamples.map(({title}) => (
-              <option value={title}>{title}</option>
+              <option value={title} key={title}>{title}</option>
             ))}
           </select>
         </div>
@@ -52,6 +52,9 @@ function EditorComponent() {
           height={"100%"}
           mode="javascript"
           theme="solarized_dark"
+          setOptions={{
+            useWorker: false,
+          }}
           showPrintMargin={false}
           fontSize={14}
           onChange={setText}

@@ -6,12 +6,8 @@ import {
   parse as acornParse,
   Statement
 } from 'acorn';
+import {StepInterface} from "./parse.types.ts";
 
-export interface StepInterface {
-  sector: 'callstack' | 'task_queue' | 'microtask_queue' | 'console' | 'web_api';
-  action: 'push' | 'pop';
-  value: string | object;
-}
 
 /**
  * - handleNode
@@ -51,11 +47,13 @@ const handleCallExpression = (expression: CallExpression, steps: StepInterface[]
 }
 const handleMemberExpression = (expression: MemberExpression, args: CallExpression['arguments'], steps: StepInterface[]) => {
   if (expression.object.type === 'Identifier' && expression.object.name === 'console') {
-    steps.push({
-      sector: 'console',
-      action: 'push',
-      value: args[0].value,
-    });
+    if ("value" in args[0]) {
+      steps.push({
+        sector: 'console',
+        action: 'push',
+        value: args[0]?.value as StepInterface['value'],
+      });
+    }
   } else {
     console.log('handleMemberExpression: only console is supported', expression);
   }
