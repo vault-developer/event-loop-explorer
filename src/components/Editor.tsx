@@ -4,13 +4,20 @@ import styles from './Editor.module.css'
 
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-solarized_dark";
+import {codeExamples} from "./Editor.data.tsx";
+
+const codeByTitle = codeExamples.reduce((acc, {title, code}) => {
+  acc[title] = code;
+  return acc;
+} , {} as Record<string, string>);
 
 function EditorComponent() {
-  const [text, setText] = useState(`
-    console.log(1);
-    setTimeout(()=>console.log(2));
-    console.log(3);
-  `);
+  const [text, setText] = useState(codeExamples[0].code);
+
+  const onSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedExample = codeByTitle[e.target.value];
+    setText(selectedExample);
+  }
 
   return (
     <div style={{
@@ -24,12 +31,11 @@ function EditorComponent() {
         alignItems: "center",
       }}>
         <div style={{marginBottom: 20, marginTop: 20}}>
-          <label htmlFor="cars" style={{marginRight: 10}}>choose an example:</label>
-          <select name="cars" id="cars">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+          <label htmlFor="examples" style={{marginRight: 10}}>choose an example:</label>
+          <select name="examples" onChange={onSelect}>
+            {codeExamples.map(({title}) => (
+              <option value={title}>{title}</option>
+            ))}
           </select>
         </div>
         <button onClick={() => console.log(text)}>
@@ -44,7 +50,7 @@ function EditorComponent() {
           mode="javascript"
           theme="solarized_dark"
           showPrintMargin={false}
-          fontSize={16}
+          fontSize={14}
           onChange={setText}
           className={styles.editor}
         />
