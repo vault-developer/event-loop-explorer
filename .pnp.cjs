@@ -33,6 +33,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:7.18.0"],\
           ["@vitejs/plugin-react", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:4.3.1"],\
           ["ace-builds", "npm:1.35.4"],\
+          ["acorn", "npm:8.12.1"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-plugin-react-hooks", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:4.6.2"],\
           ["eslint-plugin-react-refresh", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:0.4.9"],\
@@ -1934,6 +1935,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:7.18.0"],\
           ["@vitejs/plugin-react", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:4.3.1"],\
           ["ace-builds", "npm:1.35.4"],\
+          ["acorn", "npm:8.12.1"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-plugin-react-hooks", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:4.6.2"],\
           ["eslint-plugin-react-refresh", "virtual:98c75c2d21168d52e56d21df565980b433ba7b9db064dee87becbed9e08fa18039b0629226d597dfce3e697c3e765ab8b12bfe835e2aed850f8802a93ef111df#npm:0.4.9"],\

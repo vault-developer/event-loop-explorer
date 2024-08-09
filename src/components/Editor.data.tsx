@@ -20,7 +20,8 @@ function foo2() {
 function foo3() {
   setTimeout(()=>console.log(3), 2000);
   console.log(4);
-}`
+}
+foo1();`
   },
   {
     title: 'microtasks queue',
@@ -31,5 +32,31 @@ queueMicrotask(() => console.log(3));
 Promise.resolve().then(() => console.log(4));  
 setTimeout(() => console.log(5), 500);  
 console.log(6);`
+  },
+  {
+    title: 'microtasks + callstack',
+    code:
+`function foo1() {
+  console.log('foo1');
+  foo2();
+}
+function foo2() {
+  console.log('foo2');
+  foo3();
+}
+function foo3() {
+  setTimeout(() => {
+      foo4();
+      console.log('foo3:1');
+  });  
+  queueMicrotask(() => console.log('foo3:2'));  
+  Promise.resolve().then(() => console.log('foo3:3'));  
+  setTimeout(() => console.log('foo3:4'), 500);  
+  console.log('foo3:5');
+}
+function foo4() {
+  console.log('foo4');
+}
+foo1();`
   }
 ];

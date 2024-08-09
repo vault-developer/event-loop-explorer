@@ -5,6 +5,7 @@ import styles from './Editor.module.css'
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-solarized_dark";
 import {codeExamples} from "./Editor.data.tsx";
+import {parse} from "../utils/parse.ts";
 
 const codeByTitle = codeExamples.reduce((acc, {title, code}) => {
   acc[title] = code;
@@ -17,6 +18,11 @@ function EditorComponent() {
   const onSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedExample = codeByTitle[e.target.value];
     setText(selectedExample);
+  }
+
+  const onRun = () => {
+    console.log('will execute:', text);
+    parse(text);
   }
 
   return (
@@ -38,7 +44,7 @@ function EditorComponent() {
             ))}
           </select>
         </div>
-        <button onClick={() => console.log(text)}>
+        <button onClick={onRun}>
           run code
         </button>
       </div>
