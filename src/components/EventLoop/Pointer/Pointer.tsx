@@ -5,7 +5,7 @@ import {EVENT_LOOP_INNER_SECTOR_OFFSET} from "../../../constants.ts";
 import {events} from "../EventLoop.data.ts";
 import {EventInterface} from "../EventLoop.types.ts";
 
-let angle = 100 - 10;
+let angle = 100 - 10.5;
 
 const stops = new Set(events.map(event => event.degree));
 const typeByStop = events.reduce((acc, event) => {
@@ -35,7 +35,7 @@ function Pointer() {
         }
         sectorInnerRef.current.style.transform = `rotate(${360 - angle + 10 - EVENT_LOOP_INNER_SECTOR_OFFSET}deg)`;
         sectorOuterRef.current.style.transform = `rotate(${360 - angle + 10}deg)`;
-        angle -= 0.5;
+        angle -= 1;
         if (angleWithOffset < 0) angle += 360;
       }
       requestAnimationFrame(animate);
