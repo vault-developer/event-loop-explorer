@@ -30,7 +30,7 @@ const handleNode = (node: Statement | ModuleDeclaration, context: ParseContextIn
   }
 }
 const handleFunctionDeclaration = (node: FunctionDeclaration, context: ParseContextInterface) => {
-  console.log('handleFunctionDeclaration: FunctionDeclaration is not implemented', node, context);
+  context.functions[node.id.name] = node;
 }
 const handleExpressionStatement = (node: ExpressionStatement, context: ParseContextInterface) => {
   if (node.expression.type === 'CallExpression') {
@@ -43,30 +43,42 @@ const handleCallExpression = (expression: CallExpression, context: ParseContextI
   if (expression.callee.type === 'MemberExpression') {
     handleMemberExpression(expression.callee, expression.arguments, context);
   } else if (expression.callee.type === 'Identifier') {
-    handleIdentifier(expression.callee, expression.arguments, context);
+    handleIdentifier(expression, context);
   } else {
     console.log('handleCallExpression: only MemberExpression & Identifier are supported', expression);
   }
 }
 const handleMemberExpression = (expression: MemberExpression, args: CallExpression['arguments'], context: ParseContextInterface) => {
   if (expression.object.type === 'Identifier' && expression.object.name === 'console') {
+    context.steps.push({
+      sector: 'callstack',
+      action: 'push',
+      value: `${expression.object.name}.${expression.property.name}(${args.map(arg => arg.value).join(', ')})`,
+    })
     if ("value" in args[0]) {
       context.steps.push({
         sector: 'console',
         action: 'push',
-        value: args[0]?.value as StepInterface['value'],
+        value: args.map(arg => arg.value).join(',') as StepInterface['value'],
       });
     }
+    context.steps.push({
+      sector: 'callstack',
+      action: 'pop'
+    })
   } else {
     console.log('handleMemberExpression: only console is supported', expression);
   }
 }
-const handleIdentifier= (identifier: Identifier, args: CallExpression['arguments'], context: ParseContextInterface) => {
-  if (identifier.name === 'setTimeout') {
+const handleIdentifier= (expression: CallExpression, context: ParseContextInterface) => {
+  if (expression.callee.type !== 'Identifier') {
+    return 'handleIdentifier: callee is not Identifier';
+  }
+  if (expression.callee.name === 'setTimeout') {
     context.steps.push({
       sector: 'web_api',
       action: 'push',
-      value: args as StepInterface['value'],
+      value: expression,
     });
   } else {
     console.log('handleIdentifier: only setTimeout is supported');
