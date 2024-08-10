@@ -6,7 +6,7 @@ import {
   parse as acornParse,
   Statement
 } from 'acorn';
-import {StepInterface} from "./parse.types.ts";
+import {ParseContextInterface, StepInterface} from "./parse.types.ts";
 
 
 /**
@@ -19,39 +19,39 @@ import {StepInterface} from "./parse.types.ts";
  *      - handleMemberExpression
  *        - console.*
  * */
-const handleNode = (node: Statement | ModuleDeclaration, steps: StepInterface[]) => {
+const handleNode = (node: Statement | ModuleDeclaration, context: ParseContextInterface) => {
   switch (node.type) {
     case 'FunctionDeclaration':
-      return handleFunctionDeclaration(node);
+      return handleFunctionDeclaration(node, context);
     case 'ExpressionStatement':
-      return handleExpressionStatement(node, steps);
+      return handleExpressionStatement(node, context);
     default:
       console.log('handleNode: node type is not supported', node);
   }
 }
-const handleFunctionDeclaration = (node: FunctionDeclaration) => {
-  console.log('handleFunctionDeclaration: FunctionDeclaration is not implemented', node);
+const handleFunctionDeclaration = (node: FunctionDeclaration, context: ParseContextInterface) => {
+  console.log('handleFunctionDeclaration: FunctionDeclaration is not implemented', node, context);
 }
-const handleExpressionStatement = (node: ExpressionStatement, steps: StepInterface[]) => {
+const handleExpressionStatement = (node: ExpressionStatement, context: ParseContextInterface) => {
   if (node.expression.type === 'CallExpression') {
-    handleCallExpression(node.expression, steps);
+    handleCallExpression(node.expression, context);
   } else {
     return console.log('handleExpressionStatement: expression type is not supported', node);
   }
 }
-const handleCallExpression = (expression: CallExpression, steps: StepInterface[]) => {
+const handleCallExpression = (expression: CallExpression, context: ParseContextInterface) => {
   if (expression.callee.type === 'MemberExpression') {
-    handleMemberExpression(expression.callee, expression.arguments, steps);
+    handleMemberExpression(expression.callee, expression.arguments, context);
   } else if (expression.callee.type === 'Identifier') {
-    handleIdentifier(expression.callee, expression.arguments, steps);
-  } {
-    console.log('handleCallExpression: only MemberExpression is supported', expression);
+    handleIdentifier(expression.callee, expression.arguments, context);
+  } else {
+    console.log('handleCallExpression: only MemberExpression & Identifier are supported', expression);
   }
 }
-const handleMemberExpression = (expression: MemberExpression, args: CallExpression['arguments'], steps: StepInterface[]) => {
+const handleMemberExpression = (expression: MemberExpression, args: CallExpression['arguments'], context: ParseContextInterface) => {
   if (expression.object.type === 'Identifier' && expression.object.name === 'console') {
     if ("value" in args[0]) {
-      steps.push({
+      context.steps.push({
         sector: 'console',
         action: 'push',
         value: args[0]?.value as StepInterface['value'],
@@ -61,9 +61,9 @@ const handleMemberExpression = (expression: MemberExpression, args: CallExpressi
     console.log('handleMemberExpression: only console is supported', expression);
   }
 }
-const handleIdentifier= (identifier: Identifier, args: CallExpression['arguments'], steps: StepInterface[]) => {
+const handleIdentifier= (identifier: Identifier, args: CallExpression['arguments'], context: ParseContextInterface) => {
   if (identifier.name === 'setTimeout') {
-    steps.push({
+    context.steps.push({
       sector: 'web_api',
       action: 'push',
       value: args as StepInterface['value'],
@@ -74,13 +74,16 @@ const handleIdentifier= (identifier: Identifier, args: CallExpression['arguments
 }
 
 export const parse = (code: string) => {
-  const steps: StepInterface[] = [];
+  const context: ParseContextInterface = {
+    steps: [],
+    functions: {},
+  }
   const parsed = acornParse(code, {ecmaVersion: 2020});
 
   for (const node of parsed.body) {
-    handleNode(node, steps);
+    handleNode(node, context);
   }
 
   console.log('all nodes:', parsed.body);
-  console.log('steps:', steps);
+  console.log('context:', context);
 };

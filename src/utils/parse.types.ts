@@ -3,3 +3,8 @@ export interface StepInterface {
   action: 'push' | 'pop';
   value: string | object | number;
 }
+
+export interface ParseContextInterface {
+  steps: StepInterface[];
+  functions: Record<string, object>;
+}
