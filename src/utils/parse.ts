@@ -1,4 +1,5 @@
 import {
+  BlockStatement,
   CallExpression,
   ExpressionStatement,
   FunctionDeclaration, Identifier, MemberExpression,
@@ -16,6 +17,9 @@ import {ParseContextInterface, StepInterface} from "./parse.types.ts";
  *    - handleCallExpression
  *      - handleIdentifier
  *        - setTimeout
+ *        - customFunction
+ *          - handleBlockStatement
+ *            - handleExpressionStatement (recursive)
  *      - handleMemberExpression
  *        - console.*
  * */
@@ -44,7 +48,7 @@ const handleCallExpression = (expression: CallExpression, context: ParseContextI
     context.steps.push({
       sector: 'callstack',
       action: 'push',
-      value: `${expression.callee.object.name}.${expression.callee.property.name}(${expression.arguments.map(arg => arg.value).join(', ')})`,
+      value: `${expression.callee.object.name}.${expression.callee.property.name}(${serializeArgs(expression.arguments)})`,
     })
     handleMemberExpression(expression.callee, expression.arguments, context);
     context.steps.push({
@@ -55,7 +59,7 @@ const handleCallExpression = (expression: CallExpression, context: ParseContextI
     context.steps.push({
       sector: 'callstack',
       action: 'push',
-      value: `${expression.callee.name}(${expression.arguments.map(arg => arg.value).join(', ')})`,
+      value: `${expression.callee.name}(${serializeArgs(expression.arguments)})`,
     })
     handleIdentifier(expression, context);
     context.steps.push({
@@ -87,9 +91,33 @@ const handleIdentifier= (expression: CallExpression, context: ParseContextInterf
       action: 'push',
       value: expression,
     });
+  } else if (context.functions[expression.callee.name]) {
+    handleBlockStatement(context.functions[expression.callee.name].body, context);
   } else {
     console.log('handleIdentifier: only setTimeout is supported', expression);
   }
+}
+const handleBlockStatement= (blockStatement: BlockStatement, context: ParseContextInterface) => {
+  for (const expression of blockStatement.body) {
+    if (expression.type === 'ExpressionStatement') {
+      handleExpressionStatement(expression, context);
+    } else {
+      console.log('handleBlockStatement: only ExpressionStatement is supported', expression);
+    }
+  }
+}
+
+const serializeArgs = (args: CallExpression['arguments']): string => {
+  return args.map(arg => {
+    if (arg.type === 'Literal') {
+      return arg.value;
+    } else if (arg.type === 'ArrowFunctionExpression') {
+      return `() => {${arg.body.callee.object.name}.${arg.body.callee.property.name}(${serializeArgs(arg.body.arguments)})}`;
+    } else {
+      console.log('serializeArgs: arg type is not supported', arg);
+      return '';
+    }
+  }).join(', ');
 }
 
 export const parse = (code: string) => {
