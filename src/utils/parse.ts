@@ -68,13 +68,11 @@ const handleCallExpression = (expression: CallExpression, context: ParseContextI
 }
 const handleMemberExpression = (expression: MemberExpression, args: CallExpression['arguments'], context: ParseContextInterface) => {
   if (expression.object.type === 'Identifier' && expression.object.name === 'console') {
-    if ("value" in args[0]) {
-      context.steps.push({
-        sector: 'console',
-        action: 'push',
-        value: args.map(arg => arg.value).join(',') as StepInterface['value'],
-      });
-    }
+    context.steps.push({
+      sector: 'console',
+      action: 'push',
+      value: args.map(arg => arg.value).join(',') as StepInterface['value'],
+    });
   } else {
     console.log('handleMemberExpression: only console is supported', expression);
   }
