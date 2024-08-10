@@ -10,19 +10,21 @@ export class MemberExpressionClass extends NodeClass {
     this.args = args;
   }
 
+  serialize = () => {
+    const expression = this.acornNode as MemberExpression;
+    return `${expression.object.name}.${expression.property.name}(${this.args?.map(arg => arg.value).join(',')})`;
+  }
+
   traverse = () => {
     const expression = this.acornNode as MemberExpression;
     if (expression.object.type === 'Identifier' && expression.object.name === 'console') {
       this.context.steps.push({
         sector: 'console',
         action: 'push',
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        value: this.args?.map(arg => arg.value).join(',') as StepInterface['value'],
+        value: this.serialize() as StepInterface['value'],
       });
     } else {
       console.log('handleMemberExpression: only console is supported', expression);
     }
-
   }
 }

@@ -15,7 +15,7 @@ export class CallExpressionClass extends NodeClass {
     this.context.steps.push({
       sector: 'callstack',
       action: 'push',
-      value: `expression`,
+      value: callee.serialize(),
     })
     callee.traverse();
     this.context.steps.push({
