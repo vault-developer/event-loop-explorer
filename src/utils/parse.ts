@@ -41,20 +41,33 @@ const handleExpressionStatement = (node: ExpressionStatement, context: ParseCont
 }
 const handleCallExpression = (expression: CallExpression, context: ParseContextInterface) => {
   if (expression.callee.type === 'MemberExpression') {
+    context.steps.push({
+      sector: 'callstack',
+      action: 'push',
+      value: `${expression.callee.object.name}.${expression.callee.property.name}(${expression.arguments.map(arg => arg.value).join(', ')})`,
+    })
     handleMemberExpression(expression.callee, expression.arguments, context);
+    context.steps.push({
+      sector: 'callstack',
+      action: 'pop'
+    })
   } else if (expression.callee.type === 'Identifier') {
+    context.steps.push({
+      sector: 'callstack',
+      action: 'push',
+      value: `${expression.callee.name}(${expression.arguments.map(arg => arg.value).join(', ')})`,
+    })
     handleIdentifier(expression, context);
+    context.steps.push({
+      sector: 'callstack',
+      action: 'pop'
+    })
   } else {
     console.log('handleCallExpression: only MemberExpression & Identifier are supported', expression);
   }
 }
 const handleMemberExpression = (expression: MemberExpression, args: CallExpression['arguments'], context: ParseContextInterface) => {
   if (expression.object.type === 'Identifier' && expression.object.name === 'console') {
-    context.steps.push({
-      sector: 'callstack',
-      action: 'push',
-      value: `${expression.object.name}.${expression.property.name}(${args.map(arg => arg.value).join(', ')})`,
-    })
     if ("value" in args[0]) {
       context.steps.push({
         sector: 'console',
@@ -62,10 +75,6 @@ const handleMemberExpression = (expression: MemberExpression, args: CallExpressi
         value: args.map(arg => arg.value).join(',') as StepInterface['value'],
       });
     }
-    context.steps.push({
-      sector: 'callstack',
-      action: 'pop'
-    })
   } else {
     console.log('handleMemberExpression: only console is supported', expression);
   }
@@ -81,7 +90,7 @@ const handleIdentifier= (expression: CallExpression, context: ParseContextInterf
       value: expression,
     });
   } else {
-    console.log('handleIdentifier: only setTimeout is supported');
+    console.log('handleIdentifier: only setTimeout is supported', expression);
   }
 }
 

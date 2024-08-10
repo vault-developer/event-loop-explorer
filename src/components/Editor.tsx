@@ -56,7 +56,7 @@ function EditorComponent() {
             useWorker: false,
           }}
           showPrintMargin={false}
-          fontSize={14}
+          fontSize={16}
           onChange={setText}
           className={styles.editor}
         />
