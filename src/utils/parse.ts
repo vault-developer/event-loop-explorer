@@ -112,7 +112,12 @@ const serializeArgs = (args: CallExpression['arguments']): string => {
     if (arg.type === 'Literal') {
       return arg.value;
     } else if (arg.type === 'ArrowFunctionExpression') {
-      return `() => {${arg.body.callee.object.name}.${arg.body.callee.property.name}(${serializeArgs(arg.body.arguments)})}`;
+      if (arg.body.type === 'CallExpression') {
+        return `() => ${arg.body.callee.object.name}.${arg.body.callee.property.name}(${serializeArgs(arg.body.arguments)})`;
+      } else {
+        console.log('serializeArgs: arg.body.type is not supported', arg.body.type);
+        return '';
+      }
     } else {
       console.log('serializeArgs: arg type is not supported', arg);
       return '';

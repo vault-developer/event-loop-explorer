@@ -16,3 +16,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 // add AST parser
 // generate an array of events based on parser
 // add UI to visualise events
+// переписать парсинг на ООП?
