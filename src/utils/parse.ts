@@ -8,6 +8,7 @@ import {
   Statement
 } from 'acorn';
 import {ParseContextInterface, StepInterface} from "./parse.types.ts";
+import {nodeFactory} from "./parse.classes.ts";
 
 
 /**
@@ -33,6 +34,8 @@ const handleNode = (node: Statement | ModuleDeclaration, context: ParseContextIn
       console.log('handleNode: node type is not supported', node);
   }
 }
+
+// TODO: implement this part
 const handleFunctionDeclaration = (node: FunctionDeclaration, context: ParseContextInterface) => {
   context.functions[node.id.name] = node;
 }
@@ -92,11 +95,14 @@ const handleIdentifier= (expression: CallExpression, context: ParseContextInterf
       value: expression,
     });
   } else if (context.functions[expression.callee.name]) {
+    // TODO: implement this part
     handleBlockStatement(context.functions[expression.callee.name].body, context);
   } else {
     console.log('handleIdentifier: only setTimeout is supported', expression);
   }
 }
+
+// TODO: implement this part
 const handleBlockStatement= (blockStatement: BlockStatement, context: ParseContextInterface) => {
   for (const expression of blockStatement.body) {
     if (expression.type === 'ExpressionStatement') {
@@ -107,6 +113,7 @@ const handleBlockStatement= (blockStatement: BlockStatement, context: ParseConte
   }
 }
 
+// TODO: implement this part
 const serializeArgs = (args: CallExpression['arguments']): string => {
   return args.map(arg => {
     if (arg.type === 'Literal') {
@@ -132,8 +139,10 @@ export const parse = (code: string) => {
   }
   const parsed = acornParse(code, {ecmaVersion: 2020});
 
-  for (const node of parsed.body) {
-    handleNode(node, context);
+  for (const acornNode of parsed.body) {
+    // handleNode(node, context);
+    const node = nodeFactory(acornNode, context);
+    node.traverse();
   }
 
   console.log('all nodes:', parsed.body);
