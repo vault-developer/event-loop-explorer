@@ -1,7 +1,7 @@
 import {
   CallExpression,
   ExpressionStatement,
-  FunctionDeclaration, MemberExpression,
+  FunctionDeclaration, Identifier, MemberExpression,
   ModuleDeclaration,
   parse as acornParse,
   Statement
@@ -14,10 +14,11 @@ import {StepInterface} from "./parse.types.ts";
  *  - handleFunctionDeclaration
  *  - handleExpressionStatement
  *    - handleCallExpression
+ *      - handleIdentifier
+ *        - setTimeout
  *      - handleMemberExpression
  *        - console.*
  * */
-
 const handleNode = (node: Statement | ModuleDeclaration, steps: StepInterface[]) => {
   switch (node.type) {
     case 'FunctionDeclaration':
@@ -41,7 +42,9 @@ const handleExpressionStatement = (node: ExpressionStatement, steps: StepInterfa
 const handleCallExpression = (expression: CallExpression, steps: StepInterface[]) => {
   if (expression.callee.type === 'MemberExpression') {
     handleMemberExpression(expression.callee, expression.arguments, steps);
-  } else {
+  } else if (expression.callee.type === 'Identifier') {
+    handleIdentifier(expression.callee, expression.arguments, steps);
+  } {
     console.log('handleCallExpression: only MemberExpression is supported', expression);
   }
 }
@@ -56,6 +59,17 @@ const handleMemberExpression = (expression: MemberExpression, args: CallExpressi
     }
   } else {
     console.log('handleMemberExpression: only console is supported', expression);
+  }
+}
+const handleIdentifier= (identifier: Identifier, args: CallExpression['arguments'], steps: StepInterface[]) => {
+  if (identifier.name === 'setTimeout') {
+    steps.push({
+      sector: 'web_api',
+      action: 'push',
+      value: args as StepInterface['value'],
+    });
+  } else {
+    console.log('handleIdentifier: only setTimeout is supported');
   }
 }
 
