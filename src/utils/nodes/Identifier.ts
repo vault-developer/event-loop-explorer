@@ -12,14 +12,14 @@ export class IdentifierClass extends NodeClass {
 
   traverse = () => {
     const identifier = this.acornNode as Identifier;
-    if (identifier.name === 'setTimeout') {
-      this.context.steps.push({
-        sector: 'web_api',
-        action: 'push',
-        value: 'setTimeout'
-      });
-    } else {
-      console.log('IdentifierClass: only setTimeout is supported', identifier);
+    if (identifier.name !== 'setTimeout') {
+      return console.log('Traverse: IdentifierClass: only setTimeout is supported', identifier);
     }
+
+    this.context.steps.push({
+      sector: 'web_api',
+      action: 'push',
+      value: 'setTimeout'
+    });
   }
 }

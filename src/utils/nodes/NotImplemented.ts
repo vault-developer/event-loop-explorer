@@ -10,5 +10,10 @@ export class NotImplementedNodeClass extends NodeClass {
   traverse = () => {
     console.log('Traverse: this node class is not implemented', this.acornNode);
   }
+
+  serialize = () => {
+    console.log('Serialize: this node class is not implemented', this.acornNode);
+    return '';
+  }
 }
 

@@ -5,7 +5,10 @@ export abstract class NodeClass {
   constructor(acornNode: AcornNode, context: ParseContextInterface) {
     this.acornNode = acornNode;
     this.context = context;
-    this.serialize = () => 'searialization not implemented';
+    this.serialize = () => {
+      console.log('Serialize: is not implemented for this node:', acornNode);
+      return '';
+    }
   }
 
   acornNode: AcornNode;
