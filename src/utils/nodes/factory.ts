@@ -1,5 +1,5 @@
 import {Node as AcornNode} from "acorn";
-import {ParseContextInterface} from "../parse.types.ts";
+import {AcornArgument, AcornArguments, ParseContextInterface} from "../parse.types.ts";
 import {ExpressionStatementClass} from "./ExpressionStatement.ts";
 import {CallExpressionClass} from "./CallExpression.ts";
 import {FunctionDeclarationClass} from "./FunctionDeclaration.ts";
@@ -8,7 +8,7 @@ import {NotImplementedNodeClass} from "./NotImplemented.ts";
 import {MemberExpressionClass} from "./MemberExpression.ts";
 
 
-export const nodeFactory = (acornNode: AcornNode, context: ParseContextInterface, args?: object[] | undefined) => {
+export const nodeFactory = (acornNode: AcornNode | AcornArgument, context: ParseContextInterface, args?: AcornArguments) => {
   switch (acornNode.type) {
     case 'FunctionDeclaration':
       return new FunctionDeclarationClass(acornNode, context);

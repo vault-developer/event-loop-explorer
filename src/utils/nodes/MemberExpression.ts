@@ -1,11 +1,11 @@
 import {MemberExpression, Node as AcornNode} from "acorn";
-import {ParseContextInterface, StepInterface} from "../parse.types.ts";
+import {AcornArguments, ParseContextInterface, StepInterface} from "../parse.types.ts";
 import {NodeClass} from "./Node.abstract.ts";
 
 export class MemberExpressionClass extends NodeClass {
-  args: object[] | undefined;
+  args: AcornArguments | undefined;
 
-  constructor(acornNode: AcornNode, context: ParseContextInterface, args?: object[]) {
+  constructor(acornNode: AcornNode, context: ParseContextInterface, args?: AcornArguments) {
     super(acornNode, context);
     this.args = args;
   }
