@@ -6,6 +6,7 @@ import {FunctionDeclarationClass} from "./FunctionDeclaration.ts";
 import {IdentifierClass} from "./Identifier.ts";
 import {NotImplementedNodeClass} from "./NotImplemented.ts";
 import {MemberExpressionClass} from "./MemberExpression.ts";
+import {LiteralClass} from "./Literal.ts";
 
 
 export const nodeFactory = (acornNode: AcornNode | AcornArgument, context: ParseContextInterface, args?: AcornArguments) => {
@@ -20,6 +21,8 @@ export const nodeFactory = (acornNode: AcornNode | AcornArgument, context: Parse
       return new MemberExpressionClass(acornNode, context, args);
     case 'Identifier':
       return new IdentifierClass(acornNode, context, args);
+    case 'Literal':
+      return new LiteralClass(acornNode, context);
     default:
       return new NotImplementedNodeClass(acornNode, context);
   }

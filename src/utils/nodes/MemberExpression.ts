@@ -1,6 +1,7 @@
 import {MemberExpression, Node as AcornNode} from "acorn";
 import {AcornArguments, ParseContextInterface, StepInterface} from "../parse.types.ts";
 import {NodeClass} from "./Node.abstract.ts";
+import {nodeFactory} from "./factory.ts";
 
 export class MemberExpressionClass extends NodeClass {
   args: AcornArguments | undefined;
@@ -20,9 +21,8 @@ export class MemberExpressionClass extends NodeClass {
       return '';
     }
     
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    return `${expression.object.name}.${expression.property.name}(${this.args?.map(arg => arg.value).join(',')})`;
+    const args = this.args?.map(arg => nodeFactory(arg, this.context).serialize()).join(',') as string;
+    return `${expression.object.name}.${expression.property.name}(${args})`;
   }
 
   traverse = () => {
