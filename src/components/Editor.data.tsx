@@ -1,5 +1,17 @@
 export const codeExamples = [
   {
+    title: 'test example 1',
+    code: `console.log(1);`
+  },
+  {
+    title: 'test example 2',
+    code: `console.log(1, 2, 3);`
+  },
+  {
+    title: 'test example 3',
+    code: `console.log(() => 1);`
+  },
+  {
     title: 'tasks queue',
     code:
 `console.log(1);

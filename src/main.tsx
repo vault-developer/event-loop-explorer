@@ -11,9 +11,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 
 //TODO:
-// add examples (multiple things)
-// ACE syntax validation via webworker https://github.com/ajaxorg/ace/wiki/Syntax-validation
-// add AST parser
-// generate an array of events based on parser
-// add UI to visualise events
-// переписать парсинг на ООП?
+// 1. Сделать парсинг кода в синхронную цепочку событий (бежать по примерам)
+// 2. Сделать асинхронные события на базе синхронных (рентер, очереди)
+// 3. Сделать визуализацию событий в UI
+// 4. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation
+// 5. Выложить
+// 6. Сделать отдельную страничку с туториалом:
+//    - когда вызывается каждая из тасок и почему
+//    - добавить голос
+//    - добавить live portrait
