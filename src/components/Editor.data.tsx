@@ -8,10 +8,6 @@ export const codeExamples = [
     code: `console.log(1, 2, 3);`
   },
   {
-    title: 'test example 3',
-    code: `console.log(() => 1);`
-  },
-  {
     title: 'tasks queue',
     code:
 `console.log(1);
@@ -77,5 +73,13 @@ console.log('global');
 setTimeout(() => console.log('global:1'), 500); 
 foo1();
 foo5('foo5:1');`
+  },
+  {
+    title: 'edge cases 1: binary assignment',
+    code:
+`let a = 1;
+a = a + 1;
+console.log(a);
+`
   }
 ];

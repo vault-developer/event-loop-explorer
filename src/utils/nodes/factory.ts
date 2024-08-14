@@ -7,9 +7,11 @@ import {IdentifierClass} from "./Identifier.ts";
 import {NotImplementedNodeClass} from "./NotImplemented.ts";
 import {MemberExpressionClass} from "./MemberExpression.ts";
 import {LiteralClass} from "./Literal.ts";
+import {ArrowFunctionExpressionClass} from "./ArrowFunctionExpression.ts";
+import {NodeClass} from "./Node.abstract.ts";
 
 
-export const nodeFactory = (acornNode: AcornNode | AcornArgument, context: ParseContextInterface, args?: AcornArguments) => {
+export const nodeFactory = (acornNode: AcornNode | AcornArgument, context: ParseContextInterface, args?: AcornArguments): NodeClass => {
   switch (acornNode.type) {
     case 'FunctionDeclaration':
       return new FunctionDeclarationClass(acornNode, context);
@@ -23,6 +25,8 @@ export const nodeFactory = (acornNode: AcornNode | AcornArgument, context: Parse
       return new IdentifierClass(acornNode, context, args);
     case 'Literal':
       return new LiteralClass(acornNode, context);
+    case 'ArrowFunctionExpression':
+      return new ArrowFunctionExpressionClass(acornNode, context);
     default:
       return new NotImplementedNodeClass(acornNode, context);
   }
