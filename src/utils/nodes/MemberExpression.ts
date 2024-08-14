@@ -21,7 +21,7 @@ export class MemberExpressionClass extends NodeClass {
       return '';
     }
 
-    return `${expression.object.name}.${expression.property.name}(${this.serializedArgs})`;
+    return `${expression.object.name}.${expression.property.name}`;
   }
 
   traverse = () => {
