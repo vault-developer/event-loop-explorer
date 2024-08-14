@@ -1,6 +1,7 @@
 import {MemberExpression, Node as AcornNode} from "acorn";
 import {AcornArguments, ParseContextInterface} from "../parse.types.ts";
 import {NodeClass} from "./Node.abstract.ts";
+import {nodeFactory} from "./factory.ts";
 
 export class MemberExpressionClass extends NodeClass {
   constructor(acornNode: AcornNode, context: ParseContextInterface, parentArgs?: AcornArguments) {
@@ -32,7 +33,7 @@ export class MemberExpressionClass extends NodeClass {
     this.context.steps.push({
       sector: 'console',
       action: 'push',
-      value: this.serializedParentArgs
+      value: this.parentArgs?.map(arg => nodeFactory(arg, this.context).serialize()).join(',') ?? ''
     });
   }
 }

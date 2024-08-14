@@ -10,7 +10,6 @@ import {LiteralClass} from "./Literal.ts";
 import {ArrowFunctionExpressionClass} from "./ArrowFunctionExpression.ts";
 import {NodeClass} from "./Node.abstract.ts";
 
-
 export const nodeFactory = (
   acornNode: AcornNode | AcornArgument,
   context: ParseContextInterface,
