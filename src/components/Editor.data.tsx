@@ -15,6 +15,14 @@ setTimeout(()=>console.log(2));
 console.log(3);`
   },
   {
+    title: 'call stack simple',
+    code:
+`function foo1(a) {
+  console.log(a);
+}
+foo1(1);`
+  },
+  {
     title: 'call stack',
     code:
 `function foo1() {

@@ -1,4 +1,4 @@
-import {Node as AcornNode} from "acorn";
+import {FunctionDeclaration, Node as AcornNode} from "acorn";
 import {ParseContextInterface} from "../parse.types.ts";
 import {NodeClass} from "./Node.abstract.ts";
 
@@ -8,7 +8,8 @@ export class FunctionDeclarationClass extends NodeClass {
   }
 
   traverse = () => {
-    console.log('FunctionDeclaration traverse');
+    const functionDeclaration = this.acornNode as FunctionDeclaration;
+    this.context.functions[functionDeclaration.id.name] = functionDeclaration;
   }
 }
 
