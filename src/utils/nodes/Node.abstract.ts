@@ -10,7 +10,7 @@ export abstract class NodeClass {
     this.parentArgs = parentArgs;
 
     this.serialize = () => {
-      console.log('Serialize: is not implemented for this node:', acornNode);
+      console.log('Serialize method is not implemented for the node:', acornNode);
       return '';
     }
   }
