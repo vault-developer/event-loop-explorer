@@ -1,14 +1,14 @@
 import {MemberExpression, Node as AcornNode} from "acorn";
-import {AcornArguments, ParseContextInterface, StepInterface} from "../parse.types.ts";
+import {AcornArguments, ParseContextInterface} from "../parse.types.ts";
 import {NodeClass} from "./Node.abstract.ts";
 import {nodeFactory} from "./factory.ts";
 
 export class MemberExpressionClass extends NodeClass {
-  args: AcornArguments | undefined;
+  serializedArgs: string | undefined;
 
   constructor(acornNode: AcornNode, context: ParseContextInterface, args?: AcornArguments) {
     super(acornNode, context);
-    this.args = args;
+    this.serializedArgs = args?.map(arg => nodeFactory(arg, context).serialize()).join(',');
   }
 
   serialize = () => {
@@ -20,9 +20,8 @@ export class MemberExpressionClass extends NodeClass {
       console.log('Serialize:MemberExpression:Identifier property.type is supported', expression);
       return '';
     }
-    
-    const args = this.args?.map(arg => nodeFactory(arg, this.context).serialize()).join(',') as string;
-    return `${expression.object.name}.${expression.property.name}(${args})`;
+
+    return `${expression.object.name}.${expression.property.name}(${this.serializedArgs})`;
   }
 
   traverse = () => {
@@ -37,7 +36,7 @@ export class MemberExpressionClass extends NodeClass {
     this.context.steps.push({
       sector: 'console',
       action: 'push',
-      value: this.serialize() as StepInterface['value'],
+      value: this.serializedArgs
     });
   }
 }
