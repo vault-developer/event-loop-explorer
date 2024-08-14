@@ -11,7 +11,11 @@ import {ArrowFunctionExpressionClass} from "./ArrowFunctionExpression.ts";
 import {NodeClass} from "./Node.abstract.ts";
 
 
-export const nodeFactory = (acornNode: AcornNode | AcornArgument, context: ParseContextInterface, args?: AcornArguments): NodeClass => {
+export const nodeFactory = (
+  acornNode: AcornNode | AcornArgument,
+  context: ParseContextInterface,
+  parentArgs?: AcornArguments
+): NodeClass => {
   switch (acornNode.type) {
     case 'FunctionDeclaration':
       return new FunctionDeclarationClass(acornNode, context);
@@ -20,9 +24,9 @@ export const nodeFactory = (acornNode: AcornNode | AcornArgument, context: Parse
     case 'CallExpression':
       return new CallExpressionClass(acornNode, context);
     case 'MemberExpression':
-      return new MemberExpressionClass(acornNode, context, args);
+      return new MemberExpressionClass(acornNode, context, parentArgs);
     case 'Identifier':
-      return new IdentifierClass(acornNode, context, args);
+      return new IdentifierClass(acornNode, context, parentArgs);
     case 'Literal':
       return new LiteralClass(acornNode, context);
     case 'ArrowFunctionExpression':

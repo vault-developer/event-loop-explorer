@@ -1,13 +1,10 @@
-import {Identifier, Node as AcornNode} from "acorn";
+import {ArrowFunctionExpression, Identifier, Literal, Node as AcornNode} from "acorn";
 import {AcornArguments, ParseContextInterface} from "../parse.types.ts";
 import {NodeClass} from "./Node.abstract.ts";
 
 export class IdentifierClass extends NodeClass {
-  args: AcornArguments | undefined;
-
-  constructor(acornNode: AcornNode, context: ParseContextInterface, args?: AcornArguments) {
-    super(acornNode, context);
-    this.args = args;
+  constructor(acornNode: AcornNode, context: ParseContextInterface, parentArgs?: AcornArguments) {
+    super(acornNode, context, parentArgs);
   }
 
   serialize = () => {
@@ -24,7 +21,11 @@ export class IdentifierClass extends NodeClass {
     this.context.steps.push({
       sector: 'web_api',
       action: 'push',
-      value: 'setTimeout'
+      value: {
+        type: 'setTimeout',
+        delay: (this.parentArgs?.[1] as Literal)?.value ?? 0,
+        callback: (this.parentArgs?.[0] as ArrowFunctionExpression).body,
+      }
     });
   }
 }

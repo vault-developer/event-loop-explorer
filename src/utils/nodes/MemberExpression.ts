@@ -1,14 +1,10 @@
 import {MemberExpression, Node as AcornNode} from "acorn";
 import {AcornArguments, ParseContextInterface} from "../parse.types.ts";
 import {NodeClass} from "./Node.abstract.ts";
-import {nodeFactory} from "./factory.ts";
 
 export class MemberExpressionClass extends NodeClass {
-  serializedArgs: string | undefined;
-
-  constructor(acornNode: AcornNode, context: ParseContextInterface, args?: AcornArguments) {
-    super(acornNode, context);
-    this.serializedArgs = args?.map(arg => nodeFactory(arg, context).serialize()).join(',');
+  constructor(acornNode: AcornNode, context: ParseContextInterface, parentArgs?: AcornArguments) {
+    super(acornNode, context, parentArgs);
   }
 
   serialize = () => {
@@ -36,7 +32,7 @@ export class MemberExpressionClass extends NodeClass {
     this.context.steps.push({
       sector: 'console',
       action: 'push',
-      value: this.serializedArgs
+      value: this.serializedParentArgs
     });
   }
 }
