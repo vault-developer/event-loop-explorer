@@ -11,6 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 
 //TODO:
+// 0. Idenifier traverse fix (test on "callstacksimple")
 // 1. Сделать парсинг кода в синхронную цепочку событий (бежать по примерам)
 // 2. Сделать асинхронные события на базе синхронных (рентер, очереди)
 // 3. Сделать визуализацию событий в UI

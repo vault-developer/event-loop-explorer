@@ -1,15 +1,14 @@
-import {MemberExpression, Node as AcornNode} from "acorn";
-import {AcornArguments, ParseContextInterface} from "../parse.types.ts";
-import {NodeClass} from "./Node.abstract.ts";
+import {MemberExpression} from "acorn";
+import {NodeClass, NodeClassConstructor} from "./Node.abstract.ts";
 import {nodeFactory} from "./factory.ts";
 
 export class MemberExpressionClass extends NodeClass {
-  constructor(acornNode: AcornNode, context: ParseContextInterface, parentArgs?: AcornArguments) {
-    super(acornNode, context, parentArgs);
+  constructor(params: NodeClassConstructor) {
+    super(params);
   }
 
   serialize = () => {
-    const expression = this.acornNode as MemberExpression;
+    const expression = this.node as MemberExpression;
     if (expression.object.type !== 'Identifier') {
       console.log('Serialize:MemberExpression:Identifier object.type is supported', expression);
       return '';
@@ -22,7 +21,7 @@ export class MemberExpressionClass extends NodeClass {
   }
 
   traverse = () => {
-    const expression = this.acornNode as MemberExpression;
+    const expression = this.node as MemberExpression;
     if (expression.object.type !== 'Identifier') {
       return console.log('Traverse:MemberExpression: object.type: only Identifier is supported', expression);
     }
@@ -33,7 +32,7 @@ export class MemberExpressionClass extends NodeClass {
     this.context.steps.push({
       sector: 'console',
       action: 'push',
-      value: this.parentArgs?.map(arg => nodeFactory(arg, this.context).serialize()).join(',') ?? ''
+      value: this.args?.map(arg => nodeFactory({node: arg, context: this.context}).serialize()).join(',') ?? ''
     });
   }
 }

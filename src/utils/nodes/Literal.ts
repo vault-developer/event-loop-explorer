@@ -1,14 +1,13 @@
-import {Literal, Node as AcornNode} from "acorn";
-import {ParseContextInterface} from "../parse.types.ts";
-import {NodeClass} from "./Node.abstract.ts";
+import {Literal} from "acorn";
+import {NodeClass, NodeClassConstructor} from "./Node.abstract.ts";
 
 export class LiteralClass extends NodeClass {
-  constructor(acornNode: AcornNode, context: ParseContextInterface) {
-    super(acornNode, context);
+  constructor(params: NodeClassConstructor) {
+    super(params);
   }
 
   serialize = () => {
-    const literal = this.acornNode as Literal;
+    const literal = this.node as Literal;
     return `${literal.value}`;
   }
 

@@ -1,5 +1,3 @@
-import {Node as AcornNode} from "acorn";
-import {AcornArgument, AcornArguments, ParseContextInterface} from "../parse.types.ts";
 import {ExpressionStatementClass} from "./ExpressionStatement.ts";
 import {CallExpressionClass} from "./CallExpression.ts";
 import {FunctionDeclarationClass} from "./FunctionDeclaration.ts";
@@ -8,29 +6,25 @@ import {NotImplementedNodeClass} from "./NotImplemented.ts";
 import {MemberExpressionClass} from "./MemberExpression.ts";
 import {LiteralClass} from "./Literal.ts";
 import {ArrowFunctionExpressionClass} from "./ArrowFunctionExpression.ts";
-import {NodeClass} from "./Node.abstract.ts";
+import {NodeClass, NodeClassConstructor} from "./Node.abstract.ts";
 
-export const nodeFactory = (
-  acornNode: AcornNode | AcornArgument,
-  context: ParseContextInterface,
-  parentArgs?: AcornArguments
-): NodeClass => {
-  switch (acornNode.type) {
+export const nodeFactory = (params: NodeClassConstructor): NodeClass => {
+  switch (params.node.type) {
     case 'FunctionDeclaration':
-      return new FunctionDeclarationClass(acornNode, context);
+      return new FunctionDeclarationClass(params);
     case 'ExpressionStatement':
-      return new ExpressionStatementClass(acornNode, context);
+      return new ExpressionStatementClass(params);
     case 'CallExpression':
-      return new CallExpressionClass(acornNode, context);
+      return new CallExpressionClass(params);
     case 'MemberExpression':
-      return new MemberExpressionClass(acornNode, context, parentArgs);
+      return new MemberExpressionClass(params);
     case 'Identifier':
-      return new IdentifierClass(acornNode, context, parentArgs);
+      return new IdentifierClass(params);
     case 'Literal':
-      return new LiteralClass(acornNode, context);
+      return new LiteralClass(params);
     case 'ArrowFunctionExpression':
-      return new ArrowFunctionExpressionClass(acornNode, context);
+      return new ArrowFunctionExpressionClass(params);
     default:
-      return new NotImplementedNodeClass(acornNode, context);
+      return new NotImplementedNodeClass(params);
   }
 }

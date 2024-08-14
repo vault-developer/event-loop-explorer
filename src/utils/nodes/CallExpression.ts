@@ -1,24 +1,30 @@
-import {CallExpression, Node as AcornNode} from "acorn";
-import {ParseContextInterface} from "../parse.types.ts";
-import {NodeClass} from "./Node.abstract.ts";
+import {CallExpression} from "acorn";
+import {NodeClass, NodeClassConstructor} from "./Node.abstract.ts";
 import {nodeFactory} from "./factory.ts";
 
 export class CallExpressionClass extends NodeClass {
-
-  constructor(acornNode: AcornNode, context: ParseContextInterface) {
-    super(acornNode, context);
+  constructor(params: NodeClassConstructor) {
+    super(params);
   }
 
   serialize = () => {
-    const node = this.acornNode as CallExpression;
-    const callee = nodeFactory(node.callee, this.context, node.arguments);
-    const serializedArgs = node.arguments.map((arg) => nodeFactory(arg, this.context).serialize()).join(', ') ?? '';
+    const node = this.node as CallExpression;
+    const callee = nodeFactory({
+      node: node.callee,
+      context: this.context,
+      args: node.arguments,
+    });
+    const serializedArgs = node.arguments.map((arg) => nodeFactory({node: arg, context: this.context}).serialize()).join(', ') ?? '';
     return `${callee.serialize()}(${serializedArgs})`;
   }
 
   traverse = () => {
-    const node = this.acornNode as CallExpression;
-    const callee = nodeFactory(node.callee, this.context, node.arguments);
+    const node = this.node as CallExpression;
+    const callee = nodeFactory({
+      node: node.callee,
+      context: this.context,
+      args: node.arguments,
+    });
 
     this.context.steps.push({
       sector: 'callstack',

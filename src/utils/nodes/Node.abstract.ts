@@ -1,22 +1,30 @@
 import {Node as AcornNode} from "acorn";
 import {AcornArguments, ParseContextInterface} from "../parse.types.ts";
 
-export abstract class NodeClass {
-  parentArgs: AcornArguments | undefined;
+export interface NodeClassConstructor {
+  node: AcornNode,
+  context: ParseContextInterface,
+  args?: AcornArguments,
+  params?: Record<string, unknown>
+}
 
-  constructor(acornNode: AcornNode, context: ParseContextInterface, parentArgs?: AcornArguments) {
-    this.acornNode = acornNode;
+export abstract class NodeClass {
+  constructor({node, context, args, params}: NodeClassConstructor) {
+    this.node = node;
     this.context = context;
-    this.parentArgs = parentArgs;
+    this.args = args;
+    this.params = params;
 
     this.serialize = () => {
-      console.log('Serialize method is not implemented for the node:', acornNode);
+      console.log('Serialize method is not implemented for the node:', node);
       return '';
     }
   }
 
-  acornNode: AcornNode;
+  node: AcornNode;
   context: ParseContextInterface;
+  args?: AcornArguments;
+  params?: Record<string, unknown>;
   serialize: () => string;
   abstract traverse: () => void;
 }

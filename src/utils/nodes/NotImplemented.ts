@@ -1,18 +1,16 @@
-import {Node as AcornNode} from "acorn";
-import {ParseContextInterface} from "../parse.types.ts";
-import {NodeClass} from "./Node.abstract.ts";
+import {NodeClass, NodeClassConstructor} from "./Node.abstract.ts";
 
 export class NotImplementedNodeClass extends NodeClass {
-  constructor(acornNode: AcornNode, context: ParseContextInterface) {
-    super(acornNode, context);
+  constructor(params: NodeClassConstructor) {
+    super(params);
   }
 
   traverse = () => {
-    console.log('Traverse: this node class is not implemented', this.acornNode);
+    console.log('Traverse: this node class is not implemented', this.node);
   }
 
   serialize = () => {
-    console.log('Serialize: this node class is not implemented', this.acornNode);
+    console.log('Serialize: this node class is not implemented', this.node);
     return '';
   }
 }

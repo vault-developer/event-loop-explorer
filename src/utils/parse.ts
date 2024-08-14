@@ -25,7 +25,7 @@ export const parse = (code: string) => {
   const parsed = acornParse(code, {ecmaVersion: 2020});
 
   for (const acornNode of parsed.body) {
-    const node = nodeFactory(acornNode, context);
+    const node = nodeFactory({node: acornNode, context});
     node.traverse();
   }
 
