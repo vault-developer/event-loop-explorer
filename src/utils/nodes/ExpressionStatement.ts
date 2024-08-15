@@ -19,7 +19,12 @@ export class ExpressionStatementClass extends NodeClass {
 
   traverse = () => {
     const node = this.node as ExpressionStatement;
-    const expression = nodeFactory({node: node.expression, context: this.context});
+    const expression = nodeFactory({
+      node: node.expression,
+      context: this.context,
+      args: this.args,
+      params: this.params,
+    });
     expression.traverse();
   }
 }

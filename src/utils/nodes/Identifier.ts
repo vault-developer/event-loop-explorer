@@ -1,4 +1,4 @@
-import {ArrowFunctionExpression, FunctionDeclaration, Identifier, Literal} from "acorn";
+import {ArrowFunctionExpression, FunctionDeclaration, Identifier, Literal, Node as AcornNode} from "acorn";
 import {NodeClass, NodeClassConstructor, NodeClassParams} from "./Node.abstract.ts";
 import {nodeFactory} from "./factory.ts";
 
@@ -9,7 +9,20 @@ export class IdentifierClass extends NodeClass {
 
   serialize = () => {
     const identifier = this.node as Identifier;
-    return `${identifier.name}`;
+
+    if (this.params && identifier.name in this.params) {
+      if (this.params[identifier.name] === undefined) {
+        return 'undefined';
+      }
+      const node = this.params[identifier.name] as AcornNode;
+      const param = nodeFactory({
+        node,
+        context: this.context,
+      });
+      return param.serialize();
+    }
+
+    return identifier.name;
   }
 
   traverse = () => {

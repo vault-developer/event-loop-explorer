@@ -11,7 +11,8 @@ export class ArrowFunctionExpressionClass extends NodeClass {
     const arrowFunctionExpression = this.node as ArrowFunctionExpression;
     const body = nodeFactory({
       node: arrowFunctionExpression.body,
-      context: this.context
+      context: this.context,
+      params: this.params,
     });
     return `() => ${body.serialize()}`;
   }

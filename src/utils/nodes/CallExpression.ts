@@ -13,8 +13,13 @@ export class CallExpressionClass extends NodeClass {
       node: node.callee,
       context: this.context,
       args: node.arguments,
+      params: this.params,
     });
-    const serializedArgs = node.arguments.map((arg) => nodeFactory({node: arg, context: this.context}).serialize()).join(', ') ?? '';
+    const serializedArgs = node.arguments.map((arg) => nodeFactory({
+      node: arg,
+      context: this.context,
+      params: this.params,
+    }).serialize()).join(', ') ?? '';
     return `${callee.serialize()}(${serializedArgs})`;
   }
 
@@ -24,6 +29,7 @@ export class CallExpressionClass extends NodeClass {
       node: node.callee,
       context: this.context,
       args: node.arguments,
+      params: this.params,
     });
 
     this.context.steps.push({

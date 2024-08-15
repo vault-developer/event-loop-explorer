@@ -32,7 +32,11 @@ export class MemberExpressionClass extends NodeClass {
     this.context.steps.push({
       sector: 'console',
       action: 'push',
-      value: this.args?.map(arg => nodeFactory({node: arg, context: this.context}).serialize()).join(',') ?? ''
+      value: this.args?.map(arg => nodeFactory({
+        node: arg,
+        context: this.context,
+        params: this.params,
+      }).serialize()).join(',') ?? ''
     });
   }
 }
