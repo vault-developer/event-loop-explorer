@@ -1,11 +1,13 @@
 import {Node as AcornNode} from "acorn";
 import {AcornArguments, ParseContextInterface} from "../parse.types.ts";
 
+export type NodeClassParams = Record<string, AcornNode | undefined>;
+
 export interface NodeClassConstructor {
   node: AcornNode,
   context: ParseContextInterface,
   args?: AcornArguments,
-  params?: Record<string, unknown>
+  params?: NodeClassParams
 }
 
 export abstract class NodeClass {
