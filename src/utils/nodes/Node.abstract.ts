@@ -26,7 +26,7 @@ export abstract class NodeClass {
   node: AcornNode;
   context: ParseContextInterface;
   args?: AcornArguments;
-  params?: Record<string, unknown>;
+  params?: NodeClassParams;
   serialize: () => string;
   abstract traverse: () => void;
 }

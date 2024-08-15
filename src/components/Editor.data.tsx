@@ -8,6 +8,23 @@ export const codeExamples = [
     code: `console.log(1, 2, 3);`
   },
   {
+    title: 'test block statement',
+    code:
+`setTimeout(()=>{
+  console.log(1);
+  console.log(2);
+});`
+  },
+  {
+    title: 'test literals vs params',
+    code:
+`function foo1(a) {
+  console.log(a);
+  console.log('a');
+}
+foo1(1);`
+  },
+  {
     title: 'tasks queue',
     code:
 `console.log(1);

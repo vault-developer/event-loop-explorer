@@ -7,6 +7,7 @@ import {MemberExpressionClass} from "./MemberExpression.ts";
 import {LiteralClass} from "./Literal.ts";
 import {ArrowFunctionExpressionClass} from "./ArrowFunctionExpression.ts";
 import {NodeClass, NodeClassConstructor} from "./Node.abstract.ts";
+import {BlockStatementClass} from "./BlockStatement.ts";
 
 export const nodeFactory = (params: NodeClassConstructor): NodeClass => {
   switch (params.node.type) {
@@ -24,6 +25,8 @@ export const nodeFactory = (params: NodeClassConstructor): NodeClass => {
       return new LiteralClass(params);
     case 'ArrowFunctionExpression':
       return new ArrowFunctionExpressionClass(params);
+    case 'BlockStatement':
+      return new BlockStatementClass(params);
     default:
       return new NotImplementedNodeClass(params);
   }
