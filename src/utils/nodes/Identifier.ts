@@ -38,6 +38,17 @@ export class IdentifierClass extends NodeClass {
         }
       });
       return;
+    } else if (identifier.name === 'queueMicrotask') {
+      this.context.steps.push({
+        sector: 'microtask_queue',
+        action: 'push',
+        value: this.args && nodeFactory({
+          node: this.args[0],
+          context: this.context,
+          params: this.params,
+        })
+      });
+      return;
     } else if (this.context.functions[identifier.name]) {
       const customFunction = this.context.functions[identifier.name] as FunctionDeclaration;
       const params = customFunction.params.reduce((acc, param, index) => {
