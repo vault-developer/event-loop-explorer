@@ -1,13 +1,5 @@
 export const codeExamples = [
   {
-    title: 'test example 1',
-    code: `console.log(1);`
-  },
-  {
-    title: 'test example 2',
-    code: `console.log(1, 2, 3);`
-  },
-  {
     title: 'test block statement',
     code:
 `setTimeout(()=>{
@@ -99,12 +91,4 @@ setTimeout(() => console.log('global:1'), 500);
 foo1();
 foo5('foo5:1');`
   },
-  {
-    title: 'edge cases 1: binary assignment',
-    code:
-`let a = 1;
-a = a + 1;
-console.log(a);
-`
-  }
 ];
