@@ -1,6 +1,14 @@
 # Event Loop Explainer
 
-Inspired by:
+
+### Known limitations:
+Javascript code is parsed to AST using acorn parser, and then order of events are generated.  
+All default examples are working as expected, you can try to modify the code and see how it is working.  
+However, not all cases are covered.  
+Async/await, complex Promises, SetInterval, assignment operators will not work as expected.  
+If you would like to make it better, feel free to create PR to the project.
+
+### Inspired by
 - https://www.jsv9000.app/
 - http://latentflip.com/loupe
 - https://kamronbekshodmonov.github.io/JELoop-Visualizer/
