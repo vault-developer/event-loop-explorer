@@ -1,6 +1,6 @@
 import styles from './Pointer.module.css';
 import {useEffect, useRef} from "react";
-import {useEventLoopState} from "../../../store/store.ts";
+import {useEventLoopAnimationState} from "../../../store/store.ts";
 import {EVENT_LOOP_INNER_SECTOR_OFFSET} from "../../../constants.ts";
 import {events} from "../EventLoop.data.ts";
 import {EventInterface} from "../EventLoop.types.ts";
@@ -14,9 +14,9 @@ const typeByStop = events.reduce((acc, event) => {
 }, {} as Record<number, EventInterface['type']>);
 
 function Pointer() {
-  const setState = useEventLoopState(state => state.setState);
-  const {enabled} = useEventLoopState(state => state.immutable);
-  const mutable = useEventLoopState(state => state.mutable);
+  const setState = useEventLoopAnimationState(state => state.setState);
+  const {enabled} = useEventLoopAnimationState(state => state.immutable);
+  const mutable = useEventLoopAnimationState(state => state.mutable);
 
   const sectorInnerRef = useRef<HTMLDivElement>(null);
   const sectorOuterRef = useRef<HTMLDivElement>(null);

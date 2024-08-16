@@ -1,8 +1,8 @@
-import {useEventLoopState} from "../../../store/store.ts";
+import {useEventLoopAnimationState} from "../../../store/store.ts";
 
 function Controls() {
-  const setState = useEventLoopState(state => state.setState);
-  const mutable = useEventLoopState(state => state.mutable);
+  const setState = useEventLoopAnimationState(state => state.setState);
+  const mutable = useEventLoopAnimationState(state => state.mutable);
   return (
     <div style={{
       marginTop: 50,

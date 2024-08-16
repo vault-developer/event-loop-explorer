@@ -18,7 +18,7 @@ If you would like to make it better, feel free to create PR to the project.
 
 
 ### TODO:
-1. Сделать асинхронные события на базе синхронных (рентер, очереди)  
+1. Сделать асинхронные события на базе синхронных (рент ер, очереди)  
 2. Сделать визуализацию событий в UI  
 3. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation  
 4. Попросить review  

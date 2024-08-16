@@ -1,7 +1,7 @@
 import {create} from 'zustand'
 import {EventLoopState} from "./store.types.ts";
 
-export const useEventLoopState = create<EventLoopState>(set => ({
+export const useEventLoopAnimationState = create<EventLoopState>(set => ({
   mutable: {
     render: false,
     task: false,
