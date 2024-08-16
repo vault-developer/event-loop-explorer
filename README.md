@@ -15,3 +15,15 @@ If you would like to make it better, feel free to create PR to the project.
 
 - https://www.youtube.com/watch?v=cCOL7MC4Pl0
 - https://www.youtube.com/watch?v=eiC58R16hb8&t=160s
+
+
+### TODO:
+1. Сделать асинхронные события на базе синхронных (рентер, очереди)  
+2. Сделать визуализацию событий в UI  
+3. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation  
+4. Попросить review  
+5. Выложить  
+7. Сделать отдельную страничку с туториалом:  
+   - когда вызывается каждая из тасок и почему
+   - добавить голос
+   - добавить live portrait
