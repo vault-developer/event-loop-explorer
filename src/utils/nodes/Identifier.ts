@@ -1,4 +1,4 @@
-import {ArrowFunctionExpression, FunctionDeclaration, Identifier, Literal, Node as AcornNode} from "acorn";
+import {FunctionDeclaration, Identifier, Node as AcornNode} from "acorn";
 import {NodeClass, NodeClassConstructor, NodeClassParams} from "./Node.abstract.ts";
 import {nodeFactory} from "./factory.ts";
 
@@ -31,11 +31,12 @@ export class IdentifierClass extends NodeClass {
       this.context.actions.push({
         list: 'web_api',
         type: 'push',
-        value: {
-          type: 'setTimeout',
-          delay: (this.args?.[1] as Literal)?.value ?? 0,
-          callback: (this.args?.[0] as ArrowFunctionExpression).body,
-        }
+        value: nodeFactory({
+          node: this.node,
+          context: this.context,
+          params: this.params,
+          args: this.args,
+        })
       });
       return;
     } else if (identifier.name === 'queueMicrotask') {

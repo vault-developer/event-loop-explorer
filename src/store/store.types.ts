@@ -22,7 +22,7 @@ export interface EventListsState {
     console: string[];
     callstack: string[];
     render_callbacks: NodeClass[];
-    web_api: object[];
+    web_api: NodeClass[];
     task_queue: NodeClass[];
     microtask_queue: NodeClass[];
   }
@@ -30,7 +30,7 @@ export interface EventListsState {
     console: string[];
     callstack: string[];
     render_callbacks: NodeClass[];
-    web_api: object[];
+    web_api: NodeClass[];
     task_queue: NodeClass[];
     microtask_queue: NodeClass[];
   }
