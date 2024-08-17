@@ -12,11 +12,19 @@ export interface EventLoopAnimationState {
 export type EventListNameType = 'console' | 'web_api' | 'task_queue' | 'microtask_queue' | 'callstack';
 
 export interface EventListsState {
-  console: string[];
-  web_api: object[];
-  task_queue: NodeClass[];
-  microtask_queue: object[];
-  callstack: string[];
-
+  mutable: {
+    console: string[];
+    web_api: object[];
+    task_queue: NodeClass[];
+    microtask_queue: object[];
+    callstack: string[];
+  }
+  immutable: {
+    console: string[];
+    web_api: object[];
+    task_queue: NodeClass[];
+    microtask_queue: object[];
+    callstack: string[];
+  }
   set({list, type, value}: { list: EventListNameType, type: 'push' | 'pop' | 'shift', value?: string | object }): void;
 }

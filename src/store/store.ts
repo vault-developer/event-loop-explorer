@@ -29,11 +29,20 @@ export const useEventLoopAnimationState = create<EventLoopAnimationState>(set =>
 }));
 
 export const useEventListsState = create<EventListsState>(set => ({
-  console: [],
-  microtask_queue: [],
-  task_queue: [],
-  callstack: [],
-  web_api: [],
+  mutable: {
+    console: [],
+    microtask_queue: [],
+    task_queue: [],
+    callstack: [],
+    web_api: [],
+  },
+  immutable: {
+    console: [],
+    microtask_queue: [],
+    task_queue: [],
+    callstack: [],
+    web_api: [],
+  },
   set: ({list, value, type}) => set((state) => {
     switch (type) {
       case 'push':
@@ -42,19 +51,31 @@ export const useEventListsState = create<EventListsState>(set => ({
         } else if (list === 'microtask_queue') {
           useEventLoopAnimationState.getState().setState(true, 'microtask');
         }
+        (state.mutable[list] as any).push(value);
         return {
           ...state,
-          [list]: [...state[list], value]
+          immutable: {
+            ...state.immutable,
+            [list]: [...state.immutable[list], value]
+          }
         };
       case 'pop':
+        (state.mutable[list] as any).pop(value);
         return {
           ...state,
-          [list]: state[list].slice(0, -1)
+          immutable: {
+            ...state.immutable,
+            [list]: state.immutable[list].slice(0, -1)
+          }
         };
       case 'shift':
+        (state.mutable[list] as any).shift(value);
         return {
           ...state,
-          [list]: state[list].slice(1)
+          immutable: {
+            ...state.immutable,
+            [list]: state.immutable[list].slice(1)
+          }
         };
       default:
         return state;

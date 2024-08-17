@@ -2,7 +2,7 @@ import {useEventListsState} from "../../store/store.ts";
 import styles from "./Callstack.module.css";
 
 function CallStack() {
-  const tasks = useEventListsState(state => state.callstack);
+  const tasks = useEventListsState(state => state.immutable.callstack);
 
   return (
     <div className={styles.stack}>

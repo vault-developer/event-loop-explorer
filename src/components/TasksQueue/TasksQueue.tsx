@@ -2,7 +2,7 @@ import {useEventListsState} from "../../store/store.ts";
 import styles from "./TasksQueue.module.css";
 
 function TasksQueue() {
-  const tasks = useEventListsState(state => state.task_queue);
+  const tasks = useEventListsState(state => state.immutable.task_queue);
 
   return (
     <div className={styles.tasksQueue}>
