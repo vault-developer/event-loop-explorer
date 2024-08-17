@@ -1,6 +1,7 @@
 import styles from './App.module.css'
 import EventLoop from "./components/EventLoop/EventLoop.tsx";
-import Editor from "./components/Editor.tsx";
+import Editor from "./components/Editor/Editor.tsx";
+import TasksQueue from "./components/TasksQueue/TasksQueue.tsx";
 
 function App() {
   return (
@@ -15,7 +16,10 @@ function App() {
       <div className={styles.console}>Console</div>
 
 
-      <div className={styles.tasks}>Tasks Queue</div>
+      <div className={styles.tasks}>
+        <span>Tasks Queue</span>
+        <TasksQueue/>
+      </div>
       <div className={styles.microTasks}>mTasks Queue</div>
       <div className={styles.eventLoop}>
         <EventLoop/>

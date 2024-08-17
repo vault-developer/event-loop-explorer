@@ -44,6 +44,10 @@
 .tasks {
   grid-column: 3 / 4;
   grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 20px;
 }
 
 .microTasks {

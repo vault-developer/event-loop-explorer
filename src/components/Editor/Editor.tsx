@@ -5,8 +5,8 @@ import styles from './Editor.module.css'
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-solarized_dark";
 import {codeExamples} from "./Editor.data.tsx";
-import {parse} from "../utils/parse.ts";
-import {useEventListsState} from "../store/store.ts";
+import {parse} from "../../utils/parse.ts";
+import {useEventListsState} from "../../store/store.ts";
 
 const codeByTitle = codeExamples.reduce((acc, {title, code}) => {
   acc[title] = code;
