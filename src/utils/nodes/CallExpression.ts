@@ -33,14 +33,14 @@ export class CallExpressionClass extends NodeClass {
     });
 
     this.context.actions.push({
-      sector: 'callstack',
-      action: 'push',
+      list: 'callstack',
+      type: 'push',
       value: this.serialize(),
     })
     callee.traverse();
     this.context.actions.push({
-      sector: 'callstack',
-      action: 'pop',
+      list: 'callstack',
+      type: 'pop',
     })
   }
 }

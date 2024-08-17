@@ -29,8 +29,8 @@ export class IdentifierClass extends NodeClass {
     const identifier = this.node as Identifier;
     if (identifier.name === 'setTimeout') {
       this.context.actions.push({
-        sector: 'web_api',
-        action: 'push',
+        list: 'web_api',
+        type: 'push',
         value: {
           type: 'setTimeout',
           delay: (this.args?.[1] as Literal)?.value ?? 0,
@@ -40,8 +40,8 @@ export class IdentifierClass extends NodeClass {
       return;
     } else if (identifier.name === 'queueMicrotask') {
       this.context.actions.push({
-        sector: 'microtask_queue',
-        action: 'push',
+        list: 'microtask_queue',
+        type: 'push',
         value: this.args && nodeFactory({
           node: this.args[0],
           context: this.context,

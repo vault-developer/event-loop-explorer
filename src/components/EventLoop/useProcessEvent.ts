@@ -14,7 +14,7 @@ export const useProcessEvent = () => {
 
       console.log('Actions', actions);
       for (const step of actions) {
-        set({list: step.sector, type: step.action, value: step.value});
+        set({list: step.list, type: step.type, value: step.value});
         await new Promise(resolve => setTimeout(resolve, 1500));
       }
 

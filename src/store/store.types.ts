@@ -11,6 +11,12 @@ export interface EventLoopAnimationState {
 
 export type EventListNameType = 'console' | 'web_api' | 'task_queue' | 'microtask_queue' | 'callstack';
 
+export interface ActionInterface {
+  list: EventListNameType;
+  type: 'push' | 'pop' | 'shift';
+  value?: string | object;
+}
+
 export interface EventListsState {
   mutable: {
     console: string[];

@@ -33,8 +33,8 @@ export class MemberExpressionClass extends NodeClass {
     // handle console
     if (memberExpression.object.type === 'Identifier' && memberExpression.object.name === 'console') {
       return this.context.actions.push({
-        sector: 'console',
-        action: 'push',
+        list: 'console',
+        type: 'push',
         value: this.args?.map(arg => nodeFactory({
           node: arg,
           context: this.context,
@@ -61,8 +61,8 @@ export class MemberExpressionClass extends NodeClass {
             innerMemberExpression.property.name === 'resolve'
           ) {
             return this.context.actions.push({
-              sector: 'microtask_queue',
-              action: 'push',
+              list: 'microtask_queue',
+              type: 'push',
               value: this.args?.[0]
             });
           }
