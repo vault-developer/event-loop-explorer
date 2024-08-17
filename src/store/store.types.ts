@@ -16,7 +16,7 @@ export interface EventListsState {
   web_api: object[];
   task_queue: NodeClass[];
   microtask_queue: object[];
-  callstack: object[];
+  callstack: string[];
 
   set({list, type, value}: { list: EventListNameType, type: 'push' | 'pop' | 'shift', value?: string | object }): void;
 }

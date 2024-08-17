@@ -1,0 +1,15 @@
+.stack {
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: end;
+    gap: 20px;
+}
+
+.stackElement {
+    background: var(--circle-disabled-microtask);
+    background: var(--circle-disabled-microtask);
+    border-radius: 15px;
+    padding: 10px;
+}
+

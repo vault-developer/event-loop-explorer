@@ -3,6 +3,7 @@ import EventLoop from "./components/EventLoop/EventLoop.tsx";
 import Editor from "./components/Editor/Editor.tsx";
 import TasksQueue from "./components/TasksQueue/TasksQueue.tsx";
 import Console from "./components/Console/Console.tsx";
+import CallStack from "./components/Callstack/Callstack.tsx";
 
 function App() {
   return (
@@ -12,16 +13,15 @@ function App() {
         <Editor/>
       </div>
       <div className={styles.webApi}>Web api</div>
-      <div className={styles.render}>Render steps</div>
-      <div className={styles.callstack}>CallStack</div>
-
-
+      <div className={styles.render}>Render callbacks</div>
+      <div className={styles.callstack}>
+        <span>CallStack</span>
+        <CallStack/>
+      </div>
       <div className={styles.console}>
         <span>Console</span>
         <Console/>
       </div>
-
-
       <div className={styles.tasks}>
         <span>Tasks Queue</span>
         <TasksQueue/>
