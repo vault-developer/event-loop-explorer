@@ -9,7 +9,7 @@ export interface EventLoopAnimationState {
   setState(value: boolean, property: EventLoopStateValuesType): void;
 }
 
-export type EventListNameType = 'console' | 'web_api' | 'task_queue' | 'microtask_queue' | 'callstack';
+export type EventListNameType = 'console' | 'web_api' | 'task_queue' | 'microtask_queue' | 'callstack' | 'render_callbacks';
 
 export interface ActionInterface {
   list: EventListNameType;
@@ -20,17 +20,19 @@ export interface ActionInterface {
 export interface EventListsState {
   mutable: {
     console: string[];
+    callstack: string[];
+    render_callbacks: NodeClass[];
     web_api: object[];
     task_queue: NodeClass[];
-    microtask_queue: object[];
-    callstack: string[];
+    microtask_queue: NodeClass[];
   }
   immutable: {
     console: string[];
+    callstack: string[];
+    render_callbacks: NodeClass[];
     web_api: object[];
     task_queue: NodeClass[];
-    microtask_queue: object[];
-    callstack: string[];
+    microtask_queue: NodeClass[];
   }
-  set({list, type, value}: { list: EventListNameType, type: 'push' | 'pop' | 'shift', value?: string | object }): void;
+  set({list, type, value}: ActionInterface): void;
 }

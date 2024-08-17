@@ -31,6 +31,7 @@ export const useEventLoopAnimationState = create<EventLoopAnimationState>(set =>
 export const useEventListsState = create<EventListsState>(set => ({
   mutable: {
     console: [],
+    render_callbacks: [],
     microtask_queue: [],
     task_queue: [],
     callstack: [],
@@ -38,6 +39,7 @@ export const useEventListsState = create<EventListsState>(set => ({
   },
   immutable: {
     console: [],
+    render_callbacks: [],
     microtask_queue: [],
     task_queue: [],
     callstack: [],
