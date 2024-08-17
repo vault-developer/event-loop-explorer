@@ -4,6 +4,7 @@ import {useEventLoopAnimationState} from "../../../store/store.ts";
 import {EVENT_LOOP_INNER_SECTOR_OFFSET} from "../../../constants.ts";
 import {events} from "../EventLoop.data.ts";
 import {EventInterface} from "../EventLoop.types.ts";
+import {useProcessEvent} from "../useProcessEvent.ts";
 
 let angle = 100 - 10.5;
 
@@ -17,6 +18,7 @@ function Pointer() {
   const setState = useEventLoopAnimationState(state => state.setState);
   const {enabled} = useEventLoopAnimationState(state => state.immutable);
   const mutable = useEventLoopAnimationState(state => state.mutable);
+  const processEvent = useProcessEvent();
 
   const sectorInnerRef = useRef<HTMLDivElement>(null);
   const sectorOuterRef = useRef<HTMLDivElement>(null);
@@ -29,7 +31,7 @@ function Pointer() {
         if (stops.has(angleWithOffset)) {
           const type = typeByStop[angleWithOffset];
           if (mutable[type]) {
-            await new Promise(resolve => setTimeout(resolve, 3000));
+            await processEvent(type);
             setState(false, type);
           }
         }

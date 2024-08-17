@@ -18,5 +18,5 @@ export interface EventListsState {
   microtask_queue: object[];
   callstack: object[];
 
-  set({list, type, value}: { list: EventListNameType, type: 'push' | 'pop', value: string | object }): void;
+  set({list, type, value}: { list: EventListNameType, type: 'push' | 'pop' | 'shift', value?: string | object }): void;
 }

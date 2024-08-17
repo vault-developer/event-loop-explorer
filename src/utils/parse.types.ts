@@ -3,8 +3,8 @@ import {EventListNameType} from "../store/store.types.ts";
 
 export interface StepInterface {
   sector: EventListNameType;
-  action: 'push' | 'pop';
-  value?: string | object | number;
+  action: 'push' | 'pop' | 'shift';
+  value?: string | object;
 }
 
 export interface ParseContextInterface {
