@@ -2,6 +2,7 @@ import styles from './App.module.css'
 import EventLoop from "./components/EventLoop/EventLoop.tsx";
 import Editor from "./components/Editor/Editor.tsx";
 import TasksQueue from "./components/TasksQueue/TasksQueue.tsx";
+import Console from "./components/Console/Console.tsx";
 
 function App() {
   return (
@@ -13,7 +14,12 @@ function App() {
       <div className={styles.webApi}>Web api</div>
       <div className={styles.render}>Render steps</div>
       <div className={styles.callstack}>CallStack</div>
-      <div className={styles.console}>Console</div>
+
+
+      <div className={styles.console}>
+        <span>Console</span>
+        <Console/>
+      </div>
 
 
       <div className={styles.tasks}>
