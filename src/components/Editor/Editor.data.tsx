@@ -1,20 +1,10 @@
 export const codeExamples = [
   {
-    title: 'test block statement',
+    title: 'sync code',
     code:
-`setTimeout(()=>{
-  console.log(1);
-  console.log(2);
-});`
-  },
-  {
-    title: 'test literals vs params',
-    code:
-`function foo1(a) {
-  console.log(a);
-  console.log('a');
-}
-foo1(1);`
+`console.log(1);
+console.log(2);
+console.log(3);`
   },
   {
     title: 'tasks queue',
@@ -22,14 +12,6 @@ foo1(1);`
 `console.log(1);
 setTimeout(()=>console.log(2));
 console.log(3);`
-  },
-  {
-    title: 'call stack simple',
-    code:
-`function foo1(a) {
-  console.log(a);
-}
-foo1(1);`
   },
   {
     title: 'call stack',
@@ -49,7 +31,7 @@ function foo3() {
 foo1();`
   },
   {
-    title: 'microtasks queue',
+    title: 'microtasks + tasks',
     code:
 `console.log(1);  
 setTimeout(() => console.log(2));  
@@ -57,6 +39,14 @@ queueMicrotask(() => console.log(3));
 Promise.resolve().then(() => console.log(4));  
 setTimeout(() => console.log(5), 500);  
 console.log(6);`
+  },
+  {
+    title: 'microtasks + requestAnimationFrame',
+    code:
+`console.log(1);  
+queueMicrotask(() => console.log(2));  
+requestAnimationFrame(() => console.log(3));  
+console.log(4);`
   },
   {
     title: 'microtasks + callstack',
