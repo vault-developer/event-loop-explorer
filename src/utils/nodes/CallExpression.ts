@@ -32,13 +32,13 @@ export class CallExpressionClass extends NodeClass {
       params: this.params,
     });
 
-    this.context.steps.push({
+    this.context.actions.push({
       sector: 'callstack',
       action: 'push',
       value: this.serialize(),
     })
     callee.traverse();
-    this.context.steps.push({
+    this.context.actions.push({
       sector: 'callstack',
       action: 'pop',
     })

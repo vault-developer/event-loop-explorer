@@ -1,14 +1,14 @@
 import {Expression, FunctionDeclaration, SpreadElement} from "acorn";
 import {EventListNameType} from "../store/store.types.ts";
 
-export interface StepInterface {
+export interface ActionInterface {
   sector: EventListNameType;
   action: 'push' | 'pop' | 'shift';
   value?: string | object;
 }
 
 export interface ParseContextInterface {
-  steps: StepInterface[];
+  actions: ActionInterface[];
   functions: Record<string, FunctionDeclaration>;
 }
 

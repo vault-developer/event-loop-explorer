@@ -18,10 +18,11 @@ If you would like to make it better, feel free to create PR to the project.
 
 
 ### TODO:
-1. Сделать асинхронные события на базе синхронных (рент ер, очереди)  
-2. Сделать визуализацию событий в UI  
+1. Чистить все очереди перед запуском нового кода
+2. Сделать визуализацию событий в UI  => web api, render callbacks, microtasks
 3. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation  
-4. Попросить review  
+4. Внутри круга добавить анимашку в pixelart style
+5. Попросить review  
 5. Выложить  
 7. Сделать отдельную страничку с туториалом:  
    - когда вызывается каждая из тасок и почему

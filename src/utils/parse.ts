@@ -7,7 +7,7 @@ import {NodeClass} from "./nodes/Node.abstract.ts";
 
 export const parse = (code: string): NodeClass => {
   const context: ParseContextInterface = {
-    steps: [],
+    actions: [],
     functions: {},
   }
   const parsed = acornParse(code, {ecmaVersion: 2020});

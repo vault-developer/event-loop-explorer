@@ -28,7 +28,7 @@ export class IdentifierClass extends NodeClass {
   traverse = () => {
     const identifier = this.node as Identifier;
     if (identifier.name === 'setTimeout') {
-      this.context.steps.push({
+      this.context.actions.push({
         sector: 'web_api',
         action: 'push',
         value: {
@@ -39,7 +39,7 @@ export class IdentifierClass extends NodeClass {
       });
       return;
     } else if (identifier.name === 'queueMicrotask') {
-      this.context.steps.push({
+      this.context.actions.push({
         sector: 'microtask_queue',
         action: 'push',
         value: this.args && nodeFactory({

@@ -10,10 +10,10 @@ export const useProcessEvent = () => {
     if (type === 'task') {
       const node = mutable.task_queue[0];
       node.traverse();
-      const {steps} = node.context;
+      const {actions} = node.context;
 
-      console.log('STEPS', steps);
-      for (const step of steps) {
+      console.log('Actions', actions);
+      for (const step of actions) {
         set({list: step.sector, type: step.action, value: step.value});
         await new Promise(resolve => setTimeout(resolve, 1500));
       }
