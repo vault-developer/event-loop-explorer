@@ -6,6 +6,7 @@ import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-solarized_dark";
 import {codeExamples} from "./Editor.data.tsx";
 import {parse} from "../utils/parse.ts";
+import {useEventListsState} from "../store/store.ts";
 
 const codeByTitle = codeExamples.reduce((acc, {title, code}) => {
   acc[title] = code;
@@ -14,13 +15,21 @@ const codeByTitle = codeExamples.reduce((acc, {title, code}) => {
 
 function EditorComponent() {
   const [text, setText] = useState(codeExamples[0].code);
+  const eventListsState = useEventListsState();
 
   const onSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedExample = codeByTitle[e.target.value];
     setText(selectedExample);
   }
 
-  const onRun = () => parse(text);
+  const onRun = () => {
+    const script = parse(text);
+    eventListsState.set({
+      list: 'task_queue',
+      type: 'push',
+      value: script,
+    })
+  }
 
   return (
     <div style={{

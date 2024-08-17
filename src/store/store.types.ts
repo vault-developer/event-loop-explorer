@@ -1,3 +1,5 @@
+import {NodeClass} from "../utils/nodes/Node.abstract.ts";
+
 type EventLoopStateValuesType = 'render' | 'task' | 'microtask' | 'enabled';
 
 export interface EventLoopAnimationState {
@@ -12,8 +14,9 @@ export type EventListNameType = 'console' | 'web_api' | 'task_queue' | 'microtas
 export interface EventListsState {
   console: string[];
   web_api: object[];
-  task_queue: object[];
+  task_queue: NodeClass[];
   microtask_queue: object[];
   callstack: object[];
+
   set({list, type, value}: { list: EventListNameType, type: 'push' | 'pop', value: string | object }): void;
 }

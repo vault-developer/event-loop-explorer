@@ -8,6 +8,7 @@ import {LiteralClass} from "./Literal.ts";
 import {ArrowFunctionExpressionClass} from "./ArrowFunctionExpression.ts";
 import {NodeClass, NodeClassConstructor} from "./Node.abstract.ts";
 import {BlockStatementClass} from "./BlockStatement.ts";
+import {ProgramClass} from "./Program.ts";
 
 export const nodeFactory = (params: NodeClassConstructor): NodeClass => {
   switch (params.node.type) {
@@ -27,6 +28,8 @@ export const nodeFactory = (params: NodeClassConstructor): NodeClass => {
       return new ArrowFunctionExpressionClass(params);
     case 'BlockStatement':
       return new BlockStatementClass(params);
+    case 'Program':
+      return new ProgramClass(params);
     default:
       return new NotImplementedNodeClass(params);
   }

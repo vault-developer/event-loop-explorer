@@ -35,6 +35,12 @@ export const useEventListsState = create<EventListsState>(set => ({
   callstack: [],
   web_api: [],
   set: ({list, value, type}) => set((state) => {
+    if (type === 'push' && list === 'task_queue') {
+      useEventLoopAnimationState.getState().setState(true, 'task');
+    } else if (type === 'push' && list === 'microtask_queue') {
+      useEventLoopAnimationState.getState().setState(true, 'microtask');
+    }
+
     const updated = type === 'push' ? [...state[list], value] : state[list].slice(0, -1);
     return {
       ...state,
