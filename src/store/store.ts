@@ -14,6 +14,20 @@ export const useEventLoopAnimationState = create<EventLoopAnimationState>(set =>
     microtask: false,
     enabled: false,
   },
+  clear: () => set(state =>{
+    Object.keys(state.mutable).forEach((key)=> {
+      state.mutable[key as keyof typeof state.mutable] = false;
+    });
+    return {
+      ...state,
+      immutable: {
+        render: false,
+        task: false,
+        microtask: false,
+        enabled: false,
+      }
+    };
+  }),
   setState: (value, property) => {
     set((state) => {
       state.mutable[property] = value;
@@ -45,6 +59,22 @@ export const useEventListsState = create<EventListsState>(set => ({
     callstack: [],
     web_api: [],
   },
+  clear: () => set(state =>{
+    Object.keys(state.mutable).forEach((key)=> {
+      state.mutable[key as keyof typeof state.mutable].length = 0;
+    });
+    return {
+      ...state,
+      immutable: {
+        console: [],
+        render_callbacks: [],
+        microtask_queue: [],
+        task_queue: [],
+        callstack: [],
+        web_api: [],
+      }
+    };
+  }),
   set: ({list, value, type}) => set((state) => {
     switch (type) {
       case 'push':

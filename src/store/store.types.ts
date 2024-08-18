@@ -5,7 +5,7 @@ type EventLoopStateValuesType = 'render' | 'task' | 'microtask' | 'enabled';
 export interface EventLoopAnimationState {
   mutable: Record<EventLoopStateValuesType, boolean>
   immutable: Record<EventLoopStateValuesType, boolean>
-
+  clear(): void;
   setState(value: boolean, property: EventLoopStateValuesType): void;
 }
 
@@ -35,4 +35,5 @@ export interface EventListsState {
     microtask_queue: NodeClass[];
   }
   set({list, type, value}: ActionInterface): void;
+  clear(): void;
 }

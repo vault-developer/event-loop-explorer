@@ -6,7 +6,7 @@ import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-solarized_dark";
 import {codeExamples} from "./Editor.data.tsx";
 import {parse} from "../../utils/parse.ts";
-import {useEventListsState} from "../../store/store.ts";
+import {useEventListsState, useEventLoopAnimationState} from "../../store/store.ts";
 
 const codeByTitle = codeExamples.reduce((acc, {title, code}) => {
   acc[title] = code;
@@ -16,6 +16,7 @@ const codeByTitle = codeExamples.reduce((acc, {title, code}) => {
 function EditorComponent() {
   const [text, setText] = useState(codeExamples[0].code);
   const eventListsState = useEventListsState();
+  const clearAnimationState = useEventLoopAnimationState(state => state.clear);
 
   const onSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedExample = codeByTitle[e.target.value];
@@ -23,6 +24,8 @@ function EditorComponent() {
   }
 
   const onRun = () => {
+    clearAnimationState();
+    eventListsState.clear();
     const script = parse(text);
     eventListsState.set({
       list: 'task_queue',
