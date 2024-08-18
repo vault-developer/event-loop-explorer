@@ -6,6 +6,7 @@ import Console from "./components/Console/Console.tsx";
 import CallStack from "./components/Callstack/Callstack.tsx";
 import MicroTasksQueue from "./components/MicroTasksQueue/MicroTasksQueue.tsx";
 import RenderCallbacksQueue from "./components/RenderCallbacksQueue/RenderCallbacksQueue.tsx";
+import WebApiQueue from "./components/WebApiQueue/WebApiQueue.tsx";
 
 function App() {
   return (
@@ -14,7 +15,10 @@ function App() {
       <div className={styles.editor}>
         <Editor/>
       </div>
-      <div className={styles.webApi}>Web api</div>
+      <div className={styles.webApi}>
+        <span>Web api</span>
+        <WebApiQueue/>
+      </div>
       <div className={styles.renderCallbacks}>
         <span>Render callbacks</span>
         <RenderCallbacksQueue/>

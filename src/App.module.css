@@ -24,6 +24,10 @@
 .webApi {
   grid-column: 1 / 2;
   grid-row: 9 / 11;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 20px;
 }
 
 .renderCallbacks {
