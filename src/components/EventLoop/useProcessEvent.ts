@@ -47,6 +47,30 @@ export const useProcessEvent = () => {
 
         set({list: 'microtask_queue', type: 'shift'});
       }
+    } else if (type === 'render') {
+      const node = mutable.render_callbacks[0];
+      if (!node) {
+        await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
+        return;
+      }
+      const expression = nodeFactory({
+        node: (node.node as ArrowFunctionExpression).body,
+        context: {
+          actions: [],
+          functions: node.context.functions,
+        },
+        params: node.params,
+      })
+      expression.traverse();
+      const {actions} = expression.context;
+
+      console.log('Actions from Render', actions);
+      for (const step of actions) {
+        set({list: step.list, type: step.type, value: step.value});
+        await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
+      }
+
+      set({list: 'render_callbacks', type: 'shift'});
     } else {
       await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
     }

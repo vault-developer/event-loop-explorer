@@ -6,7 +6,10 @@ import {events} from "../EventLoop.data.ts";
 import {EventInterface} from "../EventLoop.types.ts";
 import {useProcessEvent} from "../useProcessEvent.ts";
 
+const RENDER_DELAY_MS = 720;
+
 let angle = 100 - 10.5;
+let timeFromLastRender = 0;
 
 const stops = new Set(events.map(event => event.degree));
 const typeByStop = events.reduce((acc, event) => {
@@ -38,7 +41,12 @@ function Pointer() {
         sectorInnerRef.current.style.transform = `rotate(${360 - angle + 10 - EVENT_LOOP_INNER_SECTOR_OFFSET}deg)`;
         sectorOuterRef.current.style.transform = `rotate(${360 - angle + 10}deg)`;
         angle -= 1;
+        timeFromLastRender += 1;
         if (angleWithOffset < 0) angle += 360;
+        if (timeFromLastRender >= RENDER_DELAY_MS) {
+          setState(true, 'render');
+          timeFromLastRender = 0;
+        }
       }
       requestAnimationFrame(animate);
     };
