@@ -36,7 +36,6 @@ function Pointer() {
           const type = typeByStop[angleWithOffset];
           if (mutable[type]) {
             await processEvent(type);
-            setState(false, type);
           }
         }
         sectorInnerRef.current.style.transform = `rotate(${360 - angle + 10 - EVENT_LOOP_INNER_SECTOR_OFFSET}deg)`;

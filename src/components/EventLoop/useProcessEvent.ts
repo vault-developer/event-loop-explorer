@@ -1,5 +1,5 @@
 import {EventInterface} from "./EventLoop.types.ts";
-import {useEventListsState} from "../../store/store.ts";
+import {useEventListsState, useEventLoopAnimationState} from "../../store/store.ts";
 import {useCallback} from "react";
 import {nodeFactory} from "../../utils/nodes/factory.ts";
 import {ArrowFunctionExpression} from "acorn";
@@ -9,6 +9,7 @@ const DELAY_BETWEEN_ACTIONS_MS = 1000;
 export const useProcessEvent = () => {
   const mutable = useEventListsState(state => state.mutable);
   const set = useEventListsState(state => state.set);
+  const setAnimation = useEventLoopAnimationState(state => state.setState);
 
   return useCallback(async (type: EventInterface['type']) => {
     if (type === 'task') {
@@ -44,6 +45,7 @@ export const useProcessEvent = () => {
         }
       }
 
+      if (mutable.task_queue.length === 1) setAnimation(false, 'task');
       set({list: 'task_queue', type: 'shift'});
     } else if (type === 'microtask') {
       while (mutable.microtask_queue.length) {
@@ -68,10 +70,12 @@ export const useProcessEvent = () => {
 
         set({list: 'microtask_queue', type: 'shift'});
       }
+      setAnimation(false, 'microtask');
     } else if (type === 'render') {
       const node = mutable.render_callbacks[0];
       if (!node) {
         await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
+        setAnimation(false, 'render');
         return;
       }
       const expression = nodeFactory({
@@ -91,6 +95,7 @@ export const useProcessEvent = () => {
       }
 
       set({list: 'render_callbacks', type: 'shift'});
+      setAnimation(false, 'render');
     } else {
       await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
     }
