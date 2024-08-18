@@ -62,7 +62,6 @@ export const useProcessEvent = () => {
         expression.traverse();
         const {actions} = expression.context;
 
-        console.log('Actions from mTask', actions);
         for (const step of actions) {
           set({list: step.list, type: step.type, value: step.value});
           await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
@@ -72,29 +71,35 @@ export const useProcessEvent = () => {
       }
       setAnimation(false, 'microtask');
     } else if (type === 'render') {
-      const node = mutable.render_callbacks[0];
-      if (!node) {
-        await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
-        setAnimation(false, 'render');
-        return;
-      }
-      const expression = nodeFactory({
-        node: (node.node as ArrowFunctionExpression).body,
-        context: {
-          actions: [],
-          functions: node.context.functions,
-        },
-        params: node.params,
-      })
-      expression.traverse();
-      const {actions} = expression.context;
-
-      for (const step of actions) {
-        set({list: step.list, type: step.type, value: step.value});
+      if (mutable.render_callbacks.length === 0) {
         await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
       }
 
-      set({list: 'render_callbacks', type: 'shift'});
+      while (mutable.render_callbacks.length) {
+        const node = mutable.render_callbacks[0];
+        if (!node) {
+          await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
+          setAnimation(false, 'render');
+          return;
+        }
+        const expression = nodeFactory({
+          node: (node.node as ArrowFunctionExpression).body,
+          context: {
+            actions: [],
+            functions: node.context.functions,
+          },
+          params: node.params,
+        })
+        expression.traverse();
+        const {actions} = expression.context;
+
+        for (const step of actions) {
+          set({list: step.list, type: step.type, value: step.value});
+          await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
+        }
+
+        set({list: 'render_callbacks', type: 'shift'});
+      }
       setAnimation(false, 'render');
     } else {
       await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));

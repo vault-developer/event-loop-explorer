@@ -46,7 +46,8 @@ console.log(6);`
 `console.log(1);  
 queueMicrotask(() => console.log(2));  
 requestAnimationFrame(() => console.log(3));  
-console.log(4);`
+requestAnimationFrame(() => console.log(4)); 
+console.log(5);`
   },
   {
     title: 'microtasks + callstack',
