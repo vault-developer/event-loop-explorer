@@ -21,10 +21,10 @@ We are counting every circle as 360ms for simplicity, so render phase is trigger
 
 
 ### TODO:
+0. Simplify useProcessEvent
 1. Стили для кнопок и шрифтов => https://github.com/nextui-org/nextui
 2. run buttons => refactor, make run | pause, stop 
-3. web api => отрисовать таймеры, запускать после delay
-4. requestAnimationFrame => execute all together, not 1by1
+3. web api => отрисовать таймеры
 4. debug line in editor
 4. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation  
 5. Сделать дизайн в фигме и попросить review

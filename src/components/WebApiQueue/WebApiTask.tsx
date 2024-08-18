@@ -32,11 +32,6 @@ function WebApiTask({task}: { task: NodeClass }) {
         if (executed.current) return;
         executed.current = true;
         set({list: 'web_api', type: 'delete', value: task});
-        console.log('ZZZ', nodeFactory({
-          node: task.args![0],
-          context: task.context,
-          params: task.params,
-        }))
         set({
           list: 'task_queue',
           type: 'push',
