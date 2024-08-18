@@ -21,19 +21,19 @@ We are counting every circle as 360ms for simplicity, so render phase is trigger
 
 
 ### TODO:
-0. Simplify useProcessEvent
-1. Стили для кнопок и шрифтов => https://github.com/nextui-org/nextui
-2. run buttons => refactor, make run | pause, stop 
+1. run buttons => refactor, make run | pause, stop
+2. Стили для кнопок и шрифтов => https://github.com/nextui-org/nextui
 3. web api => отрисовать таймеры
-4. debug line in editor
-4. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation  
-5. Сделать дизайн в фигме и попросить review
-6. Попросить code review  
-7. Выложить 
-8. Console and Stack lists make via NodeClass as well
-9. gamefication
-9. Simplify css for lists 
-10. Сделать отдельную страничку с туториалом:  
+4. дизайн скачет
+5. debug line in editor
+6. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation  
+7. Сделать дизайн в фигме и попросить review
+8. Попросить code review  
+9. Выложить 
+10. Console and Stack lists make via NodeClass as well
+11. gamefication
+12. Simplify css for lists 
+13. Сделать отдельную страничку с туториалом:  
    - когда вызывается каждая из тасок и почему
    - добавить голос
    - добавить live portrait
