@@ -31,7 +31,6 @@ export class CallExpressionClass extends NodeClass {
       args: node.arguments,
       params: this.params,
     });
-
     this.context.actions.push({
       list: 'callstack',
       type: 'push',
