@@ -9,6 +9,17 @@ export interface EventLoopAnimationState {
   setState(value: boolean, property: EventLoopStateValuesType): void;
 }
 
+export interface EventLoopTime {
+  mutable: {
+    time: number;
+  }
+  immutable: {
+    time: number;
+  }
+  increment(): void;
+  set(time: number): void;
+}
+
 export type EventListNameType = 'console' | 'web_api' | 'task_queue' | 'microtask_queue' | 'callstack' | 'render_callbacks';
 
 export interface ActionInterface {

@@ -1,6 +1,6 @@
 import styles from './Pointer.module.css';
 import {useEffect, useRef} from "react";
-import {useEventLoopAnimationState} from "../../../store/store.ts";
+import {useEventLoopAnimationState, useEventLoopTime} from "../../../store/store.ts";
 import {EVENT_LOOP_INNER_SECTOR_OFFSET} from "../../../constants.ts";
 import {events} from "../EventLoop.data.ts";
 import {EventInterface} from "../EventLoop.types.ts";
@@ -21,6 +21,7 @@ function Pointer() {
   const setState = useEventLoopAnimationState(state => state.setState);
   const {enabled} = useEventLoopAnimationState(state => state.immutable);
   const mutable = useEventLoopAnimationState(state => state.mutable);
+  const incrementTime = useEventLoopTime(state => state.increment);
   const processEvent = useProcessEvent();
 
   const sectorInnerRef = useRef<HTMLDivElement>(null);
@@ -42,6 +43,7 @@ function Pointer() {
         sectorOuterRef.current.style.transform = `rotate(${360 - angle + 10}deg)`;
         angle -= 1;
         timeFromLastRender += 1;
+        incrementTime();
         if (angleWithOffset < 0) angle += 360;
         if (timeFromLastRender >= RENDER_DELAY_MS) {
           setState(true, 'render');

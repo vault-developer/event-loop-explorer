@@ -24,11 +24,14 @@ We are counting every circle as 360ms for simplicity, so render phase is trigger
 1. Стили для кнопок и шрифтов => https://github.com/nextui-org/nextui
 2. run buttons => refactor, make run | pause, stop 
 3. web api => отрисовать таймеры, запускать после delay
+4. requestAnimationFrame => execute all together, not 1by1
+4. debug line in editor
 4. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation  
-5. Внутри круга добавить анимашку в pixelart style
-6. Попросить review  
+5. Сделать дизайн в фигме и попросить review
+6. Попросить code review  
 7. Выложить 
 8. Console and Stack lists make via NodeClass as well
+9. gamefication
 9. Simplify css for lists 
 10. Сделать отдельную страничку с туториалом:  
    - когда вызывается каждая из тасок и почему

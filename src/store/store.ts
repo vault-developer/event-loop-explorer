@@ -1,6 +1,33 @@
 import {create} from 'zustand'
-import {EventListsState, EventLoopAnimationState} from "./store.types.ts";
+import {EventListsState, EventLoopAnimationState, EventLoopTime} from "./store.types.ts";
 import {NodeClass} from "../utils/nodes/Node.abstract.ts";
+
+export const useEventLoopTime = create<EventLoopTime>((set) => ({
+  mutable: {
+    time: 0,
+  },
+  immutable: {
+    time: 0,
+  },
+  increment: () => set(state => {
+    state.mutable.time = state.mutable.time + 1;
+    return {
+      ...state,
+      immutable: {
+        time: state.immutable.time + 1,
+      }
+    }
+  }),
+  set: time => set(state => {
+    state.mutable.time = time;
+    return {
+      ...state,
+      immutable: {
+        time,
+      }
+    }
+  }),
+}));
 
 export const useEventLoopAnimationState = create<EventLoopAnimationState>(set => ({
   mutable: {
