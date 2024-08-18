@@ -17,6 +17,7 @@ function EditorComponent() {
   const [text, setText] = useState(codeExamples[0].code);
   const eventListsState = useEventListsState();
   const clearAnimationState = useEventLoopAnimationState(state => state.clear);
+  const setAnimationState = useEventLoopAnimationState(state => state.setState);
 
   const onSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedExample = codeByTitle[e.target.value];
@@ -31,7 +32,8 @@ function EditorComponent() {
       list: 'task_queue',
       type: 'push',
       value: script,
-    })
+    });
+    setAnimationState(true, 'enabled');
   }
 
   return (

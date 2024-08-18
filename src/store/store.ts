@@ -83,7 +83,8 @@ export const useEventListsState = create<EventListsState>(set => ({
         } else if (list === 'microtask_queue') {
           useEventLoopAnimationState.getState().setState(true, 'microtask');
         }
-        (state.mutable[list] as any).push(value);
+        // TODO: replace with NodeClass
+        (state.mutable[list] as Array<unknown>).push(value);
         return {
           ...state,
           immutable: {
@@ -92,7 +93,7 @@ export const useEventListsState = create<EventListsState>(set => ({
           }
         };
       case 'pop':
-        (state.mutable[list] as any).pop(value);
+        (state.mutable[list] as Array<unknown>).pop();
         return {
           ...state,
           immutable: {
@@ -101,7 +102,7 @@ export const useEventListsState = create<EventListsState>(set => ({
           }
         };
       case 'shift':
-        (state.mutable[list] as any).shift(value);
+        (state.mutable[list] as Array<unknown>).shift();
         return {
           ...state,
           immutable: {
