@@ -14,6 +14,7 @@ export const useProcessEvent = () => {
   return useCallback(async (type: EventInterface['type']) => {
     if (type === 'task') {
       const node = mutable.task_queue[0];
+      set({list: 'task_queue', type: 'shift'});
 
       if (node.node.type !== 'ArrowFunctionExpression') {
         // manage script
@@ -45,11 +46,12 @@ export const useProcessEvent = () => {
         }
       }
 
-      if (mutable.task_queue.length === 1) setAnimation(false, 'task');
-      set({list: 'task_queue', type: 'shift'});
+      if (mutable.task_queue.length === 0) setAnimation(false, 'task');
     } else if (type === 'microtask') {
       while (mutable.microtask_queue.length) {
         const node = mutable.microtask_queue[0];
+        set({list: 'microtask_queue', type: 'shift'});
+
         const expression = nodeFactory({
           node: (node.node as ArrowFunctionExpression).body,
           context: {
@@ -66,8 +68,6 @@ export const useProcessEvent = () => {
           set({list: step.list, type: step.type, value: step.value});
           await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
         }
-
-        set({list: 'microtask_queue', type: 'shift'});
       }
       setAnimation(false, 'microtask');
     } else if (type === 'render') {
@@ -82,6 +82,8 @@ export const useProcessEvent = () => {
           setAnimation(false, 'render');
           return;
         }
+        set({list: 'render_callbacks', type: 'shift'});
+
         const expression = nodeFactory({
           node: (node.node as ArrowFunctionExpression).body,
           context: {
@@ -97,12 +99,8 @@ export const useProcessEvent = () => {
           set({list: step.list, type: step.type, value: step.value});
           await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
         }
-
-        set({list: 'render_callbacks', type: 'shift'});
       }
       setAnimation(false, 'render');
-    } else {
-      await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
     }
   }, [mutable]);
 };
