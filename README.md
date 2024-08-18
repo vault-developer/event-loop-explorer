@@ -21,8 +21,8 @@ We are counting every circle as 360ms for simplicity, so render phase is trigger
 
 
 ### TODO:
-1. Чистить все очереди перед запуском нового кода
-2. Сделать визуализацию событий в UI  => web api, render callbacks, microtasks
+1. run buttons => refactor, make run | pause, stop 
+2. web api => отрисовать таймеры, запускать после delay
 3. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation  
 4. Внутри круга добавить анимашку в pixelart style
 5. Попросить review  
