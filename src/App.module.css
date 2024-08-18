@@ -26,9 +26,13 @@
   grid-row: 9 / 11;
 }
 
-.render {
+.renderCallbacks {
   grid-column: 1 / 2;
   grid-row: 11 / 13;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 20px;
 }
 
 .callstack {

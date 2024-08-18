@@ -63,7 +63,12 @@ export class MemberExpressionClass extends NodeClass {
             return this.context.actions.push({
               list: 'microtask_queue',
               type: 'push',
-              value: this.args?.[0]
+              value: this.args && nodeFactory({
+                node: this.args[0],
+                context: this.context,
+                params: this.params,
+                args: this.args,
+              })
             });
           }
         }

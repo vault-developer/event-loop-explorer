@@ -50,6 +50,18 @@ export class IdentifierClass extends NodeClass {
         })
       });
       return;
+    } else if (identifier.name === 'requestAnimationFrame') {
+      this.context.actions.push({
+        list: 'render_callbacks',
+        type: 'push',
+        value: this.args && nodeFactory({
+          node: this.args[0],
+          context: this.context,
+          params: this.params,
+          args: this.args,
+        })
+      });
+      return;
     } else if (this.context.functions[identifier.name]) {
       const customFunction = this.context.functions[identifier.name] as FunctionDeclaration;
       const params = customFunction.params.reduce((acc, param, index) => {
