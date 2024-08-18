@@ -13,9 +13,6 @@ export interface EventLoopTime {
   mutable: {
     time: number;
   }
-  immutable: {
-    time: number;
-  }
   increment(): void;
   set(time: number): void;
 }

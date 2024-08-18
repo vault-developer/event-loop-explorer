@@ -14,5 +14,11 @@
     align-items: center;
     border-radius: 15px;
     max-width: 33.33%;
+    position: relative;
 }
 
+.counter {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}

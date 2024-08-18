@@ -6,26 +6,13 @@ export const useEventLoopTime = create<EventLoopTime>((set) => ({
   mutable: {
     time: 0,
   },
-  immutable: {
-    time: 0,
-  },
   increment: () => set(state => {
     state.mutable.time = state.mutable.time + 1;
-    return {
-      ...state,
-      immutable: {
-        time: state.immutable.time + 1,
-      }
-    }
+    return state;
   }),
   set: time => set(state => {
     state.mutable.time = time;
-    return {
-      ...state,
-      immutable: {
-        time,
-      }
-    }
+    return state;
   }),
 }));
 
