@@ -10,7 +10,7 @@ console.log(3);`
     title: 'tasks queue',
     code:
 `console.log(1);
-setTimeout(()=>console.log(2));
+setTimeout(()=>console.log(2), 0);
 console.log(3);`
   },
   {
@@ -34,7 +34,7 @@ foo1();`
     title: 'microtasks + tasks',
     code:
 `console.log(1);  
-setTimeout(() => console.log(2));  
+setTimeout(() => console.log(2), 0);  
 queueMicrotask(() => console.log(3));  
 Promise.resolve().then(() => console.log(4));  
 setTimeout(() => console.log(5), 500);  
@@ -63,7 +63,7 @@ function foo3() {
   setTimeout(() => {
       foo4();
       console.log('foo3:1');
-  });  
+  }, 0);  
   queueMicrotask(() => console.log('foo3:2'));  
   Promise.resolve().then(() => console.log('foo3:3'));  
   setTimeout(() => console.log('foo3:4'), 500);  

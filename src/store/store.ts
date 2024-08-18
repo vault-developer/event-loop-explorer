@@ -124,6 +124,18 @@ export const useEventListsState = create<EventListsState>(set => ({
             [list]: state.immutable[list].slice(1)
           }
         };
+      case 'delete':
+        const arr = state.mutable[list] as Array<unknown>;
+        const index = arr.indexOf(value);
+        if (index !== -1) arr.splice(index, 1);
+
+        return {
+          ...state,
+          immutable: {
+            ...state.immutable,
+            [list]: state.immutable[list].filter(el => el !== value)
+          }
+        };
       default:
         return state;
     }

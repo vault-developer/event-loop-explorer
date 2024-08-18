@@ -2,7 +2,7 @@ import styles from "./WebApiQueue.module.css";
 import {nodeFactory} from "../../utils/nodes/factory.ts";
 import {NodeClass} from "../../utils/nodes/Node.abstract.ts";
 import {Literal} from "acorn";
-import {useEventLoopTime} from "../../store/store.ts";
+import {useEventListsState, useEventLoopTime} from "../../store/store.ts";
 import {useEffect, useRef, useState} from "react";
 
 function WebApiTask({task}: { task: NodeClass }) {
@@ -14,8 +14,10 @@ function WebApiTask({task}: { task: NodeClass }) {
   const serialized = `${task.serialize()}(${serializedArgs})`;
   const delay = ((task.args?.[1] as Literal).value ?? 0) as number;
   const mutable = useEventLoopTime(state => state.mutable);
+  const set = useEventListsState(state => state.set);
   const finish = useRef(mutable.time + delay);
   const [progress, setProgress] = useState(100);
+  const executed = useRef(false);
 
   useEffect(() => {
     const checkProgress = () => {
@@ -27,8 +29,23 @@ function WebApiTask({task}: { task: NodeClass }) {
       if (newProgress > 0) {
         setTimeout(checkProgress, 250);
       } else {
-        // TODO: remove by id
-        // push to stack queue
+        if (executed.current) return;
+        executed.current = true;
+        set({list: 'web_api', type: 'delete', value: task});
+        console.log('ZZZ', nodeFactory({
+          node: task.args![0],
+          context: task.context,
+          params: task.params,
+        }))
+        set({
+          list: 'task_queue',
+          type: 'push',
+          value: nodeFactory({
+            node: task.args![0],
+            context: task.context,
+            params: task.params,
+          })
+        });
       }
     }
     checkProgress();

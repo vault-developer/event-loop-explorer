@@ -13,14 +13,35 @@ export const useProcessEvent = () => {
   return useCallback(async (type: EventInterface['type']) => {
     if (type === 'task') {
       const node = mutable.task_queue[0];
-      node.context.actions = [];
-      node.traverse();
-      const {actions} = node.context;
 
-      console.log('Actions from Task', actions);
-      for (const step of actions) {
-        set({list: step.list, type: step.type, value: step.value});
-        await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
+      if (node.node.type !== 'ArrowFunctionExpression') {
+        // manage script
+        node.context.actions = [];
+        node.traverse();
+        const {actions} = node.context;
+
+        for (const step of actions) {
+          set({list: step.list, type: step.type, value: step.value});
+          await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
+        }
+      } else {
+        // manage callbacks
+        const expression = nodeFactory({
+          node: (node.node as ArrowFunctionExpression).body,
+          context: {
+            actions: [],
+            functions: node.context.functions,
+          },
+          params: node.params,
+        })
+
+        expression.traverse();
+        const {actions} = expression.context;
+
+        for (const step of actions) {
+          set({list: step.list, type: step.type, value: step.value});
+          await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
+        }
       }
 
       set({list: 'task_queue', type: 'shift'});
@@ -64,7 +85,6 @@ export const useProcessEvent = () => {
       expression.traverse();
       const {actions} = expression.context;
 
-      console.log('Actions from Render', actions);
       for (const step of actions) {
         set({list: step.list, type: step.type, value: step.value});
         await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS));
