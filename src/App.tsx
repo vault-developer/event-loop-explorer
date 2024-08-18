@@ -4,6 +4,7 @@ import Editor from "./components/Editor/Editor.tsx";
 import TasksQueue from "./components/TasksQueue/TasksQueue.tsx";
 import Console from "./components/Console/Console.tsx";
 import CallStack from "./components/Callstack/Callstack.tsx";
+import MicroTasksQueue from "./components/MicroTasksQueue/MicroTasksQueue.tsx";
 
 function App() {
   return (
@@ -26,7 +27,10 @@ function App() {
         <span>Tasks Queue</span>
         <TasksQueue/>
       </div>
-      <div className={styles.microTasks}>mTasks Queue</div>
+      <div className={styles.microTasks}>
+        <span>mTasks Queue</span>
+        <MicroTasksQueue/>
+      </div>
       <div className={styles.eventLoop}>
         <EventLoop/>
       </div>

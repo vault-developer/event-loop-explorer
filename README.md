@@ -25,7 +25,8 @@ If you would like to make it better, feel free to create PR to the project.
 5. Попросить review  
 5. Выложить 
 6. Console and Stack lists make via NodeClass as well
-7. Сделать отдельную страничку с туториалом:  
+7. Simplify css for lists
+8. Сделать отдельную страничку с туториалом:  
    - когда вызывается каждая из тасок и почему
    - добавить голос
    - добавить live portrait

@@ -61,6 +61,10 @@
 .microTasks {
   grid-column: 3 / 4;
   grid-row: 3 / 5;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 20px;
 }
 
 .eventLoop {

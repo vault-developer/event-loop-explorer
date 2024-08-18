@@ -1,0 +1,18 @@
+.microTasksQueue {
+    flex: 1;
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+}
+
+.microtask {
+    background: var(--circle-disabled-microtask);
+    background: var(--circle-disabled-microtask);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    max-width: 33.33%;
+}
+
