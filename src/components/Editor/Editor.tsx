@@ -18,6 +18,7 @@ function EditorComponent() {
   const eventListsState = useEventListsState();
   const clearAnimationState = useEventLoopAnimationState(state => state.clear);
   const setAnimationState = useEventLoopAnimationState(state => state.setState);
+  const animationState = useEventLoopAnimationState(state => state.mutable);
 
   const onSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedExample = codeByTitle[e.target.value];
@@ -57,6 +58,9 @@ function EditorComponent() {
         </div>
         <button onClick={onRun}>
           run code
+        </button>
+        <button onClick={() => setAnimationState(!animationState.enabled, 'enabled')}>
+          continue/pause
         </button>
       </div>
       <div style={{flex: 1}}>
