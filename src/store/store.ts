@@ -1,5 +1,6 @@
 import {create} from 'zustand'
 import {EventListsState, EventLoopAnimationState} from "./store.types.ts";
+import {NodeClass} from "../utils/nodes/Node.abstract.ts";
 
 export const useEventLoopAnimationState = create<EventLoopAnimationState>(set => ({
   mutable: {
@@ -14,8 +15,8 @@ export const useEventLoopAnimationState = create<EventLoopAnimationState>(set =>
     microtask: false,
     enabled: false,
   },
-  clear: () => set(state =>{
-    Object.keys(state.mutable).forEach((key)=> {
+  clear: () => set(state => {
+    Object.keys(state.mutable).forEach((key) => {
       state.mutable[key as keyof typeof state.mutable] = false;
     });
     return {
@@ -59,8 +60,8 @@ export const useEventListsState = create<EventListsState>(set => ({
     callstack: [],
     web_api: [],
   },
-  clear: () => set(state =>{
-    Object.keys(state.mutable).forEach((key)=> {
+  clear: () => set(state => {
+    Object.keys(state.mutable).forEach((key) => {
       state.mutable[key as keyof typeof state.mutable].length = 0;
     });
     return {
@@ -83,8 +84,7 @@ export const useEventListsState = create<EventListsState>(set => ({
         } else if (list === 'microtask_queue') {
           useEventLoopAnimationState.getState().setState(true, 'microtask');
         }
-        // TODO: replace with NodeClass
-        (state.mutable[list] as Array<unknown>).push(value);
+        (state.mutable[list] as Array<string | NodeClass | undefined>).push(value);
         return {
           ...state,
           immutable: {

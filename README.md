@@ -23,7 +23,8 @@ If you would like to make it better, feel free to create PR to the project.
 3. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation  
 4. Внутри круга добавить анимашку в pixelart style
 5. Попросить review  
-5. Выложить  
+5. Выложить 
+6. Console and Stack lists make via NodeClass as well
 7. Сделать отдельную страничку с туториалом:  
    - когда вызывается каждая из тасок и почему
    - добавить голос

@@ -14,7 +14,7 @@ export type EventListNameType = 'console' | 'web_api' | 'task_queue' | 'microtas
 export interface ActionInterface {
   list: EventListNameType;
   type: 'push' | 'pop' | 'shift';
-  value?: string | object;
+  value?: string | NodeClass;
 }
 
 export interface EventListsState {
