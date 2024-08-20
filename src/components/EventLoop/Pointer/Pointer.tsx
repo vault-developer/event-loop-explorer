@@ -19,7 +19,7 @@ const typeByStop = events.reduce((acc, event) => {
 
 function Pointer() {
   const setState = useEventLoopAnimationState(state => state.setState);
-  const {enabled, paused} = useEventLoopAnimationState(state => state.immutable);
+  const {enabled} = useEventLoopAnimationState(state => state.immutable);
   const mutable = useEventLoopAnimationState(state => state.mutable);
   const incrementTime = useEventLoopTime(state => state.increment);
   const processEvent = useProcessEvent();
@@ -29,7 +29,6 @@ function Pointer() {
 
   useEffect(() => {
     const animate = async () => {
-      if (mutable.paused) return;
       if (!mutable.enabled) {
         angle = 100 - 10.5;
         timeFromLastRender = 0;
@@ -62,7 +61,7 @@ function Pointer() {
     };
 
     animate();
-  }, [enabled, paused]);
+  }, [enabled]);
 
   return (
     <>

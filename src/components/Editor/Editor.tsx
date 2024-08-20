@@ -11,7 +11,7 @@ import {useEventListsState, useEventLoopAnimationState} from "../../store/store.
 const codeByTitle = codeExamples.reduce((acc, {title, code}) => {
   acc[title] = code;
   return acc;
-} , {} as Record<string, string>);
+}, {} as Record<string, string>);
 
 function EditorComponent() {
   const [text, setText] = useState(codeExamples[0].code);
@@ -19,7 +19,6 @@ function EditorComponent() {
   const clearAnimationState = useEventLoopAnimationState(state => state.clear);
   const setAnimationState = useEventLoopAnimationState(state => state.setState);
   const enabled = useEventLoopAnimationState(state => state.immutable.enabled);
-  const paused = useEventLoopAnimationState(state => state.immutable.paused);
 
   const onSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedExample = codeByTitle[e.target.value];
@@ -67,17 +66,12 @@ function EditorComponent() {
         )}
 
         {enabled && (
-          <>
-            <button onClick={() => {
-              clearAnimationState();
-              eventListsState.clear();
-            }}>
-              stop
-            </button>
-            <button onClick={() => setAnimationState(!paused, 'paused')}>
-              {paused? 'continue' : 'pause'}
-            </button>
-          </>
+          <button onClick={() => {
+            clearAnimationState();
+            eventListsState.clear();
+          }}>
+            stop
+          </button>
         )}
       </div>
       <div style={{flex: 1}}>

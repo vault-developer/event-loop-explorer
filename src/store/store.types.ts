@@ -1,6 +1,6 @@
 import {NodeClass} from "../utils/nodes/Node.abstract.ts";
 
-type EventLoopStateValuesType = 'render' | 'task' | 'microtask' | 'enabled' | 'paused';
+type EventLoopStateValuesType = 'render' | 'task' | 'microtask' | 'enabled';
 
 export interface EventLoopAnimationState {
   mutable: Record<EventLoopStateValuesType, boolean>

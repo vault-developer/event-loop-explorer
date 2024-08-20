@@ -21,7 +21,6 @@ We are counting every circle as 360ms for simplicity, so render phase is trigger
 
 
 ### TODO:
-1. run buttons => refactor, make run | pause, stop
 2. Стили для кнопок и шрифтов => https://github.com/nextui-org/nextui
 3. web api => отрисовать таймеры
 4. дизайн скачет
@@ -37,3 +36,4 @@ We are counting every circle as 360ms for simplicity, so render phase is trigger
    - когда вызывается каждая из тасок и почему
    - добавить голос
    - добавить live portrait
+14. Паузу сделать оказалось замороченно из-за асинхронных пауз, оставляю на потом.

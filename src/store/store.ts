@@ -22,14 +22,12 @@ export const useEventLoopAnimationState = create<EventLoopAnimationState>(set =>
     task: false,
     microtask: false,
     enabled: false,
-    paused: false,
   },
   immutable: {
     render: false,
     task: false,
     microtask: false,
     enabled: false,
-    paused: false,
   },
   clear: () => set(state => {
     Object.keys(state.mutable).forEach((key) => {
@@ -42,7 +40,6 @@ export const useEventLoopAnimationState = create<EventLoopAnimationState>(set =>
         task: false,
         microtask: false,
         enabled: false,
-        paused: false,
       }
     };
   }),
