@@ -21,7 +21,6 @@ We are counting every circle as 360ms for simplicity, so render phase is trigger
 
 
 ### TODO:
-3. web api => отрисовать таймеры https://stackoverflow.com/questions/74098878/progress-border-using-css-on-div
 4. дизайн скачет
 5. debug line in editor
 6. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation  

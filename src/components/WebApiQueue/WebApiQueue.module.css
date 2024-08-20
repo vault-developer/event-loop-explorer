@@ -5,20 +5,29 @@
     gap: 20px;
 }
 
+.progress {
+    background-color: transparent;
+    border-radius: 15px;
+    position: relative;
+    padding: 10px;
+    display: flex;
+    max-width: 33.33%;
+    flex: 1;
+}
+
 .task {
     background: var(--circle-disabled-microtask);
     background: var(--circle-disabled-microtask);
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 15px;
-    max-width: 33.33%;
-    position: relative;
+    padding: 10px;
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 3px;
+    right: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.counter {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-}
+

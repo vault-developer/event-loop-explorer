@@ -47,13 +47,13 @@ function WebApiTask({task}: { task: NodeClass }) {
   }, []);
 
   return (
-    <>
-      <div key={serialized} className={styles.task}>
+    <div key={serialized} className={styles.progress} style={{
+      backgroundImage: `conic-gradient(var(--circle-enabled-microtask), var(--circle-enabled-microtask) ${progress}%, transparent ${progress}%)`
+    }}>
+      <div className={styles.task}>
         <div>{serialized}</div>
-        <div className={styles.counter}>{progress as number}</div>
       </div>
-    </>
-
+    </div>
   )
 }
 
