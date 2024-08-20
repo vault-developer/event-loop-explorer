@@ -1,5 +1,5 @@
 import AceEditor from "react-ace";
-import {useState} from "react";
+import React, {useState} from "react";
 import styles from './Editor.module.css'
 
 import "ace-builds/src-noconflict/mode-javascript";
@@ -7,6 +7,8 @@ import "ace-builds/src-noconflict/theme-solarized_dark";
 import {codeExamples} from "./Editor.data.tsx";
 import {parse} from "../../utils/parse.ts";
 import {useEventListsState, useEventLoopAnimationState} from "../../store/store.ts";
+import Button from '@mui/material/Button';
+import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 
 const codeByTitle = codeExamples.reduce((acc, {title, code}) => {
   acc[title] = code;
@@ -19,10 +21,13 @@ function EditorComponent() {
   const clearAnimationState = useEventLoopAnimationState(state => state.clear);
   const setAnimationState = useEventLoopAnimationState(state => state.setState);
   const enabled = useEventLoopAnimationState(state => state.immutable.enabled);
+  const [example, setExample] = useState(codeExamples[0].title);
 
-  const onSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedExample = codeByTitle[e.target.value];
-    setText(selectedExample);
+  const onSelect = (e: SelectChangeEvent) => {
+    const example = e.target.value;
+    const code = codeByTitle[example];
+    setText(code);
+    setExample(example);
   }
 
   const onRun = () => {
@@ -45,33 +50,43 @@ function EditorComponent() {
     }}>
       <div style={{
         display: "flex",
-        justifyContent: "start",
+        justifyContent: "space-between",
         alignItems: "center",
         gap: 40,
         marginLeft: 20,
+        marginRight: 20,
       }}>
         <div style={{marginBottom: 20, marginTop: 20}}>
-          <label htmlFor="examples" style={{marginRight: 10}}>choose an example:</label>
-          <select name="examples" onChange={onSelect}>
-            {codeExamples.map(({title}) => (
-              <option value={title} key={title}>{title}</option>
-            ))}
-          </select>
+          <FormControl sx={{ width: '100%' }}>
+            <InputLabel id="demo-simple-select-helper-label">example:</InputLabel>
+            <Select
+              size="small"
+              labelId="demo-simple-select-helper-label"
+              label="example"
+              value={example}
+              onChange={onSelect}
+              variant="outlined"
+             >
+              {codeExamples.map(({title}) => (
+                <MenuItem value={title} key={title}>{title}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </div>
 
         {!enabled && (
-          <button onClick={onRun}>
+          <Button variant="contained" onClick={onRun}>
             run code
-          </button>
+          </Button>
         )}
 
         {enabled && (
-          <button onClick={() => {
+          <Button variant="contained" onClick={() => {
             clearAnimationState();
             eventListsState.clear();
           }}>
             stop
-          </button>
+          </Button>
         )}
       </div>
       <div style={{flex: 1}}>

@@ -21,7 +21,7 @@ We are counting every circle as 360ms for simplicity, so render phase is trigger
 
 
 ### TODO:
-2. Стили для кнопок и шрифтов => https://github.com/nextui-org/nextui
+2. Стили для кнопок и шрифтов => 
 3. web api => отрисовать таймеры
 4. дизайн скачет
 5. debug line in editor
@@ -37,3 +37,4 @@ We are counting every circle as 360ms for simplicity, so render phase is trigger
    - добавить голос
    - добавить live portrait
 14. Паузу сделать оказалось замороченно из-за асинхронных пауз, оставляю на потом.
+15. replace material ui  with nextUI? https://github.com/nextui-org/nextui

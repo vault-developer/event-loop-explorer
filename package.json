@@ -10,12 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/material": "^5.16.7",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
+    "@mui/styled-engine-sc": "6.0.0-alpha.18",
     "ace-builds": "^1.35.4",
     "acorn": "^8.12.1",
     "react": "^18.3.1",
     "react-ace": "^12.0.0",
     "react-dom": "^18.3.1",
+    "styled-components": "^6.1.12",
     "zustand": "^4.5.4"
+  },
+  "resolutions": {
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
