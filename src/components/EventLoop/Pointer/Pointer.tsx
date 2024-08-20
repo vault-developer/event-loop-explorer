@@ -19,7 +19,7 @@ const typeByStop = events.reduce((acc, event) => {
 
 function Pointer() {
   const setState = useEventLoopAnimationState(state => state.setState);
-  const {enabled} = useEventLoopAnimationState(state => state.immutable);
+  const {enabled, paused} = useEventLoopAnimationState(state => state.immutable);
   const mutable = useEventLoopAnimationState(state => state.mutable);
   const incrementTime = useEventLoopTime(state => state.increment);
   const processEvent = useProcessEvent();
@@ -29,7 +29,16 @@ function Pointer() {
 
   useEffect(() => {
     const animate = async () => {
-      if (!mutable.enabled) return;
+      if (mutable.paused) return;
+      if (!mutable.enabled) {
+        angle = 100 - 10.5;
+        timeFromLastRender = 0;
+        if (sectorInnerRef.current && sectorOuterRef.current) {
+          sectorInnerRef.current.style.transform = `rotate(${360 - angle + 10 - EVENT_LOOP_INNER_SECTOR_OFFSET}deg)`;
+          sectorOuterRef.current.style.transform = `rotate(${360 - angle + 10}deg)`;
+        }
+        return;
+      }
       if (sectorInnerRef.current && sectorOuterRef.current) {
         const angleWithOffset = angle + EVENT_LOOP_INNER_SECTOR_OFFSET;
         if (stops.has(angleWithOffset)) {
@@ -53,7 +62,7 @@ function Pointer() {
     };
 
     animate();
-  }, [enabled]);
+  }, [enabled, paused]);
 
   return (
     <>

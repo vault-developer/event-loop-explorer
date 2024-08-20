@@ -26,7 +26,7 @@ function EventLoop() {
           )
         })}
 
-        <Pointer/>
+        <Pointer />
         <CircleInner/>
         <CircleLabels/>
       </CircleContainer>

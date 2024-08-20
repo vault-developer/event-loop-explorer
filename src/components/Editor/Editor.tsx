@@ -18,7 +18,8 @@ function EditorComponent() {
   const eventListsState = useEventListsState();
   const clearAnimationState = useEventLoopAnimationState(state => state.clear);
   const setAnimationState = useEventLoopAnimationState(state => state.setState);
-  const animationState = useEventLoopAnimationState(state => state.mutable);
+  const enabled = useEventLoopAnimationState(state => state.immutable.enabled);
+  const paused = useEventLoopAnimationState(state => state.immutable.paused);
 
   const onSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedExample = codeByTitle[e.target.value];
@@ -45,8 +46,10 @@ function EditorComponent() {
     }}>
       <div style={{
         display: "flex",
-        justifyContent: "space-around",
+        justifyContent: "start",
         alignItems: "center",
+        gap: 40,
+        marginLeft: 20,
       }}>
         <div style={{marginBottom: 20, marginTop: 20}}>
           <label htmlFor="examples" style={{marginRight: 10}}>choose an example:</label>
@@ -56,12 +59,26 @@ function EditorComponent() {
             ))}
           </select>
         </div>
-        <button onClick={onRun}>
-          run code
-        </button>
-        <button onClick={() => setAnimationState(!animationState.enabled, 'enabled')}>
-          continue/pause
-        </button>
+
+        {!enabled && (
+          <button onClick={onRun}>
+            run code
+          </button>
+        )}
+
+        {enabled && (
+          <>
+            <button onClick={() => {
+              clearAnimationState();
+              eventListsState.clear();
+            }}>
+              stop
+            </button>
+            <button onClick={() => setAnimationState(!paused, 'paused')}>
+              {paused? 'continue' : 'pause'}
+            </button>
+          </>
+        )}
       </div>
       <div style={{flex: 1}}>
         <AceEditor
