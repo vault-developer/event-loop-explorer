@@ -9,7 +9,6 @@
   &>* {
     border: 1px solid var(--circle-background);
     background:  var(--base-background);
-    border-radius: 15px;
     margin: 0;
     padding: 10px;
   }
@@ -28,6 +27,7 @@
   flex-direction: column;
   padding: 15px;
   gap: 20px;
+  overflow: auto;
 }
 
 .renderCallbacks {
@@ -37,6 +37,7 @@
   flex-direction: column;
   padding: 15px;
   gap: 20px;
+  overflow: auto;
 }
 
 .callstack {
@@ -46,6 +47,7 @@
   flex-direction: column;
   padding: 15px;
   gap: 20px;
+  overflow: auto;
 }
 
 .console {
@@ -55,6 +57,7 @@
   flex-direction: column;
   padding: 15px;
   gap: 20px;
+  overflow: auto;
 }
 
 .tasks {
@@ -64,6 +67,7 @@
   flex-direction: column;
   padding: 15px;
   gap: 20px;
+  overflow: auto;
 }
 
 .microTasks {
@@ -73,6 +77,7 @@
   flex-direction: column;
   padding: 15px;
   gap: 20px;
+  overflow: auto;
 }
 
 .eventLoop {
@@ -82,4 +87,5 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 }

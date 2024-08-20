@@ -7,7 +7,7 @@
 
 .progress {
     background-color: transparent;
-    border-radius: 15px;
+    border-radius: 5px;
     position: relative;
     padding: 10px;
     display: flex;
@@ -18,7 +18,7 @@
 .task {
     background: var(--circle-disabled-microtask);
     background: var(--circle-disabled-microtask);
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 10px;
     position: absolute;
     top: 3px;

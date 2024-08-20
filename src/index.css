@@ -24,5 +24,14 @@ body {
     display: flex;
     height: 100%;
     width: 100%;
+    min-height: 768px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--circle-disabled-microtask);
 }
 
