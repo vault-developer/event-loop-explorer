@@ -4,4 +4,5 @@
   position: relative;
   width: var(--circle-diameter);
   height: var(--circle-diameter);
+  overflow: hidden;
 }
