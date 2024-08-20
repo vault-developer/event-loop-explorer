@@ -27,7 +27,6 @@ requestAnimationFrame(() => console.log(4));
 requestAnimationFrame(() => console.log(4));
 requestAnimationFrame(() => console.log(4));
 не все удаляет
-4. дизайн скачет => проверить все очереди на overflow
 5. debug line in editor
 6. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation  
 7. шрифты (робото?)

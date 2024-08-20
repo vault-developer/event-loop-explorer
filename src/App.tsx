@@ -54,7 +54,10 @@ function App() {
           <MicroTasksQueue/>
         </div>
         <div className={styles.eventLoop}>
-          <EventLoop/>
+          <p>Event Loop</p>
+          <div className={styles.eventLoopBody}>
+            <EventLoop/>
+          </div>
         </div>
       </div>
 

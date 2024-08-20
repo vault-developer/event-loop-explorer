@@ -11,7 +11,7 @@ function EventLoop() {
   const immutable = useEventLoopAnimationState(state => state.immutable);
   return (
     <>
-      <p style={{marginBottom: 50}}>Event Loop</p>
+
       <CircleContainer>
         <CircleOuter/>
 

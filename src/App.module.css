@@ -85,7 +85,16 @@
   grid-row: 5 / 13;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   overflow: auto;
+  gap: 25px;
+}
+
+.eventLoopBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
