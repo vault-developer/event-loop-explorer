@@ -1,5 +1,5 @@
 import AceEditor from "react-ace";
-import React, {useState} from "react";
+import {useState} from "react";
 import styles from './Editor.module.css'
 
 import "ace-builds/src-noconflict/mode-javascript";
@@ -80,12 +80,14 @@ function EditorComponent() {
                 '&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
                   borderColor: 'gray',
                 },
+
               }}
               size="small"
               labelId="demo-simple-select-helper-label"
               label="example"
               value={example}
               onChange={onSelect}
+              style={{minWidth: 320, textAlign: 'start'}}
               variant="outlined"
              >
               {codeExamples.map(({title}) => (

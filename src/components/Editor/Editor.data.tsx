@@ -66,7 +66,9 @@ function foo3() {
       console.log('foo3:1');
   }, 0);  
   queueMicrotask(() => console.log('foo3:2'));  
-  Promise.resolve().then(() => console.log('foo3:3'));  
+  Promise.resolve().then(() => {
+      console.log('foo3:3')
+      });  
   setTimeout(() => console.log('foo3:4'), 500);  
   console.log('foo3:5');
 }
