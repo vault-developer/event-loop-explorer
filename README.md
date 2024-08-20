@@ -21,11 +21,12 @@ We are counting every circle as 360ms for simplicity, so render phase is trigger
 
 
 ### TODO:
-2. Стили для кнопок и шрифтов => 
-3. web api => отрисовать таймеры
+3. web api => отрисовать таймеры https://stackoverflow.com/questions/74098878/progress-border-using-css-on-div
 4. дизайн скачет
 5. debug line in editor
 6. Сделать валидацию кода через в Editor https://github.com/ajaxorg/ace/wiki/Syntax-validation  
+7. шрифты (робото?)
+7. рефакторинг
 7. Сделать дизайн в фигме и попросить review
 8. Попросить code review  
 9. Выложить 
