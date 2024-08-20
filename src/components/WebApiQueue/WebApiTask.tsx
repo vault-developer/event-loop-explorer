@@ -50,9 +50,8 @@ function WebApiTask({task}: { task: NodeClass }) {
     <div key={serialized} className={styles.progress} style={{
       backgroundImage: `conic-gradient(var(--circle-enabled-microtask), var(--circle-enabled-microtask) ${progress}%, transparent ${progress}%)`
     }}>
-      <div className={styles.task}>
-        <div>{serialized}</div>
-      </div>
+      <div className={styles.task}></div>
+      <div style={{zIndex: 1}}>{serialized}</div>
     </div>
   )
 }

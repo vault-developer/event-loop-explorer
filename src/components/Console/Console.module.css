@@ -11,5 +11,6 @@
     background: var(--circle-disabled-microtask);
     border-radius: 5px;
     padding: 10px;
+    word-wrap: break-word;
 }
 
