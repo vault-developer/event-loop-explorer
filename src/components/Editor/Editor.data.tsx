@@ -1,6 +1,6 @@
 export const codeExamples = [
   {
-    title: 'sync code',
+    title: 'synchronous',
     code:
 `console.log(1);
 console.log(2);
@@ -14,7 +14,7 @@ setTimeout(()=>console.log(2), 0);
 console.log(3);`
   },
   {
-    title: 'call stack',
+    title: 'callstack',
     code:
 `function foo1() {
   console.log(1);
@@ -31,7 +31,7 @@ function foo3() {
 foo1();`
   },
   {
-    title: 'microtasks + tasks',
+    title: 'microtasks',
     code:
 `console.log(1);  
 setTimeout(() => console.log(2), 0);  
@@ -41,7 +41,7 @@ setTimeout(() => console.log(5), 500);
 console.log(6);`
   },
   {
-    title: 'microtasks + requestAnimationFrame',
+    title: 'requestAnimationFrame',
     code:
 `console.log(1);  
 queueMicrotask(() => console.log(2));  
@@ -50,7 +50,7 @@ requestAnimationFrame(() => console.log(4));
 console.log(5);`
   },
   {
-    title: 'microtasks + callstack',
+    title: 'everything',
     code:
 `function foo1() {
   console.log('foo1');

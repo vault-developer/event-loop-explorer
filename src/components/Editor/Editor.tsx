@@ -71,7 +71,7 @@ function EditorComponent() {
                 MenuProps: {
                   MenuListProps: {
                     sx: {
-                      backgroundColor: '#35495a'
+                      backgroundColor: '#35495a',
                     }
                   }
                 }
@@ -87,7 +87,7 @@ function EditorComponent() {
               label="example"
               value={example}
               onChange={onSelect}
-              style={{minWidth: 320, textAlign: 'start'}}
+              style={{minWidth: 200, textAlign: 'start'}}
               variant="outlined"
              >
               {codeExamples.map(({title}) => (
@@ -123,7 +123,7 @@ function EditorComponent() {
             useWorker: false,
           }}
           showPrintMargin={false}
-          fontSize={16}
+          fontSize={14}
           onChange={setText}
           className={styles.editor}
         />
