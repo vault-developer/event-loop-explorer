@@ -3,6 +3,11 @@ html {
     color: rgba(255, 255, 255, 0.87);
     background-color: var(--general-base-background);
     height: 100%;
+
+}
+
+div, span, p {
+    font-size: 14px;
 }
 
 body {
