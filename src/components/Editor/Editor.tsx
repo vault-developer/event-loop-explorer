@@ -57,9 +57,30 @@ function EditorComponent() {
         marginRight: 20,
       }}>
         <div style={{marginBottom: 20, marginTop: 20}}>
-          <FormControl sx={{ width: '100%' }}>
-            <InputLabel id="demo-simple-select-helper-label">example:</InputLabel>
+          <FormControl>
+            <InputLabel
+              id="demo-simple-select-helper-label"
+              sx={{
+                '&.MuiInputLabel-root.Mui-focused': {
+                  color: 'gray' ,
+                }
+              }}
+            >example:</InputLabel>
             <Select
+              inputProps={{
+                MenuProps: {
+                  MenuListProps: {
+                    sx: {
+                      backgroundColor: '#35495a'
+                    }
+                  }
+                }
+              }}
+              sx={{
+                '&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'gray',
+                },
+              }}
               size="small"
               labelId="demo-simple-select-helper-label"
               label="example"
@@ -75,13 +96,13 @@ function EditorComponent() {
         </div>
 
         {!enabled && (
-          <Button variant="contained" onClick={onRun}>
+          <Button variant="contained" onClick={onRun} style={{minWidth: 120}}>
             run code
           </Button>
         )}
 
         {enabled && (
-          <Button variant="contained" onClick={() => {
+          <Button variant="contained" style={{minWidth: 120}} onClick={() => {
             clearAnimationState();
             eventListsState.clear();
           }}>
