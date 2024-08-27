@@ -43,12 +43,13 @@ yarn dev
 
 ### Future Plans:
 
+- [ ] highlight debug line in editor;
+- [ ] add possibility to pause execution;
+- [ ] change speed of execution;
 - [ ] add badges to the readme;
 - [ ] clean up the code, remove todos;
-- [ ] highlight debug line in editor;
 - [ ] add [code validation syntax](https://github.com/ajaxorg/ace/wiki/Syntax-validation);
 - [ ] add unit tests;
-- [ ] add possibility to pause execution;
 - [ ] replace styled components with emotion;
 - [ ] add gamification (achievements);
 - [ ] check js parsing edge cases;
