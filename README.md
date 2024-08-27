@@ -21,6 +21,7 @@ Feel free to try it here: https://vault-developer.github.io/event-loop-explorer/
   Async/await, complex Promises, SetInterval, assignment operators will not work as expected.
 - Render phase is usually triggered every 16.66ms (60fps), but in this project it is simplified to just every second Event Loop circle.
   We are counting every circle as 360ms for simplicity, so render phase is triggered every 720ms.
+- UI is not mobile-friendly, please use desktop devices only.
 
 ### Contribution:
 
