@@ -31,12 +31,8 @@
 - Add animation for lists
 - Add pictures for info and (maybe) animation
 
-### TODO:
+### TODO before making repo public:
 
-Before release:
-
-- Add commitizen
-- Squash commits
-- add releases
-- deploy
+- add semantic-release https://github.com/semantic-release/semantic-release/blob/master/docs/usage/getting-started.md
 - update readme
+- deploy to gh-pages or vercel
