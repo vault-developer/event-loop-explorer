@@ -9,6 +9,9 @@ It visualizes the Call Stack, Web APIs, Tasks, Microtasks, and Render phase.
 
 ![event-loop](https://github.com/user-attachments/assets/9345e735-6a3e-4dd0-b10a-397ba7cc5969)
 
+### Demo:
+
+Feel free to try it here: https://vault-developer.github.io/event-loop-explorer/
 
 ### Known limitations & simplifications:
 
@@ -39,7 +42,6 @@ yarn dev
 
 ### Future Plans:
 
-- [ ] deploy to gh-pages or vercel;
 - [ ] add badges to the readme;
 - [ ] clean up the code, remove todos;
 - [ ] highlight debug line in editor;
