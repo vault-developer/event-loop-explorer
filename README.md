@@ -6,6 +6,7 @@ Event Loop Explorer is a tool that helps to understand how JavaScript code is ex
 It visualizes the Call Stack, Web APIs, Tasks, Microtasks, and Render phase.
 
 ### Screenshots:
+![event-loop-screenshot](https://github.com/user-attachments/assets/bf81c764-f96a-41ec-b5f8-68e014074a7f)
 
 ### Known limitations & simplifications:
 
