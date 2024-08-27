@@ -1,5 +1,6 @@
 export default {
 	branches: ['master'],
+	repositoryUrl: 'https://github.com/vault-developer/event-loop-explorer',
 	plugins: [
 		'@semantic-release/commit-analyzer',
 		'@semantic-release/release-notes-generator',
