@@ -1,30 +1,42 @@
-# React + TypeScript + Vite
+# Event Loop Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Known limitations & simplifications:
 
-Currently, two official plugins are available:
+1. Javascript code is parsed to AST using acorn parser, and then order of events are generated.
+   All default examples are working as expected, you can try to modify the code and see how it is working.
+   However, not all cases are covered.
+   Async/await, complex Promises, SetInterval, assignment operators will not work as expected.
+   If you would like to make it better, feel free to create PR to the project.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. Render phase is usually triggered every 16.66ms (60fps), but in this project it is simplified to just every seconds Event Loop circle.
+   We are counting every circle as 360ms for simplicity, so render phase is triggered every 720ms.
 
-## Expanding the ESLint configuration
+### Inspired by:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- https://www.jsv9000.app/
+- http://latentflip.com/loupe
+- https://www.youtube.com/watch?v=cCOL7MC4Pl0
+- https://www.youtube.com/watch?v=eiC58R16hb8&t=160s
 
-- Configure the top-level `parserOptions` property like this:
+### Next steps:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- clean up the code
+- debug line in editor
+- code validation syntax https://github.com/ajaxorg/ace/wiki/Syntax-validation
+- Add tests
+- Add possibility to pause execution
+- Replace styled components with emotion
+- Gamification (achievements)
+- Check js parsing edge cases
+- Add animation for lists
+- Add pictures for info and (maybe) animation
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### TODO:
+
+Before release:
+
+- Add commitizen
+- Squash commits
+- add releases
+- deploy
+- update readme

@@ -1,37 +1,67 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import EventLoop from "./components/EventLoop.tsx";
+import EventLoop from './components/EventLoop/EventLoop.tsx';
+import Editor from './components/Editor/Editor.tsx';
+import TasksQueue from './components/TasksQueue/TasksQueue.tsx';
+import Console from './components/Console/Console.tsx';
+import CallStack from './components/Callstack/Callstack.tsx';
+import MicroTasksQueue from './components/MicroTasksQueue/MicroTasksQueue.tsx';
+import RequestAnimationFrameQueue from './components/RenderCallbacksQueue/RequestAnimationFrameQueue.tsx';
+import WebApiQueue from './components/WebApiQueue/WebApiQueue.tsx';
+import StylesProvider from './providers/StylesProvider.tsx';
+import * as Styled from './App.styled.ts';
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <EventLoop />
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<StylesProvider>
+			<Styled.Layout>
+				<Styled.Info>
+					<h2>Event Loop Explorer</h2>
+					<p>
+						If you enjoy this project, please ⭐ it on{' '}
+						<a
+							href="https://github.com/vault-developer/event-loop-explorer"
+							target="_blank"
+						>
+							GitHub
+						</a>
+						!
+					</p>
+				</Styled.Info>
+				<Styled.Editor>
+					<Editor />
+				</Styled.Editor>
+				<Styled.WebApi>
+					<span>Web api</span>
+					<WebApiQueue />
+				</Styled.WebApi>
+				<Styled.RenderCallbacks>
+					<span>RequestAnimationFrame callbacks</span>
+					<RequestAnimationFrameQueue />
+				</Styled.RenderCallbacks>
+				<Styled.CallStack>
+					<span>CallStack</span>
+					<CallStack />
+				</Styled.CallStack>
+				<Styled.Console>
+					<span>Console</span>
+					<Console />
+				</Styled.Console>
+				<Styled.Tasks>
+					<span>Tasks Queue</span>
+					<TasksQueue />
+				</Styled.Tasks>
+				<Styled.Microtasks>
+					<span>Microtasks Queue</span>
+					<MicroTasksQueue />
+				</Styled.Microtasks>
+				<Styled.EventLoop>
+					<p>Event Loop</p>
+					<Styled.EventLoopBody>
+						<EventLoop />
+					</Styled.EventLoopBody>
+				</Styled.EventLoop>
+			</Styled.Layout>
+		</StylesProvider>
+	);
 }
 
-export default App
+export default App;
