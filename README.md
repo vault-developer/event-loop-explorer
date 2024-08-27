@@ -7,7 +7,8 @@ It visualizes the Call Stack, Web APIs, Tasks, Microtasks, and Render phase.
 
 ### Screenshots:
 
-![event-loop-screenshot](https://github.com/user-attachments/assets/bf81c764-f96a-41ec-b5f8-68e014074a7f)
+![event-loop](https://github.com/user-attachments/assets/9345e735-6a3e-4dd0-b10a-397ba7cc5969)
+
 
 ### Known limitations & simplifications:
 
