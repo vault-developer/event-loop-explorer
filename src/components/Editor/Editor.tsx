@@ -130,6 +130,7 @@ function EditorComponent() {
 					theme="solarized_dark"
 					setOptions={{
 						useWorker: false,
+						readOnly: enabled,
 					}}
 					showPrintMargin={false}
 					fontSize={14}
