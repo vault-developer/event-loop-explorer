@@ -34,6 +34,5 @@
 
 ### TODO before making repo public:
 
-- add semantic-release https://github.com/semantic-release/semantic-release/blob/master/docs/usage/getting-started.md
 - update readme
 - deploy to gh-pages or vercel
