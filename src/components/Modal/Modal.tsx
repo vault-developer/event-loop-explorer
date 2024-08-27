@@ -23,6 +23,7 @@ function InfoModal({
 			onClose={onClose}
 			sx={{
 				'&.MuiModal-root': {
+					lineHeight: 1.5,
 					backdropFilter: 'blur(5px)',
 					backgroundColor: 'rgba(0, 0, 0, 0.2)',
 				},

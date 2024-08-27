@@ -74,7 +74,6 @@ const GlobalStyles = createGlobalStyle(
   div, span, p {
       font-size: 14px;
       margin: 0;
-      line-height: 1.5;
   }
 
   ul, ol {
