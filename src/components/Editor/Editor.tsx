@@ -35,8 +35,14 @@ function EditorComponent() {
 	const onSelect = (e: SelectChangeEvent) => {
 		const example = e.target.value;
 		const code = codeByTitle[example];
+		onStop();
 		setText(code);
 		setExample(example);
+	};
+
+	const onStop = () => {
+		clearAnimationState();
+		eventListsStateClear();
 	};
 
 	const onRun = () => {
@@ -109,10 +115,7 @@ function EditorComponent() {
 					<Button
 						variant="contained"
 						style={{ minWidth: 120 }}
-						onClick={() => {
-							clearAnimationState();
-							eventListsStateClear();
-						}}
+						onClick={onStop}
 					>
 						stop
 					</Button>
