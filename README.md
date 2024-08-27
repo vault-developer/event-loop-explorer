@@ -30,6 +30,7 @@
 - Check js parsing edge cases
 - Add animation for lists
 - Add pictures for info and (maybe) animation
+- Animation inside event loop
 
 ### TODO before making repo public:
 

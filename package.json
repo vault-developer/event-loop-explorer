@@ -36,6 +36,8 @@
 	},
 	"devDependencies": {
 		"@commitlint/config-conventional": "^19.2.2",
+		"@semantic-release/changelog": "^6.0.3",
+		"@semantic-release/git": "^10.0.1",
 		"@types/react": "^18.3.4",
 		"@types/react-dom": "^18.3.0",
 		"@typescript-eslint/eslint-plugin": "^8.2.0",
@@ -51,6 +53,7 @@
 		"husky": "^9.1.5",
 		"lint-staged": "^15.2.9",
 		"prettier": "^3.3.3",
+		"semantic-release": "^24.1.0",
 		"typescript": "^5.5.4",
 		"vite": "^5.4.2"
 	},
