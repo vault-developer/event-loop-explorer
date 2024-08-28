@@ -91,7 +91,6 @@ const GlobalStyles = createGlobalStyle(
   body {
       margin: 0;
       display: flex;
-      place-items: center;
       height: 100%;
   }
 

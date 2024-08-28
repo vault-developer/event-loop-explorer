@@ -1,16 +1,14 @@
 ## [1.0.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.0.2...v1.0.3) (2024-08-27)
 
-
 ### Bug Fixes
 
-* disable editor when animation is running ([d9bf803](https://github.com/vault-developer/event-loop-explorer/commit/d9bf8033722e922e1a36fff40147daa63159323c))
+- disable editor when animation is running ([d9bf803](https://github.com/vault-developer/event-loop-explorer/commit/d9bf8033722e922e1a36fff40147daa63159323c))
 
 ## [1.0.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.0.1...v1.0.2) (2024-08-27)
 
-
 ### Bug Fixes
 
-* stop animation when new sample is selected ([8a18b0f](https://github.com/vault-developer/event-loop-explorer/commit/8a18b0f8d95497e5bd0250835749fef6eb7320b9))
+- stop animation when new sample is selected ([8a18b0f](https://github.com/vault-developer/event-loop-explorer/commit/8a18b0f8d95497e5bd0250835749fef6eb7320b9))
 
 ## [1.0.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.0.0...v1.0.1) (2024-08-27)
 

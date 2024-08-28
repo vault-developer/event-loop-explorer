@@ -43,7 +43,6 @@ yarn dev
 
 ### Future Plans:
 
-- [ ] top padding is missing in mobile version;
 - [ ] circle animation is lugging;
 - [ ] highlight debug line in editor;
 - [ ] add possibility to pause execution;
