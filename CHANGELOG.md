@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/vault-developer/event-loop-explorer/compare/v1.0.3...v1.0.4) (2024-08-28)
+
+
+### Bug Fixes
+
+* fix styles issue on mobile ([7a54d4b](https://github.com/vault-developer/event-loop-explorer/commit/7a54d4bcf6a7c0c51008b9286093d7ba4fb97096))
+
 ## [1.0.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.0.2...v1.0.3) (2024-08-27)
 
 ### Bug Fixes
