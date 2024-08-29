@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.1.0...v1.2.0) (2024-08-29)
+
+
+### Features
+
+* add pause feature ([97b3e47](https://github.com/vault-developer/event-loop-explorer/commit/97b3e470b221a0387f4e8070f06f549e15abe858))
+
 # [1.1.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.0.4...v1.1.0) (2024-08-29)
 
 
