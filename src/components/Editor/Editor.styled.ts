@@ -1,10 +1,22 @@
 import styled from 'styled-components';
 import { css } from '@mui/material';
+import Button from '@mui/material/Button';
 
 export const SectionWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+`;
+
+export const SliderWrapper = styled.div`
+	flex: 1;
+	flex-direction: column;
+	max-width: 200px;
+	padding-top: 16px;
+`;
+
+export const CTAButton = styled(Button)`
+	min-width: 120px;
 `;
 
 export const ControlsWrapper = styled.div`
@@ -14,6 +26,7 @@ export const ControlsWrapper = styled.div`
 	gap: 40px;
 	margin-left: 20px;
 	margin-right: 20px;
+	min-height: 80px;
 `;
 
 export const EditorWrapper = styled.div(

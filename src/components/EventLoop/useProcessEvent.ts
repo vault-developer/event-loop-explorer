@@ -1,11 +1,16 @@
 import { EventInterface } from './EventLoop.types.ts';
-import { useEventLists, useEventLoopAnimation } from '../../store/store.ts';
+import {
+	useEventLists,
+	useEventLoopAnimation,
+	useSpeedFactor,
+} from '../../store/store.ts';
 import { MutableRefObject, useCallback } from 'react';
 import { nodeFactory } from '../../utils/nodes/factory.ts';
 import { ArrowFunctionExpression } from 'acorn';
 import {
 	EventListsInterface,
 	EventLoopAnimationInterface,
+	SpeedFactorInterface,
 } from '../../store/store.types.ts';
 import useRefState from '../../utils/useRefState.tsx';
 
@@ -14,9 +19,14 @@ const DELAY_BETWEEN_ACTIONS_MS = 1000;
 interface ProcessProps {
 	eventListRef: MutableRefObject<EventListsInterface>;
 	animationRef: MutableRefObject<EventLoopAnimationInterface>;
+	speedFactorRef: MutableRefObject<SpeedFactorInterface['speed']>;
 }
 
-const processTask = async ({ eventListRef, animationRef }: ProcessProps) => {
+const processTask = async ({
+	eventListRef,
+	animationRef,
+	speedFactorRef,
+}: ProcessProps) => {
 	const node = eventListRef.current.task_queue[0];
 	eventListRef.current.set({ list: 'task_queue', type: 'shift' });
 
@@ -34,7 +44,7 @@ const processTask = async ({ eventListRef, animationRef }: ProcessProps) => {
 				value: step.value,
 			});
 			await new Promise((resolve) =>
-				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS)
+				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS / speedFactorRef.current)
 			);
 		}
 	} else {
@@ -58,7 +68,7 @@ const processTask = async ({ eventListRef, animationRef }: ProcessProps) => {
 				value: step.value,
 			});
 			await new Promise((resolve) =>
-				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS)
+				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS / speedFactorRef.current)
 			);
 		}
 	}
@@ -70,6 +80,7 @@ const processTask = async ({ eventListRef, animationRef }: ProcessProps) => {
 const processMicroTask = async ({
 	eventListRef,
 	animationRef,
+	speedFactorRef,
 }: ProcessProps) => {
 	while (eventListRef.current.microtask_queue.length) {
 		const node = eventListRef.current.microtask_queue[0];
@@ -95,17 +106,21 @@ const processMicroTask = async ({
 				value: step.value,
 			});
 			await new Promise((resolve) =>
-				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS)
+				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS / speedFactorRef.current)
 			);
 		}
 	}
 	animationRef.current.setState(false, 'microtask');
 };
 
-const processRender = async ({ eventListRef, animationRef }: ProcessProps) => {
+const processRender = async ({
+	eventListRef,
+	animationRef,
+	speedFactorRef,
+}: ProcessProps) => {
 	if (eventListRef.current.render_callbacks.length === 0) {
 		await new Promise((resolve) =>
-			setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS)
+			setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS / speedFactorRef.current)
 		);
 	}
 
@@ -113,7 +128,7 @@ const processRender = async ({ eventListRef, animationRef }: ProcessProps) => {
 		const node = eventListRef.current.render_callbacks[0];
 		if (!node) {
 			await new Promise((resolve) =>
-				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS)
+				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS / speedFactorRef.current)
 			);
 			animationRef.current.setState(false, 'render');
 			return;
@@ -139,7 +154,7 @@ const processRender = async ({ eventListRef, animationRef }: ProcessProps) => {
 				value: step.value,
 			});
 			await new Promise((resolve) =>
-				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS)
+				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS / speedFactorRef.current)
 			);
 		}
 	}
@@ -149,15 +164,16 @@ const processRender = async ({ eventListRef, animationRef }: ProcessProps) => {
 export const useProcessEvent = () => {
 	const eventListRef = useRefState(useEventLists, (state) => state);
 	const animationRef = useRefState(useEventLoopAnimation, (state) => state);
+	const speedFactorRef = useRefState(useSpeedFactor, (state) => state.speed);
 
 	return useCallback(
 		async (type: EventInterface['type']) => {
 			if (type === 'task') {
-				await processTask({ eventListRef, animationRef });
+				await processTask({ eventListRef, animationRef, speedFactorRef });
 			} else if (type === 'microtask') {
-				await processMicroTask({ eventListRef, animationRef });
+				await processMicroTask({ eventListRef, animationRef, speedFactorRef });
 			} else if (type === 'render') {
-				await processRender({ eventListRef, animationRef });
+				await processRender({ eventListRef, animationRef, speedFactorRef });
 			}
 		},
 		[eventListRef, animationRef]

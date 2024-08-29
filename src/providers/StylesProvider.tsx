@@ -22,6 +22,31 @@ const muiTheme = createTheme({
 				},
 			},
 		},
+		MuiMenu: {
+			styleOverrides: {
+				list: {
+					backgroundColor: '#35495a',
+				},
+			},
+		},
+		MuiSelect: {
+			styleOverrides: {
+				root: {
+					'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+						borderColor: 'gray',
+					},
+				},
+			},
+		},
+		MuiInputLabel: {
+			styleOverrides: {
+				root: {
+					'&.Mui-focused': {
+						color: 'gray',
+					},
+				},
+			},
+		},
 	},
 });
 

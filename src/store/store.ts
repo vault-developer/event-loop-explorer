@@ -3,7 +3,13 @@ import {
 	EventListsInterface,
 	EventLoopAnimationInterface,
 	EventLoopTimeInterface,
+	SpeedFactorInterface,
 } from './store.types.ts';
+
+export const useSpeedFactor = create<SpeedFactorInterface>((set) => ({
+	speed: 1,
+	setSpeed: (speed) => set(() => ({ speed })),
+}));
 
 export const useEventLoopTime = create<EventLoopTimeInterface>((set) => ({
 	time: 0,

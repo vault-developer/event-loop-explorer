@@ -40,3 +40,8 @@ export interface EventListsInterface {
 	set({ list, type, value }: ActionInterface): void;
 	clear(): void;
 }
+
+export interface SpeedFactorInterface {
+	speed: number;
+	setSpeed(key: number): void;
+}
