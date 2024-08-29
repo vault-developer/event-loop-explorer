@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.0.4...v1.1.0) (2024-08-29)
+
+
+### Features
+
+* add speed feature ([2c44970](https://github.com/vault-developer/event-loop-explorer/commit/2c4497086c5a4f2971600d0c1364905fdf81d791))
+
 ## [1.0.4](https://github.com/vault-developer/event-loop-explorer/compare/v1.0.3...v1.0.4) (2024-08-28)
 
 
