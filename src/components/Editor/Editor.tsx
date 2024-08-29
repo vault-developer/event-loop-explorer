@@ -33,7 +33,7 @@ function EditorComponent() {
 	const eventListsStateClear = useEventLists((state) => state.clear);
 	const clearAnimationState = useEventLoopAnimation((state) => state.clear);
 	const setAnimationState = useEventLoopAnimation((state) => state.setState);
-	const enabled = useEventLoopAnimation((state) => state.enabled);
+	const status = useEventLoopAnimation((state) => state.status);
 	const [example, setExample] = useState(codeExamples[0].title);
 	const speedFactorState = useSpeedFactor((state) => state);
 
@@ -49,6 +49,14 @@ function EditorComponent() {
 		eventListsStateClear();
 	};
 
+	const onPause = () => {
+		setAnimationState('paused', 'status');
+	};
+
+	const onResume = () => {
+		setAnimationState('running', 'status');
+	};
+
 	const onRun = () => {
 		clearAnimationState();
 		eventListsStateClear();
@@ -58,7 +66,7 @@ function EditorComponent() {
 			type: 'push',
 			value: script,
 		});
-		setAnimationState(true, 'enabled');
+		setAnimationState('running', 'status');
 	};
 
 	const onSpeedChange = (_: Event, value: number | number[]) => {
@@ -75,7 +83,7 @@ function EditorComponent() {
 	return (
 		<Styled.SectionWrapper>
 			<Styled.ControlsWrapper>
-				{!enabled && (
+				{status === 'disabled' && (
 					<>
 						<Styled.SelectWrapper>
 							<FormControl>
@@ -102,7 +110,7 @@ function EditorComponent() {
 						</Styled.CTAButton>
 					</>
 				)}
-				{enabled && (
+				{status !== 'disabled' && (
 					<>
 						<Styled.SliderWrapper>
 							<div id="non-linear-slider">
@@ -120,10 +128,23 @@ function EditorComponent() {
 								max={3}
 							/>
 						</Styled.SliderWrapper>
+						<Styled.ButtonsWrapper>
+							<Styled.CTAButton variant="contained" onClick={onStop}>
+								stop
+							</Styled.CTAButton>
 
-						<Styled.CTAButton variant="contained" onClick={onStop}>
-							stop
-						</Styled.CTAButton>
+							{status === 'paused' && (
+								<Styled.CTAButton variant="contained" onClick={onResume}>
+									resume
+								</Styled.CTAButton>
+							)}
+
+							{status === 'running' && (
+								<Styled.CTAButton variant="contained" onClick={onPause}>
+									pause
+								</Styled.CTAButton>
+							)}
+						</Styled.ButtonsWrapper>
 					</>
 				)}
 			</Styled.ControlsWrapper>
@@ -136,7 +157,7 @@ function EditorComponent() {
 					theme="solarized_dark"
 					setOptions={{
 						useWorker: false,
-						readOnly: enabled,
+						readOnly: status !== 'disabled',
 					}}
 					showPrintMargin={false}
 					fontSize={14}

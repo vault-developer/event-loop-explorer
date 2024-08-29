@@ -19,11 +19,16 @@ export const CTAButton = styled(Button)`
 	min-width: 120px;
 `;
 
+export const ButtonsWrapper = styled.div`
+	display: flex;
+	gap: 8px;
+`;
+
 export const ControlsWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 40px;
+	gap: 20px;
 	margin-left: 20px;
 	margin-right: 20px;
 	min-height: 80px;

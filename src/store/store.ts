@@ -21,13 +21,13 @@ export const useEventLoopAnimation = create<EventLoopAnimationInterface>(
 		render: false,
 		task: false,
 		microtask: false,
-		enabled: false,
+		status: 'disabled',
 		clear: () =>
 			set(() => ({
 				render: false,
 				task: false,
 				microtask: false,
-				enabled: false,
+				status: 'disabled',
 			})),
 		setState: (value, property) => {
 			set(() => ({

@@ -1,14 +1,18 @@
 import { NodeClass } from '../utils/nodes/Node.abstract.ts';
 
-type EventLoopStateValuesType = 'render' | 'task' | 'microtask' | 'enabled';
+type EventLoopStateValuesType = 'render' | 'task' | 'microtask' | 'status';
+type EventLoopAnimationStatusType = 'running' | 'paused' | 'disabled';
 
 export interface EventLoopAnimationInterface {
 	render: boolean;
 	task: boolean;
 	microtask: boolean;
-	enabled: boolean;
+	status: EventLoopAnimationStatusType;
 	clear(): void;
-	setState(value: boolean, property: EventLoopStateValuesType): void;
+	setState(
+		value: boolean | EventLoopAnimationStatusType,
+		property: EventLoopStateValuesType
+	): void;
 }
 
 export interface EventLoopTimeInterface {

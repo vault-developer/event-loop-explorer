@@ -43,9 +43,9 @@ yarn dev
 
 ### Future Plans:
 
-- [ ] circle animation is lugging;
+- [ ] add icons to CTAs in the editor;
 - [ ] highlight debug line in editor;
-- [ ] add possibility to pause execution;
+- [ ] circle animation is lugging;
 - [ ] add badges to the readme;
 - [ ] clean up the code, remove todos;
 - [ ] add [code validation syntax](https://github.com/ajaxorg/ace/wiki/Syntax-validation);

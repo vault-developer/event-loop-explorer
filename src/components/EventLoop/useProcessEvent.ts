@@ -37,7 +37,10 @@ const processTask = async ({
 		const { actions } = node.context;
 
 		for (const step of actions) {
-			if (!animationRef.current.enabled) return;
+			while (animationRef.current.status === 'paused') {
+				await new Promise((resolve) => setTimeout(resolve, 250));
+			}
+			if (animationRef.current.status === 'disabled') return;
 			eventListRef.current.set({
 				list: step.list,
 				type: step.type,
@@ -62,6 +65,10 @@ const processTask = async ({
 		const { actions } = expression.context;
 
 		for (const step of actions) {
+			while (animationRef.current.status === 'paused') {
+				await new Promise((resolve) => setTimeout(resolve, 250));
+			}
+			if (animationRef.current.status === 'disabled') return;
 			eventListRef.current.set({
 				list: step.list,
 				type: step.type,
@@ -99,7 +106,10 @@ const processMicroTask = async ({
 		const { actions } = expression.context;
 
 		for (const step of actions) {
-			if (!animationRef.current.enabled) return;
+			while (animationRef.current.status === 'paused') {
+				await new Promise((resolve) => setTimeout(resolve, 250));
+			}
+			if (animationRef.current.status === 'disabled') return;
 			eventListRef.current.set({
 				list: step.list,
 				type: step.type,
@@ -147,7 +157,10 @@ const processRender = async ({
 		const { actions } = expression.context;
 
 		for (const step of actions) {
-			if (!animationRef.current.enabled) return;
+			while (animationRef.current.status === 'paused') {
+				await new Promise((resolve) => setTimeout(resolve, 250));
+			}
+			if (animationRef.current.status === 'disabled') return;
 			eventListRef.current.set({
 				list: step.list,
 				type: step.type,
