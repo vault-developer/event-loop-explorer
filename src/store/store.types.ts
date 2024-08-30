@@ -64,6 +64,7 @@ export interface EditorInterface {
 	setSource(source: string): void;
 	pushMarker(range: [number, number]): void;
 	popMarker(): void;
+	clearEditor(): void;
 	clearOldMarkers(): void;
 	drawLatestMarker(): void;
 	markers: [number, number][];

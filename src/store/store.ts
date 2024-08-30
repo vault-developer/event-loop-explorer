@@ -84,6 +84,14 @@ export const useEditor = create<EditorInterface>((set, get) => ({
 	source: '',
 	setSource: (source) => set({ source }),
 	markers: [],
+	clearEditor: () => {
+		const markers = get().markers;
+		if (markers.length > 0) {
+			markers.pop();
+		}
+		get().clearOldMarkers();
+		get().setSource('');
+	},
 	clearOldMarkers: () => {
 		if (!get().ref?.current?.editor) return;
 		const session = get().ref!.current!.editor.getSession();
@@ -108,10 +116,6 @@ export const useEditor = create<EditorInterface>((set, get) => ({
 		session.addMarker(range, 'selected_lines', 'text');
 	},
 	pushMarker: ([start, end]) => {
-		const markers = get().markers;
-		if (markers.length > 0) {
-			markers.pop();
-		}
 		get().markers.push([start, end]);
 		get().clearOldMarkers();
 		get().drawLatestMarker();

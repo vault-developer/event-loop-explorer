@@ -29,16 +29,17 @@ const codeByTitle = codeExamples.reduce(
 );
 
 function EditorComponent() {
-	const [text, setText] = useState(codeExamples[0].code);
+	const [text, setText] = useState(codeExamples[3].code);
 	const eventListsStateSet = useEventLists((state) => state.set);
 	const eventListsStateClear = useEventLists((state) => state.clear);
 	const clearAnimationState = useEventLoopAnimation((state) => state.clear);
 	const setAnimationState = useEventLoopAnimation((state) => state.setState);
 	const status = useEventLoopAnimation((state) => state.status);
-	const [example, setExample] = useState(codeExamples[0].title);
+	const [example, setExample] = useState(codeExamples[3].title);
 	const speedFactorState = useSpeedFactor((state) => state);
 	const setEditorRef = useEditor((state) => state.setRef);
 	const setSourceCode = useEditor((state) => state.setSource);
+	const clearEditor = useEditor((state) => state.clearEditor);
 	const editorRef = useRef<AceEditor>(null);
 
 	const onSelect = (e: SelectChangeEvent) => {
@@ -51,6 +52,7 @@ function EditorComponent() {
 	const onStop = () => {
 		clearAnimationState();
 		eventListsStateClear();
+		clearEditor();
 	};
 
 	const onPause = () => {
