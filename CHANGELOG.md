@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.3.0...v1.3.1) (2024-08-30)
+
+
+### Bug Fixes
+
+* fix marker bug ([6b9a8e1](https://github.com/vault-developer/event-loop-explorer/commit/6b9a8e134d341de85285b2620f53b091374087c9))
+
 # [1.3.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.2.0...v1.3.0) (2024-08-30)
 
 
