@@ -11,7 +11,7 @@ function CallStack() {
 	return (
 		<Styled.Callstack>
 			<InfoIcon onClick={setOpen} />
-			{tasks.map((stack) => (
+			{tasks.map(({ display: stack }) => (
 				<Styled.CallstackElement key={stack}>{stack}</Styled.CallstackElement>
 			))}
 			<InfoModal isOpen={open} onClose={setClose}>
