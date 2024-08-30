@@ -44,7 +44,8 @@ yarn dev
 ### Future Plans:
 
 - [ ] add icons to CTAs in the editor;
-- [ ] highlight debug line in editor;
+- [ ] throw error if not implemented node is used;
+- [ ] handle `new Promise((res) => {res(console.log(4))})`;
 - [ ] circle animation is lugging;
 - [ ] add badges to the readme;
 - [ ] clean up the code, remove todos;

@@ -106,9 +106,12 @@ export const useEditor = create<EditorInterface>((set, get) => ({
 
 		const range = new Range(start.row, start.column, end.row, end.column);
 		session.addMarker(range, 'selected_lines', 'text');
-		console.log('drawLatestMarker');
 	},
 	pushMarker: ([start, end]) => {
+		const markers = get().markers;
+		if (markers.length > 0) {
+			markers.pop();
+		}
 		get().markers.push([start, end]);
 		get().clearOldMarkers();
 		get().drawLatestMarker();
@@ -116,6 +119,5 @@ export const useEditor = create<EditorInterface>((set, get) => ({
 	popMarker: () => {
 		get().markers.pop();
 		get().clearOldMarkers();
-		get().drawLatestMarker();
 	},
 }));
