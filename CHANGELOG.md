@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.2.0...v1.3.0) (2024-08-30)
+
+
+### Features
+
+* add debug line functionality ([fa77356](https://github.com/vault-developer/event-loop-explorer/commit/fa77356f8984922eb062d7c9e2528d411092843c))
+* add selected line ([edcb8ea](https://github.com/vault-developer/event-loop-explorer/commit/edcb8ea879676014e4c7b83ee897b164be6b0766))
+
 # [1.2.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.1.0...v1.2.0) (2024-08-29)
 
 ### Features
