@@ -1,10 +1,11 @@
 import AceEditor from 'react-ace';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-solarized_dark';
 import { codeExamples } from './Editor.data.tsx';
 import { parse } from '../../utils/parse.ts';
 import {
+	useEditor,
 	useEventLists,
 	useEventLoopAnimation,
 	useSpeedFactor,
@@ -36,6 +37,9 @@ function EditorComponent() {
 	const status = useEventLoopAnimation((state) => state.status);
 	const [example, setExample] = useState(codeExamples[0].title);
 	const speedFactorState = useSpeedFactor((state) => state);
+	const setEditorRef = useEditor((state) => state.setRef);
+	const setSourceCode = useEditor((state) => state.setSource);
+	const editorRef = useRef<AceEditor>(null);
 
 	const onSelect = (e: SelectChangeEvent) => {
 		const example = e.target.value;
@@ -61,6 +65,7 @@ function EditorComponent() {
 		clearAnimationState();
 		eventListsStateClear();
 		const script = parse(text);
+		setSourceCode(text);
 		eventListsStateSet({
 			list: 'task_queue',
 			type: 'push',
@@ -79,6 +84,12 @@ function EditorComponent() {
 		speedFactorState.speed >= 1
 			? speedFactorState.speed - 1
 			: 1 - 1 / speedFactorState.speed;
+
+	useEffect(() => {
+		if (editorRef.current) {
+			setEditorRef(editorRef);
+		}
+	}, []);
 
 	return (
 		<Styled.SectionWrapper>
@@ -150,6 +161,7 @@ function EditorComponent() {
 			</Styled.ControlsWrapper>
 			<Styled.EditorWrapper>
 				<AceEditor
+					ref={editorRef}
 					width={'100%'}
 					value={text}
 					height={'100%'}

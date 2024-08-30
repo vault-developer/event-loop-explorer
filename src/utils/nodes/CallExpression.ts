@@ -39,7 +39,13 @@ export class CallExpressionClass extends NodeClass {
 		this.context.actions.push({
 			list: 'callstack',
 			type: 'push',
-			value: this.serialize(),
+			value: {
+				display: this.serialize(),
+				range: {
+					start: node.start,
+					end: node.end,
+				},
+			},
 		});
 		callee.traverse();
 		this.context.actions.push({

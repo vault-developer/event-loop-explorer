@@ -1,5 +1,6 @@
 import { EventInterface } from './EventLoop.types.ts';
 import {
+	useEditor,
 	useEventLists,
 	useEventLoopAnimation,
 	useSpeedFactor,
@@ -8,6 +9,8 @@ import { MutableRefObject, useCallback } from 'react';
 import { nodeFactory } from '../../utils/nodes/factory.ts';
 import { ArrowFunctionExpression } from 'acorn';
 import {
+	ActionInterface,
+	CallStackValue,
 	EventListsInterface,
 	EventLoopAnimationInterface,
 	SpeedFactorInterface,
@@ -37,18 +40,7 @@ const processTask = async ({
 		const { actions } = node.context;
 
 		for (const step of actions) {
-			while (animationRef.current.status === 'paused') {
-				await new Promise((resolve) => setTimeout(resolve, 250));
-			}
-			if (animationRef.current.status === 'disabled') return;
-			eventListRef.current.set({
-				list: step.list,
-				type: step.type,
-				value: step.value,
-			});
-			await new Promise((resolve) =>
-				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS / speedFactorRef.current)
-			);
+			await handleStep({ eventListRef, step, speedFactorRef, animationRef });
 		}
 	} else {
 		// manage callbacks
@@ -65,18 +57,7 @@ const processTask = async ({
 		const { actions } = expression.context;
 
 		for (const step of actions) {
-			while (animationRef.current.status === 'paused') {
-				await new Promise((resolve) => setTimeout(resolve, 250));
-			}
-			if (animationRef.current.status === 'disabled') return;
-			eventListRef.current.set({
-				list: step.list,
-				type: step.type,
-				value: step.value,
-			});
-			await new Promise((resolve) =>
-				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS / speedFactorRef.current)
-			);
+			await handleStep({ eventListRef, step, speedFactorRef, animationRef });
 		}
 	}
 
@@ -106,18 +87,7 @@ const processMicroTask = async ({
 		const { actions } = expression.context;
 
 		for (const step of actions) {
-			while (animationRef.current.status === 'paused') {
-				await new Promise((resolve) => setTimeout(resolve, 250));
-			}
-			if (animationRef.current.status === 'disabled') return;
-			eventListRef.current.set({
-				list: step.list,
-				type: step.type,
-				value: step.value,
-			});
-			await new Promise((resolve) =>
-				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS / speedFactorRef.current)
-			);
+			await handleStep({ eventListRef, step, speedFactorRef, animationRef });
 		}
 	}
 	animationRef.current.setState(false, 'microtask');
@@ -157,18 +127,7 @@ const processRender = async ({
 		const { actions } = expression.context;
 
 		for (const step of actions) {
-			while (animationRef.current.status === 'paused') {
-				await new Promise((resolve) => setTimeout(resolve, 250));
-			}
-			if (animationRef.current.status === 'disabled') return;
-			eventListRef.current.set({
-				list: step.list,
-				type: step.type,
-				value: step.value,
-			});
-			await new Promise((resolve) =>
-				setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS / speedFactorRef.current)
-			);
+			await handleStep({ eventListRef, step, speedFactorRef, animationRef });
 		}
 	}
 	animationRef.current.setState(false, 'render');
@@ -190,5 +149,40 @@ export const useProcessEvent = () => {
 			}
 		},
 		[eventListRef, animationRef]
+	);
+};
+
+export const handleStep = async ({
+	eventListRef,
+	step,
+	speedFactorRef,
+	animationRef,
+}: {
+	eventListRef: MutableRefObject<EventListsInterface>;
+	speedFactorRef: MutableRefObject<number>;
+	animationRef: MutableRefObject<EventLoopAnimationInterface>;
+	step: ActionInterface;
+}) => {
+	while (animationRef.current.status === 'paused') {
+		await new Promise((resolve) => setTimeout(resolve, 250));
+	}
+	if (animationRef.current.status === 'disabled') return;
+
+	if (step.type === 'push' && step.list === 'callstack') {
+		const range = (step.value as CallStackValue).range;
+		useEditor.getState().pushMarker([range.start, range.end]);
+	}
+
+	if (step.type === 'pop' && step.list === 'callstack') {
+		useEditor.getState().popMarker();
+	}
+
+	eventListRef.current.set({
+		list: step.list,
+		type: step.type,
+		value: step.value,
+	});
+	await new Promise((resolve) =>
+		setTimeout(resolve, DELAY_BETWEEN_ACTIONS_MS / speedFactorRef.current)
 	);
 };

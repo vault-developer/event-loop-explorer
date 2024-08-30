@@ -1,10 +1,13 @@
 import { create } from 'zustand';
 import {
+	EditorInterface,
 	EventListsInterface,
 	EventLoopAnimationInterface,
 	EventLoopTimeInterface,
 	SpeedFactorInterface,
 } from './store.types.ts';
+import { indexToRowColumn } from '../utils/editor.ts';
+import { Range } from 'ace-builds';
 
 export const useSpeedFactor = create<SpeedFactorInterface>((set) => ({
 	speed: 1,
@@ -73,4 +76,48 @@ export const useEventLists = create<EventListsInterface>((set) => ({
 					return state;
 			}
 		}),
+}));
+
+export const useEditor = create<EditorInterface>((set, get) => ({
+	ref: null,
+	setRef: (ref) => set({ ref }),
+	source: '',
+	setSource: (source) => set({ source }),
+	markers: [],
+	clearOldMarkers: () => {
+		if (!get().ref?.current?.editor) return;
+		const session = get().ref!.current!.editor.getSession();
+		session.clearAnnotations();
+		const markers = session.getMarkers();
+		for (const id in markers) {
+			session.removeMarker(id as unknown as number);
+		}
+	},
+	drawLatestMarker: () => {
+		if (!get().ref?.current?.editor) return;
+		const markers = get().markers;
+		const latest = markers[markers.length - 1];
+		if (!latest) return;
+		const session = get().ref!.current!.editor.getSession();
+
+		const code = get().source;
+		const start = indexToRowColumn(code, latest[0]);
+		const end = indexToRowColumn(code, latest[1]);
+
+		const range = new Range(start.row, start.column, end.row, end.column);
+		session.addMarker(range, 'selected_lines', 'text');
+	},
+	pushMarker: ([start, end]) => {
+		const markers = get().markers;
+		if (markers.length > 0) {
+			markers.pop();
+		}
+		get().markers.push([start, end]);
+		get().clearOldMarkers();
+		get().drawLatestMarker();
+	},
+	popMarker: () => {
+		get().markers.pop();
+		get().clearOldMarkers();
+	},
 }));

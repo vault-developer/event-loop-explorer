@@ -1,23 +1,20 @@
 # [1.2.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.1.0...v1.2.0) (2024-08-29)
 
-
 ### Features
 
-* add pause feature ([97b3e47](https://github.com/vault-developer/event-loop-explorer/commit/97b3e470b221a0387f4e8070f06f549e15abe858))
+- add pause feature ([97b3e47](https://github.com/vault-developer/event-loop-explorer/commit/97b3e470b221a0387f4e8070f06f549e15abe858))
 
 # [1.1.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.0.4...v1.1.0) (2024-08-29)
 
-
 ### Features
 
-* add speed feature ([2c44970](https://github.com/vault-developer/event-loop-explorer/commit/2c4497086c5a4f2971600d0c1364905fdf81d791))
+- add speed feature ([2c44970](https://github.com/vault-developer/event-loop-explorer/commit/2c4497086c5a4f2971600d0c1364905fdf81d791))
 
 ## [1.0.4](https://github.com/vault-developer/event-loop-explorer/compare/v1.0.3...v1.0.4) (2024-08-28)
 
-
 ### Bug Fixes
 
-* fix styles issue on mobile ([7a54d4b](https://github.com/vault-developer/event-loop-explorer/commit/7a54d4bcf6a7c0c51008b9286093d7ba4fb97096))
+- fix styles issue on mobile ([7a54d4b](https://github.com/vault-developer/event-loop-explorer/commit/7a54d4bcf6a7c0c51008b9286093d7ba4fb97096))
 
 ## [1.0.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.0.2...v1.0.3) (2024-08-27)
 
