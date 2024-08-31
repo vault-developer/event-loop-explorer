@@ -43,7 +43,6 @@ yarn dev
 
 ### Future Plans:
 
-- [ ] add icons to CTAs in the editor;
 - [ ] throw error if not implemented node is used;
 - [ ] handle `new Promise((res) => {res(console.log(4))})`;
 - [ ] circle animation is lugging;

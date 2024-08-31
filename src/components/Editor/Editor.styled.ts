@@ -16,7 +16,11 @@ export const SliderWrapper = styled.div`
 `;
 
 export const CTAButton = styled(Button)`
-	min-width: 120px;
+	display: flex;
+	gap: 2px;
+	align-items: center;
+	min-width: 100px;
+	padding: 6px;
 `;
 
 export const ButtonsWrapper = styled.div`

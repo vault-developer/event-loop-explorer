@@ -19,6 +19,9 @@ import {
 	Slider,
 } from '@mui/material';
 import * as Styled from './Editor.styled.ts';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import StopIcon from '@mui/icons-material/Stop';
+import PauseIcon from '@mui/icons-material/Pause';
 
 const codeByTitle = codeExamples.reduce(
 	(acc, { title, code }) => {
@@ -119,7 +122,8 @@ function EditorComponent() {
 							</FormControl>
 						</Styled.SelectWrapper>
 						<Styled.CTAButton variant="contained" onClick={onRun}>
-							run code
+							<PlayArrowIcon />
+							run
 						</Styled.CTAButton>
 					</>
 				)}
@@ -143,17 +147,20 @@ function EditorComponent() {
 						</Styled.SliderWrapper>
 						<Styled.ButtonsWrapper>
 							<Styled.CTAButton variant="contained" onClick={onStop}>
+								<StopIcon />
 								stop
 							</Styled.CTAButton>
 
 							{status === 'paused' && (
 								<Styled.CTAButton variant="contained" onClick={onResume}>
+									<PlayArrowIcon />
 									resume
 								</Styled.CTAButton>
 							)}
 
 							{status === 'running' && (
 								<Styled.CTAButton variant="contained" onClick={onPause}>
+									<PauseIcon />
 									pause
 								</Styled.CTAButton>
 							)}

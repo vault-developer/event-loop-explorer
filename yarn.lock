@@ -206,6 +206,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.25.0":
+  version: 7.25.6
+  resolution: "@babel/runtime@npm:7.25.6"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 10c0/d6143adf5aa1ce79ed374e33fdfd74fa975055a80bc6e479672ab1eadc4e4bfd7484444e17dd063a1d180e051f3ec62b357c7a2b817e7657687b47313158c3d2
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.25.0":
   version: 7.25.0
   resolution: "@babel/template@npm:7.25.0"
@@ -774,6 +783,22 @@ __metadata:
   version: 5.16.7
   resolution: "@mui/core-downloads-tracker@npm:5.16.7"
   checksum: 10c0/4644c850160d01232c1abdbed141e4fa70e155891a9c68f0c2cc3054b4a3cdc1d28cf2d6665366fd8c725b2b091db677e11831552889a4e4e14f1e44450cf654
+  languageName: node
+  linkType: hard
+
+"@mui/icons-material@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "@mui/icons-material@npm:6.0.1"
+  dependencies:
+    "@babel/runtime": "npm:^7.25.0"
+  peerDependencies:
+    "@mui/material": ^6.0.1
+    "@types/react": ^17.0.0 || ^18.0.0 || ^19.0.0
+    react: ^17.0.0 || ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10c0/fac4c194e4ac37f695be7f694cbbd240975326daba2ca24a2c9997e06c9d1bf7bd7fa8d4f0cf08216c4320b97235434eb3661dcce1c70bc0d7c521fd4d0a7b6a
   languageName: node
   linkType: hard
 
@@ -3285,6 +3310,7 @@ __metadata:
     "@eslint/compat": "npm:^1.1.1"
     "@eslint/eslintrc": "npm:^3.1.0"
     "@eslint/js": "npm:^9.9.1"
+    "@mui/icons-material": "npm:^6.0.1"
     "@mui/material": "npm:^5.16.7"
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
     "@mui/styled-engine-sc": "npm:6.0.0-alpha.18"
