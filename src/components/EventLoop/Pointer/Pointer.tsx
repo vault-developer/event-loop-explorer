@@ -32,6 +32,8 @@ function Pointer() {
 	const sectorInnerRef = useRef<HTMLDivElement>(null);
 	const sectorOuterRef = useRef<HTMLDivElement>(null);
 
+	const animationNotIdle = animationStatus !== 'disabled';
+
 	useEffect(() => {
 		const animate = async () => {
 			if (animationRef.current.status === 'disabled') {
@@ -43,8 +45,8 @@ function Pointer() {
 				}
 				return;
 			}
-			if (animationRef.current.status === 'paused') {
-				return;
+			while (animationRef.current.status === 'paused') {
+				await new Promise((resolve) => setTimeout(resolve, 200));
 			}
 			if (sectorInnerRef.current && sectorOuterRef.current) {
 				const angleWithOffset = angleRef.current + 1;
@@ -71,7 +73,7 @@ function Pointer() {
 		};
 
 		animate();
-	}, [animationStatus]);
+	}, [animationNotIdle]);
 
 	return (
 		<>

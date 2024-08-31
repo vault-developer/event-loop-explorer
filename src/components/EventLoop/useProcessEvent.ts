@@ -148,7 +148,7 @@ export const useProcessEvent = () => {
 				await processRender({ eventListRef, animationRef, speedFactorRef });
 			}
 		},
-		[eventListRef, animationRef]
+		[eventListRef, animationRef, speedFactorRef]
 	);
 };
 
@@ -164,7 +164,7 @@ export const handleStep = async ({
 	step: ActionInterface;
 }) => {
 	while (animationRef.current.status === 'paused') {
-		await new Promise((resolve) => setTimeout(resolve, 250));
+		await new Promise((resolve) => setTimeout(resolve, 200));
 	}
 	if (animationRef.current.status === 'disabled') return;
 
