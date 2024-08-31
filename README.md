@@ -49,7 +49,8 @@ yarn dev
 
 ### Future Plans:
 
-- [ ] circle animation is lugging;
+- [ ] fix lugging in circle animation;
+- [ ] make the project mobile friendly (vertical layout, collapsible sections)
 - [ ] clean up the code, remove todos;
 - [ ] add [code validation syntax](https://github.com/ajaxorg/ace/wiki/Syntax-validation);
 - [ ] add unit tests;
@@ -58,6 +59,7 @@ yarn dev
 - [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
 - [ ] add (animated?) pictures to all modals;
 - [ ] add animation inside event loop circle.
+- [ ] support node.js event loop
 
 ### Inspired by:
 
