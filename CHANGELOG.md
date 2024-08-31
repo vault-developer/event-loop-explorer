@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.4.1...v1.5.0) (2024-08-31)
+
+
+### Features
+
+* add animation to lists and queues ([9a66f19](https://github.com/vault-developer/event-loop-explorer/commit/9a66f19471a3ef116ac78804e2e646d4060eaffb))
+
 ## [1.4.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.4.0...v1.4.1) (2024-08-31)
 
 ### Bug Fixes
