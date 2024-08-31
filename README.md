@@ -43,7 +43,6 @@ yarn dev
 
 ### Future Plans:
 
-- [ ] throw error if not implemented node is used;
 - [ ] handle `new Promise((res) => {res(console.log(4))})`;
 - [ ] circle animation is lugging;
 - [ ] add badges to the readme;
