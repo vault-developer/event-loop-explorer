@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.5.0...v1.5.1) (2024-08-31)
+
+
+### Bug Fixes
+
+* add alert for not implemented nodes ([ca86775](https://github.com/vault-developer/event-loop-explorer/commit/ca86775aa6ac918a583a7da2b05b6762b55b6ce7))
+
 # [1.5.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.4.1...v1.5.0) (2024-08-31)
 
 ### Features
