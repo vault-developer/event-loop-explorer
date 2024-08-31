@@ -21,13 +21,8 @@ function CircleLabels() {
 		<Styled.LabelsWrapper>
 			{enhancedEvents.map(
 				({ title, longTitle, leftOffset, topOffset, degree, placement }) => (
-					<Tooltip title={longTitle} placement={placement}>
-						<Styled.Label
-							onClick={onClick}
-							left={leftOffset}
-							top={topOffset}
-							key={degree}
-						>
+					<Tooltip title={longTitle} placement={placement} key={degree}>
+						<Styled.Label onClick={onClick} left={leftOffset} top={topOffset}>
 							{title}
 						</Styled.Label>
 					</Tooltip>
