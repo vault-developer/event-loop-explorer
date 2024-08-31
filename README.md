@@ -50,6 +50,7 @@ yarn dev
 ### Future Plans:
 
 - [ ] fix lugging in circle animation;
+- [ ] add step back & step forward functionality
 - [ ] make the project mobile friendly (vertical layout, collapsible sections)
 - [ ] clean up the code, remove todos;
 - [ ] add [code validation syntax](https://github.com/ajaxorg/ace/wiki/Syntax-validation);
