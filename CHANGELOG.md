@@ -1,3 +1,11 @@
+## [1.4.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.4.0...v1.4.1) (2024-08-31)
+
+
+### Bug Fixes
+
+* fix key issue ([6a6c6fa](https://github.com/vault-developer/event-loop-explorer/commit/6a6c6fa44402e8f4ebb4412d285983e646b1c22b))
+* remove redundant functionality ([2f91e48](https://github.com/vault-developer/event-loop-explorer/commit/2f91e4875028e28307eb462c4f1db2ac14e000cf))
+
 # [1.4.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.3.1...v1.4.0) (2024-08-31)
 
 
