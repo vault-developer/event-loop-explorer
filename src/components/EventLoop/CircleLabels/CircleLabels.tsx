@@ -15,14 +15,12 @@ const enhancedEvents = events.map((event) => {
 });
 
 function CircleLabels() {
-	const onClick = () => console.log('click');
-
 	return (
 		<Styled.LabelsWrapper>
 			{enhancedEvents.map(
 				({ title, longTitle, leftOffset, topOffset, degree, placement }) => (
 					<Tooltip title={longTitle} placement={placement} key={degree}>
-						<Styled.Label onClick={onClick} left={leftOffset} top={topOffset}>
+						<Styled.Label left={leftOffset} top={topOffset}>
 							{title}
 						</Styled.Label>
 					</Tooltip>
