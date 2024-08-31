@@ -13,7 +13,7 @@ It visualizes the Call Stack, Web APIs, Tasks, Microtasks, and Render phase.
 
 ### Screenshots:
 
-![event-loop](https://github.com/user-attachments/assets/9345e735-6a3e-4dd0-b10a-397ba7cc5969)
+![event-loop](https://github.com/user-attachments/assets/42addaff-b64b-4236-9284-36b3dfb0b262)
 
 ### Demo:
 
@@ -49,7 +49,9 @@ yarn dev
 
 ### Future Plans:
 
-- [ ] circle animation is lugging;
+- [ ] fix lugging in circle animation;
+- [ ] add step back & step forward functionality
+- [ ] make the project mobile friendly (vertical layout, collapsible sections)
 - [ ] clean up the code, remove todos;
 - [ ] add [code validation syntax](https://github.com/ajaxorg/ace/wiki/Syntax-validation);
 - [ ] add unit tests;
@@ -58,6 +60,7 @@ yarn dev
 - [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
 - [ ] add (animated?) pictures to all modals;
 - [ ] add animation inside event loop circle.
+- [ ] support node.js event loop
 
 ### Inspired by:
 
