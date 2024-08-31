@@ -4,6 +4,7 @@ import * as Styled from './WebApiQueue.styled.ts';
 import InfoIcon from '../InfoIcon/InfoIcon.tsx';
 import InfoModal from '../Modal/Modal.tsx';
 import useBoolean from '../../utils/useBoolean.tsx';
+import { Zoom } from '@mui/material';
 
 function WebApiQueue() {
 	const tasks = useEventLists((state) => state.web_api);
@@ -13,7 +14,9 @@ function WebApiQueue() {
 		<Styled.WebApiQueue>
 			<InfoIcon onClick={setOpen} />
 			{tasks.map((task) => (
-				<WebApiTask task={task} key={task.serialize() + task.node.start} />
+				<Zoom in key={task.serialize() + task.node.start}>
+					<WebApiTask task={task} />
+				</Zoom>
 			))}
 			<InfoModal isOpen={open} onClose={setClose}>
 				<h2>Web API</h2>

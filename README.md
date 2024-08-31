@@ -53,7 +53,6 @@ yarn dev
 - [ ] replace styled components with emotion;
 - [ ] add gamification (achievements);
 - [ ] check js parsing edge cases;
-- [ ] add animation for lists & queues;
 - [ ] add (animated?) pictures to all modals;
 - [ ] add animation inside event loop circle.
 

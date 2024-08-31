@@ -3,6 +3,7 @@ import * as Styled from './RequestAnimationFrameQueue.styled.ts';
 import InfoIcon from '../InfoIcon/InfoIcon.tsx';
 import InfoModal from '../Modal/Modal.tsx';
 import useBoolean from '../../utils/useBoolean.tsx';
+import { Zoom } from '@mui/material';
 
 function RequestAnimationFrameQueue() {
 	const callbacks = useEventLists((state) => state.render_callbacks);
@@ -14,7 +15,11 @@ function RequestAnimationFrameQueue() {
 			{callbacks.map((callback) => {
 				const serialized = callback.serialize();
 				const key = serialized + callback.node.start;
-				return <Styled.Callback key={key}>{serialized}</Styled.Callback>;
+				return (
+					<Zoom in key={key}>
+						<Styled.Callback>{serialized}</Styled.Callback>
+					</Zoom>
+				);
 			})}
 			<InfoModal isOpen={open} onClose={setClose}>
 				<h2>RequestAnimationFrame</h2>

@@ -3,6 +3,7 @@ import * as Styled from './MicroTasksQueue.styled.ts';
 import InfoIcon from '../InfoIcon/InfoIcon.tsx';
 import InfoModal from '../Modal/Modal.tsx';
 import useBoolean from '../../utils/useBoolean.tsx';
+import { Zoom } from '@mui/material';
 
 function MicroTasksQueue() {
 	const tasks = useEventLists((state) => state.microtask_queue);
@@ -14,7 +15,11 @@ function MicroTasksQueue() {
 			{tasks.map((task) => {
 				const serialized = task.serialize();
 				const key = serialized + task.node.start;
-				return <Styled.MicroTask key={key}>{serialized}</Styled.MicroTask>;
+				return (
+					<Zoom in key={key}>
+						<Styled.MicroTask>{serialized}</Styled.MicroTask>
+					</Zoom>
+				);
 			})}
 			<InfoModal isOpen={open} onClose={setClose}>
 				<h2>Microtasks</h2>

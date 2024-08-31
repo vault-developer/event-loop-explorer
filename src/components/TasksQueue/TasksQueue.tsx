@@ -3,6 +3,7 @@ import * as Styled from './TasksQueue.styled.ts';
 import InfoIcon from '../InfoIcon/InfoIcon.tsx';
 import InfoModal from '../Modal/Modal.tsx';
 import useBoolean from '../../utils/useBoolean.tsx';
+import { Zoom } from '@mui/material';
 
 function TasksQueue() {
 	const tasks = useEventLists((state) => state.task_queue);
@@ -14,7 +15,11 @@ function TasksQueue() {
 			{tasks.map((task) => {
 				const serialized = task.serialize();
 				const key = serialized + task.node.start;
-				return <Styled.Task key={key}>{serialized}</Styled.Task>;
+				return (
+					<Zoom in key={key}>
+						<Styled.Task>{serialized}</Styled.Task>
+					</Zoom>
+				);
 			})}
 			<InfoModal isOpen={open} onClose={setClose}>
 				<h2>Tasks</h2>

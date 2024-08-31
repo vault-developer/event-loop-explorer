@@ -3,6 +3,7 @@ import * as Styled from './Callstack.styled.ts';
 import InfoIcon from '../InfoIcon/InfoIcon.tsx';
 import InfoModal from '../Modal/Modal.tsx';
 import useBoolean from '../../utils/useBoolean.tsx';
+import { Zoom } from '@mui/material';
 
 function CallStack() {
 	const tasks = useEventLists((state) => state.callstack);
@@ -12,7 +13,9 @@ function CallStack() {
 		<Styled.Callstack>
 			<InfoIcon onClick={setOpen} />
 			{tasks.map(({ display: stack }) => (
-				<Styled.CallstackElement key={stack}>{stack}</Styled.CallstackElement>
+				<Zoom in key={stack}>
+					<Styled.CallstackElement>{stack}</Styled.CallstackElement>
+				</Zoom>
 			))}
 			<InfoModal isOpen={open} onClose={setClose}>
 				<h2>Call stack</h2>
