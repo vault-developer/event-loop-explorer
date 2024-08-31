@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.3.1...v1.4.0) (2024-08-31)
+
+
+### Features
+
+* add icons to CTA buttons ([099aca3](https://github.com/vault-developer/event-loop-explorer/commit/099aca3a98170350adf385e636c29a1051b71d3f))
+
 ## [1.3.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.3.0...v1.3.1) (2024-08-30)
 
 
