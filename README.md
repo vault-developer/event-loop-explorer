@@ -1,5 +1,11 @@
 # Event Loop Explorer
 
+![license badge](https://img.shields.io/github/license/vault-developer/event-loop-explorer)
+![issues badge](https://img.shields.io/github/issues/vault-developer/event-loop-explorer)
+![prs badge](https://img.shields.io/github/issues-pr/vault-developer/event-loop-explorer)
+![release badge](https://img.shields.io/github/v/release/vault-developer/event-loop-explorer)
+![commit activity badge](https://img.shields.io/github/commit-activity/m/vault-developer/event-loop-explorer)
+
 ### About the project
 
 Event Loop Explorer is a tool that helps to understand how JavaScript code is executed in the browser.
@@ -43,15 +49,13 @@ yarn dev
 
 ### Future Plans:
 
-- [ ] handle `new Promise((res) => {res(console.log(4))})`;
 - [ ] circle animation is lugging;
-- [ ] add badges to the readme;
 - [ ] clean up the code, remove todos;
 - [ ] add [code validation syntax](https://github.com/ajaxorg/ace/wiki/Syntax-validation);
 - [ ] add unit tests;
 - [ ] replace styled components with emotion;
 - [ ] add gamification (achievements);
-- [ ] check js parsing edge cases;
+- [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
 - [ ] add (animated?) pictures to all modals;
 - [ ] add animation inside event loop circle.
 
