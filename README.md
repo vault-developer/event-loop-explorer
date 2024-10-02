@@ -49,18 +49,18 @@ yarn dev
 
 ### Future Plans:
 
-- [ ] fix lagging animation in event loop wheel;
-- [ ] add step back & step forward functionality
-- [ ] make the project mobile friendly (vertical layout, collapsible sections)
+- [ ] [fix lagging animation in event loop wheel](https://github.com/vault-developer/event-loop-explorer/issues/4);
+- [ ] add step back & step forward functionality;
+- [ ] make the project mobile friendly (vertical layout, collapsible sections);
 - [ ] clean up the code, remove todos;
-- [ ] add [code validation syntax](https://github.com/ajaxorg/ace/wiki/Syntax-validation);
+- [ ] [add code validation syntax](https://github.com/vault-developer/event-loop-explorer/issues/3);
 - [ ] add unit tests;
 - [ ] replace styled components with emotion;
 - [ ] add gamification (achievements);
 - [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
 - [ ] add (animated?) pictures to all modals;
-- [ ] add animation inside event loop circle.
-- [ ] support node.js event loop
+- [ ] add animation inside event loop circle;
+- [ ] support node.js event loop.
 
 ### Inspired by:
 
