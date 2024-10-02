@@ -49,7 +49,7 @@ yarn dev
 
 ### Future Plans:
 
-- [ ] fix lugging in circle animation;
+- [ ] fix lagging animation in event loop wheel;
 - [ ] add step back & step forward functionality
 - [ ] make the project mobile friendly (vertical layout, collapsible sections)
 - [ ] clean up the code, remove todos;
