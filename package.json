@@ -16,24 +16,20 @@
 	},
 	"dependencies": {
 		"@commitlint/cli": "^19.4.0",
+		"@emotion/react": "^11.13.3",
+		"@emotion/styled": "^11.13.0",
 		"@eslint/compat": "^1.1.1",
 		"@eslint/eslintrc": "^3.1.0",
 		"@eslint/js": "^9.9.1",
 		"@mui/icons-material": "^6.0.1",
 		"@mui/material": "^5.16.7",
-		"@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
-		"@mui/styled-engine-sc": "6.0.0-alpha.18",
 		"ace-builds": "^1.36.0",
 		"acorn": "^8.12.1",
 		"globals": "^15.9.0",
 		"react": "^18.3.1",
 		"react-ace": "^12.0.0",
 		"react-dom": "^18.3.1",
-		"styled-components": "^6.1.12",
 		"zustand": "^4.5.5"
-	},
-	"resolutions": {
-		"@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
 	},
 	"devDependencies": {
 		"@commitlint/config-conventional": "^19.2.2",

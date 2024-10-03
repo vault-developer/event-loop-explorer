@@ -1,9 +1,8 @@
 ## [1.5.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.5.1...v1.5.2) (2024-08-31)
 
-
 ### Bug Fixes
 
-* fix pause animation bug ([c7abf68](https://github.com/vault-developer/event-loop-explorer/commit/c7abf68dba7607a53413de13f2e51ef46e7bd07c))
+- fix pause animation bug ([c7abf68](https://github.com/vault-developer/event-loop-explorer/commit/c7abf68dba7607a53413de13f2e51ef46e7bd07c))
 
 ## [1.5.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.5.0...v1.5.1) (2024-08-31)
 
