@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.5.2...v1.6.0) (2024-10-04)
+
+
+### Bug Fixes
+
+* add theme types ([f30c433](https://github.com/vault-developer/event-loop-explorer/commit/f30c433e1376cc611a35ecb0f9c03b92c5621bf8))
+
+
+### Features
+
+* switch to emotion ([f176794](https://github.com/vault-developer/event-loop-explorer/commit/f17679457dd1c9c273fdeb81fadd762bedb8487c))
+
 ## [1.5.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.5.1...v1.5.2) (2024-08-31)
 
 ### Bug Fixes
