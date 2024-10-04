@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.6.0...v1.7.0) (2024-10-04)
+
+
+### Features
+
+* UI made responsive for mobile screen ([#5](https://github.com/vault-developer/event-loop-explorer/issues/5)) ([0cf4626](https://github.com/vault-developer/event-loop-explorer/commit/0cf462655f3eb40e38e20054c9828687d72d9487))
+
 # [1.6.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.5.2...v1.6.0) (2024-10-04)
 
 
