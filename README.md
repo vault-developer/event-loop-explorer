@@ -59,6 +59,7 @@ yarn dev
 - [ ] clean up the code, remove todos;
 
 <!--     
+- [ ] add more themes (light, green, etc)
 - [ ] add gamification (achievements);
 - [ ] add animation inside event loop circle;
 - [ ] support node.js event loop. 
