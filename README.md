@@ -50,7 +50,7 @@ yarn dev
 ### Future Plans:
 
 - [ ] [fix lagging animation in event loop wheel](https://github.com/vault-developer/event-loop-explorer/issues/4);
-- [ ] add step back & step forward functionality;
+- [ ] [add step forward functionality](https://github.com/vault-developer/event-loop-explorer/issues/8);
 - [ ] make the project mobile friendly (vertical layout, collapsible sections);
 - [ ] clean up the code, remove todos;
 - [ ] [add code validation syntax](https://github.com/vault-developer/event-loop-explorer/issues/3);
