@@ -105,20 +105,6 @@ const globalStyles = css`
 	ul,
 	ol {
 		padding-left: 15px;
-  }
-  
-  #root {
-      margin: 0;
-      text-align: center;
-      display: flex;
-      height: 100%;
-      width: 100%;
-      min-height: 814px;
-      
-      @media (min-width: 768px) {
-        min-width: 1024px;
-      }
-  }
 
 		& > li:not(:last-child) {
 			margin-bottom: 10px;
@@ -132,23 +118,30 @@ const globalStyles = css`
 	body {
 		margin: 0;
 		display: flex;
-		height: 100%;
+
+		@media (min-width: 768px) {
+			height: 100%;
+		}
 	}
 
 	#root {
-		min-width: 1024px;
 		margin: 0;
 		text-align: center;
 		display: flex;
 		height: 100%;
 		width: 100%;
 		min-height: 814px;
+
+		@media (min-width: 768px) {
+			min-width: 1024px;
+		}
 	}
 
 	::-webkit-scrollbar {
 		width: 8px;
 		height: 8px;
 	}
+
 	::-webkit-scrollbar-thumb {
 		background: ${theme.custom.colors.listItemBackground};
 	}
