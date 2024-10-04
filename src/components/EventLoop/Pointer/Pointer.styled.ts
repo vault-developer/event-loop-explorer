@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { css } from '@mui/material';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 export const SectorWithInnerBorder = styled.div(
 	({

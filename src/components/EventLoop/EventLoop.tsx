@@ -3,7 +3,7 @@ import { useEventLoopAnimation } from '../../store/store.ts';
 import CircleLabels from './CircleLabels/CircleLabels.tsx';
 import { events } from './EventLoop.data.ts';
 import * as Styled from './EventLoop.styled.ts';
-import { useTheme } from 'styled-components';
+import { useTheme } from '@emotion/react';
 import InfoIcon from '../InfoIcon/InfoIcon.tsx';
 import InfoModal from '../Modal/Modal.tsx';
 import useBoolean from '../../utils/useBoolean.tsx';
