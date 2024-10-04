@@ -1,0 +1,41 @@
+name: PR Test
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Cache yarn dependencies to improve speed
+      - name: Cache yarn dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      # Install dependencies
+      - name: Install dependencies
+        run: yarn install
+
+      # Run linting
+      - name: Run lint
+        run: yarn lint
+
+      # Run type check
+      - name: Run type check
+        run: yarn type-check
+
+      # Build the project
+      - name: Run build
+        run: yarn build
