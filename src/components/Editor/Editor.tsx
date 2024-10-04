@@ -99,7 +99,7 @@ function EditorComponent() {
 
   useEffect(() => {
     if(isMobile() && status === "running" && document.getElementById("eventLoop")) {
-      document.getElementById("eventLoop").scrollIntoView({
+      document.getElementById("eventLoop")?.scrollIntoView({
         behavior: "smooth",
         block: "start"
       });
