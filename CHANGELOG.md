@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.0...v1.7.1) (2024-10-04)
+
+
+### Bug Fixes
+
+* fix build issue ([3846a8e](https://github.com/vault-developer/event-loop-explorer/commit/3846a8eeea6b231e493944df91b1cfb0df9e1f1e))
+
 # [1.7.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.6.0...v1.7.0) (2024-10-04)
 
 
