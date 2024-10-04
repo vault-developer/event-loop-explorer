@@ -1,5 +1,5 @@
+import { Global, ThemeProvider, css } from '@emotion/react';
 import { createTheme } from '@mui/material';
-import { ThemeProvider, Global, css } from '@emotion/react';
 import { PropsWithChildren } from 'react';
 
 const muiTheme = createTheme({
@@ -105,6 +105,20 @@ const globalStyles = css`
 	ul,
 	ol {
 		padding-left: 15px;
+  }
+  
+  #root {
+      margin: 0;
+      text-align: center;
+      display: flex;
+      height: 100%;
+      width: 100%;
+      min-height: 814px;
+      
+      @media (min-width: 768px) {
+        min-width: 1024px;
+      }
+  }
 
 		& > li:not(:last-child) {
 			margin-bottom: 10px;

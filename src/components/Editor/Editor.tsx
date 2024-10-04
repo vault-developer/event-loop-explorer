@@ -1,27 +1,28 @@
-import AceEditor from 'react-ace';
-import { useEffect, useRef, useState } from 'react';
-import 'ace-builds/src-noconflict/mode-javascript';
-import 'ace-builds/src-noconflict/theme-solarized_dark';
-import { codeExamples } from './Editor.data.tsx';
-import { parse } from '../../utils/parse.ts';
-import {
-	useEditor,
-	useEventLists,
-	useEventLoopAnimation,
-	useSpeedFactor,
-} from '../../store/store.ts';
-import {
-	FormControl,
-	InputLabel,
-	MenuItem,
-	Select,
-	SelectChangeEvent,
-	Slider,
-} from '@mui/material';
-import * as Styled from './Editor.styled.ts';
+import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
-import PauseIcon from '@mui/icons-material/Pause';
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Slider,
+} from '@mui/material';
+import 'ace-builds/src-noconflict/mode-javascript';
+import 'ace-builds/src-noconflict/theme-solarized_dark';
+import { useEffect, useRef, useState } from 'react';
+import AceEditor from 'react-ace';
+import {
+  useEditor,
+  useEventLists,
+  useEventLoopAnimation,
+  useSpeedFactor,
+} from '../../store/store.ts';
+import { isMobile } from '../../utils/isMobile.ts';
+import { parse } from '../../utils/parse.ts';
+import { codeExamples } from './Editor.data.tsx';
+import * as Styled from './Editor.styled.ts';
 
 const codeByTitle = codeExamples.reduce(
 	(acc, { title, code }) => {
@@ -95,6 +96,15 @@ function EditorComponent() {
 			setEditorRef(editorRef);
 		}
 	}, []);
+
+  useEffect(() => {
+    if(isMobile() && status === "running" && document.getElementById("eventLoop")) {
+      document.getElementById("eventLoop").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  },[status]);
 
 	return (
 		<Styled.SectionWrapper>
