@@ -51,8 +51,8 @@ yarn dev
 
 - [ ] [fix lagging animation in event loop wheel](https://github.com/vault-developer/event-loop-explorer/issues/4);
 - [ ] [add step forward functionality](https://github.com/vault-developer/event-loop-explorer/issues/8);
-- [ ] make the project mobile friendly (vertical layout, collapsible sections);
-- [ ] clean up the code, remove todos;
+- [ ] [Add GitHub action to check PRs](https://github.com/vault-developer/event-loop-explorer/issues/9);
+- [ ] [Make mobile layout more user-friendly](https://github.com/vault-developer/event-loop-explorer/issues/7);
 - [ ] [add code validation syntax](https://github.com/vault-developer/event-loop-explorer/issues/3);
 - [ ] add unit tests;
 - [ ] add gamification (achievements);
@@ -60,6 +60,7 @@ yarn dev
 - [ ] add (animated?) pictures to all modals;
 - [ ] add animation inside event loop circle;
 - [ ] support node.js event loop.
+- [ ] clean up the code, remove todos;
 
 ### Inspired by:
 
