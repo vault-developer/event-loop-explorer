@@ -54,13 +54,16 @@ yarn dev
 - [ ] [Add GitHub action to check PRs](https://github.com/vault-developer/event-loop-explorer/issues/9);
 - [ ] [Make mobile layout more user-friendly](https://github.com/vault-developer/event-loop-explorer/issues/7);
 - [ ] [add code validation syntax](https://github.com/vault-developer/event-loop-explorer/issues/3);
-- [ ] add unit tests;
-- [ ] add gamification (achievements);
 - [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
-- [ ] add (animated?) pictures to all modals;
-- [ ] add animation inside event loop circle;
-- [ ] support node.js event loop.
+- [ ] add unit tests;
 - [ ] clean up the code, remove todos;
+
+<!--     
+- [ ] add gamification (achievements);
+- [ ] add animation inside event loop circle;
+- [ ] support node.js event loop. 
+-->
+
 
 ### Inspired by:
 
