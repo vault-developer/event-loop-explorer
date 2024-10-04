@@ -55,7 +55,6 @@ yarn dev
 - [ ] clean up the code, remove todos;
 - [ ] [add code validation syntax](https://github.com/vault-developer/event-loop-explorer/issues/3);
 - [ ] add unit tests;
-- [ ] replace styled components with emotion;
 - [ ] add gamification (achievements);
 - [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
 - [ ] add (animated?) pictures to all modals;
