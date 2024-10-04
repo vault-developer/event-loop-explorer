@@ -108,7 +108,6 @@ const globalStyles = css`
   }
   
   #root {
-      min-width: 1024px;
       margin: 0;
       text-align: center;
       display: flex;
@@ -116,8 +115,8 @@ const globalStyles = css`
       width: 100%;
       min-height: 814px;
       
-      @media (max-width: 768px) {
-        min-width: 100vw;
+      @media (min-width: 768px) {
+        min-width: 1024px;
       }
   }
 

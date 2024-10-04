@@ -1,13 +1,13 @@
-import EventLoop from './components/EventLoop/EventLoop.tsx';
-import Editor from './components/Editor/Editor.tsx';
-import TasksQueue from './components/TasksQueue/TasksQueue.tsx';
-import Console from './components/Console/Console.tsx';
+import * as Styled from './App.styled.ts';
 import CallStack from './components/Callstack/Callstack.tsx';
+import Console from './components/Console/Console.tsx';
+import Editor from './components/Editor/Editor.tsx';
+import EventLoop from './components/EventLoop/EventLoop.tsx';
 import MicroTasksQueue from './components/MicroTasksQueue/MicroTasksQueue.tsx';
 import RequestAnimationFrameQueue from './components/RenderCallbacksQueue/RequestAnimationFrameQueue.tsx';
+import TasksQueue from './components/TasksQueue/TasksQueue.tsx';
 import WebApiQueue from './components/WebApiQueue/WebApiQueue.tsx';
 import StylesProvider from './providers/StylesProvider.tsx';
-import * as Styled from './App.styled.ts';
 
 function App() {
 	return (
@@ -54,7 +54,7 @@ function App() {
 					<MicroTasksQueue />
 				</Styled.Microtasks>
 				<Styled.EventLoop>
-					<p>Event Loop</p>
+					<p id="eventLoop">Event Loop</p>
 					<Styled.EventLoopBody>
 						<EventLoop />
 					</Styled.EventLoopBody>
