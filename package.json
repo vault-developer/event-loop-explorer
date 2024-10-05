@@ -2,7 +2,7 @@
 	"name": "event-loop-explorer",
 	"private": true,
 	"author": "Albert Trott",
-	"version": "1.7.2",
+	"version": "1.7.3",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",

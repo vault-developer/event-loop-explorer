@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.2...v1.7.3) (2024-10-05)
+
+
+### Bug Fixes
+
+* add alert for missed serialization ([d2635b9](https://github.com/vault-developer/event-loop-explorer/commit/d2635b98503ebd84b81b607272de0afb55e6cee4))
+
 ## [1.7.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.1...v1.7.2) (2024-10-04)
 
 
