@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.1...v1.7.2) (2024-10-04)
+
+
+### Bug Fixes
+
+* fix broken global styles ([8f4530a](https://github.com/vault-developer/event-loop-explorer/commit/8f4530a7433ab2d312a08395150265eeeb1da484))
+
 ## [1.7.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.0...v1.7.1) (2024-10-04)
 
 

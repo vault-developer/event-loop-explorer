@@ -31,9 +31,10 @@ Feel free to try it here: https://vault-developer.github.io/event-loop-explorer/
 
 ### Contribution:
 
-If you want to contribute, feel free to fork this repository and create a pull request.
-There are a lot of ideas in "Future Plans" section.
-I would be happy to consider any other ideas and improvements - just reach out to me.
+If you want to contribute, feel free to fork this repository and create a pull request.  
+There are a lot of topics in the "Future Plans" section.  
+Have a question or idea?  
+Feel free to raise it in our [discussions session](https://github.com/vault-developer/event-loop-explorer/discussions) 👍
 
 ### Launch locally:
 
@@ -51,15 +52,20 @@ yarn dev
 
 - [ ] [fix lagging animation in event loop wheel](https://github.com/vault-developer/event-loop-explorer/issues/4);
 - [ ] [add step forward functionality](https://github.com/vault-developer/event-loop-explorer/issues/8);
-- [ ] make the project mobile friendly (vertical layout, collapsible sections);
-- [ ] clean up the code, remove todos;
+- [ ] [Add GitHub action to check PRs](https://github.com/vault-developer/event-loop-explorer/issues/9);
+- [ ] [Make mobile layout more user-friendly](https://github.com/vault-developer/event-loop-explorer/issues/7);
 - [ ] [add code validation syntax](https://github.com/vault-developer/event-loop-explorer/issues/3);
-- [ ] add unit tests;
-- [ ] add gamification (achievements);
 - [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
-- [ ] add (animated?) pictures to all modals;
+- [ ] add unit tests;
+- [ ] clean up the code, remove todos;
+
+<!--     
+- [ ] add more themes (light, green, etc)
+- [ ] add gamification (achievements);
 - [ ] add animation inside event loop circle;
-- [ ] support node.js event loop.
+- [ ] support node.js event loop. 
+-->
+
 
 ### Inspired by:
 
