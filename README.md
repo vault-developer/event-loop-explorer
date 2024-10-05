@@ -31,9 +31,10 @@ Feel free to try it here: https://vault-developer.github.io/event-loop-explorer/
 
 ### Contribution:
 
-If you want to contribute, feel free to fork this repository and create a pull request.
-There are a lot of ideas in "Future Plans" section.
-I would be happy to consider any other ideas and improvements - just reach out to me.
+If you want to contribute, feel free to fork this repository and create a pull request.  
+There are a lot of topics in the "Future Plans" section.  
+Have a question or idea?  
+Feel free to raise it in our [discussions session](https://github.com/vault-developer/event-loop-explorer/discussions) 👍
 
 ### Launch locally:
 
