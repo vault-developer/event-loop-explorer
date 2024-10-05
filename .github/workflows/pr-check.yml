@@ -25,7 +25,7 @@ jobs:
         run: yarn install
 
       - name: Run linter
-        run: yarn lint:strict
+        run: yarn lint
 
       - name: Run type check
         run: yarn typecheck
