@@ -18,15 +18,21 @@ jobs:
         with:
           node-version: 20
           cache: 'yarn'
-      
+
+
+      - name: Install Corepack
+        run:  npm install -g corepack
+
       - name: Enable Corepack   
         run: corepack enable
   
       - name: Prepare Yarn
-        run:  corepack prepare yarn@4.3.1 --activate
+        run: |
+          corepack prepare yarn@4.3.1 --activate
+          yarn --version
   
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Run linter
         run: yarn lint
