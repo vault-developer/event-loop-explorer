@@ -1,16 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { Box, Modal } from '@mui/material';
-
-// TODO: replace with styled components
-const style = {
-	position: 'absolute',
-	top: '50%',
-	left: '50%',
-	transform: 'translate(-50%, -50%)',
-	width: 400,
-	bgcolor: '#1A2A38',
-	p: 4,
-};
+import { Modal } from '@mui/material';
+import {StyledBox} from "./Modal.styled.ts";
 
 function InfoModal({
 	children,
@@ -29,7 +19,7 @@ function InfoModal({
 				},
 			}}
 		>
-			<Box sx={style}>{children}</Box>
+			<StyledBox>{children}</StyledBox>
 		</Modal>
 	);
 }
