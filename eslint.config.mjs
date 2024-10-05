@@ -35,8 +35,12 @@ export default [
 			},
 
 			parser: tsParser,
+			parserOptions: {
+				project: './tsconfig.json',
+			},
 		},
 
+		files: ['**/*.ts', '**/*.tsx'],
 		rules: {
 			'react-refresh/only-export-components': [
 				'warn',
@@ -45,5 +49,9 @@ export default [
 				},
 			],
 		},
+		linterOptions: {
+            reportUnusedDisableDirectives: 'error',  
+            noInlineConfig: true, 
+        },
 	},
 ];
