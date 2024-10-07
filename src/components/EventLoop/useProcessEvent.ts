@@ -47,8 +47,8 @@ const processTask = async ({
 		const expression = nodeFactory({
 			node: (node.node as ArrowFunctionExpression).body,
 			context: {
+				...node.context,
 				actions: [],
-				functions: node.context.functions,
 			},
 			params: node.params,
 		});
@@ -77,8 +77,8 @@ const processMicroTask = async ({
 		const expression = nodeFactory({
 			node: (node.node as ArrowFunctionExpression).body,
 			context: {
+				...node.context,
 				actions: [],
-				functions: node.context.functions,
 			},
 			params: node.params,
 		});
@@ -118,8 +118,8 @@ const processRender = async ({
 		const expression = nodeFactory({
 			node: (node.node as ArrowFunctionExpression).body,
 			context: {
+				...node.context,
 				actions: [],
-				functions: node.context.functions,
 			},
 			params: node.params,
 		});

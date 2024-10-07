@@ -1,4 +1,9 @@
-import { FunctionDeclaration, Identifier, Node as AcornNode } from 'acorn';
+import {
+	FunctionDeclaration,
+	Identifier,
+	Node as AcornNode,
+	VariableDeclaration,
+} from 'acorn';
 import {
 	NodeClass,
 	NodeClassConstructor,
@@ -69,6 +74,16 @@ export class IdentifierClass extends NodeClass {
 						args: this.args,
 					}),
 			});
+			return;
+		} else if (this.context.variables[identifier.name]) {
+			const customVariable = this.context.variables[
+				identifier.name
+			] as VariableDeclaration;
+			const blockStatement = nodeFactory({
+				node: customVariable.declarations[0].init!, // Expression | null | undefined
+				context: this.context,
+			});
+			blockStatement.traverse();
 			return;
 		} else if (this.context.functions[identifier.name]) {
 			const customFunction = this.context.functions[
