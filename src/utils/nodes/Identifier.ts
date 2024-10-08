@@ -79,8 +79,9 @@ export class IdentifierClass extends NodeClass {
 			const customVariable = this.context.variables[
 				identifier.name
 			] as VariableDeclaration;
+			if (!customVariable.declarations[0].init) return;
 			const blockStatement = nodeFactory({
-				node: customVariable.declarations[0].init!, // Expression | null | undefined
+				node: customVariable.declarations[0].init,
 				context: this.context,
 			});
 			blockStatement.traverse();

@@ -1,4 +1,4 @@
-import { CallExpression, MemberExpression } from 'acorn';
+import { CallExpression, MemberExpression, VariableDeclaration } from 'acorn';
 import { NodeClass, NodeClassConstructor } from './Node.abstract.ts';
 import { nodeFactory } from './factory.ts';
 
@@ -40,13 +40,25 @@ export class MemberExpressionClass extends NodeClass {
 				type: 'push',
 				value:
 					this.args
-						?.map((arg) =>
-							nodeFactory({
-								node: arg,
-								context: this.context,
-								params: this.params,
-							}).serialize()
-						)
+						?.map((arg) => {
+							if (arg.type === 'Identifier') {
+								const customVariable = this.context.variables[
+									arg.name
+								] as VariableDeclaration;
+								if (!customVariable.declarations[0].init) return '';
+								const literal = nodeFactory({
+									node: customVariable.declarations[0].init,
+									context: this.context,
+								}).serialize();
+								return literal;
+							} else {
+								return nodeFactory({
+									node: arg,
+									context: this.context,
+									params: this.params,
+								}).serialize();
+							}
+						})
 						.join(',') ?? '',
 			});
 		}
