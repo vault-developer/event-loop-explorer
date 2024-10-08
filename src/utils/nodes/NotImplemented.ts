@@ -14,6 +14,9 @@ Feel free to contribute to the project by implementing it or raising an issue on
 
 	serialize = () => {
 		console.log('Serialize: this node class is not implemented', this.node);
+		window.confirm(`
+Serialization logic for node "${this.node.type}" is not implemented yet 🦝.
+Feel free to contribute to the project by implementing it or raising an issue on Github 🖥️.`);
 		return '';
 	};
 }

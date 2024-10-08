@@ -52,10 +52,11 @@ yarn dev
 
 - [ ] [fix lagging animation in event loop wheel](https://github.com/vault-developer/event-loop-explorer/issues/4);
 - [ ] [add step forward functionality](https://github.com/vault-developer/event-loop-explorer/issues/8);
-- [ ] [Add GitHub action to check PRs](https://github.com/vault-developer/event-loop-explorer/issues/9);
-- [ ] [Make mobile layout more user-friendly](https://github.com/vault-developer/event-loop-explorer/issues/7);
+- [ ] [add GitHub action to check PRs](https://github.com/vault-developer/event-loop-explorer/issues/9);
+- [ ] [make mobile layout more user-friendly](https://github.com/vault-developer/event-loop-explorer/issues/7);
 - [ ] [add code validation syntax](https://github.com/vault-developer/event-loop-explorer/issues/3);
 - [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
+- [ ] add a toggle to console to switch between console.log output and comprehensive logs for every step;
 - [ ] add unit tests;
 - [ ] clean up the code, remove todos;
 
