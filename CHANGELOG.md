@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.3...v1.7.4) (2024-10-07)
+
+
+### Bug Fixes
+
+* fix eslint ([7f1da9b](https://github.com/vault-developer/event-loop-explorer/commit/7f1da9bbfd92e08cfa45dc027536fec401ac2210))
+
 ## [1.7.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.2...v1.7.3) (2024-10-05)
 
 

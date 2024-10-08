@@ -15,7 +15,7 @@ const compat = new FlatCompat({
 
 export default [
 	{
-		ignores: ['**/dist'],
+		ignores: ['**/dist', '**/.pnp.*'],
 	},
 	...fixupConfigRules(
 		compat.extends(
@@ -36,7 +36,7 @@ export default [
 
 			parser: tsParser,
 		},
-
+		
 		rules: {
 			'react-refresh/only-export-components': [
 				'warn',
