@@ -10,6 +10,7 @@ import { NodeClass, NodeClassConstructor } from './Node.abstract.ts';
 import { BlockStatementClass } from './BlockStatement.ts';
 import { ProgramClass } from './Program.ts';
 import { VariableDeclarationClass } from './VariableDeclaration.ts';
+import { AssignmentExpressionClass } from './AssignmentExpression.ts';
 
 export const nodeFactory = (params: NodeClassConstructor): NodeClass => {
 	switch (params.node.type) {
@@ -33,6 +34,8 @@ export const nodeFactory = (params: NodeClassConstructor): NodeClass => {
 			return new ProgramClass(params);
 		case 'VariableDeclaration':
 			return new VariableDeclarationClass(params);
+		case 'AssignmentExpression':
+			return new AssignmentExpressionClass(params);
 		default:
 			return new NotImplementedNodeClass(params);
 	}

@@ -1,6 +1,5 @@
 import { VariableDeclaration, Identifier } from 'acorn';
 import { NodeClass, NodeClassConstructor } from './Node.abstract.ts';
-// import { nodeFactory } from './factory.ts';
 
 export class VariableDeclarationClass extends NodeClass {
 	constructor(params: NodeClassConstructor) {
@@ -18,6 +17,6 @@ export class VariableDeclarationClass extends NodeClass {
 		const variableDeclaration = this.node as VariableDeclaration;
 		this.context.variables[
 			(variableDeclaration.declarations[0].id as Identifier).name
-		] = variableDeclaration;
+		] = variableDeclaration.declarations[0].init;
 	};
 }
