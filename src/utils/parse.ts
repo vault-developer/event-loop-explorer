@@ -7,6 +7,7 @@ export const parse = (code: string): NodeClass => {
 	const context: ParseContextInterface = {
 		actions: [],
 		functions: {},
+		variables: {},
 	};
 	const parsed = acornParse(code, { ecmaVersion: 2020 });
 	return nodeFactory({ node: parsed, context });

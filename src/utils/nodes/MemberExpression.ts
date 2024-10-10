@@ -40,13 +40,23 @@ export class MemberExpressionClass extends NodeClass {
 				type: 'push',
 				value:
 					this.args
-						?.map((arg) =>
-							nodeFactory({
-								node: arg,
-								context: this.context,
-								params: this.params,
-							}).serialize()
-						)
+						?.map((arg) => {
+							if (arg.type === 'Identifier') {
+								const variableValue = this.context.variables[arg.name];
+								if (!variableValue) return 'undefined';
+								const literal = nodeFactory({
+									node: variableValue,
+									context: this.context,
+								}).serialize();
+								return literal;
+							} else {
+								return nodeFactory({
+									node: arg,
+									context: this.context,
+									params: this.params,
+								}).serialize();
+							}
+						})
 						.join(',') ?? '',
 			});
 		}

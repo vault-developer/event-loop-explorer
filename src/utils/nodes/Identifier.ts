@@ -70,6 +70,15 @@ export class IdentifierClass extends NodeClass {
 					}),
 			});
 			return;
+		} else if (this.context.variables[identifier.name]) {
+			const variableValue = this.context.variables[identifier.name];
+			if (!variableValue) return;
+			const blockStatement = nodeFactory({
+				node: variableValue,
+				context: this.context,
+			});
+			blockStatement.traverse();
+			return;
 		} else if (this.context.functions[identifier.name]) {
 			const customFunction = this.context.functions[
 				identifier.name
