@@ -43,7 +43,7 @@ export class MemberExpressionClass extends NodeClass {
 						?.map((arg) => {
 							if (arg.type === 'Identifier') {
 								const variableValue = this.context.variables[arg.name];
-								if (!variableValue) return '';
+								if (!variableValue) return 'undefined';
 								const literal = nodeFactory({
 									node: variableValue,
 									context: this.context,
