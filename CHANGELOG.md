@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.4...v1.8.0) (2024-10-12)
+
+
+### Features
+
+* Add variable declaration node ([#16](https://github.com/vault-developer/event-loop-explorer/issues/16)) ([fd24cf4](https://github.com/vault-developer/event-loop-explorer/commit/fd24cf4421a55ee451b3ff91020bcb35cc7bf943))
+
 ## [1.7.4](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.3...v1.7.4) (2024-10-07)
 
 
