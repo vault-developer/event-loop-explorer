@@ -7,6 +7,7 @@ import MicroTasksQueue from './components/MicroTasksQueue/MicroTasksQueue.tsx';
 import RequestAnimationFrameQueue from './components/RenderCallbacksQueue/RequestAnimationFrameQueue.tsx';
 import TasksQueue from './components/TasksQueue/TasksQueue.tsx';
 import WebApiQueue from './components/WebApiQueue/WebApiQueue.tsx';
+import WelcomeModal from './components/WelcomeModal/WelcomeModal.tsx';
 import StylesProvider from './providers/StylesProvider.tsx';
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
 						!
 					</p>
 				</Styled.Info>
+				{/* <Styled.WelcomeModal> */}
+				<WelcomeModal />
+				{/* </Styled.WelcomeModal> */}
 				<Styled.Editor>
 					<Editor />
 				</Styled.Editor>
