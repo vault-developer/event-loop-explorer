@@ -1,8 +1,4 @@
 import styled from '@emotion/styled';
-import { Box, css } from '@mui/material';
-import InfoClosed from '../CloseIcon/InfoIcon';
-
-export const CloseIcon = styled(InfoClosed)``;
 
 export const ModalHeader = styled.div`
 	display: flex;
@@ -10,14 +6,16 @@ export const ModalHeader = styled.div`
 	align-items: flex-start;
 `;
 
-export const WelcomeModal = styled(Box)(
-	({ theme }) => css`
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 700px;
-		background: ${theme.custom.colors.wheel.background};
-		padding: 40px;
-	`
-);
+export const ModalTitle = styled.h1`
+	font-size: 2rem;
+	margin: 0;
+	padding-block-end: 10px;
+
+	@media (max-width: 768px) {
+		fontsize: 1.8rem;
+	}
+
+	@media (max-width: 480px) {
+		fontsize: 1.5rem;
+	}
+`;

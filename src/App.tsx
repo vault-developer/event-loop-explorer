@@ -11,6 +11,7 @@ import WelcomeModal from './components/WelcomeModal/WelcomeModal.tsx';
 import StylesProvider from './providers/StylesProvider.tsx';
 
 function App() {
+	const isModalShown = localStorage.getItem('modalShown');
 	return (
 		<StylesProvider>
 			<Styled.Layout>
@@ -28,7 +29,7 @@ function App() {
 					</p>
 				</Styled.Info>
 				{/* <Styled.WelcomeModal> */}
-				<WelcomeModal />
+				{!isModalShown && <WelcomeModal />}
 				{/* </Styled.WelcomeModal> */}
 				<Styled.Editor>
 					<Editor />
