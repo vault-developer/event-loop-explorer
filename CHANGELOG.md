@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.8.0...v1.9.0) (2024-10-29)
+
+
+### Features
+
+* update modal styles ([bd668c8](https://github.com/vault-developer/event-loop-explorer/commit/bd668c80fac3e0a20a64d44e673488facb8b1b6e))
+
 # [1.8.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.4...v1.8.0) (2024-10-12)
 
 
