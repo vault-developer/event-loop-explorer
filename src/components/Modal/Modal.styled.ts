@@ -8,8 +8,14 @@ export const StyledBox = styled(Box)(
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		width: 400px;
+		max-width: 480px;
+		width: 100%;
+		box-sizing: border-box;
 		background: ${theme.custom.colors.wheel.background};
 		padding: 40px;
+
+		@media (max-width: 768px) {
+			max-width: 400px;
+		}
 	`
 );
