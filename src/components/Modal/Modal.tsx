@@ -1,12 +1,17 @@
 import { PropsWithChildren } from 'react';
 import { Modal } from '@mui/material';
-import {StyledBox} from "./Modal.styled.ts";
+import { StyledBox } from './Modal.styled.ts';
 
 function InfoModal({
 	children,
 	isOpen,
 	onClose,
-}: PropsWithChildren<{ isOpen: boolean; onClose: () => void }>) {
+	width,
+}: PropsWithChildren<{
+	isOpen: boolean;
+	onClose: () => void;
+	width?: string;
+}>) {
 	return (
 		<Modal
 			open={isOpen}
@@ -19,7 +24,7 @@ function InfoModal({
 				},
 			}}
 		>
-			<StyledBox>{children}</StyledBox>
+			<StyledBox width={width}>{children}</StyledBox>
 		</Modal>
 	);
 }
