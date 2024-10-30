@@ -1,6 +1,6 @@
-import { css } from '@emotion/react'
-import styled from '@emotion/styled'
-import { Box } from "@mui/material"
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { Box } from "@mui/material";
 
 export const StyledBox = styled(Box)(
 	({ theme }) => css`
