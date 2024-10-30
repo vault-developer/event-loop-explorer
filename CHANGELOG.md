@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.9.1...v1.9.2) (2024-10-30)
+
+
+### Bug Fixes
+
+* update husky scripts ([#22](https://github.com/vault-developer/event-loop-explorer/issues/22)) ([2a8b320](https://github.com/vault-developer/event-loop-explorer/commit/2a8b3209719bb65d2f124f07e8ce43e4573b44a7))
+
 ## [1.9.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.9.0...v1.9.1) (2024-10-30)
 
 
