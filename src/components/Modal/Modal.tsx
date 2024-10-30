@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Modal } from '@mui/material';
-import {StyledBox} from "./Modal.styled.ts";
+import { StyledBox } from './Modal.styled.ts';
 
 function InfoModal({
 	children,

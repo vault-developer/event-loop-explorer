@@ -1,63 +1,54 @@
 # [1.9.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.8.0...v1.9.0) (2024-10-29)
 
-
 ### Features
 
-* update modal styles ([bd668c8](https://github.com/vault-developer/event-loop-explorer/commit/bd668c80fac3e0a20a64d44e673488facb8b1b6e))
+- update modal styles ([bd668c8](https://github.com/vault-developer/event-loop-explorer/commit/bd668c80fac3e0a20a64d44e673488facb8b1b6e))
 
 # [1.8.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.4...v1.8.0) (2024-10-12)
 
-
 ### Features
 
-* Add variable declaration node ([#16](https://github.com/vault-developer/event-loop-explorer/issues/16)) ([fd24cf4](https://github.com/vault-developer/event-loop-explorer/commit/fd24cf4421a55ee451b3ff91020bcb35cc7bf943))
+- Add variable declaration node ([#16](https://github.com/vault-developer/event-loop-explorer/issues/16)) ([fd24cf4](https://github.com/vault-developer/event-loop-explorer/commit/fd24cf4421a55ee451b3ff91020bcb35cc7bf943))
 
 ## [1.7.4](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.3...v1.7.4) (2024-10-07)
 
-
 ### Bug Fixes
 
-* fix eslint ([7f1da9b](https://github.com/vault-developer/event-loop-explorer/commit/7f1da9bbfd92e08cfa45dc027536fec401ac2210))
+- fix eslint ([7f1da9b](https://github.com/vault-developer/event-loop-explorer/commit/7f1da9bbfd92e08cfa45dc027536fec401ac2210))
 
 ## [1.7.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.2...v1.7.3) (2024-10-05)
 
-
 ### Bug Fixes
 
-* add alert for missed serialization ([d2635b9](https://github.com/vault-developer/event-loop-explorer/commit/d2635b98503ebd84b81b607272de0afb55e6cee4))
+- add alert for missed serialization ([d2635b9](https://github.com/vault-developer/event-loop-explorer/commit/d2635b98503ebd84b81b607272de0afb55e6cee4))
 
 ## [1.7.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.1...v1.7.2) (2024-10-04)
 
-
 ### Bug Fixes
 
-* fix broken global styles ([8f4530a](https://github.com/vault-developer/event-loop-explorer/commit/8f4530a7433ab2d312a08395150265eeeb1da484))
+- fix broken global styles ([8f4530a](https://github.com/vault-developer/event-loop-explorer/commit/8f4530a7433ab2d312a08395150265eeeb1da484))
 
 ## [1.7.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.7.0...v1.7.1) (2024-10-04)
 
-
 ### Bug Fixes
 
-* fix build issue ([3846a8e](https://github.com/vault-developer/event-loop-explorer/commit/3846a8eeea6b231e493944df91b1cfb0df9e1f1e))
+- fix build issue ([3846a8e](https://github.com/vault-developer/event-loop-explorer/commit/3846a8eeea6b231e493944df91b1cfb0df9e1f1e))
 
 # [1.7.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.6.0...v1.7.0) (2024-10-04)
 
-
 ### Features
 
-* UI made responsive for mobile screen ([#5](https://github.com/vault-developer/event-loop-explorer/issues/5)) ([0cf4626](https://github.com/vault-developer/event-loop-explorer/commit/0cf462655f3eb40e38e20054c9828687d72d9487))
+- UI made responsive for mobile screen ([#5](https://github.com/vault-developer/event-loop-explorer/issues/5)) ([0cf4626](https://github.com/vault-developer/event-loop-explorer/commit/0cf462655f3eb40e38e20054c9828687d72d9487))
 
 # [1.6.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.5.2...v1.6.0) (2024-10-04)
 
-
 ### Bug Fixes
 
-* add theme types ([f30c433](https://github.com/vault-developer/event-loop-explorer/commit/f30c433e1376cc611a35ecb0f9c03b92c5621bf8))
-
+- add theme types ([f30c433](https://github.com/vault-developer/event-loop-explorer/commit/f30c433e1376cc611a35ecb0f9c03b92c5621bf8))
 
 ### Features
 
-* switch to emotion ([f176794](https://github.com/vault-developer/event-loop-explorer/commit/f17679457dd1c9c273fdeb81fadd762bedb8487c))
+- switch to emotion ([f176794](https://github.com/vault-developer/event-loop-explorer/commit/f17679457dd1c9c273fdeb81fadd762bedb8487c))
 
 ## [1.5.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.5.1...v1.5.2) (2024-08-31)
 

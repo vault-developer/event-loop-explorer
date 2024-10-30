@@ -1,3 +1,3 @@
 export const SCREEN_WIDTH = {
-  SM: 640
+	SM: 640,
 };

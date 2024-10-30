@@ -55,7 +55,7 @@ export const Editor = styled(BaseLayoutElement)`
 	@media (max-width: 768px) {
 		grid-column: 1;
 		grid-row: 2;
-    height: 50vh;
+		height: 50vh;
 	}
 `;
 
@@ -66,7 +66,7 @@ export const WebApi = styled(List)`
 	@media (max-width: 768px) {
 		grid-column: 1;
 		grid-row: 3;
-    height: 10vh;
+		height: 10vh;
 	}
 `;
 
@@ -77,7 +77,7 @@ export const CallStack = styled(List)`
 	@media (max-width: 768px) {
 		grid-column: 1;
 		grid-row: 4;
-    height: 10vh;
+		height: 10vh;
 	}
 `;
 
@@ -88,7 +88,7 @@ export const Console = styled(List)`
 	@media (max-width: 768px) {
 		grid-column: 1;
 		grid-row: 5;
-    height: 10vh;
+		height: 10vh;
 	}
 `;
 
@@ -99,7 +99,7 @@ export const RenderCallbacks = styled(List)`
 	@media (max-width: 768px) {
 		grid-column: 1;
 		grid-row: 6;
-    height: 10vh;
+		height: 10vh;
 	}
 `;
 
@@ -110,7 +110,7 @@ export const Tasks = styled(List)`
 	@media (max-width: 768px) {
 		grid-column: 1;
 		grid-row: 7;
-    height: 10vh;
+		height: 10vh;
 	}
 `;
 
@@ -121,7 +121,7 @@ export const Microtasks = styled(List)`
 	@media (max-width: 768px) {
 		grid-column: 1;
 		grid-row: 8;
-    height: 10vh;
+		height: 10vh;
 	}
 `;
 
@@ -139,7 +139,7 @@ export const EventLoop = styled(BaseLayoutElement)`
 	@media (max-width: 768px) {
 		grid-column: 1;
 		grid-row: 9;
-    height: 40vh;
+		height: 40vh;
 	}
 `;
 

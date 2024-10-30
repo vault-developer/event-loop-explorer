@@ -60,13 +60,12 @@ yarn dev
 - [ ] add unit tests;
 - [ ] clean up the code, remove todos;
 
-<!--     
+<!--
 - [ ] add more themes (light, green, etc)
 - [ ] add gamification (achievements);
 - [ ] add animation inside event loop circle;
-- [ ] support node.js event loop. 
+- [ ] support node.js event loop.
 -->
-
 
 ### Inspired by:
 

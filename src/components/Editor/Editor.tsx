@@ -2,22 +2,22 @@ import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
 import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  Slider,
+	FormControl,
+	InputLabel,
+	MenuItem,
+	Select,
+	SelectChangeEvent,
+	Slider,
 } from '@mui/material';
 import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-solarized_dark';
 import { useEffect, useRef, useState } from 'react';
 import AceEditor from 'react-ace';
 import {
-  useEditor,
-  useEventLists,
-  useEventLoopAnimation,
-  useSpeedFactor,
+	useEditor,
+	useEventLists,
+	useEventLoopAnimation,
+	useSpeedFactor,
 } from '../../store/store.ts';
 import { isMobile } from '../../utils/isMobile.ts';
 import { parse } from '../../utils/parse.ts';
@@ -97,14 +97,18 @@ function EditorComponent() {
 		}
 	}, []);
 
-  useEffect(() => {
-    if(isMobile() && status === "running" && document.getElementById("eventLoop")) {
-      document.getElementById("eventLoop")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
-  },[status]);
+	useEffect(() => {
+		if (
+			isMobile() &&
+			status === 'running' &&
+			document.getElementById('eventLoop')
+		) {
+			document.getElementById('eventLoop')?.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			});
+		}
+	}, [status]);
 
 	return (
 		<Styled.SectionWrapper>
