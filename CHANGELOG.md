@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.9.0...v1.9.1) (2024-10-30)
+
+
+### Bug Fixes
+
+* Add margin to modals ([#21](https://github.com/vault-developer/event-loop-explorer/issues/21)) ([8ed6a5c](https://github.com/vault-developer/event-loop-explorer/commit/8ed6a5ce4b47db15c3a34a1dc088b6f2e4ee17ef))
+
 # [1.9.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.8.0...v1.9.0) (2024-10-29)
 
 ### Features
