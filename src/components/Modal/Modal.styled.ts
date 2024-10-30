@@ -1,6 +1,7 @@
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { Box } from '@mui/material';
+
 
 export const StyledBox = styled(Box)(
 	({ theme }) => css`
@@ -16,7 +17,7 @@ export const StyledBox = styled(Box)(
 
 		@media (max-width: 768px) {
 			max-width: 400px;
-			width: 90%
+			width: 90%;
 		}
 	`
 );

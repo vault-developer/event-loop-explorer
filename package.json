@@ -11,7 +11,7 @@
 		"prettier": "prettier --write .",
 		"typecheck": "tsc --noEmit",
 		"preview": "vite preview",
-		"prepare": "husky install",
+		"prepare": "husky",
 		"commit": "cz"
 	},
 	"dependencies": {

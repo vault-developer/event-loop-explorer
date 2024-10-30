@@ -36,7 +36,7 @@ export default [
 
 			parser: tsParser,
 		},
-		
+
 		rules: {
 			'react-refresh/only-export-components': [
 				'warn',
