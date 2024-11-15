@@ -126,16 +126,25 @@ function EditorComponent() {
 									onChange={onSelect}
 									style={{ minWidth: 200, textAlign: 'start' }}
 									variant="outlined"
+									data-testid="example-select"
 								>
 									{codeExamples.map(({ title }) => (
-										<MenuItem value={title} key={title}>
+										<MenuItem
+											value={title}
+											key={title}
+											data-testid="example-menu-item"
+										>
 											{title}
 										</MenuItem>
 									))}
 								</Select>
 							</FormControl>
 						</Styled.SelectWrapper>
-						<Styled.CTAButton variant="contained" onClick={onRun}>
+						<Styled.CTAButton
+							variant="contained"
+							onClick={onRun}
+							data-testid="run-button"
+						>
 							<PlayArrowIcon />
 							run
 						</Styled.CTAButton>
@@ -144,7 +153,7 @@ function EditorComponent() {
 				{status !== 'disabled' && (
 					<>
 						<Styled.SliderWrapper>
-							<div id="non-linear-slider">
+							<div id="non-linear-slider" data-testid="speed-slider">
 								speed: {Math.round(speedFactorState.speed * 100)}%
 							</div>
 							<Slider
