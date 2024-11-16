@@ -20,6 +20,7 @@ function App() {
 						<a
 							href="https://github.com/vault-developer/event-loop-explorer"
 							target="_blank"
+							data-testid="github-repo-link"
 						>
 							GitHub
 						</a>
