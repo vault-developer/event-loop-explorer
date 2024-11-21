@@ -1,14 +1,16 @@
 ## [1.9.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.9.1...v1.9.2) (2024-10-30)
 
+
 ### Bug Fixes
 
-- update husky scripts ([#22](https://github.com/vault-developer/event-loop-explorer/issues/22)) ([2a8b320](https://github.com/vault-developer/event-loop-explorer/commit/2a8b3209719bb65d2f124f07e8ce43e4573b44a7))
+* update husky scripts ([#22](https://github.com/vault-developer/event-loop-explorer/issues/22)) ([2a8b320](https://github.com/vault-developer/event-loop-explorer/commit/2a8b3209719bb65d2f124f07e8ce43e4573b44a7))
 
 ## [1.9.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.9.0...v1.9.1) (2024-10-30)
 
+
 ### Bug Fixes
 
-- Add margin to modals ([#21](https://github.com/vault-developer/event-loop-explorer/issues/21)) ([8ed6a5c](https://github.com/vault-developer/event-loop-explorer/commit/8ed6a5ce4b47db15c3a34a1dc088b6f2e4ee17ef))
+* Add margin to modals ([#21](https://github.com/vault-developer/event-loop-explorer/issues/21)) ([8ed6a5c](https://github.com/vault-developer/event-loop-explorer/commit/8ed6a5ce4b47db15c3a34a1dc088b6f2e4ee17ef))
 
 # [1.9.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.8.0...v1.9.0) (2024-10-29)
 

@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Box } from '@mui/material';
 
+
 export const StyledBox = styled(Box)(
 	({ theme }) => css`
 		position: absolute;
