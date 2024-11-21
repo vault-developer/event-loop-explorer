@@ -30,8 +30,12 @@ foo1();`,
 	{
 		title: 'microtasks',
 		code: `console.log(1);  
-setTimeout(() => console.log(2), 0);  
-queueMicrotask(() => console.log(3));  
+console.log(2-1);
+console.log(4*8);
+console.log(9/3);
+console.log(10%5);
+setTimeout(() => console.log(2+4), 0);  
+queueMicrotask(() => console.log(3+9));  
 Promise.resolve().then(() => {
     console.log(4);
 });   
