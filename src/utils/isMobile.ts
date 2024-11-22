@@ -1,3 +1,3 @@
-import { SCREEN_WIDTH } from './constants';
+import { MIN_DESKTOP_WIDTH } from './constants';
 
-export const isMobile = () => window.innerWidth < SCREEN_WIDTH.SM;
+export const isMobile = () => window.innerWidth < MIN_DESKTOP_WIDTH;
