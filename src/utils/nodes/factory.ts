@@ -1,16 +1,17 @@
-import { ExpressionStatementClass } from './ExpressionStatement.ts';
+import { ArrowFunctionExpressionClass } from './ArrowFunctionExpression.ts';
+import { AssignmentExpressionClass } from './AssignmentExpression.ts';
+import { BinaryExpressionClass } from './BinaryExpression.ts';
+import { BlockStatementClass } from './BlockStatement.ts';
 import { CallExpressionClass } from './CallExpression.ts';
+import { ExpressionStatementClass } from './ExpressionStatement.ts';
 import { FunctionDeclarationClass } from './FunctionDeclaration.ts';
 import { IdentifierClass } from './Identifier.ts';
-import { NotImplementedNodeClass } from './NotImplemented.ts';
-import { MemberExpressionClass } from './MemberExpression.ts';
 import { LiteralClass } from './Literal.ts';
-import { ArrowFunctionExpressionClass } from './ArrowFunctionExpression.ts';
+import { MemberExpressionClass } from './MemberExpression.ts';
 import { NodeClass, NodeClassConstructor } from './Node.abstract.ts';
-import { BlockStatementClass } from './BlockStatement.ts';
+import { NotImplementedNodeClass } from './NotImplemented.ts';
 import { ProgramClass } from './Program.ts';
 import { VariableDeclarationClass } from './VariableDeclaration.ts';
-import { AssignmentExpressionClass } from './AssignmentExpression.ts';
 
 export const nodeFactory = (params: NodeClassConstructor): NodeClass => {
 	switch (params.node.type) {
@@ -36,6 +37,8 @@ export const nodeFactory = (params: NodeClassConstructor): NodeClass => {
 			return new VariableDeclarationClass(params);
 		case 'AssignmentExpression':
 			return new AssignmentExpressionClass(params);
+		case 'BinaryExpression':
+			return new BinaryExpressionClass(params);
 		default:
 			return new NotImplementedNodeClass(params);
 	}
