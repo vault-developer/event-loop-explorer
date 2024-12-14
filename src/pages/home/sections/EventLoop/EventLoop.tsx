@@ -8,6 +8,7 @@ import InfoIcon from '../../../../components/InfoIcon/InfoIcon.tsx';
 import InfoModal from '../../../../components/Modal/Modal.tsx';
 import useBoolean from '../../../../utils/useBoolean.tsx';
 import { BaseLayoutElement } from '../../Home.styled.ts';
+import { EVENT_LOOP_ID } from '../../../../constants.ts';
 
 function EventLoop({ className }: { className?: string }) {
 	const animation = useEventLoopAnimation((state) => state);
@@ -16,7 +17,7 @@ function EventLoop({ className }: { className?: string }) {
 
 	return (
 		<BaseLayoutElement className={className}>
-			<p id="eventLoop">Event Loop</p>
+			<p id={EVENT_LOOP_ID}>Event Loop</p>
 			<Styled.EventLoopBody>
 				<InfoIcon onClick={setOpen} />
 				<Styled.CircleContainer>
