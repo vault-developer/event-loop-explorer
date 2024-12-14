@@ -64,3 +64,11 @@ export const CloseIcon = styled(InfoClosed)`
 	top: 16px;
 	right: 16px;
 `;
+
+export const EventLoopBody = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+`;

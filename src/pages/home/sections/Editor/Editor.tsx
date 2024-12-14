@@ -23,6 +23,7 @@ import { isMobile } from '../../../../utils/isMobile.ts';
 import { parse } from '../../../../utils/parse.ts';
 import { codeExamples } from './Editor.data.tsx';
 import * as Styled from './Editor.styled.ts';
+import { BaseLayoutElement } from '../../Home.styled.ts';
 
 const codeByTitle = codeExamples.reduce(
 	(acc, { title, code }) => {
@@ -32,7 +33,7 @@ const codeByTitle = codeExamples.reduce(
 	{} as Record<string, string>
 );
 
-function EditorComponent() {
+function EditorComponent({ className }: { className?: string }) {
 	const [text, setText] = useState(codeExamples[3].code);
 	const eventListsStateSet = useEventLists((state) => state.set);
 	const eventListsStateClear = useEventLists((state) => state.clear);
@@ -111,104 +112,106 @@ function EditorComponent() {
 	}, [status]);
 
 	return (
-		<Styled.SectionWrapper>
-			<Styled.ControlsWrapper>
-				{status === 'disabled' && (
-					<>
-						<Styled.SelectWrapper>
-							<FormControl>
-								<InputLabel id="select-label">example:</InputLabel>
-								<Select
-									size="small"
-									labelId="select-label"
-									label="example"
-									value={example}
-									onChange={onSelect}
-									style={{ minWidth: 200, textAlign: 'start' }}
-									variant="outlined"
-									data-testid="example-select"
-								>
-									{codeExamples.map(({ title }) => (
-										<MenuItem
-											value={title}
-											key={title}
-											data-testid="example-menu-item"
-										>
-											{title}
-										</MenuItem>
-									))}
-								</Select>
-							</FormControl>
-						</Styled.SelectWrapper>
-						<Styled.CTAButton
-							variant="contained"
-							onClick={onRun}
-							data-testid="run-button"
-						>
-							<PlayArrowIcon />
-							run
-						</Styled.CTAButton>
-					</>
-				)}
-				{status !== 'disabled' && (
-					<>
-						<Styled.SliderWrapper>
-							<div id="non-linear-slider" data-testid="speed-slider">
-								speed: {Math.round(speedFactorState.speed * 100)}%
-							</div>
-							<Slider
-								aria-labelledby="non-linear-slider"
-								aria-label="Speed"
-								defaultValue={speed}
-								shiftStep={1}
-								onChange={onSpeedChange}
-								step={1}
-								marks
-								min={-3}
-								max={3}
-							/>
-						</Styled.SliderWrapper>
-						<Styled.ButtonsWrapper>
-							<Styled.CTAButton variant="contained" onClick={onStop}>
-								<StopIcon />
-								stop
+		<BaseLayoutElement className={className}>
+			<Styled.SectionWrapper>
+				<Styled.ControlsWrapper>
+					{status === 'disabled' && (
+						<>
+							<Styled.SelectWrapper>
+								<FormControl>
+									<InputLabel id="select-label">example:</InputLabel>
+									<Select
+										size="small"
+										labelId="select-label"
+										label="example"
+										value={example}
+										onChange={onSelect}
+										style={{ minWidth: 200, textAlign: 'start' }}
+										variant="outlined"
+										data-testid="example-select"
+									>
+										{codeExamples.map(({ title }) => (
+											<MenuItem
+												value={title}
+												key={title}
+												data-testid="example-menu-item"
+											>
+												{title}
+											</MenuItem>
+										))}
+									</Select>
+								</FormControl>
+							</Styled.SelectWrapper>
+							<Styled.CTAButton
+								variant="contained"
+								onClick={onRun}
+								data-testid="run-button"
+							>
+								<PlayArrowIcon />
+								run
 							</Styled.CTAButton>
-
-							{status === 'paused' && (
-								<Styled.CTAButton variant="contained" onClick={onResume}>
-									<PlayArrowIcon />
-									resume
+						</>
+					)}
+					{status !== 'disabled' && (
+						<>
+							<Styled.SliderWrapper>
+								<div id="non-linear-slider" data-testid="speed-slider">
+									speed: {Math.round(speedFactorState.speed * 100)}%
+								</div>
+								<Slider
+									aria-labelledby="non-linear-slider"
+									aria-label="Speed"
+									defaultValue={speed}
+									shiftStep={1}
+									onChange={onSpeedChange}
+									step={1}
+									marks
+									min={-3}
+									max={3}
+								/>
+							</Styled.SliderWrapper>
+							<Styled.ButtonsWrapper>
+								<Styled.CTAButton variant="contained" onClick={onStop}>
+									<StopIcon />
+									stop
 								</Styled.CTAButton>
-							)}
 
-							{status === 'running' && (
-								<Styled.CTAButton variant="contained" onClick={onPause}>
-									<PauseIcon />
-									pause
-								</Styled.CTAButton>
-							)}
-						</Styled.ButtonsWrapper>
-					</>
-				)}
-			</Styled.ControlsWrapper>
-			<Styled.EditorWrapper>
-				<AceEditor
-					ref={editorRef}
-					width={'100%'}
-					value={text}
-					height={'100%'}
-					mode="javascript"
-					theme="solarized_dark"
-					setOptions={{
-						useWorker: false,
-						readOnly: status !== 'disabled',
-					}}
-					showPrintMargin={false}
-					fontSize={14}
-					onChange={setText}
-				/>
-			</Styled.EditorWrapper>
-		</Styled.SectionWrapper>
+								{status === 'paused' && (
+									<Styled.CTAButton variant="contained" onClick={onResume}>
+										<PlayArrowIcon />
+										resume
+									</Styled.CTAButton>
+								)}
+
+								{status === 'running' && (
+									<Styled.CTAButton variant="contained" onClick={onPause}>
+										<PauseIcon />
+										pause
+									</Styled.CTAButton>
+								)}
+							</Styled.ButtonsWrapper>
+						</>
+					)}
+				</Styled.ControlsWrapper>
+				<Styled.EditorWrapper>
+					<AceEditor
+						ref={editorRef}
+						width={'100%'}
+						value={text}
+						height={'100%'}
+						mode="javascript"
+						theme="solarized_dark"
+						setOptions={{
+							useWorker: false,
+							readOnly: status !== 'disabled',
+						}}
+						showPrintMargin={false}
+						fontSize={14}
+						onChange={setText}
+					/>
+				</Styled.EditorWrapper>
+			</Styled.SectionWrapper>
+		</BaseLayoutElement>
 	);
 }
 
