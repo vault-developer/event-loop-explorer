@@ -7,7 +7,7 @@ import ConsoleBase from './sections/Console/Console.tsx';
 import TasksQueueBase from './sections/TasksQueue/TasksQueue.tsx';
 import MicroTasksQueueBase from './sections/MicroTasksQueue/MicroTasksQueue.tsx';
 import InfoBase from './sections/Info/Info.tsx';
-import EditorBase from './sections/Editor/Editor.tsx';
+import ConfiguratorBase from './sections/Configurator/Configurator.tsx';
 import EventLoopBase from './sections/EventLoop/EventLoop.tsx';
 
 export const Layout = styled.div`
@@ -56,7 +56,7 @@ export const Info = styled(InfoBase)`
 	}
 `;
 
-export const Editor = styled(EditorBase)`
+export const Configurator = styled(ConfiguratorBase)`
 	padding: 0;
 	grid-column: 1;
 	grid-row: 2;

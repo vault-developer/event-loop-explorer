@@ -21,8 +21,8 @@ import {
 } from '../../../../store/store.ts';
 import { isMobile } from '../../../../utils/isMobile.ts';
 import { parse } from '../../../../utils/parse.ts';
-import { codeExamples } from './Editor.data.tsx';
-import * as Styled from './Editor.styled.ts';
+import { codeExamples } from './Configurator.data.tsx';
+import * as Styled from './Configurator.styled.ts';
 import { BaseLayoutElement } from '../../Home.styled.ts';
 
 const codeByTitle = codeExamples.reduce(

@@ -4,7 +4,7 @@ export default function Home() {
 	return (
 		<Styled.Layout>
 			<Styled.Info />
-			<Styled.Editor />
+			<Styled.Configurator />
 			<Styled.WebApiQueue />
 			<Styled.RequestAnimationFrameQueue />
 			<Styled.CallStack />
