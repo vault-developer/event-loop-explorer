@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import InfoClosed from '../CloseIcon/InfoIcon.tsx';
+import InfoClosed from '../../../../components/CloseIcon/InfoIcon.tsx';
 
-export const MicroTasksQueue = styled.div`
+export const TasksQueue = styled.div`
 	flex: 1;
 	display: flex;
 	justify-content: start;
 	gap: 20px;
 `;
 
-export const MicroTask = styled.div(
+export const Task = styled.div(
 	({ theme }) => css`
 		background: ${theme.custom.colors.listItemBackground};
 		flex: 1;

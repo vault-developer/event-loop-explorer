@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import InfoClosed from '../CloseIcon/InfoIcon.tsx';
+import InfoClosed from '../../../../components/CloseIcon/InfoIcon.tsx';
 
 export const WebApiQueue = styled.div`
 	flex: 1;

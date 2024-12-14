@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
-import { css } from '@mui/material';
-import InfoClosed from '../CloseIcon/InfoIcon.tsx';
+import { css } from '@emotion/react';
+import InfoClosed from '../../../../components/CloseIcon/InfoIcon.tsx';
 
-export const CallbacksQueue = styled.div`
+export const MicroTasksQueue = styled.div`
 	flex: 1;
 	display: flex;
 	justify-content: start;
 	gap: 20px;
 `;
 
-export const Callback = styled.div(
+export const MicroTask = styled.div(
 	({ theme }) => css`
 		background: ${theme.custom.colors.listItemBackground};
 		flex: 1;

@@ -1,8 +1,8 @@
-import { useEventLists } from '../../store/store.ts';
+import { useEventLists } from '../../../../store/store.ts';
 import * as Styled from './TasksQueue.styled.ts';
-import InfoIcon from '../InfoIcon/InfoIcon.tsx';
-import InfoModal from '../Modal/Modal.tsx';
-import useBoolean from '../../utils/useBoolean.tsx';
+import InfoIcon from '../../../../components/InfoIcon/InfoIcon.tsx';
+import InfoModal from '../../../../components/Modal/Modal.tsx';
+import useBoolean from '../../../../utils/useBoolean.tsx';
 import { Zoom } from '@mui/material';
 
 function TasksQueue() {

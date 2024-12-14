@@ -1,10 +1,10 @@
-import { nodeFactory } from '../../utils/nodes/factory.ts';
-import { NodeClass } from '../../utils/nodes/Node.abstract.ts';
+import { nodeFactory } from '../../../../utils/nodes/factory.ts';
+import { NodeClass } from '../../../../utils/nodes/Node.abstract.ts';
 import { Literal } from 'acorn';
-import { useEventLists, useEventLoopTime } from '../../store/store.ts';
+import { useEventLists, useEventLoopTime } from '../../../../store/store.ts';
 import { forwardRef, Ref, useEffect, useRef, useState } from 'react';
-import useRefState from '../../utils/useRefState.tsx';
-import { EventLoopTimeInterface } from '../../store/store.types.ts';
+import useRefState from '../../../../utils/useRefState.tsx';
+import { EventLoopTimeInterface } from '../../../../store/store.types.ts';
 import * as Styled from './WebApiTask.styled.ts';
 
 const WebApiTask = forwardRef(

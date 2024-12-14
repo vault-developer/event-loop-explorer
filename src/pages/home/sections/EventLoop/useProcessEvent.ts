@@ -4,9 +4,9 @@ import {
 	useEventLists,
 	useEventLoopAnimation,
 	useSpeedFactor,
-} from '../../store/store.ts';
+} from '../../../../store/store.ts';
 import { MutableRefObject, useCallback } from 'react';
-import { nodeFactory } from '../../utils/nodes/factory.ts';
+import { nodeFactory } from '../../../../utils/nodes/factory.ts';
 import { ArrowFunctionExpression } from 'acorn';
 import {
 	ActionInterface,
@@ -14,8 +14,8 @@ import {
 	EventListsInterface,
 	EventLoopAnimationInterface,
 	SpeedFactorInterface,
-} from '../../store/store.types.ts';
-import useRefState from '../../utils/useRefState.tsx';
+} from '../../../../store/store.types.ts';
+import useRefState from '../../../../utils/useRefState.tsx';
 
 const DELAY_BETWEEN_ACTIONS_MS = 1000;
 

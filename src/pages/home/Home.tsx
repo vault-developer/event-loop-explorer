@@ -1,12 +1,12 @@
 import * as Styled from './Home.styled.ts';
-import CallStack from '../../components/Callstack/Callstack.tsx';
-import Console from '../../components/Console/Console.tsx';
-import Editor from '../../components/Editor/Editor.tsx';
-import EventLoop from '../../components/EventLoop/EventLoop.tsx';
-import MicroTasksQueue from '../../components/MicroTasksQueue/MicroTasksQueue.tsx';
-import RequestAnimationFrameQueue from '../../components/RenderCallbacksQueue/RequestAnimationFrameQueue.tsx';
-import TasksQueue from '../../components/TasksQueue/TasksQueue.tsx';
-import WebApiQueue from '../../components/WebApiQueue/WebApiQueue.tsx';
+import CallStack from './sections/Callstack/Callstack.tsx';
+import Console from './sections/Console/Console.tsx';
+import Editor from './sections/Editor/Editor.tsx';
+import EventLoop from './sections/EventLoop/EventLoop.tsx';
+import MicroTasksQueue from './sections/MicroTasksQueue/MicroTasksQueue.tsx';
+import RequestAnimationFrameQueue from './sections/RenderCallbacksQueue/RequestAnimationFrameQueue.tsx';
+import TasksQueue from './sections/TasksQueue/TasksQueue.tsx';
+import WebApiQueue from './sections/WebApiQueue/WebApiQueue.tsx';
 
 export default function Home() {
 	return (

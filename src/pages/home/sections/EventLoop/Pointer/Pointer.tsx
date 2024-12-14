@@ -2,11 +2,11 @@ import { useEffect, useRef } from 'react';
 import {
 	useEventLoopAnimation,
 	useEventLoopTime,
-} from '../../../store/store.ts';
+} from '../../../../../store/store.ts';
 import { events } from '../EventLoop.data.ts';
 import { EventInterface } from '../EventLoop.types.ts';
 import { useProcessEvent } from '../useProcessEvent.ts';
-import useRefState from '../../../utils/useRefState.tsx';
+import useRefState from '../../../../../utils/useRefState.tsx';
 import * as Styled from './Pointer.styled.ts';
 
 const RENDER_DELAY_MS = 720;

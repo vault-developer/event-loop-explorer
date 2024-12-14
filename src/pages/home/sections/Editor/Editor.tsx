@@ -18,9 +18,9 @@ import {
 	useEventLists,
 	useEventLoopAnimation,
 	useSpeedFactor,
-} from '../../store/store.ts';
-import { isMobile } from '../../utils/isMobile.ts';
-import { parse } from '../../utils/parse.ts';
+} from '../../../../store/store.ts';
+import { isMobile } from '../../../../utils/isMobile.ts';
+import { parse } from '../../../../utils/parse.ts';
 import { codeExamples } from './Editor.data.tsx';
 import * as Styled from './Editor.styled.ts';
 

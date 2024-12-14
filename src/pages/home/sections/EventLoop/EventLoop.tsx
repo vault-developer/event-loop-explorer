@@ -1,12 +1,12 @@
 import Pointer from './Pointer/Pointer.tsx';
-import { useEventLoopAnimation } from '../../store/store.ts';
+import { useEventLoopAnimation } from '../../../../store/store.ts';
 import CircleLabels from './CircleLabels/CircleLabels.tsx';
 import { events } from './EventLoop.data.ts';
 import * as Styled from './EventLoop.styled.ts';
 import { useTheme } from '@emotion/react';
-import InfoIcon from '../InfoIcon/InfoIcon.tsx';
-import InfoModal from '../Modal/Modal.tsx';
-import useBoolean from '../../utils/useBoolean.tsx';
+import InfoIcon from '../../../../components/InfoIcon/InfoIcon.tsx';
+import InfoModal from '../../../../components/Modal/Modal.tsx';
+import useBoolean from '../../../../utils/useBoolean.tsx';
 
 function EventLoop() {
 	const animation = useEventLoopAnimation((state) => state);

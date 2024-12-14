@@ -1,4 +1,4 @@
-import { useEventLists } from '../../store/store.ts';
+import { useEventLists } from '../../../../store/store.ts';
 import * as Styled from './Console.styled.ts';
 import { Zoom } from '@mui/material';
 

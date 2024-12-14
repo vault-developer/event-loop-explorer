@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import InfoClosed from '../CloseIcon/InfoIcon.tsx';
+import InfoClosed from '../../../../components/CloseIcon/InfoIcon.tsx';
 
 export const Callstack = styled.div`
 	flex: 1;
