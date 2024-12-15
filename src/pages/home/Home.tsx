@@ -2,7 +2,7 @@ import * as Styled from './Home.styled.ts';
 import { useEventLoopAnimation } from '../../store/store.ts';
 import { isMobile } from '../../utils/isMobile.ts';
 import { useEffect } from 'react';
-import { EVENT_LOOP_ID } from '../../constants.ts';
+import { EVENT_LOOP_ID } from '../../utils/constants.ts';
 
 export default function Home() {
 	const status = useEventLoopAnimation((state) => state.status);

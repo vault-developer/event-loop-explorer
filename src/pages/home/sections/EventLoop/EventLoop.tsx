@@ -8,7 +8,7 @@ import InfoIcon from '../../../../components/InfoIcon/InfoIcon.tsx';
 import InfoModal from '../../../../components/Modal/Modal.tsx';
 import useBoolean from '../../../../utils/useBoolean.tsx';
 import { BaseLayoutElement } from '../../Home.styled.ts';
-import { EVENT_LOOP_ID } from '../../../../constants.ts';
+import { EVENT_LOOP_ID } from '../../../../utils/constants.ts';
 
 function EventLoop({ className }: { className?: string }) {
 	const animation = useEventLoopAnimation((state) => state);
