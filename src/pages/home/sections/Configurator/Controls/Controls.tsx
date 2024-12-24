@@ -22,6 +22,7 @@ import { parse } from '../../../../../utils/parse.ts';
 import { codeExamples } from '../Configurator.data.tsx';
 import * as Styled from './Controls.styled.ts';
 import { getCodeExampleByTitle } from './Controls.utils.tsx';
+import { start } from '../../../../../v2-architecture/start.ts';
 
 export default function Controls({
 	text,
@@ -62,6 +63,10 @@ export default function Controls({
 	};
 
 	const onRun = () => {
+		const res = start(text);
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-expect-error
+		if (!res) return;
 		clearAnimationState();
 		eventListsStateClear();
 		const script = parse(text);

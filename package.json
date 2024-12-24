@@ -14,7 +14,10 @@
 		"prepare": "husky",
 		"commit": "cz",
 		"e2e": "playwright test",
-		"e2e:ui": "playwright test --ui"
+		"e2e:ui": "playwright test --ui",
+		"test": "jest",
+		"test:watch": "jest --watch",
+		"test:coverage": "jest --coverage"
 	},
 	"dependencies": {
 		"@commitlint/cli": "^19.4.0",
@@ -25,8 +28,11 @@
 		"@eslint/js": "^9.9.1",
 		"@mui/icons-material": "^6.0.1",
 		"@mui/material": "^5.16.7",
+		"@types/eslint-scope": "^3.7.7",
 		"ace-builds": "^1.36.0",
 		"acorn": "^8.12.1",
+		"acorn-walk": "^8.3.4",
+		"eslint-scope": "^8.2.0",
 		"globals": "^15.9.0",
 		"react": "^18.3.1",
 		"react-ace": "^12.0.0",
@@ -38,6 +44,7 @@
 		"@playwright/test": "^1.48.2",
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/git": "^10.0.1",
+		"@types/jest": "^29.5.14",
 		"@types/node": "^22.9.0",
 		"@types/react": "^18.3.4",
 		"@types/react-dom": "^18.3.0",
@@ -52,9 +59,11 @@
 		"eslint-plugin-react-hooks": "^4.6.2",
 		"eslint-plugin-react-refresh": "^0.4.11",
 		"husky": "^9.1.5",
+		"jest": "^29.7.0",
 		"lint-staged": "^15.2.9",
 		"prettier": "^3.3.3",
 		"semantic-release": "^24.1.0",
+		"ts-jest": "^29.2.5",
 		"typescript": "^5.5.4",
 		"vite": "^5.4.2"
 	},
