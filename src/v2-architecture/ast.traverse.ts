@@ -1,7 +1,12 @@
 import * as acornWalk from 'acorn-walk';
-import {isConsoleMethodCall, isMemberExpression, isPromiseCallback} from './ast.guards.ts';
-import {ELStep, Queue} from './eventLoop.types.ts';
+import {
+	isConsoleExpression,
+	isPromiseCallbackExpression,
+	isSetTimeoutExpression,
+} from './ast.utils.ts';
+import { ELStep, Queue, WebApiTask } from './eventLoop.types.ts';
 import { Node } from 'acorn';
+import { isLiteral } from './ast.guards.ts';
 
 const traverseChildren = (
 	node: Node,
@@ -33,53 +38,59 @@ export const astTraverse = ({
 	ast,
 	logger,
 	addToQueue,
+	time,
+	webApi,
 }: {
 	ast: Node;
 	logger: (step: ELStep) => void;
-	addToQueue: ({ type, ast }: { type: Queue; ast: Node }) => void;
+	addToQueue: ({
+		type,
+		ast,
+	}: {
+		type: Exclude<Queue, 'webApi'>;
+		ast: Node;
+	}) => void;
+	time: number;
+	webApi: WebApiTask[];
 }) => {
 	acornWalk.recursive(
 		ast,
 		{},
 		{
-			CallExpression(node, state, c) {
+			CallExpression(callExpression, state, c) {
 				// pre-traversal
-				logger({
-					type: 'push',
-					queue: 'callstack',
-					ast: node,
-				});
+				logger({ time, type: 'push', queue: 'callstack', ast: callExpression });
 
-				if (
-					// console.log()
-					isMemberExpression(node.callee) &&
-					isConsoleMethodCall(node.callee)
-				) {
-					logger({
-						type: 'push',
-						queue: 'console',
-						ast: node,
-					});
-				}
-
-				if (
+				if (isConsoleExpression(callExpression)) {
+					// console.log, console.error, console.warn, console.info
+					logger({ type: 'push', queue: 'console', ast: callExpression, time });
+				} else if (isPromiseCallbackExpression(callExpression)) {
 					// promise.resolve.then()
-					isMemberExpression(node.callee) &&
-					isPromiseCallback(node.callee)
-				) {
-					addToQueue({
-						type: 'microtask',
-						ast: node.arguments[0],
-					})
+					addToQueue({ type: 'microtask', ast: callExpression.arguments[0] });
+				} else if (isSetTimeoutExpression(callExpression)) {
+					// setTimeout()
+					const literal = callExpression.arguments[1];
+					if (!isLiteral(literal))
+						throw new Error('Unsupported setTimeout argument');
+					if (typeof literal.value !== 'number')
+						throw new Error('Unsupported setTimeout argument');
+					const endTime = time + literal.value;
+					webApi.push({ node: callExpression, endTime });
+					// TODO: make ordering more efficient O(n) => O(logn)
+					webApi.sort((a, b) => b.endTime - a.endTime);
+					logger({
+						time,
+						type: 'push',
+						queue: 'webApi',
+						ast,
+						end: endTime,
+					});
 				} else {
-					traverseChildren(node, state, c);
+					traverseChildren(callExpression, state, c);
 				}
 
 				// post-traversal
-				logger({
-					type: 'pop',
-					queue: 'callstack',
-				});
+				logger({ time, type: 'pop', queue: 'callstack' });
 			},
 		}
 	);
