@@ -1,71 +1,57 @@
-import { NodeClass } from '../utils/nodes/Node.abstract.ts';
-import { RefObject } from 'react';
-import AceEditor from 'react-ace';
+import AceEditor from "react-ace";
+import {RefObject} from "react";
+import {WebApiQueueElement} from "../types.ts";
 
-type EventLoopStateValuesType = 'render' | 'task' | 'microtask' | 'status';
-type EventLoopAnimationStatusType = 'running' | 'paused' | 'disabled';
-
-export interface EventLoopAnimationInterface {
-	render: boolean;
-	task: boolean;
-	microtask: boolean;
-	status: EventLoopAnimationStatusType;
-	clear(): void;
-	setState(
-		value: boolean | EventLoopAnimationStatusType,
-		property: EventLoopStateValuesType
-	): void;
-}
-
-export interface EventLoopTimeInterface {
-	time: number;
-	increment(): void;
-}
-
-export type EventListNameType =
+type List =
 	| 'console'
+	| 'render_callbacks'
 	| 'web_api'
 	| 'task_queue'
-	| 'microtask_queue'
-	| 'callstack'
-	| 'render_callbacks';
+	| 'microtask_queue';
+type QueueManagerAction = 'push' | 'pop' | 'shift' | 'delete';
 
-export type CallStackValue = {
-	display: string;
-	range: { start: number; end: number };
-};
-
-export interface ActionInterface {
-	list: EventListNameType;
-	type: 'push' | 'pop' | 'shift' | 'delete';
-	value?: string | NodeClass | CallStackValue;
-}
-
-export interface EventListsInterface {
+export interface QueueManager {
 	console: string[];
-	callstack: CallStackValue[];
-	render_callbacks: NodeClass[];
-	web_api: NodeClass[];
-	task_queue: NodeClass[];
-	microtask_queue: NodeClass[];
-	set({ list, type, value }: ActionInterface): void;
+	callstack: string[];
+	render_callbacks: string[];
+	web_api: WebApiQueueElement[];
+	task_queue: string[];
+	microtask_queue: string[];
+
+	set({
+		list,
+		type,
+		value,
+	}: {
+		list: List;
+		type: QueueManagerAction;
+		value: string | WebApiQueueElement;
+	}): void;
+
 	clear(): void;
 }
 
-export interface SpeedFactorInterface {
-	speed: number;
-	setSpeed(key: number): void;
-}
-
-export interface EditorInterface {
+export interface Editor {
 	ref: RefObject<AceEditor | null> | null;
 	setRef(ref: RefObject<AceEditor>): void;
 	source: string;
 	setSource(source: string): void;
-	pushMarker(range: [number, number]): void;
-	popMarker(): void;
-	clearEditor(): void;
-	clearOldMarkers(): void;
-	drawLatestMarker(): void;
-	markers: [number, number][];
+}
+
+export interface Simulator {
+	time: number;
+	setTime(time: number): void;
+	speed: number;
+	setSpeed(time: number): void;
+	status: 'idle' | 'running' | 'paused';
+	setStatus(status: 'idle' | 'running' | 'paused'): void;
+}
+
+export interface Wheel {
+	grad: number;
+	render: boolean;
+	task: boolean;
+	microtask: boolean;
+	setGrad(grad: number): void;
+	setStop(stop: 'render' | 'task' | 'microtask', enabled: boolean): void;
 }

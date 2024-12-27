@@ -1,4 +1,3 @@
-import { useEventLists } from '../../../../store/store.ts';
 import WebApiTask from './WebApiTask.tsx';
 import * as Styled from './WebApiQueue.styled.ts';
 import InfoIcon from '../../../../components/InfoIcon/InfoIcon.tsx';
@@ -6,9 +5,10 @@ import useBoolean from '../../../../utils/useBoolean.tsx';
 import { Zoom } from '@mui/material';
 import { List } from '../../Home.styled.ts';
 import WebApiQueueModal from './WebApiQueue.modal.tsx';
+import {useQueueManagerStore} from "store/store.ts";
 
 function WebApiQueue({ className }: { className?: string }) {
-	const tasks = useEventLists((state) => state.web_api);
+	const tasks = useQueueManagerStore((state) => state.web_api);
 	const [isOpened, toggle] = useBoolean(false);
 
 	return (
@@ -17,7 +17,7 @@ function WebApiQueue({ className }: { className?: string }) {
 			<Styled.WebApiQueue>
 				<InfoIcon onClick={toggle} />
 				{tasks.map((task) => (
-					<Zoom in key={task.serialize() + task.node.start}>
+					<Zoom in key={task.value}>
 						<WebApiTask task={task} />
 					</Zoom>
 				))}

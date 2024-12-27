@@ -1,13 +1,13 @@
-import { useEventLists } from '../../../../store/store.ts';
+import { useQueueManagerStore } from '../../../../store/store.ts';
 import * as Styled from './TasksQueue.styled.ts';
 import InfoIcon from '../../../../components/InfoIcon/InfoIcon.tsx';
 import useBoolean from '../../../../utils/useBoolean.tsx';
 import { Zoom } from '@mui/material';
 import { List } from '../../Home.styled.ts';
-import TasksQueueModal from "./TasksQueue.modal.tsx";
+import TasksQueueModal from './TasksQueue.modal.tsx';
 
 function TasksQueue({ className }: { className?: string }) {
-	const tasks = useEventLists((state) => state.task_queue);
+	const tasks = useQueueManagerStore((state) => state.task_queue);
 	const [isOpened, toggle] = useBoolean(false);
 
 	return (
@@ -15,15 +15,11 @@ function TasksQueue({ className }: { className?: string }) {
 			<span>Tasks Queue</span>
 			<Styled.TasksQueue>
 				<InfoIcon onClick={toggle} />
-				{tasks.map((task) => {
-					const serialized = task.serialize();
-					const key = serialized + task.node.start;
-					return (
-						<Zoom in key={key}>
-							<Styled.Task>{serialized}</Styled.Task>
-						</Zoom>
-					);
-				})}
+				{tasks.map((task) => (
+					<Zoom in key={task}>
+						<Styled.Task>{task}</Styled.Task>
+					</Zoom>
+				))}
 				<TasksQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.TasksQueue>
 		</List>

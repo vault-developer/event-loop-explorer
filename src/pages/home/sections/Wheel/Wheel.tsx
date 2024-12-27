@@ -1,5 +1,4 @@
 import Pointer from './Pointer/Pointer.tsx';
-import { useEventLoopAnimation } from 'store/store.ts';
 import CircleLabels from './CircleLabels/CircleLabels.tsx';
 import { events } from './Wheel.data.ts';
 import * as Styled from './Wheel.styled.ts';
@@ -9,9 +8,13 @@ import useBoolean from 'utils/useBoolean.tsx';
 import { BaseLayoutElement } from 'pages/home/Home.styled.ts';
 import { EVENT_LOOP_ID } from 'utils/constants.ts';
 import WheelModal from './Wheel.modal.tsx';
+import {useWheelStore} from "store/store.ts";
 
 function Wheel({ className }: { className?: string }) {
-	const animation = useEventLoopAnimation((state) => state);
+	const microtask = useWheelStore((state) => state.microtask);
+	const render = useWheelStore((state) => state.render);
+	const task = useWheelStore((state) => state.task);
+	const stops = { microtask, render, task };
 	const theme = useTheme();
 	const [isOpened, toggle] = useBoolean(false);
 
@@ -23,7 +26,7 @@ function Wheel({ className }: { className?: string }) {
 				<Styled.CircleContainer>
 					<Styled.CircleOuter />
 					{events.map(({ degree, type }) => {
-						const enabled = animation[type] ? 'enabled' : 'disabled';
+						const enabled = stops[type] ? 'enabled' : 'disabled';
 						const background = theme.custom.colors.wheel[type][enabled];
 						return (
 							<Styled.Sector

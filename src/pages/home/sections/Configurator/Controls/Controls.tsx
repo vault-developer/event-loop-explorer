@@ -9,20 +9,12 @@ import {
 	SelectChangeEvent,
 	Slider,
 } from '@mui/material';
-import 'ace-builds/src-noconflict/mode-javascript';
-import 'ace-builds/src-noconflict/theme-solarized_dark';
 import { useState } from 'react';
-import {
-	useEditor,
-	useEventLists,
-	useEventLoopAnimation,
-	useSpeedFactor,
-} from '../../../../../store/store.ts';
-import { parse } from '../../../../../utils/parse.ts';
+import { useSimulatorStore } from 'store/store.ts';
 import { codeExamples } from '../Configurator.data.tsx';
 import * as Styled from './Controls.styled.ts';
 import { getCodeExampleByTitle } from './Controls.utils.tsx';
-import { start } from '../../../../../v2-architecture/start.ts';
+import { start } from 'utils/start.ts';
 
 export default function Controls({
 	text,
@@ -31,15 +23,9 @@ export default function Controls({
 	text: string;
 	setText: (key: string) => void;
 }) {
-	const eventListsStateSet = useEventLists((state) => state.set);
-	const eventListsStateClear = useEventLists((state) => state.clear);
-	const clearAnimationState = useEventLoopAnimation((state) => state.clear);
-	const setAnimationState = useEventLoopAnimation((state) => state.setState);
-	const status = useEventLoopAnimation((state) => state.status);
+	const status = useSimulatorStore((state) => state.status);
 	const [exampleTitle, setExampleTitle] = useState(codeExamples[3].title);
-	const speedFactorState = useSpeedFactor((state) => state);
-	const setSourceCode = useEditor((state) => state.setSource);
-	const clearEditor = useEditor((state) => state.clearEditor);
+	const simulatorStore = useSimulatorStore((state) => state);
 
 	const onExampleSelect = (e: SelectChangeEvent) => {
 		const example = e.target.value;
@@ -49,48 +35,35 @@ export default function Controls({
 	};
 
 	const onStop = () => {
-		clearAnimationState();
-		eventListsStateClear();
-		clearEditor();
+		console.log('STOP not implemented');
 	};
 
 	const onPause = () => {
-		setAnimationState('paused', 'status');
+		console.log('PAUSE not implemented');
 	};
 
 	const onResume = () => {
-		setAnimationState('running', 'status');
+		console.log('RESUME not implemented');
 	};
 
 	const onRun = () => {
-		const res = start(text);
-		if (!res) return;
-		clearAnimationState();
-		eventListsStateClear();
-		const script = parse(text);
-		setSourceCode(text);
-		eventListsStateSet({
-			list: 'task_queue',
-			type: 'push',
-			value: script,
-		});
-		setAnimationState('running', 'status');
+		start(text);
 	};
 
 	const onSpeedChange = (_: Event, value: number | number[]) => {
 		const num = Array.isArray(value) ? value[0] : value;
 		const res = num >= 0 ? num + 1 : 1 / (1 - num);
-		speedFactorState.setSpeed(res);
+		simulatorStore.setSpeed(res);
 	};
 
 	const speed =
-		speedFactorState.speed >= 1
-			? speedFactorState.speed - 1
-			: 1 - 1 / speedFactorState.speed;
+		simulatorStore.speed >= 1
+			? simulatorStore.speed - 1
+			: 1 - 1 / simulatorStore.speed;
 
 	return (
 		<Styled.ControlsWrapper>
-			{status === 'disabled' && (
+			{status === 'idle' && (
 				<>
 					<Styled.SelectWrapper>
 						<FormControl>
@@ -127,11 +100,11 @@ export default function Controls({
 					</Styled.CTAButton>
 				</>
 			)}
-			{status !== 'disabled' && (
+			{status !== 'idle' && (
 				<>
 					<Styled.SliderWrapper>
 						<div id="non-linear-slider" data-testid="speed-slider">
-							speed: {Math.round(speedFactorState.speed * 100)}%
+							speed: {Math.round(simulatorStore.speed * 100)}%
 						</div>
 						<Slider
 							aria-labelledby="non-linear-slider"
