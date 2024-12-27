@@ -8,7 +8,7 @@ import RequestAnimationFrameQueueModal from './RequestAnimationFrameQueue.modal.
 
 function RequestAnimationFrameQueue({ className }: { className?: string }) {
 	const callbacks = useEventLists((state) => state.render_callbacks);
-	const [open, toggle] = useBoolean(false);
+	const [isOpened, toggle] = useBoolean(false);
 
 	return (
 		<List className={className}>
@@ -24,7 +24,7 @@ function RequestAnimationFrameQueue({ className }: { className?: string }) {
 						</Zoom>
 					);
 				})}
-				<RequestAnimationFrameQueueModal open={open} toggle={toggle} />
+				<RequestAnimationFrameQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.CallbacksQueue>
 		</List>
 	);

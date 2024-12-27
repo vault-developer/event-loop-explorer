@@ -2,14 +2,14 @@ import * as Styled from './RequestAnimationFrameQueue.styled.ts';
 import InfoModal from '../../../../components/Modal/Modal.tsx';
 
 function RequestAnimationFrameQueueModal({
-	open,
+	isOpened,
 	toggle,
 }: {
-	open: boolean;
+	isOpened: boolean;
 	toggle: () => void;
 }) {
 	return (
-		<InfoModal isOpen={open} onClose={toggle}>
+		<InfoModal isOpened={isOpened} onClose={toggle}>
 			<h2>RequestAnimationFrame</h2>
 			<Styled.CloseIcon onClick={toggle} />
 			<p style={{ marginBottom: 8 }}>

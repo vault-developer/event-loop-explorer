@@ -2,14 +2,14 @@ import * as Styled from './WebApiQueue.styled.ts';
 import InfoModal from '../../../../components/Modal/Modal.tsx';
 
 function WebApiQueueModal({
-	open,
+	isOpened,
 	toggle,
 }: {
-	open: boolean;
+	isOpened: boolean;
 	toggle: () => void;
 }) {
 	return (
-		<InfoModal isOpen={open} onClose={toggle}>
+		<InfoModal isOpened={isOpened} onClose={toggle}>
 			<h2>Web API</h2>
 			<Styled.CloseIcon onClick={toggle} />
 			<p>

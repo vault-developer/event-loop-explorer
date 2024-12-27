@@ -2,14 +2,14 @@ import * as Styled from './Callstack.styled.ts';
 import InfoModal from '../../../../components/Modal/Modal.tsx';
 
 function CallStackModal({
-	open,
+													isOpened,
 	toggle,
 }: {
-	open: boolean;
+	isOpened: boolean;
 	toggle: () => void;
 }) {
 	return (
-		<InfoModal isOpen={open} onClose={toggle}>
+		<InfoModal isOpened={isOpened} onClose={toggle}>
 			<h2>Call stack</h2>
 			<Styled.CloseIcon onClick={toggle} />
 			<p>

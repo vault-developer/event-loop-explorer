@@ -1,9 +1,15 @@
 import * as Styled from './Wheel.styled.ts';
 import InfoModal from '../../../../components/Modal/Modal.tsx';
 
-function WheelModal({ open, toggle }: { open: boolean; toggle: () => void }) {
+function WheelModal({
+	isOpened,
+	toggle,
+}: {
+	isOpened: boolean;
+	toggle: () => void;
+}) {
 	return (
-		<InfoModal isOpen={open} onClose={toggle}>
+		<InfoModal isOpened={isOpened} onClose={toggle}>
 			<h2>Event Loop</h2>
 			<Styled.CloseIcon onClick={toggle} />
 			<p style={{ marginBottom: 8 }}>

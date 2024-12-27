@@ -13,7 +13,7 @@ import WheelModal from './Wheel.modal.tsx';
 function Wheel({ className }: { className?: string }) {
 	const animation = useEventLoopAnimation((state) => state);
 	const theme = useTheme();
-	const [open, toggle] = useBoolean(false);
+	const [isOpened, toggle] = useBoolean(false);
 
 	return (
 		<BaseLayoutElement className={className}>
@@ -38,7 +38,7 @@ function Wheel({ className }: { className?: string }) {
 					<Styled.CircleInner />
 					<CircleLabels />
 				</Styled.CircleContainer>
-				<WheelModal open={open} toggle={toggle} />
+				<WheelModal isOpened={isOpened} toggle={toggle} />
 			</Styled.EventLoopBody>
 		</BaseLayoutElement>
 	);

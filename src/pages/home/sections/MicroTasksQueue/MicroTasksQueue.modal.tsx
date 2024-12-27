@@ -2,14 +2,14 @@ import * as Styled from './MicroTasksQueue.styled.ts';
 import InfoModal from '../../../../components/Modal/Modal.tsx';
 
 function MicroTasksQueueModal({
-	open,
+	isOpened,
 	toggle,
 }: {
-	open: boolean;
+	isOpened: boolean;
 	toggle: () => void;
 }) {
 	return (
-		<InfoModal isOpen={open} onClose={toggle}>
+		<InfoModal isOpened={isOpened} onClose={toggle}>
 			<h2>Microtasks</h2>
 			<Styled.CloseIcon onClick={toggle} />
 			<p>

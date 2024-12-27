@@ -8,7 +8,7 @@ import MicroTasksQueueModal from './MicroTasksQueue.modal.tsx';
 
 function MicroTasksQueue({ className }: { className?: string }) {
 	const tasks = useEventLists((state) => state.microtask_queue);
-	const [open, toggle] = useBoolean(false);
+	const [isOpened, toggle] = useBoolean(false);
 
 	return (
 		<List className={className}>
@@ -24,7 +24,7 @@ function MicroTasksQueue({ className }: { className?: string }) {
 						</Zoom>
 					);
 				})}
-				<MicroTasksQueueModal open={open} toggle={toggle} />
+				<MicroTasksQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.MicroTasksQueue>
 		</List>
 	);

@@ -8,7 +8,7 @@ import CallStackModal from "./Callstack.modal.tsx";
 
 function CallStack({ className }: { className?: string }) {
 	const tasks = useEventLists((state) => state.callstack);
-	const [open, toggle] = useBoolean(false);
+	const [isOpened, toggle] = useBoolean(false);
 
 	return (
 		<List className={className}>
@@ -20,7 +20,7 @@ function CallStack({ className }: { className?: string }) {
 						<Styled.CallstackElement>{stack}</Styled.CallstackElement>
 					</Zoom>
 				))}
-				<CallStackModal open={open} toggle={toggle} />
+				<CallStackModal isOpened={isOpened} toggle={toggle} />
 			</Styled.Callstack>
 		</List>
 	);

@@ -8,7 +8,7 @@ import TasksQueueModal from "./TasksQueue.modal.tsx";
 
 function TasksQueue({ className }: { className?: string }) {
 	const tasks = useEventLists((state) => state.task_queue);
-	const [open, toggle] = useBoolean(false);
+	const [isOpened, toggle] = useBoolean(false);
 
 	return (
 		<List className={className}>
@@ -24,7 +24,7 @@ function TasksQueue({ className }: { className?: string }) {
 						</Zoom>
 					);
 				})}
-				<TasksQueueModal open={open} toggle={toggle} />
+				<TasksQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.TasksQueue>
 		</List>
 	);

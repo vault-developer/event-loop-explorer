@@ -9,7 +9,7 @@ import WebApiQueueModal from './WebApiQueue.modal.tsx';
 
 function WebApiQueue({ className }: { className?: string }) {
 	const tasks = useEventLists((state) => state.web_api);
-	const [open, toggle] = useBoolean(false);
+	const [isOpened, toggle] = useBoolean(false);
 
 	return (
 		<List className={className}>
@@ -21,7 +21,7 @@ function WebApiQueue({ className }: { className?: string }) {
 						<WebApiTask task={task} />
 					</Zoom>
 				))}
-				<WebApiQueueModal open={open} toggle={toggle} />
+				<WebApiQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.WebApiQueue>
 		</List>
 	);
