@@ -1,7 +1,7 @@
 import { useQueueManagerStore } from '../../../../store/store.ts';
 import * as Styled from './TasksQueue.styled.ts';
 import InfoIcon from '../../../../components/InfoIcon/InfoIcon.tsx';
-import useBoolean from '../../../../utils/useBoolean.tsx';
+import useBoolean from '../../../../hooks/useBoolean.tsx';
 import { Zoom } from '@mui/material';
 import { List } from '../../Home.styled.ts';
 import TasksQueueModal from './TasksQueue.modal.tsx';
