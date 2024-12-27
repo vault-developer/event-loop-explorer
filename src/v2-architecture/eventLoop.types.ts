@@ -14,11 +14,11 @@ export type WebApiTask = {node: Node, endTime: number};
 export type ELTask = 'macrotask' | 'microtask' | 'scheduleRender' | 'render' | 'webApiResolve' ;
 
 export type ELStep =
-	| { type: 'start'; time: number }
+	| { type: 'start'; time: number; ast: Node }
 	| { type: 'push'; queue: Queue; ast: Node; time: number }
 	| { type: 'push'; queue: 'webApi'; ast: Node; time: number; end: number }
 	| { type: 'delete'; queue: 'webApi'; ast: Node; time: number;}
-	| { type: 'pop' | 'shift'; queue: Queue; time: number }
+	| { type: 'pop' | 'shift'; queue: Queue; time: number, ast: Node }
 	| { type: 'schedule render'; time: number }
 	| { type: 'event'; section: Section; time: number }
 	| { type: 'end'; time: number };

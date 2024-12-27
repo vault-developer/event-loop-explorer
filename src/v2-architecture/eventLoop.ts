@@ -1,6 +1,5 @@
 import { AST } from './getAstFromText.ts';
-import * as eslintScope from 'eslint-scope';
-import { ScopeManager } from 'eslint-scope';
+
 import { ELStep, ELTask, Queue, WebApiTask } from './eventLoop.types.ts';
 import { astTraverse } from './ast.traverse.ts';
 import {
@@ -12,6 +11,7 @@ import { Node } from 'acorn';
 import { timeToNextStop } from './eventLoop.utils.ts';
 import { isSetTimeoutExpression } from './ast.utils.ts';
 import { isArrowFunctionExpression, isCallExpression } from './ast.guards.ts';
+import { ScopeManager } from 'eslint-scope';
 
 const {
 	macrotask: macrotaskStops,
@@ -21,6 +21,11 @@ const {
 } = EVENT_LOOP_WHEEL_STOPS_WITH_OVERLOAD;
 
 export class EventLoop {
+	constructor(scope: ScopeManager) {
+		this.scope = scope;
+	}
+
+	private scope: ScopeManager;
 	private macrotasks: Node[] = [];
 	private microtasks: Node[] = [];
 	private rafCallbacks: Node[] = [];
@@ -28,7 +33,6 @@ export class EventLoop {
 	private webApi: WebApiTask[] = [];
 	private console: Node[] = [];
 
-	private scope: ScopeManager = {} as ScopeManager;
 	private steps: ELStep[] = [];
 
 	private lastRender = EVENT_LOOP_WHEEL_STOPS.render;
@@ -94,7 +98,7 @@ export class EventLoop {
 				this.log({ time, type: 'event', section: 'macrotask' });
 				const task = this.macrotasks.shift();
 				if (!task) throw new Error('No macrotask found');
-				this.log({ time, type: 'shift', queue: 'macrotask' });
+				this.log({ time, type: 'shift', queue: 'macrotask', ast: task });
 				this.executeCode(task);
 			},
 			microtask: (time) => {
@@ -102,7 +106,7 @@ export class EventLoop {
 				while (this.microtasks.length > 0) {
 					const task = this.microtasks.shift();
 					if (!task) throw new Error('No microtask found');
-					this.log({ time, type: 'shift', queue: 'microtask' });
+					this.log({ time, type: 'shift', queue: 'microtask', ast: task });
 					this.executeCode(task);
 				}
 			},
@@ -112,6 +116,13 @@ export class EventLoop {
 			render: (time) => {
 				this.lastRender = time;
 				this.log({ time, type: 'event', section: 'render' });
+				while (this.rafCallbacks.length > 0) {
+					// TODO: exclude infinite loop, when rAF is invoked inside rAF
+					const task = this.rafCallbacks.shift();
+					if (!task) throw new Error('No raf callback found');
+					this.log({ time, type: 'shift', queue: 'rafCallback', ast: task });
+					this.executeCode(task);
+				}
 			},
 			webApiResolve: (time) => {
 				const webApiTask = this.webApi.shift();
@@ -120,8 +131,7 @@ export class EventLoop {
 				if (
 					!isCallExpression(node) ||
 					!isSetTimeoutExpression(node) ||
-					!isArrowFunctionExpression(node.arguments[0]) ||
-					!isCallExpression(node.arguments[0].body)
+					!isArrowFunctionExpression(node.arguments[0])
 				) {
 					// only simple setTimeout is supported at the moment
 					throw new Error('Unsupported webApi task');
@@ -170,19 +180,16 @@ export class EventLoop {
 			addToQueue,
 			time: this.time,
 			webApi: this.webApi,
+			scope: this.scope,
 		});
 	}
 
 	// calculate EL steps based on AST
 	public calculate(ast: AST) {
-		this.scope = eslintScope.analyze(ast, {
-			ecmaVersion: 2024,
-			sourceType: 'script',
-		});
-
 		this.log({
 			time: this.time,
 			type: 'start',
+			ast,
 		});
 
 		this.addToQueue({
@@ -200,9 +207,6 @@ export class EventLoop {
 			type: 'end',
 		});
 
-		return {
-			scope: this.scope,
-			steps: this.steps,
-		};
+		return this.steps;
 	}
 }

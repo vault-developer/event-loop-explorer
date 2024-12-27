@@ -1,22 +1,24 @@
 import { getAstFromText } from './getAstFromText.ts';
 import { EventLoop } from './eventLoop.ts';
-// import * as acornWalk from 'acorn-walk';
+import { getAstScope } from './ast.scope.ts';
+import { getSerialisedSteps } from './ast.serialise.ts';
 
 export const start = (text: string) => {
-	const ast = getAstFromText(text);
-	const eventLoop = new EventLoop();
-	const { scope: scopeManager, steps } = eventLoop.calculate(ast);
+	try {
+		const ast = getAstFromText(text);
+		const scope = getAstScope(ast);
+		console.log('scope:', scope);
 
-	console.log('result: \n', scopeManager, ast, steps);
+		const eventLoop = new EventLoop(scope);
+		const steps = eventLoop.calculate(ast);
+		const serialised = getSerialisedSteps(steps, scope);
+		console.log('serialised', serialised);
 
-	// acornWalk.simple(ast, {
-	// 	Identifier(node) {
-	// 		const scope = scopeManager.acquire(node) ?? scopeManager.globalScope;
-	// 		const variable = scope.set.get(node.name);
-	// 		if (!variable) return;
-	// 		const value = variable.defs[0].node.init.value;
-	// 		// use this resolved identifier somehow
-	// 		console.log(`for identifier ${node.name} scope is resolved to ${value}`);
-	// 	},
-	// });
+		return serialised;
+	} catch (error) {
+		window.confirm(
+			`${error}\nIt looks like something is not implemented yet 🦝.\nFeel free to raise an issue on Github 🖥️.`
+		);
+		throw error;
+	}
 };

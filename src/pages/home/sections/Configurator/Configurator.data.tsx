@@ -29,21 +29,21 @@ foo1();`,
 	},
 	{
 		title: 'microtasks',
-		code: `console.log(1);  
-setTimeout(() => console.log(2), 0);  
-queueMicrotask(() => console.log(3));  
+		code: `console.log(1);
+setTimeout(() => console.log(2), 0);
+queueMicrotask(() => console.log(3));
 Promise.resolve().then(() => {
     console.log(4);
-});   
-setTimeout(() => console.log(5), 500);  
+});
+setTimeout(() => console.log(5), 500);
 console.log(6);`,
 	},
 	{
 		title: 'requestAnimationFrame',
-		code: `console.log(1);  
-queueMicrotask(() => console.log(2));  
-requestAnimationFrame(() => console.log(3));  
-requestAnimationFrame(() => console.log(4)); 
+		code: `console.log(1);
+queueMicrotask(() => console.log(2));
+requestAnimationFrame(() => console.log(3));
+requestAnimationFrame(() => console.log(4));
 console.log(5);`,
 	},
 	{
@@ -60,24 +60,20 @@ function foo3() {
   setTimeout(() => {
       foo4();
       console.log('foo3:1');
-  }, 0);  
-  queueMicrotask(() => console.log('foo3:2'));  
+  }, 0);
+  queueMicrotask(() => console.log('foo3:2'));
   Promise.resolve().then(() => {
       console.log('foo3:3')
-      });  
-  setTimeout(() => console.log('foo3:4'), 500);  
+      });
+  setTimeout(() => console.log('foo3:4'), 500);
   console.log('foo3:5');
 }
 function foo4() {
   console.log('foo4');
 }
-function foo5(param1) {
-  console.log(param1);
-}
 
 console.log('global');
-setTimeout(() => console.log('global:1'), 500); 
-foo1();
-foo5('foo5:1');`,
+setTimeout(() => console.log('global:1'), 500);
+foo1();`,
 	},
 ];

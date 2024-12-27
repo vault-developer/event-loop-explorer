@@ -64,8 +64,6 @@ export default function Controls({
 
 	const onRun = () => {
 		const res = start(text);
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-expect-error
 		if (!res) return;
 		clearAnimationState();
 		eventListsStateClear();

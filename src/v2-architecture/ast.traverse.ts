@@ -2,11 +2,18 @@ import * as acornWalk from 'acorn-walk';
 import {
 	isConsoleExpression,
 	isPromiseCallbackExpression,
+	isQueueMicrotaskExpression,
+	isRequestAnimationFrameExpression,
 	isSetTimeoutExpression,
 } from './ast.utils.ts';
 import { ELStep, Queue, WebApiTask } from './eventLoop.types.ts';
 import { Node } from 'acorn';
-import { isLiteral } from './ast.guards.ts';
+import {
+	isFunctionDeclaration,
+	isIdentifier,
+	isLiteral,
+} from './ast.guards.ts';
+import { ScopeManager } from 'eslint-scope';
 
 const traverseChildren = (
 	node: Node,
@@ -40,6 +47,7 @@ export const astTraverse = ({
 	addToQueue,
 	time,
 	webApi,
+	scope,
 }: {
 	ast: Node;
 	logger: (step: ELStep) => void;
@@ -52,6 +60,7 @@ export const astTraverse = ({
 	}) => void;
 	time: number;
 	webApi: WebApiTask[];
+	scope: ScopeManager;
 }) => {
 	acornWalk.recursive(
 		ast,
@@ -60,10 +69,9 @@ export const astTraverse = ({
 			CallExpression(callExpression, state, c) {
 				// pre-traversal
 				logger({ time, type: 'push', queue: 'callstack', ast: callExpression });
-
 				if (isConsoleExpression(callExpression)) {
 					// console.log, console.error, console.warn, console.info
-					logger({ type: 'push', queue: 'console', ast: callExpression, time });
+					logger({ time, type: 'push', queue: 'console', ast: callExpression });
 				} else if (isPromiseCallbackExpression(callExpression)) {
 					// promise.resolve.then()
 					addToQueue({ type: 'microtask', ast: callExpression.arguments[0] });
@@ -85,12 +93,42 @@ export const astTraverse = ({
 						ast,
 						end: endTime,
 					});
+				} else if (isQueueMicrotaskExpression(callExpression)) {
+					// queueMicroTask()
+					addToQueue({ type: 'microtask', ast: callExpression.arguments[0] });
+				} else if (isRequestAnimationFrameExpression(callExpression)) {
+					// requestAnimationFrame()
+					addToQueue({ type: 'rafCallback', ast: callExpression.arguments[0] });
+				} else if (isIdentifier(callExpression.callee)) {
+					const node = callExpression.callee;
+					const nodeScope = scope.acquire(node) ?? scope.globalScope;
+					const variable = nodeScope.set.get(node.name);
+					if (!variable) throw new Error('Unsupported identifier in the scope');
+					const definition = variable.defs[0];
+					if (!isFunctionDeclaration(definition.node)) {
+						throw new Error('Unsupported definition in the scope');
+					}
+					traverseChildren(definition.node.body, state, c);
 				} else {
 					traverseChildren(callExpression, state, c);
 				}
 
 				// post-traversal
-				logger({ time, type: 'pop', queue: 'callstack' });
+				logger({ time, type: 'pop', queue: 'callstack', ast: callExpression });
+			},
+			BlockStatement(blockStatement, state, c) {
+				// pre-traversal
+				logger({ time, type: 'push', queue: 'callstack', ast: blockStatement });
+
+				blockStatement.body.forEach((node) => {
+					traverseChildren(node, state, c);
+				});
+
+				// post-traversal
+				logger({ time, type: 'pop', queue: 'callstack', ast: blockStatement });
+			},
+			FunctionDeclaration() {
+				// skip function declaration
 			},
 		}
 	);
