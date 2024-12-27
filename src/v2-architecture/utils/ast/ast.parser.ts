@@ -1,9 +1,9 @@
 import { parse, Program } from 'acorn';
 
-type GetAstFromText = (code: string) => Program;
+type AstParser = (code: string) => Program;
 
 export type AST = Program;
 
-export const getAstFromText: GetAstFromText = (code) => {
+export const getAstFromText: AstParser = (code) => {
 	return parse(code, { ecmaVersion: 'latest' });
 };

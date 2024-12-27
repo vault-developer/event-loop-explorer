@@ -1,4 +1,4 @@
-import { events } from '../EventLoop.data.ts';
+import { events } from '../Wheel.data.ts';
 import * as Styled from './CircleLabels.styled.ts';
 import { Tooltip } from '@mui/material';
 

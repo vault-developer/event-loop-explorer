@@ -1,7 +1,7 @@
-import { getAstFromText } from './getAstFromText.ts';
-import { EventLoop } from './eventLoop.ts';
-import { getAstScope } from './ast.scope.ts';
-import { getSerialisedSteps } from './ast.serialise.ts';
+import { getAstFromText } from './utils/ast/ast.parser.ts';
+import { Calculator } from './utils/calculator/calculator.ts';
+import { getAstScope } from './utils/ast/ast.scope.ts';
+import { getSerialisedSteps } from './utils/ast/ast.serialise.ts';
 
 export const start = (text: string) => {
 	try {
@@ -9,8 +9,8 @@ export const start = (text: string) => {
 		const scope = getAstScope(ast);
 		console.log('scope:', scope);
 
-		const eventLoop = new EventLoop(scope);
-		const steps = eventLoop.calculate(ast);
+		const calculator = new Calculator(scope);
+		const steps = calculator.calculate(ast);
 		const serialised = getSerialisedSteps(steps, scope);
 		console.log('serialised', serialised);
 

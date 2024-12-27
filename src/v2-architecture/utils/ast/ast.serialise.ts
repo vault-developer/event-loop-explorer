@@ -1,4 +1,4 @@
-import { ELStep } from './eventLoop.types.ts';
+import { ELStep } from '../calculator/calculator.types.ts';
 import { Node } from 'acorn';
 import { ScopeManager } from 'eslint-scope';
 import {

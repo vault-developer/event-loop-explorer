@@ -3,8 +3,8 @@ import {
 	useEventLoopAnimation,
 	useEventLoopTime,
 } from '../../../../../store/store.ts';
-import { events } from '../EventLoop.data.ts';
-import { EventInterface } from '../EventLoop.types.ts';
+import { events } from '../Wheel.data.ts';
+import { EventInterface } from '../Wheel.types.ts';
 import { useProcessEvent } from '../useProcessEvent.ts';
 import useRefState from '../../../../../utils/useRefState.tsx';
 import * as Styled from './Pointer.styled.ts';

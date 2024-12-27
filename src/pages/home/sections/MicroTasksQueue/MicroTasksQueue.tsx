@@ -1,20 +1,20 @@
 import { useEventLists } from '../../../../store/store.ts';
 import * as Styled from './MicroTasksQueue.styled.ts';
 import InfoIcon from '../../../../components/InfoIcon/InfoIcon.tsx';
-import InfoModal from '../../../../components/Modal/Modal.tsx';
 import useBoolean from '../../../../utils/useBoolean.tsx';
 import { Zoom } from '@mui/material';
 import { List } from '../../Home.styled.ts';
+import MicroTasksQueueModal from './MicroTasksQueue.modal.tsx';
 
 function MicroTasksQueue({ className }: { className?: string }) {
 	const tasks = useEventLists((state) => state.microtask_queue);
-	const [open, setOpen, setClose] = useBoolean(false);
+	const [open, toggle] = useBoolean(false);
 
 	return (
 		<List className={className}>
 			<span>Microtasks Queue</span>
 			<Styled.MicroTasksQueue>
-				<InfoIcon onClick={setOpen} />
+				<InfoIcon onClick={toggle} />
 				{tasks.map((task) => {
 					const serialized = task.serialize();
 					const key = serialized + task.node.start;
@@ -24,25 +24,7 @@ function MicroTasksQueue({ className }: { className?: string }) {
 						</Zoom>
 					);
 				})}
-				<InfoModal isOpen={open} onClose={setClose}>
-					<h2>Microtasks</h2>
-					<Styled.CloseIcon onClick={setClose} />
-					<p>
-						A microtask is a short function which is executed after the function
-						or program which created it exits and only if the JavaScript
-						execution stack is empty, but before returning control to the event
-						loop being used by the user agent to drive the script's execution
-						environment.
-					</p>
-					<p style={{ marginTop: 12 }}>
-						Events that can trigger new microtasks:
-					</p>
-					<ul style={{ marginTop: 8 }}>
-						<li>Promise resolution (.then(), .catch(), .finally())</li>
-						<li>Occurrence of observed DOM changes</li>
-						<li>queueMicrotask() method</li>
-					</ul>
-				</InfoModal>
+				<MicroTasksQueueModal open={open} toggle={toggle} />
 			</Styled.MicroTasksQueue>
 		</List>
 	);

@@ -1,16 +1,14 @@
-import { AST } from './getAstFromText.ts';
-
-import { ELStep, ELTask, Queue, WebApiTask } from './eventLoop.types.ts';
-import { astTraverse } from './ast.traverse.ts';
+import { AST } from '../ast/ast.parser.ts';
+import { ELStep, ELTask, Queue, WebApiTask } from './calculator.types.ts';
+import { astTraverse } from '../ast/ast.traverse.ts';
 import {
 	EVENT_LOOP_FULL_CIRCLE,
 	EVENT_LOOP_WHEEL_STOPS,
 	EVENT_LOOP_WHEEL_STOPS_WITH_OVERLOAD,
-} from './eventLoop.constants.ts';
+} from './calculator.constants.ts';
 import { Node } from 'acorn';
-import { timeToNextStop } from './eventLoop.utils.ts';
-import { isSetTimeoutExpression } from './ast.utils.ts';
-import { isArrowFunctionExpression, isCallExpression } from './ast.guards.ts';
+import { isSetTimeoutExpression } from '../ast/ast.utils.ts';
+import { isArrowFunctionExpression, isCallExpression } from '../ast/ast.guards.ts';
 import { ScopeManager } from 'eslint-scope';
 
 const {
@@ -20,7 +18,7 @@ const {
 	scheduleRender: scheduleRenderStops,
 } = EVENT_LOOP_WHEEL_STOPS_WITH_OVERLOAD;
 
-export class EventLoop {
+export class Calculator {
 	constructor(scope: ScopeManager) {
 		this.scope = scope;
 	}
@@ -53,10 +51,13 @@ export class EventLoop {
 		);
 	}
 
+	private timeToNextStop(arr: number[]) {
+		const grad = this.time % EVENT_LOOP_FULL_CIRCLE;
+		return (arr.find(item => grad < item) ?? Infinity) - grad;
+	}
+
 	private processNextTask() {
 		const now = this.time;
-		const grad = this.time % EVENT_LOOP_FULL_CIRCLE;
-
 		const hasMacrotasks = this.macrotasks.length > 0;
 		const hasMicrotasks = this.microtasks.length > 0;
 		const hasWebApi = this.webApi.length > 0;
@@ -67,22 +68,22 @@ export class EventLoop {
 			{
 				key: 'macrotask',
 				time: hasMacrotasks
-					? now + timeToNextStop(macrotaskStops, grad)
+					? now + this.timeToNextStop(macrotaskStops)
 					: Infinity,
 			},
 			{
 				key: 'microtask',
 				time: hasMicrotasks
-					? now + timeToNextStop(microtasksStops, grad)
+					? now + this.timeToNextStop(microtasksStops)
 					: Infinity,
 			},
 			{
 				key: 'scheduleRender',
-				time: now + timeToNextStop(scheduleRenderStops, grad) + 360 * hasRender,
+				time: now + this.timeToNextStop(scheduleRenderStops) + 360 * hasRender,
 			},
 			{
 				key: 'render',
-				time: now + timeToNextStop(renderStops, grad) + 360 * hasRender,
+				time: now + this.timeToNextStop(renderStops) + 360 * hasRender,
 			},
 			{
 				key: 'webApiResolve',

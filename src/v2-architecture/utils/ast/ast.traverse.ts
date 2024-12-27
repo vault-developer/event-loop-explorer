@@ -6,7 +6,7 @@ import {
 	isRequestAnimationFrameExpression,
 	isSetTimeoutExpression,
 } from './ast.utils.ts';
-import { ELStep, Queue, WebApiTask } from './eventLoop.types.ts';
+import { ELStep, Queue, WebApiTask } from '../calculator/calculator.types.ts';
 import { Node } from 'acorn';
 import {
 	isFunctionDeclaration,
