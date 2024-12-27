@@ -1,13 +1,13 @@
 import Pointer from './Pointer/Pointer.tsx';
-import { useEventLoopAnimation } from '../../../../store/store.ts';
+import { useEventLoopAnimation } from 'store/store.ts';
 import CircleLabels from './CircleLabels/CircleLabels.tsx';
 import { events } from './Wheel.data.ts';
 import * as Styled from './Wheel.styled.ts';
 import { useTheme } from '@emotion/react';
-import InfoIcon from '../../../../components/InfoIcon/InfoIcon.tsx';
-import useBoolean from '../../../../utils/useBoolean.tsx';
-import { BaseLayoutElement } from '../../Home.styled.ts';
-import { EVENT_LOOP_ID } from '../../../../utils/constants.ts';
+import InfoIcon from 'components/InfoIcon/InfoIcon.tsx';
+import useBoolean from 'utils/useBoolean.tsx';
+import { BaseLayoutElement } from 'pages/home/Home.styled.ts';
+import { EVENT_LOOP_ID } from 'utils/constants.ts';
 import WheelModal from './Wheel.modal.tsx';
 
 function Wheel({ className }: { className?: string }) {
