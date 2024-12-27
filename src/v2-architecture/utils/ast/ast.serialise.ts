@@ -1,4 +1,4 @@
-import { ELStep } from '../calculator/calculator.types.ts';
+import {ELSerialisedStep, ELStep} from '../calculator/calculator.types.ts';
 import { Node } from 'acorn';
 import { ScopeManager } from 'eslint-scope';
 import {
@@ -13,7 +13,7 @@ import {
 	isSpreadElement,
 } from './ast.guards.ts';
 
-export const getSerialisedSteps = (steps: ELStep[], scope: ScopeManager) => {
+export const getSerialisedSteps = (steps: ELStep[], scope: ScopeManager): ELSerialisedStep[] => {
 	return steps.map((step) => {
 		if (!('ast' in step)) return step;
 		return {
