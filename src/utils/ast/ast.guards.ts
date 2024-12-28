@@ -8,7 +8,8 @@ import {
 	ArrowFunctionExpression,
 	FunctionDeclaration,
 	Program,
-	BlockStatement, ExpressionStatement,
+	BlockStatement,
+	ExpressionStatement,
 } from 'acorn';
 
 export function isMemberExpression(node: any): node is MemberExpression {

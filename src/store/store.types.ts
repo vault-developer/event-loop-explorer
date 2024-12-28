@@ -1,23 +1,16 @@
-import AceEditor from "react-ace";
-import {RefObject} from "react";
-import {WebApiQueueElement} from "../types.ts";
+import AceEditor from 'react-ace';
+import { RefObject } from 'react';
+import { List, WebApiSectionElement } from '../types.ts';
 
-type List =
-	| 'console'
-	| 'render_callbacks'
-	| 'web_api'
-	| 'task_queue'
-	| 'microtask_queue';
 type QueueManagerAction = 'push' | 'pop' | 'shift' | 'delete';
 
 export interface QueueManager {
 	console: string[];
 	callstack: string[];
-	render_callbacks: string[];
-	web_api: WebApiQueueElement[];
-	task_queue: string[];
-	microtask_queue: string[];
-
+	rafCallback: string[];
+	webApi: WebApiSectionElement[];
+	macrotask: string[];
+	microtask: string[];
 	set({
 		list,
 		type,
@@ -25,9 +18,8 @@ export interface QueueManager {
 	}: {
 		list: List;
 		type: QueueManagerAction;
-		value: string | WebApiQueueElement;
+		value: string | WebApiSectionElement;
 	}): void;
-
 	clear(): void;
 }
 
@@ -50,8 +42,14 @@ export interface Simulator {
 export interface Wheel {
 	grad: number;
 	render: boolean;
-	task: boolean;
+	macrotask: boolean;
 	microtask: boolean;
 	setGrad(grad: number): void;
-	setStop(stop: 'render' | 'task' | 'microtask', enabled: boolean): void;
+	setStop({
+		stop,
+		enabled,
+	}: {
+		stop: 'render' | 'macrotask' | 'microtask';
+		enabled: boolean;
+	}): void;
 }

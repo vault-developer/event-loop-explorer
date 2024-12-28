@@ -12,7 +12,7 @@ export default defineConfig({
 			providers: path.resolve(__dirname, './src/providers'),
 			store: path.resolve(__dirname, './src/store'),
 			utils: path.resolve(__dirname, './src/utils'),
-		}
+		},
 	},
 	plugins: [react()],
 	base: '/event-loop-explorer/',

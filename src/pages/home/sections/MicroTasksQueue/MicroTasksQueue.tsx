@@ -7,7 +7,7 @@ import { List } from '../../Home.styled.ts';
 import MicroTasksQueueModal from './MicroTasksQueue.modal.tsx';
 
 function MicroTasksQueue({ className }: { className?: string }) {
-	const tasks = useQueueManagerStore((state) => state.microtask_queue);
+	const tasks = useQueueManagerStore((state) => state.microtask);
 	const [isOpened, toggle] = useBoolean(false);
 
 	return (

@@ -6,7 +6,7 @@ import {
 	isRequestAnimationFrameExpression,
 	isSetTimeoutExpression,
 } from './ast.utils.ts';
-import { ELStep, Queue, WebApiTask } from '../calculator/calculator.types.ts';
+import { ELStep, WebApiTask } from '../calculator/calculator.types.ts';
 import { Node } from 'acorn';
 import {
 	isFunctionDeclaration,
@@ -14,6 +14,7 @@ import {
 	isLiteral,
 } from './ast.guards.ts';
 import { ScopeManager } from 'eslint-scope';
+import {Queue} from "../../types.ts";
 
 const traverseChildren = (
 	node: Node,
@@ -55,7 +56,7 @@ export const astTraverse = ({
 		type,
 		ast,
 	}: {
-		type: Exclude<Queue, 'webApi'>;
+		type: Queue;
 		ast: Node;
 	}) => void;
 	time: number;
@@ -85,12 +86,12 @@ export const astTraverse = ({
 					const endTime = time + literal.value;
 					webApi.push({ node: callExpression, endTime });
 					// TODO: make ordering more efficient O(n) => O(logn)
-					webApi.sort((a, b) => b.endTime - a.endTime);
+					webApi.sort((a, b) => a.endTime - b.endTime);
 					logger({
 						time,
 						type: 'push',
 						queue: 'webApi',
-						ast,
+						ast: callExpression.arguments[0],
 						end: endTime,
 					});
 				} else if (isQueueMicrotaskExpression(callExpression)) {

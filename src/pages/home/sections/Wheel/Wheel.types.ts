@@ -3,7 +3,7 @@ import { TooltipProps } from '@mui/material';
 export interface EventInterface {
 	title: string;
 	longTitle: string;
-	type: 'task' | 'microtask' | 'render';
+	type: 'microtask' | 'macrotask' | 'render';
 	degree: number;
 	placement: TooltipProps['placement'];
 }

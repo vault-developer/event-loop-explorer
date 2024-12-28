@@ -1,10 +1,10 @@
 import { forwardRef, Ref, useEffect, useState } from 'react';
 import * as Styled from './WebApiTask.styled.ts';
-import {WebApiQueueElement} from "../../../../types.ts";
-import {useSimulatorStore} from "store/store.ts";
+import { WebApiSectionElement } from '../../../../types.ts';
+import { useSimulatorStore } from 'store/store.ts';
 
 const WebApiTask = forwardRef(
-	({ task }: { task: WebApiQueueElement }, ref: Ref<HTMLDivElement>) => {
+	({ task }: { task: WebApiSectionElement }, ref: Ref<HTMLDivElement>) => {
 		const delay = task.end - task.start;
 		const [progress, setProgress] = useState(100);
 

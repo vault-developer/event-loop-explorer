@@ -11,7 +11,7 @@ export const EditorWrapper = styled.div(
 
 		.selected_lines {
 			position: absolute;
-			background: ${theme.custom.colors.wheel.task.disabled};
+			background: ${theme.custom.colors.wheel.macrotask.disabled};
 		}
 
 		.ace_gutter-active-line {

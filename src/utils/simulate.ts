@@ -1,5 +1,10 @@
 import { ELSerialisedStep } from './calculator/calculator.types.ts';
-import {useSimulatorStore, useWheelStore} from "store/store.ts";
+import {
+	useQueueManagerStore,
+	useSimulatorStore,
+	useWheelStore,
+} from 'store/store.ts';
+import { delay } from 'utils/delay.ts';
 
 export const simulate = (steps: ELSerialisedStep[]) => {
 	const groupedSteps = steps.reduce(
@@ -9,8 +14,9 @@ export const simulate = (steps: ELSerialisedStep[]) => {
 			}
 			acc[item.time].push(item);
 			return acc;
-		}, {});
-
+		},
+		{}
+	);
 
 	console.log('simulation start for steps', groupedSteps);
 
@@ -21,15 +27,77 @@ export const simulate = (steps: ELSerialisedStep[]) => {
 		useSimulatorStore.getState().setTime(time);
 		useWheelStore.getState().setGrad(grad);
 
-		console.log('time', time);
-
-		if (groupedSteps[time]) {
-			console.log('handle these step:', steps[time]);
+		const steps = groupedSteps[time];
+		if (steps !== undefined) {
+			for (const step of steps) {
+				const isFinished = await simulateStep(step);
+				if (isFinished) return;
+			}
 		}
-
-		if (time > 500) return;
 		requestAnimationFrame(animate);
 	};
-
 	animate();
+};
+
+// TODO: complete simulation
+const simulateStep = async (step: ELSerialisedStep) => {
+	switch (step.type) {
+		case 'start': {
+			break;
+		}
+		case 'push': {
+			if (step.queue === 'webApi') {
+				useQueueManagerStore.getState().set({
+					list: 'webApi',
+					type: 'push',
+					value: {
+						start: step.time,
+						end: step.end,
+						value: step.value,
+					},
+				});
+			} else {
+				useQueueManagerStore.getState().set({
+					list: step.queue,
+					type: 'push',
+					value: step.value,
+				});
+			}
+			await delay(1000);
+			break;
+		}
+		case 'shift':
+		case 'pop': {
+			useQueueManagerStore.getState().set({
+				list: step.queue,
+				type: step.type,
+				value: step.value,
+			});
+			await delay(1000);
+			break;
+		}
+		case 'markStop': {
+			useWheelStore.getState().setStop({
+				stop: step.stop,
+				enabled: step.value,
+			});
+			break;
+		}
+		case 'render': {
+			if (!useQueueManagerStore.getState().rafCallback.length) {
+				await delay(1000);
+			}
+			break;
+		}
+		case 'delete': {
+			useQueueManagerStore.getState().set({ list: 'webApi', type: 'delete', value: step.value});
+			break;
+		}
+		case 'end': {
+			return true;
+		}
+		default:
+			console.log('step not managed', step);
+			break;
+	}
 };

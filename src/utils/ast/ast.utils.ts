@@ -21,12 +21,16 @@ export function isSetTimeoutExpression(expression: CallExpression): boolean {
 	return isIdentifier(callee) && callee.name === 'setTimeout';
 }
 
-export function isQueueMicrotaskExpression(expression: CallExpression): boolean {
+export function isQueueMicrotaskExpression(
+	expression: CallExpression
+): boolean {
 	const callee = expression.callee;
 	return isIdentifier(callee) && callee.name === 'queueMicrotask';
 }
 
-export function isRequestAnimationFrameExpression(expression: CallExpression): boolean {
+export function isRequestAnimationFrameExpression(
+	expression: CallExpression
+): boolean {
 	const callee = expression.callee;
 	return isIdentifier(callee) && callee.name === 'requestAnimationFrame';
 }

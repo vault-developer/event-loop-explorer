@@ -7,7 +7,7 @@ import RequestAnimationFrameQueueModal from './RequestAnimationFrameQueue.modal.
 import { useQueueManagerStore } from 'store/store.ts';
 
 function RequestAnimationFrameQueue({ className }: { className?: string }) {
-	const callbacks = useQueueManagerStore((state) => state.render_callbacks);
+	const callbacks = useQueueManagerStore((state) => state.rafCallback);
 	const [isOpened, toggle] = useBoolean(false);
 
 	return (

@@ -8,13 +8,13 @@ import useBoolean from '../../../../hooks/useBoolean.tsx';
 import { BaseLayoutElement } from 'pages/home/Home.styled.ts';
 import { EVENT_LOOP_ID } from 'utils/constants.ts';
 import WheelModal from './Wheel.modal.tsx';
-import {useWheelStore} from "store/store.ts";
+import { useWheelStore } from 'store/store.ts';
 
 function Wheel({ className }: { className?: string }) {
 	const microtask = useWheelStore((state) => state.microtask);
 	const render = useWheelStore((state) => state.render);
-	const task = useWheelStore((state) => state.task);
-	const stops = { microtask, render, task };
+	const macrotask = useWheelStore((state) => state.macrotask);
+	const stops = { microtask, render, macrotask };
 	const theme = useTheme();
 	const [isOpened, toggle] = useBoolean(false);
 

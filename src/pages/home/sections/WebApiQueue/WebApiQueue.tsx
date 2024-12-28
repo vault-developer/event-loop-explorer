@@ -5,10 +5,10 @@ import useBoolean from '../../../../hooks/useBoolean.tsx';
 import { Zoom } from '@mui/material';
 import { List } from '../../Home.styled.ts';
 import WebApiQueueModal from './WebApiQueue.modal.tsx';
-import {useQueueManagerStore} from "store/store.ts";
+import { useQueueManagerStore } from 'store/store.ts';
 
 function WebApiQueue({ className }: { className?: string }) {
-	const tasks = useQueueManagerStore((state) => state.web_api);
+	const tasks = useQueueManagerStore((state) => state.webApi);
 	const [isOpened, toggle] = useBoolean(false);
 
 	return (

@@ -7,7 +7,7 @@ import { List } from '../../Home.styled.ts';
 import TasksQueueModal from './TasksQueue.modal.tsx';
 
 function TasksQueue({ className }: { className?: string }) {
-	const tasks = useQueueManagerStore((state) => state.task_queue);
+	const tasks = useQueueManagerStore((state) => state.macrotask);
 	const [isOpened, toggle] = useBoolean(false);
 
 	return (

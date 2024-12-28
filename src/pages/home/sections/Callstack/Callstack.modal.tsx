@@ -2,7 +2,7 @@ import * as Styled from './Callstack.styled.ts';
 import InfoModal from '../../../../components/Modal/Modal.tsx';
 
 function CallStackModal({
-													isOpened,
+	isOpened,
 	toggle,
 }: {
 	isOpened: boolean;

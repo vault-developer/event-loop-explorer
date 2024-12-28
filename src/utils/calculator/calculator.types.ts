@@ -1,34 +1,46 @@
 import { Node } from 'acorn';
+import { Queue } from '../../types.ts';
 
-export type Queue =
+type WheelStop = 'render' | 'macrotask' | 'microtask';
+
+export type WebApiTask = { node: Node; endTime: number };
+
+export type ELTask =
 	| 'macrotask'
 	| 'microtask'
-	| 'rafCallback'
-	| 'callstack'
-	| 'console';
-
-type Section = 'render' | 'macrotask' | 'microtask';
-
-export type WebApiTask = {node: Node, endTime: number};
-
-export type ELTask = 'macrotask' | 'microtask' | 'scheduleRender' | 'render' | 'webApiResolve' ;
+	| 'scheduleRender'
+	| 'render'
+	| 'webApiResolve';
 
 export type ELStep =
 	| { type: 'start'; time: number; ast: Node }
 	| { type: 'push'; queue: Queue; ast: Node; time: number }
 	| { type: 'push'; queue: 'webApi'; ast: Node; time: number; end: number }
-	| { type: 'delete'; queue: 'webApi'; ast: Node; time: number;}
-	| { type: 'pop' | 'shift'; queue: Queue; time: number, ast: Node }
-	| { type: 'schedule render'; time: number }
-	| { type: 'event'; section: Section; time: number }
+	| { type: 'delete'; queue: 'webApi'; ast: Node; time: number }
+	| { type: 'pop' | 'shift'; queue: Queue; time: number; ast: Node }
+	| { type: 'render'; time: number }
+	| { type: 'markStop'; stop: WheelStop; time: number; value: boolean }
 	| { type: 'end'; time: number };
 
 export type ELSerialisedStep =
 	| { type: 'start'; time: number; ast: Node; value: string }
-	| { type: 'push'; queue: Queue; ast: Node; time: number }
-	| { type: 'push'; queue: 'webApi'; ast: Node; time: number; end: number; value: string }
-	| { type: 'delete'; queue: 'webApi'; ast: Node; time: number; value: string}
-	| { type: 'pop' | 'shift'; queue: Queue; time: number, ast: Node; value: string }
-	| { type: 'schedule render'; time: number }
-	| { type: 'event'; section: Section; time: number }
+	| { type: 'push'; queue: Queue; ast: Node; time: number; value: string }
+	| {
+			type: 'push';
+			queue: 'webApi';
+			ast: Node;
+			time: number;
+			end: number;
+			value: string;
+	  }
+	| { type: 'delete'; queue: 'webApi'; ast: Node; time: number; value: string }
+	| {
+			type: 'pop' | 'shift';
+			queue: Queue;
+			time: number;
+			ast: Node;
+			value: string;
+	  }
+	| { type: 'render'; time: number }
+	| { type: 'markStop'; stop: WheelStop; time: number; value: boolean }
 	| { type: 'end'; time: number };

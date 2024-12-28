@@ -11,7 +11,7 @@ export const events: EventInterface[] = [
 	{
 		title: 'T',
 		longTitle: 'Task step',
-		type: 'task',
+		type: 'macrotask',
 		degree: 180,
 		placement: 'left',
 	},

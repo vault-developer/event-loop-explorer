@@ -74,7 +74,7 @@ const theme = {
 					disabled: '#35495a',
 					enabled: '#3d92e1',
 				},
-				task: {
+				macrotask: {
 					disabled: '#3e594c',
 					enabled: '#0FC469',
 				},

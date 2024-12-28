@@ -1,22 +1,22 @@
 import { AST } from '../ast/ast.parser.ts';
-import { ELStep, ELTask, Queue, WebApiTask } from './calculator.types.ts';
+import { ELStep, ELTask, WebApiTask } from './calculator.types.ts';
 import { astTraverse } from '../ast/ast.traverse.ts';
 import {
 	EVENT_LOOP_FULL_CIRCLE,
-	EVENT_LOOP_WHEEL_STOPS,
 	EVENT_LOOP_WHEEL_STOPS_WITH_OVERLOAD,
+	LAST_RENDER_INITIAL_TIME,
 } from './calculator.constants.ts';
 import { Node } from 'acorn';
 import { isSetTimeoutExpression } from '../ast/ast.utils.ts';
-import { isArrowFunctionExpression, isCallExpression } from '../ast/ast.guards.ts';
+import {
+	isArrowFunctionExpression,
+	isCallExpression,
+} from '../ast/ast.guards.ts';
 import { ScopeManager } from 'eslint-scope';
+import { Queue } from '../../types.ts';
 
-const {
-	macrotask: macrotaskStops,
-	render: renderStops,
-	microtasks: microtasksStops,
-	scheduleRender: scheduleRenderStops,
-} = EVENT_LOOP_WHEEL_STOPS_WITH_OVERLOAD;
+const { macrotask: macrotaskStops, microtasks: microtasksStops } =
+	EVENT_LOOP_WHEEL_STOPS_WITH_OVERLOAD;
 
 export class Calculator {
 	constructor(scope: ScopeManager) {
@@ -33,7 +33,7 @@ export class Calculator {
 
 	private steps: ELStep[] = [];
 
-	private lastRender = EVENT_LOOP_WHEEL_STOPS.render;
+	private lastRender = LAST_RENDER_INITIAL_TIME;
 	private time = 0;
 
 	private log(step: ELStep) {
@@ -47,13 +47,13 @@ export class Calculator {
 				this.rafCallbacks.length +
 				this.callstack.length +
 				this.webApi.length ===
-				0 && this.lastRender !== EVENT_LOOP_WHEEL_STOPS.render
+				0 && this.lastRender !== LAST_RENDER_INITIAL_TIME
 		);
 	}
 
 	private timeToNextStop(arr: number[]) {
 		const grad = this.time % EVENT_LOOP_FULL_CIRCLE;
-		return (arr.find(item => grad < item) ?? Infinity) - grad;
+		return (arr.find((item) => grad < item) ?? Infinity) - grad;
 	}
 
 	private processNextTask() {
@@ -61,8 +61,6 @@ export class Calculator {
 		const hasMacrotasks = this.macrotasks.length > 0;
 		const hasMicrotasks = this.microtasks.length > 0;
 		const hasWebApi = this.webApi.length > 0;
-		// render is triggered only every second loop for simulation purposes
-		const hasRender = (Math.floor(this.time / 360) + 1) % 2;
 
 		const potentialTasks: { key: ELTask; time: number }[] = [
 			{
@@ -79,11 +77,19 @@ export class Calculator {
 			},
 			{
 				key: 'scheduleRender',
-				time: now + this.timeToNextStop(scheduleRenderStops) + 360 * hasRender,
+				// schedule 90 grad before render
+				time:
+					this.lastRender + 720 - 90 === this.time
+						? this.time + 720
+						: this.lastRender + 720 - 90,
 			},
 			{
 				key: 'render',
-				time: now + this.timeToNextStop(renderStops) + 360 * hasRender,
+				// render only for even loop pass (simulation purposes)
+				time:
+					this.lastRender + 720 === this.time
+						? this.time + 720
+						: this.lastRender + 720,
 			},
 			{
 				key: 'webApiResolve',
@@ -96,27 +102,29 @@ export class Calculator {
 
 		const process: Record<ELTask, (time: number) => void> = {
 			macrotask: (time) => {
-				this.log({ time, type: 'event', section: 'macrotask' });
 				const task = this.macrotasks.shift();
 				if (!task) throw new Error('No macrotask found');
 				this.log({ time, type: 'shift', queue: 'macrotask', ast: task });
 				this.executeCode(task);
+				if (!this.macrotasks.length) {
+					this.log({ time, type: 'markStop', stop: 'macrotask', value: false });
+				}
 			},
 			microtask: (time) => {
-				this.log({ time, type: 'event', section: 'microtask' });
 				while (this.microtasks.length > 0) {
 					const task = this.microtasks.shift();
 					if (!task) throw new Error('No microtask found');
 					this.log({ time, type: 'shift', queue: 'microtask', ast: task });
 					this.executeCode(task);
 				}
+				this.log({ time, type: 'markStop', stop: 'microtask', value: false });
 			},
 			scheduleRender: (time) => {
-				this.log({ time, type: 'schedule render' });
+				this.log({ time, type: 'markStop', stop: 'render', value: true });
 			},
 			render: (time) => {
 				this.lastRender = time;
-				this.log({ time, type: 'event', section: 'render' });
+				this.log({ time, type: 'render' });
 				while (this.rafCallbacks.length > 0) {
 					// TODO: exclude infinite loop, when rAF is invoked inside rAF
 					const task = this.rafCallbacks.shift();
@@ -124,6 +132,7 @@ export class Calculator {
 					this.log({ time, type: 'shift', queue: 'rafCallback', ast: task });
 					this.executeCode(task);
 				}
+				this.log({ time, type: 'markStop', stop: 'render', value: false });
 			},
 			webApiResolve: (time) => {
 				const webApiTask = this.webApi.shift();
@@ -138,7 +147,7 @@ export class Calculator {
 					throw new Error('Unsupported webApi task');
 				}
 				const ast = node.arguments[0].body;
-				this.log({ time, type: 'delete', queue: 'webApi', ast: node });
+				this.log({ time, type: 'delete', queue: 'webApi', ast: node.arguments[0] });
 				this.addToQueue({ type: 'macrotask', ast, time });
 			},
 		};
@@ -151,7 +160,7 @@ export class Calculator {
 		ast,
 		time = this.time,
 	}: {
-		type: Exclude<Queue, 'webApi'>;
+		type: Queue;
 		ast: Node;
 		time?: number;
 	}) {
@@ -163,6 +172,15 @@ export class Calculator {
 			console: this.console,
 		}[type];
 		queue.push(ast);
+
+		if (['macrotask', 'microtask'].includes(type)) {
+			this.log({
+				time,
+				type: 'markStop',
+				stop: type as 'macrotask' | 'microtask',
+				value: true,
+			});
+		}
 
 		this.log({
 			time,

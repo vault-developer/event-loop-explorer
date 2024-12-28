@@ -8,8 +8,6 @@ export const start = (text: string) => {
 	try {
 		const ast = getAstFromText(text);
 		const scope = getAstScope(ast);
-		console.log('scope:', scope);
-
 		const calculator = new Calculator(scope);
 		const steps = calculator.calculate(ast);
 		const serialised = getSerialisedSteps(steps, scope);

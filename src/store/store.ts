@@ -3,19 +3,19 @@ import { Editor, QueueManager, Simulator, Wheel } from './store.types.ts';
 
 export const useQueueManagerStore = create<QueueManager>((set) => ({
 	console: [],
-	render_callbacks: [],
-	microtask_queue: [],
-	task_queue: [],
+	rafCallback: [],
+	microtask: [],
+	macrotask: [],
 	callstack: [],
-	web_api: [],
+	webApi: [],
 	clear: () =>
 		set(() => ({
 			console: [],
-			render_callbacks: [],
-			microtask_queue: [],
-			task_queue: [],
+			rafCallback: [],
+			microtask: [],
+			macrotask: [],
 			callstack: [],
-			web_api: [],
+			webApi: [],
 		})),
 	set: ({ list, value, type }) =>
 		set((state) => {
@@ -26,8 +26,15 @@ export const useQueueManagerStore = create<QueueManager>((set) => ({
 					return { [list]: state[list].slice(0, -1) };
 				case 'shift':
 					return { [list]: state[list].slice(1) };
-				case 'delete':
-					return { [list]: state[list].filter((el) => el !== value) };
+				case 'delete': {
+					const filtered = state[list].filter((el) => {
+						if (typeof el === 'string') return el !== value;
+						return el.value !== value;
+					});
+					// TODO: filter by unique key instead of values
+					if (state[list].length - filtered.length > 1) throw new Error('WebApi callback collapse');
+					return { [list]: filtered };
+				}
 				default:
 					return state;
 			}
@@ -44,10 +51,10 @@ export const useEditorStore = create<Editor>((set) => ({
 export const useWheelStore = create<Wheel>((set) => ({
 	grad: 0,
 	render: false,
-	task: false,
+	macrotask: false,
 	microtask: false,
 	setGrad: (grad) => set({ grad }),
-	setStop: (stop, enabled) => set({ [stop]: enabled }),
+	setStop: ({ stop, enabled }) => set({ [stop]: enabled }),
 }));
 
 export const useSimulatorStore = create<Simulator>((set) => ({
