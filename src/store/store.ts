@@ -55,6 +55,13 @@ export const useWheelStore = create<Wheel>((set) => ({
 	microtask: false,
 	setGrad: (grad) => set({ grad }),
 	setStop: ({ stop, enabled }) => set({ [stop]: enabled }),
+	clear: () =>
+		set(() => ({
+			grad: 0,
+			render: false,
+			macrotask: false,
+			microtask: false,
+		})),
 }));
 
 export const useSimulatorStore = create<Simulator>((set) => ({
@@ -64,4 +71,10 @@ export const useSimulatorStore = create<Simulator>((set) => ({
 	setTime: (time) => set(() => ({ time })),
 	status: 'idle',
 	setStatus: (status) => set(() => ({ status })),
+	clear: () =>
+		set(() => ({
+			speed: 1,
+			time: -1,
+			status: 'idle',
+		})),
 }));

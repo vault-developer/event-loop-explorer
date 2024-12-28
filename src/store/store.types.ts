@@ -37,6 +37,7 @@ export interface Simulator {
 	setSpeed(time: number): void;
 	status: 'idle' | 'running' | 'paused';
 	setStatus(status: 'idle' | 'running' | 'paused'): void;
+	clear(): void;
 }
 
 export interface Wheel {
@@ -44,6 +45,7 @@ export interface Wheel {
 	render: boolean;
 	macrotask: boolean;
 	microtask: boolean;
+	clear: () => void;
 	setGrad(grad: number): void;
 	setStop({
 		stop,

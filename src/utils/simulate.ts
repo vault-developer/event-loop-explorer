@@ -6,7 +6,7 @@ import {
 } from 'store/store.ts';
 import { delay } from 'utils/delay.ts';
 
-export const simulate = (steps: ELSerialisedStep[]) => {
+export const simulate = (steps: ELSerialisedStep[], onStop: () => void) => {
 	const groupedSteps = steps.reduce(
 		(acc: Record<string, ELSerialisedStep[]>, item: ELSerialisedStep) => {
 			if (!acc[item.time]) {
@@ -21,6 +21,10 @@ export const simulate = (steps: ELSerialisedStep[]) => {
 	console.log('simulation start for steps', groupedSteps);
 
 	const animate = async () => {
+		while (useSimulatorStore.getState().status === 'paused') {
+			await delay(250);
+		}
+		if (useSimulatorStore.getState().status === 'idle') return;
 		const time = useSimulatorStore.getState().time + 1;
 		const grad = time % 360;
 
@@ -30,17 +34,22 @@ export const simulate = (steps: ELSerialisedStep[]) => {
 		const steps = groupedSteps[time];
 		if (steps !== undefined) {
 			for (const step of steps) {
-				const isFinished = await simulateStep(step);
+				while (useSimulatorStore.getState().status === 'paused') {
+					await delay(250);
+				}
+				if (useSimulatorStore.getState().status === 'idle') return;
+				const isFinished = await simulateStep(step, onStop);
 				if (isFinished) return;
 			}
 		}
+
 		requestAnimationFrame(animate);
 	};
 	animate();
 };
 
 // TODO: complete simulation
-const simulateStep = async (step: ELSerialisedStep) => {
+const simulateStep = async (step: ELSerialisedStep, onStop: () => void) => {
 	switch (step.type) {
 		case 'start': {
 			break;
@@ -90,10 +99,13 @@ const simulateStep = async (step: ELSerialisedStep) => {
 			break;
 		}
 		case 'delete': {
-			useQueueManagerStore.getState().set({ list: 'webApi', type: 'delete', value: step.value});
+			useQueueManagerStore
+				.getState()
+				.set({ list: 'webApi', type: 'delete', value: step.value });
 			break;
 		}
 		case 'end': {
+			onStop();
 			return true;
 		}
 		default:

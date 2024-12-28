@@ -10,7 +10,7 @@ import {
 	Slider,
 } from '@mui/material';
 import { useState } from 'react';
-import { useSimulatorStore } from 'store/store.ts';
+import {useQueueManagerStore, useSimulatorStore, useWheelStore} from 'store/store.ts';
 import { codeExamples } from '../Configurator.data.tsx';
 import * as Styled from './Controls.styled.ts';
 import { getCodeExampleByTitle } from './Controls.utils.tsx';
@@ -24,8 +24,13 @@ export default function Controls({
 	setText: (key: string) => void;
 }) {
 	const status = useSimulatorStore((state) => state.status);
+	const setStatus = useSimulatorStore((state) => state.setStatus);
 	const [exampleTitle, setExampleTitle] = useState(codeExamples[3].title);
 	const simulatorStore = useSimulatorStore((state) => state);
+
+	const clearWheel = useWheelStore((state) => state.clear);
+	const clearQueueManager = useQueueManagerStore((state) => state.clear);
+	const clearSimulator = useSimulatorStore((state) => state.clear);
 
 	const onExampleSelect = (e: SelectChangeEvent) => {
 		const example = e.target.value;
@@ -35,19 +40,19 @@ export default function Controls({
 	};
 
 	const onStop = () => {
-		console.log('STOP not implemented');
+		setStatus('idle');
+		clearWheel();
+		clearQueueManager();
+		clearSimulator();
 	};
 
-	const onPause = () => {
-		console.log('PAUSE not implemented');
-	};
+	const onPause = () => setStatus('paused');
 
-	const onResume = () => {
-		console.log('RESUME not implemented');
-	};
+	const onResume = () => setStatus('running');
 
 	const onRun = () => {
-		start(text);
+		setStatus('running');
+		start(text, onStop);
 	};
 
 	const onSpeedChange = (_: Event, value: number | number[]) => {
