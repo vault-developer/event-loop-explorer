@@ -12,16 +12,37 @@ import EventLoopBase from './sections/Wheel/Wheel.tsx';
 
 export const Layout = styled.div`
 	flex: 1;
-	display: grid;
+	display: flex;
 	padding: 20px;
-	grid-template-columns: 1fr;
-	grid-template-rows: auto;
-	grid-gap: 10px;
+	flex-direction: column;
+	gap: 20px;
 
 	@media (min-width: 768px) {
-		grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 3fr);
-		grid-template-rows: repeat(36, 1fr);
-		grid-gap: 20px;
+		flex-direction: row;
+	}
+`;
+
+export const FatColumn = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	@media (min-width: 768px) {
+		flex-basis: calc(42% - 20px);
+		flex-grow: 0;
+		flex-shrink: 0;
+	}
+`;
+
+export const ThinColumn = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	@media (min-width: 768px) {
+		flex-basis: 16%;
+		flex-grow: 0;
+		flex-shrink: 0;
 	}
 `;
 
@@ -47,60 +68,45 @@ export const Info = styled(InfoBase)`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	grid-column: 1;
-	grid-row: 1;
 
 	@media (min-width: 768px) {
-		grid-column: 1 / 2;
-		grid-row: 1 / 5;
+		flex-basis: 10%;
 	}
 `;
 
 export const Configurator = styled(ConfiguratorBase)`
 	padding: 0;
-	grid-column: 1;
-	grid-row: 2;
 	height: 50vh;
 
 	@media (min-width: 768px) {
-		grid-column: 1 / 2;
-		grid-row: 5 / 31;
+		flex-basis: 75%;
 		height: unset;
 	}
 `;
 
 export const WebApiQueue = styled(WebApiQueueBase)`
-	grid-column: 1;
-	grid-row: 3;
 	height: 10vh;
 
 	@media (min-width: 768px) {
-		grid-column: 1 / 2;
-		grid-row: 31 / 37;
+		flex-basis: 15%;
 		height: unset;
 	}
 `;
 
 export const CallStack = styled(CallStackBase)`
-	grid-column: 1;
-	grid-row: 4;
 	height: 10vh;
 
 	@media (min-width: 768px) {
-		grid-column: 2 / 3;
-		grid-row: 1 / 19;
+		flex-basis: 50%;
 		height: unset;
 	}
 `;
 
 export const Console = styled(ConsoleBase)`
-	grid-column: 1;
-	grid-row: 5;
 	height: 10vh;
 
 	@media (min-width: 768px) {
-		grid-column: 2 / 3;
-		grid-row: 19 / 37;
+		flex-basis: 50%;
 		height: unset;
 	}
 `;
@@ -108,37 +114,28 @@ export const Console = styled(ConsoleBase)`
 export const RequestAnimationFrameQueue = styled(
 	RequestAnimationFrameQueueBase
 )`
-	grid-column: 1;
-	grid-row: 6;
 	height: 10vh;
 
 	@media (min-width: 768px) {
-		grid-column: 3 / 4;
-		grid-row: 1 / 7;
+		flex-basis: 15%;
 		height: unset;
 	}
 `;
 
 export const TasksQueue = styled(TasksQueueBase)`
-	grid-column: 1;
-	grid-row: 7;
 	height: 10vh;
 
 	@media (min-width: 768px) {
-		grid-column: 3 / 4;
-		grid-row: 7 / 13;
+		flex-basis: 15%;
 		height: unset;
 	}
 `;
 
 export const MicroTasksQueue = styled(MicroTasksQueueBase)`
-	grid-column: 1;
-	grid-row: 8;
 	height: 10vh;
 
 	@media (min-width: 768px) {
-		grid-column: 3 / 4;
-		grid-row: 13 / 19;
+		flex-basis: 15%;
 		height: unset;
 	}
 `;
@@ -146,18 +143,13 @@ export const MicroTasksQueue = styled(MicroTasksQueueBase)`
 export const EventLoop = styled(EventLoopBase)`
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	align-items: center;
 	overflow: auto;
-	gap: 10px;
 	position: relative;
-	grid-column: 1;
-	grid-row: 9;
 	height: 40vh;
 
 	@media (min-width: 768px) {
-		grid-column: 3 / 4;
-		grid-row: 19 / 37;
+		flex-basis: 50%;
 		height: unset;
 	}
 `;
