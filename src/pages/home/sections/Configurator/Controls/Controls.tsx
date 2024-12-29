@@ -14,6 +14,7 @@ import {
 	useQueueManagerStore,
 	useSimulatorStore,
 	useWheelStore,
+	useEditorStore,
 } from 'store/store.ts';
 import { codeExamples } from '../Configurator.data.tsx';
 import * as Styled from './Controls.styled.ts';
@@ -35,6 +36,7 @@ export default function Controls({
 	const clearWheel = useWheelStore((state) => state.clear);
 	const clearQueueManager = useQueueManagerStore((state) => state.clear);
 	const clearSimulator = useSimulatorStore((state) => state.clear);
+	const clearEditor = useEditorStore((state) => state.clearEditor);
 
 	const onExampleSelect = (e: SelectChangeEvent) => {
 		const example = e.target.value;
@@ -47,7 +49,8 @@ export default function Controls({
 		clearWheel();
 		clearQueueManager();
 		clearSimulator();
-	}
+		clearEditor();
+	};
 
 	const onStop = () => {
 		setStatus('idle');
@@ -61,7 +64,7 @@ export default function Controls({
 	const onRun = () => {
 		onClear();
 		setStatus('running');
-		start(text, ()=> setStatus('idle'));
+		start(text, () => setStatus('idle'));
 	};
 
 	const onSpeedChange = (_: Event, value: number | number[]) => {

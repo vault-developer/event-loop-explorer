@@ -1,5 +1,6 @@
 import { ELSerialisedStep } from './calculator/calculator.types.ts';
 import {
+	useEditorStore,
 	useQueueManagerStore,
 	useSimulatorStore,
 	useWheelStore,
@@ -88,6 +89,12 @@ const simulateStep = async (step: ELSerialisedStep, onStop: () => void) => {
 			break;
 		}
 		case 'push': {
+			// update editor
+			if (step.queue === 'callstack') {
+				console.log('marker pushed');
+				useEditorStore.getState().pushMarker([step.ast.start, step.ast.end]);
+			}
+
 			// TODO: unify with other queues
 			if (step.queue === 'webApi') {
 				useQueueManagerStore.getState().set({
@@ -111,6 +118,12 @@ const simulateStep = async (step: ELSerialisedStep, onStop: () => void) => {
 		}
 		case 'shift':
 		case 'pop': {
+			// update editor
+			if (step.queue === 'callstack') {
+				console.log('marker poped');
+				useEditorStore.getState().popMarker();
+			}
+
 			useQueueManagerStore.getState().set({
 				list: step.queue,
 				type: step.type,

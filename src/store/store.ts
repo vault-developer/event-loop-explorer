@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 import { Editor, QueueManager, Simulator, Wheel } from './store.types.ts';
+import { indexToRowColumn } from 'utils/editor.ts';
+import { Range } from 'ace-builds';
 
 export const useQueueManagerStore = create<QueueManager>((set) => ({
 	console: [],
@@ -42,13 +44,6 @@ export const useQueueManagerStore = create<QueueManager>((set) => ({
 		}),
 }));
 
-export const useEditorStore = create<Editor>((set) => ({
-	ref: null,
-	setRef: (ref) => set({ ref }),
-	source: '',
-	setSource: (source) => set({ source }),
-}));
-
 export const useWheelStore = create<Wheel>((set) => ({
 	grad: 0,
 	render: false,
@@ -78,4 +73,53 @@ export const useSimulatorStore = create<Simulator>((set) => ({
 			time: 0,
 			status: 'idle',
 		})),
+}));
+
+export const useEditorStore = create<Editor>((set, get) => ({
+	ref: null,
+	setRef: (ref) => set({ ref }),
+	source: '',
+	setSource: (source) => set({ source }),
+	markers: [],
+	clearEditor: () => {
+		const markers = get().markers;
+		if (markers.length > 0) {
+			markers.pop();
+		}
+		get().clearOldMarkers();
+		get().setSource('');
+	},
+	clearOldMarkers: () => {
+		if (!get().ref?.current?.editor) return;
+		const session = get().ref!.current!.editor.getSession();
+		session.clearAnnotations();
+		const markers = session.getMarkers();
+		for (const id in markers) {
+			session.removeMarker(id as unknown as number);
+		}
+	},
+	drawLatestMarker: () => {
+		if (!get().ref?.current?.editor) return;
+		const markers = get().markers;
+		const latest = markers[markers.length - 1];
+		if (!latest) return;
+		const session = get().ref!.current!.editor.getSession();
+
+		const code = get().source;
+		const start = indexToRowColumn(code, latest[0]);
+		const end = indexToRowColumn(code, latest[1]);
+
+		const range = new Range(start.row, start.column, end.row, end.column);
+		session.addMarker(range, 'selected_lines', 'text');
+	},
+	pushMarker: ([start, end]) => {
+		console.log(start, end);
+		get().markers.push([start, end]);
+		get().clearOldMarkers();
+		get().drawLatestMarker();
+	},
+	popMarker: () => {
+		get().markers.pop();
+		get().clearOldMarkers();
+	},
 }));

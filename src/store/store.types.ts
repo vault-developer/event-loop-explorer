@@ -23,13 +23,6 @@ export interface QueueManager {
 	clear(): void;
 }
 
-export interface Editor {
-	ref: RefObject<AceEditor | null> | null;
-	setRef(ref: RefObject<AceEditor>): void;
-	source: string;
-	setSource(source: string): void;
-}
-
 export interface Simulator {
 	time: number;
 	setTime(time: number): void;
@@ -54,4 +47,17 @@ export interface Wheel {
 		stop: 'render' | 'macrotask' | 'microtask';
 		enabled: boolean;
 	}): void;
+}
+
+export interface Editor {
+	ref: RefObject<AceEditor | null> | null;
+	setRef(ref: RefObject<AceEditor>): void;
+	source: string;
+	setSource(source: string): void;
+	pushMarker(range: [number, number]): void;
+	popMarker(): void;
+	clearEditor(): void;
+	clearOldMarkers(): void;
+	drawLatestMarker(): void;
+	markers: [number, number][];
 }
