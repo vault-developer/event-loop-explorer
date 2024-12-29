@@ -19,6 +19,7 @@ export const Layout = styled.div`
 
 	@media (min-width: 768px) {
 		flex-direction: row;
+		overflow: hidden;
 	}
 `;
 
@@ -28,9 +29,10 @@ export const FatColumn = styled.div`
 	gap: 20px;
 
 	@media (min-width: 768px) {
-		flex-basis: calc(42% - 20px);
+		flex-basis: calc(43% - 20px);
 		flex-grow: 0;
 		flex-shrink: 0;
+		overflow: hidden;
 	}
 `;
 
@@ -40,9 +42,10 @@ export const ThinColumn = styled.div`
 	gap: 20px;
 
 	@media (min-width: 768px) {
-		flex-basis: 16%;
+		flex-basis: 14%;
 		flex-grow: 0;
 		flex-shrink: 0;
+		overflow: hidden;
 	}
 `;
 
@@ -95,18 +98,16 @@ export const WebApiQueue = styled(WebApiQueueBase)`
 
 export const CallStack = styled(CallStackBase)`
 	height: 10vh;
-
 	@media (min-width: 768px) {
-		flex-basis: 50%;
+		flex-basis: 40%;
 		height: unset;
 	}
 `;
 
 export const Console = styled(ConsoleBase)`
 	height: 10vh;
-
 	@media (min-width: 768px) {
-		flex-basis: 50%;
+		flex-basis: 60%;
 		height: unset;
 	}
 `;
@@ -115,7 +116,6 @@ export const RequestAnimationFrameQueue = styled(
 	RequestAnimationFrameQueueBase
 )`
 	height: 10vh;
-
 	@media (min-width: 768px) {
 		flex-basis: 15%;
 		height: unset;
@@ -124,7 +124,6 @@ export const RequestAnimationFrameQueue = styled(
 
 export const TasksQueue = styled(TasksQueueBase)`
 	height: 10vh;
-
 	@media (min-width: 768px) {
 		flex-basis: 15%;
 		height: unset;
@@ -133,7 +132,6 @@ export const TasksQueue = styled(TasksQueueBase)`
 
 export const MicroTasksQueue = styled(MicroTasksQueueBase)`
 	height: 10vh;
-
 	@media (min-width: 768px) {
 		flex-basis: 15%;
 		height: unset;
@@ -149,7 +147,10 @@ export const EventLoop = styled(EventLoopBase)`
 	height: 40vh;
 
 	@media (min-width: 768px) {
-		flex-basis: 50%;
+		flex-basis: 45%;
+		flex-grow: 0;
+		flex-shrink: 0;
 		height: unset;
+		overflow: hidden;
 	}
 `;

@@ -1,9 +1,8 @@
 ## [1.9.4](https://github.com/vault-developer/event-loop-explorer/compare/v1.9.3...v1.9.4) (2024-12-29)
 
-
 ### Bug Fixes
 
-* rAF callback and console ([#31](https://github.com/vault-developer/event-loop-explorer/issues/31)) ([88ac9e3](https://github.com/vault-developer/event-loop-explorer/commit/88ac9e39a331532c415735866faca65261dae658))
+- rAF callback and console ([#31](https://github.com/vault-developer/event-loop-explorer/issues/31)) ([88ac9e3](https://github.com/vault-developer/event-loop-explorer/commit/88ac9e39a331532c415735866faca65261dae658))
 
 ## [1.9.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.9.2...v1.9.3) (2024-11-22)
 

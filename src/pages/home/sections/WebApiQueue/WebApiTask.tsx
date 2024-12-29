@@ -25,7 +25,9 @@ const WebApiTask = forwardRef(
 		return (
 			<Styled.Progress progress={progress} ref={ref}>
 				<Styled.WebApiItem />
-				<div style={{ zIndex: 1 }}>{task.value}</div>
+				<div style={{ zIndex: 1, overflowWrap: 'anywhere', margin: 'auto' }}>
+					{task.value}
+				</div>
 			</Styled.Progress>
 		);
 	}
