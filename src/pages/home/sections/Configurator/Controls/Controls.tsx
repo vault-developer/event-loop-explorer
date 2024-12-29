@@ -32,6 +32,7 @@ export default function Controls({
 	const setStatus = useSimulatorStore((state) => state.setStatus);
 	const [exampleTitle, setExampleTitle] = useState(codeExamples[3].title);
 	const simulatorStore = useSimulatorStore((state) => state);
+	const setEditorSource = useEditorStore((state) => state.setSource);
 
 	const clearWheel = useWheelStore((state) => state.clear);
 	const clearQueueManager = useQueueManagerStore((state) => state.clear);
@@ -63,6 +64,7 @@ export default function Controls({
 
 	const onRun = () => {
 		onClear();
+		setEditorSource(text);
 		setStatus('running');
 		start(text, () => setStatus('idle'));
 	};

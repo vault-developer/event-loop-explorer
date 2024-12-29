@@ -91,7 +91,6 @@ const simulateStep = async (step: ELSerialisedStep, onStop: () => void) => {
 		case 'push': {
 			// update editor
 			if (step.queue === 'callstack') {
-				console.log('marker pushed');
 				useEditorStore.getState().pushMarker([step.ast.start, step.ast.end]);
 			}
 
@@ -120,7 +119,6 @@ const simulateStep = async (step: ELSerialisedStep, onStop: () => void) => {
 		case 'pop': {
 			// update editor
 			if (step.queue === 'callstack') {
-				console.log('marker poped');
 				useEditorStore.getState().popMarker();
 			}
 

@@ -75,6 +75,7 @@ export const useSimulatorStore = create<Simulator>((set) => ({
 		})),
 }));
 
+// TODO: move internal methods to utils
 export const useEditorStore = create<Editor>((set, get) => ({
 	ref: null,
 	setRef: (ref) => set({ ref }),
@@ -113,7 +114,6 @@ export const useEditorStore = create<Editor>((set, get) => ({
 		session.addMarker(range, 'selected_lines', 'text');
 	},
 	pushMarker: ([start, end]) => {
-		console.log(start, end);
 		get().markers.push([start, end]);
 		get().clearOldMarkers();
 		get().drawLatestMarker();
