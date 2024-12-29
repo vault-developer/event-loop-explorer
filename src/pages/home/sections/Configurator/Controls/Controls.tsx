@@ -67,6 +67,10 @@ export default function Controls({
 		setEditorSource(text);
 		setStatus('running');
 		start(text, () => setStatus('idle'));
+		window.scrollTo({
+			top: document.body.scrollHeight,
+			behavior: 'smooth',
+		});
 	};
 
 	const onSpeedChange = (_: Event, value: number | number[]) => {
