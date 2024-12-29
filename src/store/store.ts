@@ -1,84 +1,82 @@
 import { create } from 'zustand';
-import {
-	EditorInterface,
-	EventListsInterface,
-	EventLoopAnimationInterface,
-	EventLoopTimeInterface,
-	SpeedFactorInterface,
-} from './store.types.ts';
-import { indexToRowColumn } from '../utils/editor.ts';
+import { Editor, QueueManager, Simulator, Wheel } from './store.types.ts';
+import { indexToRowColumn } from 'utils/editor.ts';
 import { Range } from 'ace-builds';
 
-export const useSpeedFactor = create<SpeedFactorInterface>((set) => ({
-	speed: 1,
-	setSpeed: (speed) => set(() => ({ speed })),
-}));
-
-export const useEventLoopTime = create<EventLoopTimeInterface>((set) => ({
-	time: 0,
-	increment: () => set((state) => ({ time: state.time + 1 })),
-}));
-
-export const useEventLoopAnimation = create<EventLoopAnimationInterface>(
-	(set) => ({
-		render: false,
-		task: false,
-		microtask: false,
-		status: 'disabled',
-		clear: () =>
-			set(() => ({
-				render: false,
-				task: false,
-				microtask: false,
-				status: 'disabled',
-			})),
-		setState: (value, property) => {
-			set(() => ({
-				[property]: value,
-			}));
-		},
-	})
-);
-
-export const useEventLists = create<EventListsInterface>((set) => ({
+export const useQueueManagerStore = create<QueueManager>((set) => ({
 	console: [],
-	render_callbacks: [],
-	microtask_queue: [],
-	task_queue: [],
+	rafCallback: [],
+	microtask: [],
+	macrotask: [],
 	callstack: [],
-	web_api: [],
+	webApi: [],
 	clear: () =>
 		set(() => ({
 			console: [],
-			render_callbacks: [],
-			microtask_queue: [],
-			task_queue: [],
+			rafCallback: [],
+			microtask: [],
+			macrotask: [],
 			callstack: [],
-			web_api: [],
+			webApi: [],
 		})),
 	set: ({ list, value, type }) =>
 		set((state) => {
 			switch (type) {
 				case 'push':
-					if (list === 'task_queue') {
-						useEventLoopAnimation.getState().setState(true, 'task');
-					} else if (list === 'microtask_queue') {
-						useEventLoopAnimation.getState().setState(true, 'microtask');
-					}
 					return { [list]: [...state[list], value] };
 				case 'pop':
 					return { [list]: state[list].slice(0, -1) };
 				case 'shift':
 					return { [list]: state[list].slice(1) };
-				case 'delete':
-					return { [list]: state[list].filter((el) => el !== value) };
+				case 'delete': {
+					const filtered = state[list].filter((el) => {
+						if (typeof el === 'string') return el !== value;
+						return el.value !== value;
+					});
+					// TODO: filter by unique key instead of values
+					if (state[list].length - filtered.length > 1)
+						throw new Error('WebApi callback collapse');
+					return { [list]: filtered };
+				}
 				default:
 					return state;
 			}
 		}),
 }));
 
-export const useEditor = create<EditorInterface>((set, get) => ({
+export const useWheelStore = create<Wheel>((set) => ({
+	grad: 0,
+	render: false,
+	macrotask: false,
+	microtask: false,
+	setGrad: (grad) => set({ grad }),
+	setStop: ({ stop, enabled }) => set({ [stop]: enabled }),
+	clear: () =>
+		set(() => ({
+			grad: 0,
+			render: false,
+			macrotask: false,
+			microtask: false,
+		})),
+}));
+
+export const useSimulatorStore = create<Simulator>((set) => ({
+	speed: 1,
+	setSpeed: (speed) => set(() => ({ speed })),
+	time: 0,
+	setTime: (time) => set(() => ({ time })),
+	status: 'idle',
+	setStatus: (status) => set(() => ({ status })),
+	clear: () =>
+		set(() => ({
+			speed: 1,
+			time: 0,
+			status: 'idle',
+		})),
+}));
+
+// TODO: move internal methods to utils
+export const useEditorStore = create<Editor>((set, get) => ({
 	ref: null,
 	setRef: (ref) => set({ ref }),
 	source: '',

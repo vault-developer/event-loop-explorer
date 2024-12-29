@@ -4,12 +4,12 @@ import { StyledBox } from './Modal.styled.ts';
 
 function InfoModal({
 	children,
-	isOpen,
+	isOpened,
 	onClose,
-}: PropsWithChildren<{ isOpen: boolean; onClose: () => void }>) {
+}: PropsWithChildren<{ isOpened: boolean; onClose: () => void }>) {
 	return (
 		<Modal
-			open={isOpen}
+			open={isOpened}
 			onClose={onClose}
 			sx={{
 				'&.MuiModal-root': {

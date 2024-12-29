@@ -9,19 +9,17 @@ import {
 	SelectChangeEvent,
 	Slider,
 } from '@mui/material';
-import 'ace-builds/src-noconflict/mode-javascript';
-import 'ace-builds/src-noconflict/theme-solarized_dark';
 import { useState } from 'react';
 import {
-	useEditor,
-	useEventLists,
-	useEventLoopAnimation,
-	useSpeedFactor,
-} from '../../../../../store/store.ts';
-import { parse } from '../../../../../utils/parse.ts';
+	useQueueManagerStore,
+	useSimulatorStore,
+	useWheelStore,
+	useEditorStore,
+} from 'store/store.ts';
 import { codeExamples } from '../Configurator.data.tsx';
 import * as Styled from './Controls.styled.ts';
 import { getCodeExampleByTitle } from './Controls.utils.tsx';
+import { start } from 'utils/start.ts';
 
 export default function Controls({
 	text,
@@ -30,15 +28,16 @@ export default function Controls({
 	text: string;
 	setText: (key: string) => void;
 }) {
-	const eventListsStateSet = useEventLists((state) => state.set);
-	const eventListsStateClear = useEventLists((state) => state.clear);
-	const clearAnimationState = useEventLoopAnimation((state) => state.clear);
-	const setAnimationState = useEventLoopAnimation((state) => state.setState);
-	const status = useEventLoopAnimation((state) => state.status);
+	const status = useSimulatorStore((state) => state.status);
+	const setStatus = useSimulatorStore((state) => state.setStatus);
 	const [exampleTitle, setExampleTitle] = useState(codeExamples[3].title);
-	const speedFactorState = useSpeedFactor((state) => state);
-	const setSourceCode = useEditor((state) => state.setSource);
-	const clearEditor = useEditor((state) => state.clearEditor);
+	const simulatorStore = useSimulatorStore((state) => state);
+	const setEditorSource = useEditorStore((state) => state.setSource);
+
+	const clearWheel = useWheelStore((state) => state.clear);
+	const clearQueueManager = useQueueManagerStore((state) => state.clear);
+	const clearSimulator = useSimulatorStore((state) => state.clear);
+	const clearEditor = useEditorStore((state) => state.clearEditor);
 
 	const onExampleSelect = (e: SelectChangeEvent) => {
 		const example = e.target.value;
@@ -47,47 +46,43 @@ export default function Controls({
 		setExampleTitle(example);
 	};
 
-	const onStop = () => {
-		clearAnimationState();
-		eventListsStateClear();
+	const onClear = () => {
+		clearWheel();
+		clearQueueManager();
+		clearSimulator();
 		clearEditor();
 	};
 
-	const onPause = () => {
-		setAnimationState('paused', 'status');
+	const onStop = () => {
+		setStatus('idle');
+		onClear();
 	};
 
-	const onResume = () => {
-		setAnimationState('running', 'status');
-	};
+	const onPause = () => setStatus('paused');
+
+	const onResume = () => setStatus('running');
 
 	const onRun = () => {
-		clearAnimationState();
-		eventListsStateClear();
-		const script = parse(text);
-		setSourceCode(text);
-		eventListsStateSet({
-			list: 'task_queue',
-			type: 'push',
-			value: script,
+		onClear();
+		setEditorSource(text);
+		setStatus('running');
+		start(text, () => setStatus('idle'));
+		window.scrollTo({
+			top: document.body.scrollHeight,
+			behavior: 'smooth',
 		});
-		setAnimationState('running', 'status');
 	};
 
 	const onSpeedChange = (_: Event, value: number | number[]) => {
 		const num = Array.isArray(value) ? value[0] : value;
-		const res = num >= 0 ? num + 1 : 1 / (1 - num);
-		speedFactorState.setSpeed(res);
+		simulatorStore.setSpeed(Math.pow(2, num));
 	};
 
-	const speed =
-		speedFactorState.speed >= 1
-			? speedFactorState.speed - 1
-			: 1 - 1 / speedFactorState.speed;
+	const speed = Math.log2(simulatorStore.speed);
 
 	return (
 		<Styled.ControlsWrapper>
-			{status === 'disabled' && (
+			{status === 'idle' && (
 				<>
 					<Styled.SelectWrapper>
 						<FormControl>
@@ -124,22 +119,22 @@ export default function Controls({
 					</Styled.CTAButton>
 				</>
 			)}
-			{status !== 'disabled' && (
+			{status !== 'idle' && (
 				<>
 					<Styled.SliderWrapper>
 						<div id="non-linear-slider" data-testid="speed-slider">
-							speed: {Math.round(speedFactorState.speed * 100)}%
+							speed: x{simulatorStore.speed}
 						</div>
 						<Slider
 							aria-labelledby="non-linear-slider"
 							aria-label="Speed"
-							defaultValue={speed}
 							shiftStep={1}
+							value={speed}
 							onChange={onSpeedChange}
 							step={1}
 							marks
-							min={-3}
-							max={3}
+							min={-2}
+							max={2}
 						/>
 					</Styled.SliderWrapper>
 					<Styled.ButtonsWrapper>

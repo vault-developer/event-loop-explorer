@@ -1,11 +1,8 @@
+import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-solarized_dark';
 import { useEffect, useRef } from 'react';
-import AceEditor from 'react-ace';
-import {
-	useEditor,
-	useEventLoopAnimation,
-} from '../../../../../store/store.ts';
+import { useEditorStore, useSimulatorStore } from 'store/store.ts';
 import * as Styled from './Editor.styled.ts';
 
 export default function Editor({
@@ -15,8 +12,8 @@ export default function Editor({
 	text: string;
 	setText: (key: string) => void;
 }) {
-	const status = useEventLoopAnimation((state) => state.status);
-	const setEditorRef = useEditor((state) => state.setRef);
+	const status = useSimulatorStore((state) => state.status);
+	const setEditorRef = useEditorStore((state) => state.setRef);
 	const editorRef = useRef<AceEditor>(null);
 
 	useEffect(() => {
@@ -36,7 +33,7 @@ export default function Editor({
 				theme="solarized_dark"
 				setOptions={{
 					useWorker: false,
-					readOnly: status !== 'disabled',
+					readOnly: status !== 'idle',
 				}}
 				showPrintMargin={false}
 				fontSize={14}

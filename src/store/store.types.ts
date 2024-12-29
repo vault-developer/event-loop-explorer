@@ -1,63 +1,55 @@
-import { NodeClass } from '../utils/nodes/Node.abstract.ts';
-import { RefObject } from 'react';
 import AceEditor from 'react-ace';
+import { RefObject } from 'react';
+import { List, WebApiSectionElement } from '../types.ts';
 
-type EventLoopStateValuesType = 'render' | 'task' | 'microtask' | 'status';
-type EventLoopAnimationStatusType = 'running' | 'paused' | 'disabled';
+type QueueManagerAction = 'push' | 'pop' | 'shift' | 'delete';
 
-export interface EventLoopAnimationInterface {
-	render: boolean;
-	task: boolean;
-	microtask: boolean;
-	status: EventLoopAnimationStatusType;
-	clear(): void;
-	setState(
-		value: boolean | EventLoopAnimationStatusType,
-		property: EventLoopStateValuesType
-	): void;
-}
-
-export interface EventLoopTimeInterface {
-	time: number;
-	increment(): void;
-}
-
-export type EventListNameType =
-	| 'console'
-	| 'web_api'
-	| 'task_queue'
-	| 'microtask_queue'
-	| 'callstack'
-	| 'render_callbacks';
-
-export type CallStackValue = {
-	display: string;
-	range: { start: number; end: number };
-};
-
-export interface ActionInterface {
-	list: EventListNameType;
-	type: 'push' | 'pop' | 'shift' | 'delete';
-	value?: string | NodeClass | CallStackValue;
-}
-
-export interface EventListsInterface {
+export interface QueueManager {
 	console: string[];
-	callstack: CallStackValue[];
-	render_callbacks: NodeClass[];
-	web_api: NodeClass[];
-	task_queue: NodeClass[];
-	microtask_queue: NodeClass[];
-	set({ list, type, value }: ActionInterface): void;
+	callstack: string[];
+	rafCallback: string[];
+	webApi: WebApiSectionElement[];
+	macrotask: string[];
+	microtask: string[];
+	set({
+		list,
+		type,
+		value,
+	}: {
+		list: List;
+		type: QueueManagerAction;
+		value: string | WebApiSectionElement;
+	}): void;
 	clear(): void;
 }
 
-export interface SpeedFactorInterface {
+export interface Simulator {
+	time: number;
+	setTime(time: number): void;
 	speed: number;
-	setSpeed(key: number): void;
+	setSpeed(time: number): void;
+	status: 'idle' | 'running' | 'paused';
+	setStatus(status: 'idle' | 'running' | 'paused'): void;
+	clear(): void;
 }
 
-export interface EditorInterface {
+export interface Wheel {
+	grad: number;
+	render: boolean;
+	macrotask: boolean;
+	microtask: boolean;
+	clear: () => void;
+	setGrad(grad: number): void;
+	setStop({
+		stop,
+		enabled,
+	}: {
+		stop: 'render' | 'macrotask' | 'microtask';
+		enabled: boolean;
+	}): void;
+}
+
+export interface Editor {
 	ref: RefObject<AceEditor | null> | null;
 	setRef(ref: RefObject<AceEditor>): void;
 	source: string;

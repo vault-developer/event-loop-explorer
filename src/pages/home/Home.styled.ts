@@ -8,7 +8,7 @@ import TasksQueueBase from './sections/TasksQueue/TasksQueue.tsx';
 import MicroTasksQueueBase from './sections/MicroTasksQueue/MicroTasksQueue.tsx';
 import InfoBase from './sections/Info/Info.tsx';
 import ConfiguratorBase from './sections/Configurator/Configurator.tsx';
-import EventLoopBase from './sections/EventLoop/EventLoop.tsx';
+import EventLoopBase from './sections/Wheel/Wheel.tsx';
 
 export const Layout = styled.div`
 	flex: 1;

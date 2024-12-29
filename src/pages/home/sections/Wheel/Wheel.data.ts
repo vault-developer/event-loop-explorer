@@ -1,4 +1,4 @@
-import { EventInterface } from './EventLoop.types.ts';
+import { EventInterface } from './Wheel.types.ts';
 
 export const events: EventInterface[] = [
 	{
@@ -11,7 +11,7 @@ export const events: EventInterface[] = [
 	{
 		title: 'T',
 		longTitle: 'Task step',
-		type: 'task',
+		type: 'macrotask',
 		degree: 180,
 		placement: 'left',
 	},

@@ -1,48 +1,26 @@
-import { useEventLists } from '../../../../store/store.ts';
+import { useQueueManagerStore } from 'store/store.ts';
 import * as Styled from './MicroTasksQueue.styled.ts';
-import InfoIcon from '../../../../components/InfoIcon/InfoIcon.tsx';
-import InfoModal from '../../../../components/Modal/Modal.tsx';
-import useBoolean from '../../../../utils/useBoolean.tsx';
+import InfoIcon from 'components/InfoIcon/InfoIcon.tsx';
+import useBoolean from 'utils/hooks/useBoolean.ts';
 import { Zoom } from '@mui/material';
 import { List } from '../../Home.styled.ts';
+import MicroTasksQueueModal from './MicroTasksQueue.modal.tsx';
 
 function MicroTasksQueue({ className }: { className?: string }) {
-	const tasks = useEventLists((state) => state.microtask_queue);
-	const [open, setOpen, setClose] = useBoolean(false);
+	const tasks = useQueueManagerStore((state) => state.microtask);
+	const [isOpened, toggle] = useBoolean(false);
 
 	return (
 		<List className={className}>
 			<span>Microtasks Queue</span>
 			<Styled.MicroTasksQueue>
-				<InfoIcon onClick={setOpen} />
-				{tasks.map((task) => {
-					const serialized = task.serialize();
-					const key = serialized + task.node.start;
-					return (
-						<Zoom in key={key}>
-							<Styled.MicroTask>{serialized}</Styled.MicroTask>
-						</Zoom>
-					);
-				})}
-				<InfoModal isOpen={open} onClose={setClose}>
-					<h2>Microtasks</h2>
-					<Styled.CloseIcon onClick={setClose} />
-					<p>
-						A microtask is a short function which is executed after the function
-						or program which created it exits and only if the JavaScript
-						execution stack is empty, but before returning control to the event
-						loop being used by the user agent to drive the script's execution
-						environment.
-					</p>
-					<p style={{ marginTop: 12 }}>
-						Events that can trigger new microtasks:
-					</p>
-					<ul style={{ marginTop: 8 }}>
-						<li>Promise resolution (.then(), .catch(), .finally())</li>
-						<li>Occurrence of observed DOM changes</li>
-						<li>queueMicrotask() method</li>
-					</ul>
-				</InfoModal>
+				<InfoIcon onClick={toggle} />
+				{tasks.map((task) => (
+					<Zoom in key={task}>
+						<Styled.MicroTask>{task}</Styled.MicroTask>
+					</Zoom>
+				))}
+				<MicroTasksQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.MicroTasksQueue>
 		</List>
 	);

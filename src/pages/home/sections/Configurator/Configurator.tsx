@@ -1,5 +1,3 @@
-import 'ace-builds/src-noconflict/mode-javascript';
-import 'ace-builds/src-noconflict/theme-solarized_dark';
 import * as Styled from './Configurator.styled.ts';
 import { BaseLayoutElement } from '../../Home.styled.ts';
 import Controls from './Controls/Controls.tsx';

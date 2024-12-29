@@ -1,10 +1,10 @@
-import { useEventLists } from '../../../../store/store.ts';
+import { useQueueManagerStore } from 'store/store.ts';
 import * as Styled from './Console.styled.ts';
 import { Zoom } from '@mui/material';
 import { List } from '../../Home.styled.ts';
 
 function Console({ className }: { className?: string }) {
-	const tasks = useEventLists((state) => state.console);
+	const tasks = useQueueManagerStore((state) => state.console);
 
 	return (
 		<List className={className}>

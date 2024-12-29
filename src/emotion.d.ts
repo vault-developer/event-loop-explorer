@@ -21,7 +21,7 @@ declare module '@emotion/react' {
 						disabled: string;
 						enabled: string;
 					};
-					task: {
+					macrotask: {
 						disabled: string;
 						enabled: string;
 					};
