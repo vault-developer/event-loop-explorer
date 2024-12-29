@@ -1,5 +1,5 @@
 import { Node } from 'acorn';
-import { Queue } from '../../types.ts';
+import { Queue } from 'src/types.ts';
 
 type WheelStop = 'render' | 'macrotask' | 'microtask';
 

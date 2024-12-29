@@ -1,6 +1,6 @@
 import * as Styled from './Callstack.styled.ts';
-import InfoIcon from '../../../../components/InfoIcon/InfoIcon.tsx';
-import useBoolean from '../../../../hooks/useBoolean.tsx';
+import InfoIcon from 'components/InfoIcon/InfoIcon.tsx';
+import useBoolean from 'utils/hooks/useBoolean.tsx';
 import { Zoom } from '@mui/material';
 import { List } from '../../Home.styled.ts';
 import CallStackModal from './Callstack.modal.tsx';

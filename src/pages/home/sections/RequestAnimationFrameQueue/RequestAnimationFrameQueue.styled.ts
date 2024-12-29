@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@mui/material';
-import InfoClosed from '../../../../components/CloseIcon/InfoIcon.tsx';
+import InfoClosed from 'components/CloseIcon/InfoIcon.tsx';
 
 export const CallbacksQueue = styled.div`
 	flex: 1;

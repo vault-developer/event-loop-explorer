@@ -1,5 +1,5 @@
 import * as Styled from './RequestAnimationFrameQueue.styled.ts';
-import InfoModal from '../../../../components/Modal/Modal.tsx';
+import InfoModal from 'components/Modal/Modal.tsx';
 
 function RequestAnimationFrameQueueModal({
 	isOpened,

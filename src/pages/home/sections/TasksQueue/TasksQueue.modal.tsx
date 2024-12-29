@@ -1,5 +1,5 @@
 import * as Styled from './TasksQueue.styled.ts';
-import InfoModal from '../../../../components/Modal/Modal.tsx';
+import InfoModal from 'components/Modal/Modal.tsx';
 
 function TasksQueueModal({
 	isOpened,

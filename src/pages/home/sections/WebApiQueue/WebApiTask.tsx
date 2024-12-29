@@ -1,6 +1,6 @@
 import { forwardRef, Ref, useEffect, useState } from 'react';
 import * as Styled from './WebApiTask.styled.ts';
-import { WebApiSectionElement } from '../../../../types.ts';
+import { WebApiSectionElement } from 'src/types.ts';
 import { useSimulatorStore } from 'store/store.ts';
 
 const WebApiTask = forwardRef(

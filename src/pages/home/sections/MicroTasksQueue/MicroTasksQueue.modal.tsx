@@ -1,5 +1,5 @@
 import * as Styled from './MicroTasksQueue.styled.ts';
-import InfoModal from '../../../../components/Modal/Modal.tsx';
+import InfoModal from 'components/Modal/Modal.tsx';
 
 function MicroTasksQueueModal({
 	isOpened,
