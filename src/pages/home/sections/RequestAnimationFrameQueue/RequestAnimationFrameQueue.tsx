@@ -1,6 +1,6 @@
 import * as Styled from './RequestAnimationFrameQueue.styled.ts';
 import InfoIcon from 'components/InfoIcon/InfoIcon.tsx';
-import useBoolean from 'utils/hooks/useBoolean.tsx';
+import useBoolean from 'utils/hooks/useBoolean.ts';
 import { Zoom } from '@mui/material';
 import { List } from '../../Home.styled.ts';
 import RequestAnimationFrameQueueModal from './RequestAnimationFrameQueue.modal.tsx';

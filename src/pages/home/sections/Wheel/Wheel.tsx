@@ -4,7 +4,7 @@ import { events } from './Wheel.data.ts';
 import * as Styled from './Wheel.styled.ts';
 import { useTheme } from '@emotion/react';
 import InfoIcon from 'components/InfoIcon/InfoIcon.tsx';
-import useBoolean from 'utils/hooks/useBoolean.tsx';
+import useBoolean from 'utils/hooks/useBoolean.ts';
 import { BaseLayoutElement } from 'pages/home/Home.styled.ts';
 import { EVENT_LOOP_ID } from 'utils/constants.ts';
 import WheelModal from './Wheel.modal.tsx';
