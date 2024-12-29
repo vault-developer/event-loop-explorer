@@ -10,7 +10,11 @@ import {
 	Slider,
 } from '@mui/material';
 import { useState } from 'react';
-import {useQueueManagerStore, useSimulatorStore, useWheelStore} from 'store/store.ts';
+import {
+	useQueueManagerStore,
+	useSimulatorStore,
+	useWheelStore,
+} from 'store/store.ts';
 import { codeExamples } from '../Configurator.data.tsx';
 import * as Styled from './Controls.styled.ts';
 import { getCodeExampleByTitle } from './Controls.utils.tsx';
@@ -39,11 +43,15 @@ export default function Controls({
 		setExampleTitle(example);
 	};
 
-	const onStop = () => {
-		setStatus('idle');
+	const onClear = () => {
 		clearWheel();
 		clearQueueManager();
 		clearSimulator();
+	}
+
+	const onStop = () => {
+		setStatus('idle');
+		onClear();
 	};
 
 	const onPause = () => setStatus('paused');
@@ -51,20 +59,17 @@ export default function Controls({
 	const onResume = () => setStatus('running');
 
 	const onRun = () => {
+		onClear();
 		setStatus('running');
-		start(text, onStop);
+		start(text, ()=> setStatus('idle'));
 	};
 
 	const onSpeedChange = (_: Event, value: number | number[]) => {
 		const num = Array.isArray(value) ? value[0] : value;
-		const res = num >= 0 ? num + 1 : 1 / (1 - num);
-		simulatorStore.setSpeed(res);
+		simulatorStore.setSpeed(Math.pow(2, num));
 	};
 
-	const speed =
-		simulatorStore.speed >= 1
-			? simulatorStore.speed - 1
-			: 1 - 1 / simulatorStore.speed;
+	const speed = Math.log2(simulatorStore.speed);
 
 	return (
 		<Styled.ControlsWrapper>
@@ -109,18 +114,18 @@ export default function Controls({
 				<>
 					<Styled.SliderWrapper>
 						<div id="non-linear-slider" data-testid="speed-slider">
-							speed: {Math.round(simulatorStore.speed * 100)}%
+							speed: x{simulatorStore.speed}
 						</div>
 						<Slider
 							aria-labelledby="non-linear-slider"
 							aria-label="Speed"
-							defaultValue={speed}
 							shiftStep={1}
+							value={speed}
 							onChange={onSpeedChange}
 							step={1}
 							marks
-							min={-3}
-							max={3}
+							min={-2}
+							max={2}
 						/>
 					</Styled.SliderWrapper>
 					<Styled.ButtonsWrapper>

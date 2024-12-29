@@ -14,7 +14,7 @@ import {
 	isLiteral,
 } from './ast.guards.ts';
 import { ScopeManager } from 'eslint-scope';
-import {Queue} from "../../types.ts";
+import { Queue } from '../../types.ts';
 
 const traverseChildren = (
 	node: Node,
@@ -52,13 +52,7 @@ export const astTraverse = ({
 }: {
 	ast: Node;
 	logger: (step: ELStep) => void;
-	addToQueue: ({
-		type,
-		ast,
-	}: {
-		type: Queue;
-		ast: Node;
-	}) => void;
+	addToQueue: ({ type, ast }: { type: Queue; ast: Node }) => void;
 	time: number;
 	webApi: WebApiTask[];
 	scope: ScopeManager;
@@ -85,7 +79,7 @@ export const astTraverse = ({
 						throw new Error('Unsupported setTimeout argument');
 					const endTime = time + literal.value;
 					webApi.push({ node: callExpression, endTime });
-					// TODO: make ordering more efficient O(n) => O(logn)
+					// TODO: make ordering more efficient O(nlogn) => O(logn)
 					webApi.sort((a, b) => a.endTime - b.endTime);
 					logger({
 						time,

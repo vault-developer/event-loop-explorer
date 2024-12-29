@@ -5,6 +5,7 @@ import {
 	useWheelStore,
 } from 'store/store.ts';
 import { delay } from 'utils/delay.ts';
+import { EVENT_LOOP_WHEEL_STOPS } from 'utils/calculator/calculator.constants.ts';
 
 export const simulate = (steps: ELSerialisedStep[], onStop: () => void) => {
 	const groupedSteps = steps.reduce(
@@ -22,15 +23,11 @@ export const simulate = (steps: ELSerialisedStep[], onStop: () => void) => {
 
 	const animate = async () => {
 		while (useSimulatorStore.getState().status === 'paused') {
+			// TODO: make more efficient check
 			await delay(250);
 		}
 		if (useSimulatorStore.getState().status === 'idle') return;
-		const time = useSimulatorStore.getState().time + 1;
-		const grad = time % 360;
-
-		useSimulatorStore.getState().setTime(time);
-		useWheelStore.getState().setGrad(grad);
-
+		const time = useSimulatorStore.getState().time;
 		const steps = groupedSteps[time];
 		if (steps !== undefined) {
 			for (const step of steps) {
@@ -43,18 +40,55 @@ export const simulate = (steps: ELSerialisedStep[], onStop: () => void) => {
 			}
 		}
 
+		const speed = useSimulatorStore.getState().speed;
+		const nextTime = getNextTime({ time, speed, groupedSteps });
+
+		useSimulatorStore.getState().setTime(nextTime);
+		useWheelStore.getState().setGrad(nextTime % 360);
+
 		requestAnimationFrame(animate);
 	};
 	animate();
 };
 
-// TODO: complete simulation
+const getNextTime = ({
+	time,
+	speed,
+	groupedSteps,
+}: {
+	time: number;
+	speed: number;
+	groupedSteps: Record<string, ELSerialisedStep[]>;
+}) => {
+	const minStep = 0.25;
+	const minTime = time + minStep;
+	const maxTime = time + speed;
+	for (let i = minTime; i < maxTime; i += minStep) {
+		if (groupedSteps[i]?.length > 0) return i;
+	}
+	return maxTime;
+};
+
+const considerDelay = async () => {
+	const { grad, macrotask, microtask, render } = useWheelStore.getState();
+	const { renders, microtasks, macrotasks } = EVENT_LOOP_WHEEL_STOPS;
+	const speed = useSimulatorStore.getState().speed;
+
+	const needDelay =
+		(render && renders.includes(grad)) ||
+		(macrotask && macrotasks.includes(grad)) ||
+		(microtask && microtasks.includes(grad));
+
+	if (needDelay) await delay(1000 / speed);
+};
+
 const simulateStep = async (step: ELSerialisedStep, onStop: () => void) => {
 	switch (step.type) {
 		case 'start': {
 			break;
 		}
 		case 'push': {
+			// TODO: unify with other queues
 			if (step.queue === 'webApi') {
 				useQueueManagerStore.getState().set({
 					list: 'webApi',
@@ -72,7 +106,7 @@ const simulateStep = async (step: ELSerialisedStep, onStop: () => void) => {
 					value: step.value,
 				});
 			}
-			await delay(1000);
+			await considerDelay();
 			break;
 		}
 		case 'shift':
@@ -82,7 +116,7 @@ const simulateStep = async (step: ELSerialisedStep, onStop: () => void) => {
 				type: step.type,
 				value: step.value,
 			});
-			await delay(1000);
+			await considerDelay();
 			break;
 		}
 		case 'markStop': {
@@ -94,7 +128,7 @@ const simulateStep = async (step: ELSerialisedStep, onStop: () => void) => {
 		}
 		case 'render': {
 			if (!useQueueManagerStore.getState().rafCallback.length) {
-				await delay(1000);
+				await considerDelay();
 			}
 			break;
 		}
@@ -102,6 +136,7 @@ const simulateStep = async (step: ELSerialisedStep, onStop: () => void) => {
 			useQueueManagerStore
 				.getState()
 				.set({ list: 'webApi', type: 'delete', value: step.value });
+			await considerDelay();
 			break;
 		}
 		case 'end': {

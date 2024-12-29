@@ -2,7 +2,6 @@ import { AST } from '../ast/ast.parser.ts';
 import { ELStep, ELTask, WebApiTask } from './calculator.types.ts';
 import { astTraverse } from '../ast/ast.traverse.ts';
 import {
-	EVENT_LOOP_FULL_CIRCLE,
 	EVENT_LOOP_WHEEL_STOPS_WITH_OVERLOAD,
 	LAST_RENDER_INITIAL_TIME,
 } from './calculator.constants.ts';
@@ -52,7 +51,7 @@ export class Calculator {
 	}
 
 	private timeToNextStop(arr: number[]) {
-		const grad = this.time % EVENT_LOOP_FULL_CIRCLE;
+		const grad = this.time % 360;
 		return (arr.find((item) => grad < item) ?? Infinity) - grad;
 	}
 
@@ -147,7 +146,12 @@ export class Calculator {
 					throw new Error('Unsupported webApi task');
 				}
 				const ast = node.arguments[0].body;
-				this.log({ time, type: 'delete', queue: 'webApi', ast: node.arguments[0] });
+				this.log({
+					time,
+					type: 'delete',
+					queue: 'webApi',
+					ast: node.arguments[0],
+				});
 				this.addToQueue({ type: 'macrotask', ast, time });
 			},
 		};
@@ -221,8 +225,7 @@ export class Calculator {
 		}
 
 		this.log({
-			time:
-				Math.ceil(this.time / EVENT_LOOP_FULL_CIRCLE) * EVENT_LOOP_FULL_CIRCLE,
+			time: Math.ceil(this.time / 360) * 360,
 			type: 'end',
 		});
 

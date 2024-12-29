@@ -32,7 +32,8 @@ export const useQueueManagerStore = create<QueueManager>((set) => ({
 						return el.value !== value;
 					});
 					// TODO: filter by unique key instead of values
-					if (state[list].length - filtered.length > 1) throw new Error('WebApi callback collapse');
+					if (state[list].length - filtered.length > 1)
+						throw new Error('WebApi callback collapse');
 					return { [list]: filtered };
 				}
 				default:
@@ -67,14 +68,14 @@ export const useWheelStore = create<Wheel>((set) => ({
 export const useSimulatorStore = create<Simulator>((set) => ({
 	speed: 1,
 	setSpeed: (speed) => set(() => ({ speed })),
-	time: -1,
+	time: 0,
 	setTime: (time) => set(() => ({ time })),
 	status: 'idle',
 	setStatus: (status) => set(() => ({ status })),
 	clear: () =>
 		set(() => ({
 			speed: 1,
-			time: -1,
+			time: 0,
 			status: 'idle',
 		})),
 }));
