@@ -66,7 +66,14 @@ export const astTraverse = ({
 				logger({ time, type: 'push', queue: 'callstack', ast: callExpression });
 				if (isConsoleExpression(callExpression)) {
 					// console.log, console.error, console.warn, console.info
-					logger({ time, type: 'push', queue: 'console', ast: callExpression });
+					if (callExpression.arguments.length > 1)
+						throw new Error('Unsupported console argument');
+					logger({
+						time,
+						type: 'push',
+						queue: 'console',
+						ast: callExpression.arguments[0],
+					});
 				} else if (isPromiseCallbackExpression(callExpression)) {
 					// promise.resolve.then()
 					addToQueue({ type: 'microtask', ast: callExpression.arguments[0] });

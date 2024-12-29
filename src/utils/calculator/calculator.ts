@@ -124,8 +124,9 @@ export class Calculator {
 			render: (time) => {
 				this.lastRender = time;
 				this.log({ time, type: 'render' });
-				while (this.rafCallbacks.length > 0) {
-					// TODO: exclude infinite loop, when rAF is invoked inside rAF
+				const count = this.rafCallbacks.length;
+				// exclude inner callbacks execution in the same step
+				for (let i = 0; i < count; i++) {
 					const task = this.rafCallbacks.shift();
 					if (!task) throw new Error('No raf callback found');
 					this.log({ time, type: 'shift', queue: 'rafCallback', ast: task });
