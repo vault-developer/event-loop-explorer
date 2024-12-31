@@ -1,23 +1,20 @@
 ## [1.10.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.10.1...v1.10.2) (2024-12-31)
 
-
 ### Bug Fixes
 
-* revert "build: update dependencies" ([8f034c2](https://github.com/vault-developer/event-loop-explorer/commit/8f034c20bf58b5576a24b778cf4f01b71f092514))
+- revert "build: update dependencies" ([8f034c2](https://github.com/vault-developer/event-loop-explorer/commit/8f034c20bf58b5576a24b778cf4f01b71f092514))
 
 ## [1.10.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.10.0...v1.10.1) (2024-12-31)
 
-
 ### Bug Fixes
 
-* fix light theme colors ([81caef4](https://github.com/vault-developer/event-loop-explorer/commit/81caef44013c013f8fc2f1e7766cf56d137cd5af))
+- fix light theme colors ([81caef4](https://github.com/vault-developer/event-loop-explorer/commit/81caef44013c013f8fc2f1e7766cf56d137cd5af))
 
 # [1.10.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.9.4...v1.10.0) (2024-12-31)
 
-
 ### Features
 
-* add light theme ([7a903f1](https://github.com/vault-developer/event-loop-explorer/commit/7a903f159939cacfcecd2fc848b30e16d31a0007))
+- add light theme ([7a903f1](https://github.com/vault-developer/event-loop-explorer/commit/7a903f159939cacfcecd2fc848b30e16d31a0007))
 
 ## [1.9.4](https://github.com/vault-developer/event-loop-explorer/compare/v1.9.3...v1.9.4) (2024-12-29)
 
