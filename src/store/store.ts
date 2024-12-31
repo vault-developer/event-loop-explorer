@@ -1,7 +1,18 @@
 import { create } from 'zustand';
-import { Editor, QueueManager, Simulator, Wheel } from './store.types.ts';
+import {
+	Editor,
+	QueueManager,
+	Simulator,
+	ThemeState,
+	Wheel,
+} from './store.types.ts';
 import { indexToRowColumn } from 'utils/editor.ts';
 import { Range } from 'ace-builds';
+
+export const useThemeStore = create<ThemeState>((set) => ({
+	isDark: true,
+	toggle: () => set((theme) => ({ isDark: !theme.isDark })),
+}));
 
 export const useQueueManagerStore = create<QueueManager>((set) => ({
 	console: [],

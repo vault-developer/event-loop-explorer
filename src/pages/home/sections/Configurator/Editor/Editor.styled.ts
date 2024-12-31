@@ -5,6 +5,10 @@ export const EditorWrapper = styled.div(
 	({ theme }) => css`
 		flex: 1;
 
+		.ace_layer.ace_gutter-layer {
+			background: ${theme.custom.colors.container};
+		}
+
 		.ace_gutter {
 			background: ${theme.custom.colors.wheel.background};
 		}
@@ -19,7 +23,7 @@ export const EditorWrapper = styled.div(
 		}
 
 		.ace_content {
-			background: ${theme.custom.colors.backgroundNormal};
+			background: ${theme.custom.colors.container};
 		}
 	`
 );

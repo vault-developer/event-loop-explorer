@@ -61,3 +61,8 @@ export interface Editor {
 	drawLatestMarker(): void;
 	markers: [number, number][];
 }
+
+export interface ThemeState {
+	isDark: boolean;
+	toggle: () => void;
+}

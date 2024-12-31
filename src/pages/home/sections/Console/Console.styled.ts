@@ -11,7 +11,7 @@ export const LogQueue = styled.div`
 
 export const Log = styled.div(
 	({ theme }) => css`
-		background: ${theme.custom.colors.listItemBackground};
+		background: ${theme.custom.colors.onContainerNormal};
 		border-radius: 5px;
 		padding: 10px;
 		word-wrap: break-word;

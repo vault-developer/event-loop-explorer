@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 export const WebApiItem = styled.div(
 	({ theme }) => css`
-		background: ${theme.custom.colors.listItemBackground};
+		background: ${theme.custom.colors.onContainerNormal};
 		border-radius: 5px;
 		padding: 10px;
 		position: absolute;
@@ -22,8 +22,8 @@ export const Progress = styled.div<{ progress: number }>(
 	({ theme, progress }) => css`
 		background-color: transparent;
 		background-image: conic-gradient(
-			${theme.custom.colors.listItemBackgroundBorder},
-			${theme.custom.colors.listItemBackgroundBorder} ${progress}%,
+			${theme.custom.colors.onContainerContrast},
+			${theme.custom.colors.onContainerContrast} ${progress}%,
 			transparent ${progress}%
 		);
 		border-radius: 5px;

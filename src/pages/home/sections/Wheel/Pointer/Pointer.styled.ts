@@ -30,7 +30,7 @@ export const SectorWithInnerBorder = styled.div(
 		border-image: linear-gradient(
 			to right,
 			transparent 50%,
-			${colors.contrastWhiteColor} 50%
+			${colors.text} 50%
 		);
 		box-sizing: border-box;
 
@@ -46,8 +46,7 @@ export const SectorWithInnerBorder = styled.div(
 				0 0;
 			transform-origin: 50% 100%;
 			transform: rotate(160deg);
-			border-left: ${eventLoopPointerBorderWidth}px solid
-				${colors.contrastWhiteColor};
+			border-left: ${eventLoopPointerBorderWidth}px solid ${colors.text};
 			box-sizing: border-box;
 			left: 0;
 		}
@@ -67,11 +66,7 @@ export const SectorWithOuterBorder = styled.div(
 		transform-origin: 50% 100%;
 		transform: rotate(280deg);
 		border-bottom: ${widths.eventLoopPointerBorderWidth}px solid transparent;
-		border-image: linear-gradient(
-				to right,
-				transparent 50%,
-				${colors.contrastWhiteColor} 50%
-			)
+		border-image: linear-gradient(to right, transparent 50%, ${colors.text} 50%)
 			1;
 		box-sizing: border-box;
 
@@ -82,11 +77,10 @@ export const SectorWithOuterBorder = styled.div(
 			content: '';
 			border-radius: ${widths.eventLoopRadius}px ${widths.eventLoopRadius}px 0 0;
 			border-bottom: ${widths.eventLoopPointerBorderWidth}px solid
-				${colors.contrastWhiteColor};
+				${colors.text};
 			transform-origin: 50% 100%;
 			transform: rotate(160deg);
-			border-left: ${widths.eventLoopPointerBorderWidth}px solid
-				${colors.contrastWhiteColor};
+			border-left: ${widths.eventLoopPointerBorderWidth}px solid ${colors.text};
 			box-sizing: border-box;
 			left: 0;
 		}

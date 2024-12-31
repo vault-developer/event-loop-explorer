@@ -3,6 +3,9 @@ import '@emotion/react';
 declare module '@emotion/react' {
 	export interface Theme {
 		custom: {
+			breakpoints: {
+				desktop: number;
+			};
 			widths: {
 				eventLoopRadius: number;
 				eventLoopDiameter: number;
@@ -10,11 +13,12 @@ declare module '@emotion/react' {
 				eventLoopPointerBorderWidth: number;
 			};
 			colors: {
-				contrastWhiteColor: string;
-				backgroundDark: string;
-				backgroundNormal: string;
-				listItemBackground: string;
-				listItemBackgroundBorder: string;
+				background: string;
+				container: string;
+				onContainerNormal: string;
+				onContainerContrast: string;
+				text: string;
+
 				wheel: {
 					background: string;
 					microtask: {

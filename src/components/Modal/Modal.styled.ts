@@ -9,7 +9,7 @@ export const StyledBox = styled(Box)(
 		left: 50%;
 		transform: translate(-50%, -50%);
 		box-sizing: border-box;
-		background: ${theme.custom.colors.wheel.background};
+		background: ${theme.custom.colors.container};
 		padding: 40px;
 		max-width: 400px;
 		width: 90%;

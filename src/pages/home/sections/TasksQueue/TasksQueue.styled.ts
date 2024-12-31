@@ -11,7 +11,7 @@ export const TasksQueue = styled.div`
 
 export const Task = styled.div(
 	({ theme }) => css`
-		background: ${theme.custom.colors.listItemBackground};
+		background: ${theme.custom.colors.onContainerNormal};
 		flex: 1;
 		display: flex;
 		justify-content: center;

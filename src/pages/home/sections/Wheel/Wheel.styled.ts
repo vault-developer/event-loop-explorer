@@ -18,7 +18,7 @@ export const CircleInner = styled.div(
 		left: ${theme.custom.widths.eventLoopWheelWidth}px;
 		right: ${theme.custom.widths.eventLoopWheelWidth}px;
 		bottom: ${theme.custom.widths.eventLoopWheelWidth}px;
-		background: ${theme.custom.colors.backgroundNormal};
+		background: ${theme.custom.colors.container};
 		border-radius: 50%;
 	`
 );
