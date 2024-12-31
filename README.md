@@ -31,9 +31,9 @@ Feel free to try it here: https://vault-developer.github.io/event-loop-explorer/
 
 ### Contribution:
 
-If you want to contribute, feel free to fork this repository and create a pull request.  
-There are a lot of topics in the "Future Plans" section.  
-Have a question or idea?  
+If you want to contribute, feel free to fork this repository and create a pull request.
+There are a lot of topics in the "Future Plans" section.
+Have a question or idea?
 Feel free to raise it in our [discussions session](https://github.com/vault-developer/event-loop-explorer/discussions) 👍
 
 ### Launch locally:
@@ -50,19 +50,10 @@ yarn dev
 
 ### Future Plans:
 
-- [ ] [add step forward functionality](https://github.com/vault-developer/event-loop-explorer/issues/8);
-- [ ] [add code validation syntax](https://github.com/vault-developer/event-loop-explorer/issues/3);
-- [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
-- [ ] add a toggle to console to switch between console.log output and comprehensive logs for every step;
+- [ ] handle todos in the codebase;
 - [ ] add unit tests;
-- [ ] clean up the code, remove todos;
-
-<!--
-- [ ] add more themes (light, green, etc)
-- [ ] add gamification (achievements);
-- [ ] add animation inside event loop circle;
-- [ ] support node.js event loop.
--->
+- [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
+- [ ] replace window.confirm with error boundary
 
 ### Inspired by:
 
