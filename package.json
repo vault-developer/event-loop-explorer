@@ -34,9 +34,9 @@
 		"acorn-walk": "^8.3.4",
 		"eslint-scope": "^8.2.0",
 		"globals": "^15.9.0",
-		"react": "^18.3.1",
+		"react": "^19.0.0",
 		"react-ace": "^12.0.0",
-		"react-dom": "^18.3.1",
+		"react-dom": "^19.0.0",
 		"zustand": "^4.5.5"
 	},
 	"devDependencies": {
@@ -46,8 +46,8 @@
 		"@semantic-release/git": "^10.0.1",
 		"@types/jest": "^29.5.14",
 		"@types/node": "^22.9.0",
-		"@types/react": "^18.3.4",
-		"@types/react-dom": "^18.3.0",
+		"@types/react": "^19.0.2",
+		"@types/react-dom": "^19.0.2",
 		"@typescript-eslint/eslint-plugin": "^8.2.0",
 		"@typescript-eslint/parser": "^8.2.0",
 		"@vitejs/plugin-react": "^4.3.1",
@@ -67,7 +67,7 @@
 		"typescript": "^5.5.4",
 		"vite": "^5.4.2"
 	},
-	"packageManager": "yarn@4.3.1+sha512.af78262d7d125afbfeed740602ace8c5e4405cd7f4735c08feb327286b2fdb2390fbca01589bfd1f50b1240548b74806767f5a063c94b67e431aabd0d86f7774",
+	"packageManager": "yarn@4.6.0",
 	"config": {
 		"commitizen": {
 			"path": "cz-conventional-changelog"
