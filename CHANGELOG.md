@@ -1,3 +1,10 @@
+## [1.10.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.10.1...v1.10.2) (2024-12-31)
+
+
+### Bug Fixes
+
+* revert "build: update dependencies" ([8f034c2](https://github.com/vault-developer/event-loop-explorer/commit/8f034c20bf58b5576a24b778cf4f01b71f092514))
+
 ## [1.10.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.10.0...v1.10.1) (2024-12-31)
 
 
