@@ -2,7 +2,7 @@ import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-solarized_dark';
 import 'ace-builds/src-noconflict/theme-textmate';
-import { useEffect, useRef } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import {
 	useEditorStore,
 	useSimulatorStore,
@@ -25,7 +25,7 @@ export default function Editor({
 
 	useEffect(() => {
 		if (editorRef.current) {
-			setEditorRef(editorRef);
+			setEditorRef(editorRef as RefObject<AceEditor>);
 		}
 	}, [editorRef, setEditorRef]);
 
