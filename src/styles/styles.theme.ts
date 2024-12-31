@@ -18,7 +18,7 @@ const getMuiTheme = (isDark: boolean) =>
 					tooltip: {
 						fontSize: '14',
 						color: isDark ? 'rgba(255, 255, 255, 0.87)' : 'rgba(0, 0, 0, 0.75)',
-						backgroundColor: isDark ? '#35495a' : '#42729E',
+						backgroundColor: isDark ? '#35495a' : '#C5D7E7',
 					},
 				},
 			},
@@ -101,21 +101,21 @@ export const lightTheme: Theme = {
 			container: '#A9C3DB',
 			onContainerNormal: '#8CAFCF',
 			onContainerContrast: '#22476D',
-			text: 'rgba(0, 0, 0, 0.75)',
+			text: '#1D3D5E',
 
 			wheel: {
-				background: '#81A1BF',
+				background: '#7797B6',
 				microtask: {
-					disabled: '#9daaa0',
-					enabled: '#318a45',
+					disabled: '#9BAD86',
+					enabled: '#B0D982',
 				},
 				macrotask: {
-					disabled: '#B0ABAF',
-					enabled: '#a75793',
+					disabled: '#CC9076',
+					enabled: '#FF8957',
 				},
 				render: {
-					disabled: '#AE9A8F',
-					enabled: '#b86232',
+					disabled: '#976D84',
+					enabled: '#D971AA',
 				},
 			},
 		},
