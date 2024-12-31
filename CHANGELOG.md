@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.10.0...v1.10.1) (2024-12-31)
+
+
+### Bug Fixes
+
+* fix light theme colors ([81caef4](https://github.com/vault-developer/event-loop-explorer/commit/81caef44013c013f8fc2f1e7766cf56d137cd5af))
+
 # [1.10.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.9.4...v1.10.0) (2024-12-31)
 
 
