@@ -50,10 +50,12 @@ yarn dev
 
 ### Future Plans:
 
+- [ ] create a unified Icon component;
 - [ ] handle todos in the codebase;
 - [ ] add unit tests;
 - [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
 - [ ] replace window.confirm with error boundary
+- [ ] add node.js event loop
 
 ### Inspired by:
 
