@@ -18,6 +18,13 @@ function Wheel({ className }: { className?: string }) {
 	const theme = useTheme();
 	const [isOpened, toggle] = useBoolean(false);
 
+	const { primary, secondary, tertiary } = theme.custom.colors;
+	const colors = {
+		microtask: primary,
+		macrotask: secondary,
+		render: tertiary,
+	};
+
 	return (
 		<BaseLayoutElement className={className}>
 			<p id={EVENT_LOOP_ID}>Event Loop</p>
@@ -26,12 +33,13 @@ function Wheel({ className }: { className?: string }) {
 				<Styled.CircleContainer>
 					<Styled.CircleOuter />
 					{events.map(({ degree, type }) => {
-						const enabled = stops[type] ? 'enabled' : 'disabled';
-						const background = theme.custom.colors.wheel[type][enabled];
+						const enabled = stops[type];
+						const background = colors[type];
 						return (
 							<Styled.Sector
 								id={`sector-${type}-new`}
 								key={degree}
+								enabled={enabled}
 								background={background}
 								degree={360 - degree + 10}
 							/>

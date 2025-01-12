@@ -59,7 +59,7 @@ export const NarrowColumn = styled.div(
 
 export const BaseLayoutElement = styled.div(
 	({ theme }) => css`
-		border: 1px solid ${theme.custom.colors.wheel.background};
+		border: 1px solid ${theme.custom.colors.onContainer.dim};
 		background: ${theme.custom.colors.container};
 		margin: 0;
 		padding: 10px;
