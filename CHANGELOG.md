@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.10.2...v1.11.0) (2025-01-12)
+
+
+### Features
+
+* **ds:** update design system ([#33](https://github.com/vault-developer/event-loop-explorer/issues/33)) ([e746d3d](https://github.com/vault-developer/event-loop-explorer/commit/e746d3d983db1bb5c292ecdff6229e830f9eb566))
+
 ## [1.10.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.10.1...v1.10.2) (2024-12-31)
 
 ### Bug Fixes
