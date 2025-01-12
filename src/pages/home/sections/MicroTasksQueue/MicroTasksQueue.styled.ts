@@ -11,7 +11,7 @@ export const MicroTasksQueue = styled.div`
 
 export const MicroTask = styled.div(
 	({ theme }) => css`
-		background: ${theme.custom.colors.onContainerNormal};
+		background: ${theme.custom.colors.onContainer.dim};
 		flex: 1;
 		display: flex;
 		justify-content: center;

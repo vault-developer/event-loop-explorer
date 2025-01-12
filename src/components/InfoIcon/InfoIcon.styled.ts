@@ -7,10 +7,10 @@ export const Info = styled.svg(
 		top: 4px;
 		right: 4px;
 		cursor: pointer;
-		fill: ${theme.custom.colors.onContainerNormal};
+		fill: ${theme.custom.colors.onContainer.normal};
 
 		&:hover {
-			fill: ${theme.custom.colors.text};
+			fill: ${theme.custom.colors.onContainer.contrast};
 		}
 	`
 );

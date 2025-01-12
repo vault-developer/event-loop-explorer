@@ -10,16 +10,17 @@ export const EditorWrapper = styled.div(
 		}
 
 		.ace_gutter {
-			background: ${theme.custom.colors.wheel.background};
+			background: ${theme.custom.colors.onContainer.dim};
 		}
 
 		.selected_lines {
 			position: absolute;
-			background: ${theme.custom.colors.wheel.macrotask.disabled};
+			background: ${theme.custom.colors.tertiary};
+			opacity: 0.3;
 		}
 
 		.ace_gutter-active-line {
-			background: ${theme.custom.colors.wheel.background};
+			background: ${theme.custom.colors.onContainer.dim};
 		}
 
 		.ace_content {

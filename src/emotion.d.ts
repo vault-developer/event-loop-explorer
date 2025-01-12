@@ -3,6 +3,7 @@ import '@emotion/react';
 declare module '@emotion/react' {
 	export interface Theme {
 		custom: {
+			mode: 'light' | 'dark';
 			breakpoints: {
 				desktop: number;
 			};
@@ -14,26 +15,16 @@ declare module '@emotion/react' {
 			};
 			colors: {
 				background: string;
+				onBackground: string;
 				container: string;
-				onContainerNormal: string;
-				onContainerContrast: string;
-				text: string;
-
-				wheel: {
-					background: string;
-					microtask: {
-						disabled: string;
-						enabled: string;
-					};
-					macrotask: {
-						disabled: string;
-						enabled: string;
-					};
-					render: {
-						disabled: string;
-						enabled: string;
-					};
+				onContainer: {
+					dim: string;
+					normal: string;
+					contrast: string;
 				};
+				primary: string;
+				secondary: string;
+				tertiary: string;
 			};
 		};
 	}

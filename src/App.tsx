@@ -1,5 +1,5 @@
 import Home from './pages/home/Home.tsx';
-import { StylesProvider } from './styles/styles.provider.tsx';
+import { StylesProvider } from 'providers/StylesProvider.tsx';
 
 function App() {
 	return (

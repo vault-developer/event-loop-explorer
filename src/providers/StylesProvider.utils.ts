@@ -3,7 +3,7 @@ import { css, Theme } from '@emotion/react';
 export const getGlobalStyles = ({ theme }: { theme: Theme }) => css`
 	html {
 		font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-		color: ${theme.custom.colors.text};
+		color: ${theme.custom.colors.onBackground};
 		background-color: ${theme.custom.colors.background};
 		height: 100%;
 	}
@@ -25,7 +25,7 @@ export const getGlobalStyles = ({ theme }: { theme: Theme }) => css`
 	}
 
 	a {
-		color: ${theme.custom.colors.text};
+		color: ${theme.custom.colors.onBackground};
 	}
 
 	body {
@@ -56,10 +56,10 @@ export const getGlobalStyles = ({ theme }: { theme: Theme }) => css`
 	}
 
 	::-webkit-scrollbar-thumb {
-		background: ${theme.custom.colors.onContainerNormal};
+		background: ${theme.custom.colors.onContainer.normal};
 	}
 
 	:focus-visible {
-		outline: 2px solid ${theme.custom.colors.onContainerNormal};
+		outline: 2px solid ${theme.custom.colors.onContainer.normal};
 	}
 `;

@@ -4,10 +4,10 @@ import { css } from '@emotion/react';
 export const Closed = styled.svg(
 	({ theme }) => css`
 		cursor: pointer;
-		fill: ${theme.custom.colors.onContainerNormal};
+		fill: ${theme.custom.colors.onContainer.normal};
 
 		&:hover {
-			fill: ${theme.custom.colors.text};
+			fill: ${theme.custom.colors.onContainer.contrast};
 		}
 	`
 );
