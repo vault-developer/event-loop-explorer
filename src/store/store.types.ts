@@ -24,8 +24,6 @@ export interface QueueManager {
 }
 
 export interface Simulator {
-	time: number;
-	setTime(time: number): void;
 	speed: number;
 	setSpeed(time: number): void;
 	status: 'idle' | 'running' | 'paused';
@@ -34,12 +32,10 @@ export interface Simulator {
 }
 
 export interface Wheel {
-	grad: number;
 	render: boolean;
 	macrotask: boolean;
 	microtask: boolean;
 	clear: () => void;
-	setGrad(grad: number): void;
 	setStop({
 		stop,
 		enabled,
@@ -47,6 +43,12 @@ export interface Wheel {
 		stop: 'render' | 'macrotask' | 'microtask';
 		enabled: boolean;
 	}): void;
+}
+
+export interface Time {
+	time: number;
+	grad: number;
+	setTime(grad: number): void;
 }
 
 export interface Editor {

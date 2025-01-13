@@ -3,6 +3,7 @@ import {
 	useEditorStore,
 	useQueueManagerStore,
 	useSimulatorStore,
+	useTimeStore,
 	useWheelStore,
 } from 'store/store.ts';
 import { delay } from 'utils/delay.ts';
@@ -28,7 +29,7 @@ export const simulate = (steps: ELSerialisedStep[], onStop: () => void) => {
 			await delay(250);
 		}
 		if (useSimulatorStore.getState().status === 'idle') return;
-		const time = useSimulatorStore.getState().time;
+		const time = useTimeStore.getState().time;
 		const steps = groupedSteps[time];
 		if (steps !== undefined) {
 			for (const step of steps) {
@@ -44,9 +45,7 @@ export const simulate = (steps: ELSerialisedStep[], onStop: () => void) => {
 		const speed = useSimulatorStore.getState().speed;
 		const nextTime = getNextTime({ time, speed, groupedSteps });
 
-		useSimulatorStore.getState().setTime(nextTime);
-		useWheelStore.getState().setGrad(nextTime % 360);
-
+		useTimeStore.getState().setTime(nextTime);
 		requestAnimationFrame(animate);
 	};
 	animate();
@@ -71,7 +70,8 @@ const getNextTime = ({
 };
 
 const considerDelay = async () => {
-	const { grad, macrotask, microtask, render } = useWheelStore.getState();
+	const { macrotask, microtask, render } = useWheelStore.getState();
+	const { grad } = useTimeStore.getState();
 	const { renders, microtasks, macrotasks } = EVENT_LOOP_WHEEL_STOPS;
 	const speed = useSimulatorStore.getState().speed;
 
