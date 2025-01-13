@@ -4,6 +4,7 @@ import {
 	QueueManager,
 	Simulator,
 	ThemeState,
+	Time,
 	Wheel,
 } from './store.types.ts';
 import { indexToRowColumn } from 'utils/editor.ts';
@@ -55,27 +56,30 @@ export const useQueueManagerStore = create<QueueManager>((set) => ({
 		}),
 }));
 
-export const useWheelStore = create<Wheel>((set) => ({
+export const useTimeStore = create<Time>((set) => ({
+	time: 0,
 	grad: 0,
+	setTime: (time) => set({ time, grad: time % 360 }),
+}));
+
+export const useWheelStore = create<Wheel>((set) => ({
 	render: false,
 	macrotask: false,
 	microtask: false,
-	setGrad: (grad) => set({ grad }),
 	setStop: ({ stop, enabled }) => set({ [stop]: enabled }),
-	clear: () =>
+	clear: () => {
+		useTimeStore.getState().setTime(0);
 		set(() => ({
-			grad: 0,
 			render: false,
 			macrotask: false,
 			microtask: false,
-		})),
+		}));
+	},
 }));
 
 export const useSimulatorStore = create<Simulator>((set) => ({
 	speed: 1,
 	setSpeed: (speed) => set(() => ({ speed })),
-	time: 0,
-	setTime: (time) => set(() => ({ time })),
 	status: 'idle',
 	setStatus: (status) => set(() => ({ status })),
 	clear: () =>

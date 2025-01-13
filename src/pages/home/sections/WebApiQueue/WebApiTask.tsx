@@ -1,7 +1,7 @@
 import { forwardRef, Ref, useEffect, useState } from 'react';
 import * as Styled from './WebApiTask.styled.ts';
 import { WebApiSectionElement } from 'src/types.ts';
-import { useSimulatorStore } from 'store/store.ts';
+import { useTimeStore } from 'store/store.ts';
 
 const WebApiTask = forwardRef(
 	({ task }: { task: WebApiSectionElement }, ref: Ref<HTMLDivElement>) => {
@@ -10,7 +10,7 @@ const WebApiTask = forwardRef(
 
 		useEffect(() => {
 			const checkProgress = () => {
-				const remainingTime = task.end - useSimulatorStore.getState().time;
+				const remainingTime = task.end - useTimeStore.getState().time;
 				const progressPercentage = Math.trunc((remainingTime / delay) * 100);
 				const newProgress = Math.max(0, Math.min(progressPercentage, 100));
 				setProgress(newProgress);
