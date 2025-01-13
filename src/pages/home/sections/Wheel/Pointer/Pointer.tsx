@@ -1,18 +1,27 @@
 import * as Styled from './Pointer.styled.ts';
 import { useTimeStore } from 'store/store.ts';
+import { useEffect } from 'react';
+
+const INNER_POINTER_ID = 'InnerPointerId';
+const OUTER_POINTER_ID = 'OuterPointerId';
 
 function Pointer() {
-	const grad = useTimeStore((state) => state.grad);
+	useEffect(() => {
+		return useTimeStore.subscribe(({ grad }) => {
+			const innerBorder = document.getElementById(INNER_POINTER_ID);
+			const outerBorder = document.getElementById(OUTER_POINTER_ID);
 
-	// TODO: consider direct style change w/o component re-render
+			if (innerBorder && outerBorder) {
+				innerBorder.style.transform = `rotate(${grad - 80}deg)`;
+				outerBorder.style.transform = `rotate(${grad - 80}deg)`;
+			}
+		});
+	}, []);
+
 	return (
 		<>
-			<Styled.SectorWithInnerBorder
-				style={{ transform: `rotate(${grad - 80}deg)` }}
-			/>
-			<Styled.SectorWithOuterBorder
-				style={{ transform: `rotate(${grad - 80}deg)` }}
-			/>
+			<Styled.SectorWithInnerBorder id={INNER_POINTER_ID} />
+			<Styled.SectorWithOuterBorder id={OUTER_POINTER_ID} />
 		</>
 	);
 }
