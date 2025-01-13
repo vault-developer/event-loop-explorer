@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.11.1...v1.11.2) (2025-01-13)
+
+
+### Bug Fixes
+
+* fix animation lags  ([#35](https://github.com/vault-developer/event-loop-explorer/issues/35)) ([d51f767](https://github.com/vault-developer/event-loop-explorer/commit/d51f767735d362667026af31cf825415187dd077))
+
 ## [1.11.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.11.0...v1.11.1) (2025-01-13)
 
 ### Bug Fixes
