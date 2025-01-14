@@ -1,3 +1,10 @@
+## [1.11.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.11.2...v1.11.3) (2025-01-14)
+
+
+### Bug Fixes
+
+* fix styles ([5536070](https://github.com/vault-developer/event-loop-explorer/commit/5536070139a946bbbbbc92bfabae66640a3b11c2))
+
 ## [1.11.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.11.1...v1.11.2) (2025-01-13)
 
 ### Bug Fixes
