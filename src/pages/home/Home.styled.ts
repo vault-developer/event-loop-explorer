@@ -76,9 +76,9 @@ export const List = styled(BaseLayoutElement)`
 `;
 
 export const sharedComponentStyles = ({ theme }: { theme: Theme }) => css`
-	height: 10vh;
+	min-height: 10vh;
 	@media (min-width: ${theme.custom.breakpoints.desktop}px) {
-		height: unset;
+		min-height: unset;
 	}
 `;
 
@@ -97,11 +97,11 @@ export const Info = styled(InfoBase)(
 export const Configurator = styled(ConfiguratorBase)(
 	({ theme }) => css`
 		padding: 0;
-		height: 50vh;
+		min-height: 50vh;
 
 		@media (min-width: ${theme.custom.breakpoints.desktop}px) {
 			flex-basis: 75%;
-			height: unset;
+			min-height: unset;
 		}
 	`
 );
@@ -175,11 +175,11 @@ export const EventLoop = styled(EventLoopBase)(
 		align-items: center;
 		overflow: auto;
 		position: relative;
-		height: 40vh;
+		min-height: 40vh;
 
 		@media (min-width: ${theme.custom.breakpoints.desktop}px) {
 			flex-basis: 45%;
-			height: unset;
+			min-height: unset;
 			overflow: hidden;
 		}
 	`

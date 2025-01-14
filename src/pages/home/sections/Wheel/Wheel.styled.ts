@@ -92,4 +92,5 @@ export const EventLoopBody = styled.div`
 	align-items: center;
 	justify-content: center;
 	flex: 1;
+	padding-top: 10px;
 `;
