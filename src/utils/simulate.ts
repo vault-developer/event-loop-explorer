@@ -59,9 +59,9 @@ const getNextTime = ({
 	groupedSteps: Record<string, ELSerialisedStep[]>;
 }) => {
 	const minStep = 0.25;
-	const minTime = time + minStep;
+	const minTime = Math.ceil(time + minStep);
 	const maxTime = time + speed;
-	for (let i = minTime; i < maxTime; i += minStep) {
+	for (let i = minTime; i < maxTime; i++) {
 		if (groupedSteps[i]?.length > 0) return i;
 	}
 	return maxTime;
