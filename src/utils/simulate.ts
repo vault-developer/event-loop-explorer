@@ -24,29 +24,27 @@ export const simulate = (steps: ELSerialisedStep[], onStop: () => void) => {
 	console.log('simulation start for steps', groupedSteps);
 
 	const animate = async () => {
-		while (useSimulatorStore.getState().status === 'paused') {
-			// TODO: make more efficient check
-			await delay(250);
-		}
-		if (useSimulatorStore.getState().status === 'idle') return;
-		const time = useTimeStore.getState().time;
-		const steps = groupedSteps[time];
-		if (steps !== undefined) {
-			for (const step of steps) {
-				while (useSimulatorStore.getState().status === 'paused') {
-					await delay(250);
+		if (useSimulatorStore.getState().status === 'running') {
+			const steps = groupedSteps[useTimeStore.getState().time];
+			if (steps !== undefined) {
+				for (const step of steps) {
+					while (useSimulatorStore.getState().status === 'paused') {
+						await delay(250);
+					}
+					if (useSimulatorStore.getState().status === 'idle') return;
+					const isFinished = await simulateStep(step, onStop);
+					if (isFinished) return;
 				}
-				if (useSimulatorStore.getState().status === 'idle') return;
-				const isFinished = await simulateStep(step, onStop);
-				if (isFinished) return;
 			}
+			const { speed } = useSimulatorStore.getState();
+			const { time, setTime } = useTimeStore.getState();
+			const nextTime = getNextTime({ time, speed, groupedSteps });
+			setTime(nextTime);
+			requestAnimationFrame(animate);
+		} else if (useSimulatorStore.getState().status === 'paused') {
+			await delay(250);
+			return animate();
 		}
-
-		const speed = useSimulatorStore.getState().speed;
-		const nextTime = getNextTime({ time, speed, groupedSteps });
-
-		useTimeStore.getState().setTime(nextTime);
-		requestAnimationFrame(animate);
 	};
 	animate();
 };
