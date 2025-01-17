@@ -2461,12 +2461,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.9.0":
+"@types/node@npm:*":
   version: 22.10.2
   resolution: "@types/node@npm:22.10.2"
   dependencies:
     undici-types: "npm:~6.20.0"
   checksum: 10c0/2c7b71a040f1ef5320938eca8ebc946e6905caa9bbf3d5665d9b3774a8d15ea9fab1582b849a6d28c7fc80756a62c5666bc66b69f42f4d5dafd1ccb193cdb4ac
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^22.10.7":
+  version: 22.10.7
+  resolution: "@types/node@npm:22.10.7"
+  dependencies:
+    undici-types: "npm:~6.20.0"
+  checksum: 10c0/c941b4689dfc4044b64a5f601306cbcb0c7210be853ba378a5dd44137898c45accedd796ee002ad9407024cac7ecaf5049304951cb1d80ce3d7cebbbae56f20e
   languageName: node
   linkType: hard
 
@@ -2491,12 +2500,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^19.0.2":
-  version: 19.0.2
-  resolution: "@types/react-dom@npm:19.0.2"
+"@types/react-dom@npm:^19.0.3":
+  version: 19.0.3
+  resolution: "@types/react-dom@npm:19.0.3"
   peerDependencies:
     "@types/react": ^19.0.0
-  checksum: 10c0/3d0c7b78dbe8df64ea769f30af990a5950173a8321c745fe11094d765423f7964c3519dca6e7cd36b4be6521c8efc690bdd3b79b327b229dd1e9d5a8bad677dd
+  checksum: 10c0/3867427b333cbe8cbba496d7cc20ec9676d32c25ae44f4d1263a4129d42e57cf4adf0039ad263432f1215b88075c27d326e7eb4ed646128235d01a76e661d48f
   languageName: node
   linkType: hard
 
@@ -2509,12 +2518,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.0.2":
-  version: 19.0.2
-  resolution: "@types/react@npm:19.0.2"
+"@types/react@npm:^19.0.7":
+  version: 19.0.7
+  resolution: "@types/react@npm:19.0.7"
   dependencies:
     csstype: "npm:^3.0.2"
-  checksum: 10c0/8992f39701fcf1bf893ef8f94a56196445667baf08fe4f6050a14e229a17aad3265ad3efc01595ff3b4d5d5c69da885f9aa4ff80f164a613018734efcff1eb8f
+  checksum: 10c0/818e546fa03a2a65ac2652fc472891ac96684211e8967bc25e1da6a8a09e2301ad972b1b038d128f8b4cbbd7691f6f57fee274db568169e9b6b01556abbb5bee
   languageName: node
   linkType: hard
 
@@ -4358,9 +4367,9 @@ __metadata:
     "@semantic-release/git": "npm:^10.0.1"
     "@types/eslint-scope": "npm:^3.7.7"
     "@types/jest": "npm:^29.5.14"
-    "@types/node": "npm:^22.9.0"
-    "@types/react": "npm:^19.0.2"
-    "@types/react-dom": "npm:^19.0.2"
+    "@types/node": "npm:^22.10.7"
+    "@types/react": "npm:^19.0.7"
+    "@types/react-dom": "npm:^19.0.3"
     "@typescript-eslint/eslint-plugin": "npm:^8.2.0"
     "@typescript-eslint/parser": "npm:^8.2.0"
     "@vitejs/plugin-react": "npm:^4.3.1"
