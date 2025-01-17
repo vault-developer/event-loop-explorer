@@ -20,15 +20,16 @@
 		"test:coverage": "jest --coverage"
 	},
 	"dependencies": {
-		"@commitlint/cli": "^19.4.0",
-		"@emotion/react": "^11.13.3",
-		"@emotion/styled": "^11.13.0",
-		"@eslint/compat": "^1.1.1",
-		"@eslint/eslintrc": "^3.1.0",
-		"@eslint/js": "^9.9.1",
-		"@mui/icons-material": "^6.0.1",
+		"@commitlint/cli": "^19.6.1",
+		"@emotion/react": "^11.14.0",
+		"@emotion/styled": "^11.14.0",
+		"@eslint/compat": "^1.2.5",
+		"@eslint/eslintrc": "^3.2.0",
+		"@eslint/js": "^9.18.0",
+		"@mui/icons-material": "^6.4.0",
 		"@mui/material": "^5.16.7",
 		"@types/eslint-scope": "^3.7.7",
+		"@wixc3/react-board": "^4.6.2",
 		"ace-builds": "^1.36.0",
 		"acorn": "^8.12.1",
 		"acorn-walk": "^8.3.4",
@@ -40,7 +41,7 @@
 		"zustand": "^4.5.5"
 	},
 	"devDependencies": {
-		"@commitlint/config-conventional": "^19.2.2",
+		"@commitlint/config-conventional": "^19.6.0",
 		"@playwright/test": "^1.48.2",
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/git": "^10.0.1",
