@@ -8,7 +8,7 @@ import TasksQueueBase from './sections/TasksQueue/TasksQueue.tsx';
 import MicroTasksQueueBase from './sections/MicroTasksQueue/MicroTasksQueue.tsx';
 import InfoBase from './sections/Info/Info.tsx';
 import ConfiguratorBase from './sections/Configurator/Configurator.tsx';
-import EventLoopBase from './sections/Wheel/Wheel.tsx';
+import EventLoopBase from 'pages/home/sections/EventLoop/EventLoop.tsx';
 
 export const sharedColumnStyles = ({ theme }: { theme: Theme }) => css`
 	display: flex;

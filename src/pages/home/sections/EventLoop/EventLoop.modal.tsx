@@ -1,7 +1,7 @@
-import * as Styled from './Wheel.styled.ts';
+import * as Styled from './EventLoop.styled.ts';
 import InfoModal from 'components/Modal/Modal.tsx';
 
-function WheelModal({
+function EventLoopModal({
 	isOpened,
 	toggle,
 }: {
@@ -38,4 +38,4 @@ function WheelModal({
 	);
 }
 
-export default WheelModal;
+export default EventLoopModal;
