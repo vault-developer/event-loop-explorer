@@ -8,7 +8,8 @@ const POINTER_BOTTOM_ID = 'wheel-pointer-bottom';
 const POINTER_LEFT_ID = 'wheel-pointer-left';
 const POINTER_RIGHT_ID = 'wheel-pointer-right';
 
-const gradOffset = -99;
+const SEGMENT_OFFSET = -9;
+const POINTER_OFFSET = -99;
 
 function Wheel() {
 	const theme = useTheme();
@@ -29,7 +30,7 @@ function Wheel() {
 			const left = document.getElementById(POINTER_LEFT_ID);
 			const bottom = document.getElementById(POINTER_BOTTOM_ID);
 
-			const corrected = grad + gradOffset;
+			const corrected = grad + POINTER_OFFSET;
 
 			if (top && right && left && bottom) {
 				top.style.transform = `rotate(${corrected}deg)`;
@@ -58,17 +59,37 @@ function Wheel() {
 					id={POINTER_TOP_ID}
 					d="M 0 0 L 100 0 A 100 100 0 0 1 95.11 30.90 Z"
 					fill={colors.pointer}
-					transform={`rotate(${gradOffset})`}
+					transform={`rotate(${POINTER_OFFSET})`}
 				/>
 				<circle id="wheel" cx="0" cy="0" r="97" fill={colors.wheel} />
 
-				<use href="#segment" fill={colors.microtask} transform="rotate(-39)" />
+				<use
+					href="#segment"
+					fill={colors.microtask}
+					transform={`rotate(${SEGMENT_OFFSET - 30})`}
+				/>
 				<use href="#segment" fill={colors.render} transform="rotate(-9)" />
-				<use href="#segment" fill={colors.microtask} transform="rotate(21)" />
+				<use
+					href="#segment"
+					fill={colors.microtask}
+					transform={`rotate(${SEGMENT_OFFSET + 30})`}
+				/>
 
-				<use href="#segment" fill={colors.microtask} transform="rotate(141)" />
-				<use href="#segment" fill={colors.macrotask} transform="rotate(171)" />
-				<use href="#segment" fill={colors.microtask} transform="rotate(201)" />
+				<use
+					href="#segment"
+					fill={colors.microtask}
+					transform={`rotate(${SEGMENT_OFFSET + 150})`}
+				/>
+				<use
+					href="#segment"
+					fill={colors.macrotask}
+					transform={`rotate(${SEGMENT_OFFSET + 180})`}
+				/>
+				<use
+					href="#segment"
+					fill={colors.microtask}
+					transform={`rotate(${SEGMENT_OFFSET + 210})`}
+				/>
 
 				<circle
 					id="center-mock-outer"
@@ -81,21 +102,21 @@ function Wheel() {
 					id={POINTER_BOTTOM_ID}
 					d="M 0 0 L 73 0 A 72 72 0 0 1 69.65 22.65 Z"
 					fill={colors.pointer}
-					transform={`rotate(${gradOffset})`}
+					transform={`rotate(${POINTER_OFFSET})`}
 				/>
 				<path
 					id={POINTER_LEFT_ID}
 					d="M 0 0 L 100 0"
 					stroke={colors.pointer}
 					stroke-width="3"
-					transform={`rotate(${gradOffset})`}
+					transform={`rotate(${POINTER_OFFSET})`}
 				/>
 				<path
 					id={POINTER_RIGHT_ID}
 					d="M 0 0 L 100 0"
 					stroke={colors.pointer}
 					stroke-width="3"
-					transform={`rotate(${gradOffset + 18})`}
+					transform={`rotate(${POINTER_OFFSET + 18})`}
 				/>
 				<circle
 					id="center-mock-inner"
