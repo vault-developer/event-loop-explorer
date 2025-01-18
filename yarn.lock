@@ -2728,14 +2728,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ace-builds@npm:^1.32.8":
-  version: 1.37.1
-  resolution: "ace-builds@npm:1.37.1"
-  checksum: 10c0/ffc550b9e8188697fdac1a34ac893d1462dc45902373d2533ed1f8b07c510517dfed7c2667bb6adbf1a6f46e6f3d8c3d16edca7e098d1f6007b02350e5ff16ef
-  languageName: node
-  linkType: hard
-
-"ace-builds@npm:^1.37.5":
+"ace-builds@npm:^1.36.3, ace-builds@npm:^1.37.5":
   version: 1.37.5
   resolution: "ace-builds@npm:1.37.5"
   checksum: 10c0/6279b4e41088d7fca39f8c1764358ea0910af88c7a78027ba51fd9e8699bdc9b4108684638adf86d3b0eaa917eec8cefde1530f2c1a0f0a63119d88ae21ce4e5
@@ -4397,7 +4390,7 @@ __metadata:
     lint-staged: "npm:^15.4.1"
     prettier: "npm:^3.4.2"
     react: "npm:^19.0.0"
-    react-ace: "npm:^12.0.0"
+    react-ace: "npm:^13.0.0"
     react-dom: "npm:^19.0.0"
     semantic-release: "npm:^24.2.1"
     ts-jest: "npm:^29.2.5"
@@ -8195,11 +8188,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-ace@npm:^12.0.0":
-  version: 12.0.0
-  resolution: "react-ace@npm:12.0.0"
+"react-ace@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "react-ace@npm:13.0.0"
   dependencies:
-    ace-builds: "npm:^1.32.8"
+    ace-builds: "npm:^1.36.3"
     diff-match-patch: "npm:^1.0.5"
     lodash.get: "npm:^4.4.2"
     lodash.isequal: "npm:^4.5.0"
@@ -8207,7 +8200,7 @@ __metadata:
   peerDependencies:
     react: ^0.13.0 || ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
     react-dom: ^0.13.0 || ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/e7f33d4f0910f482e939f321db8f5a8bb7fe0bf40a9db0cde12ed2b368e8c77fc2683b2fb0737cd88216f732258e363705f2c6cfbbcaabced3fba8eff7fb43ad
+  checksum: 10c0/adbe485de187b69ca493bc986b587bf76222cf7eedfba53afd33deba7310cf094baf0fe8c42b4833e1fb7e26144d916797fe482137d563d15d91314d5292d8cc
   languageName: node
   linkType: hard
 
