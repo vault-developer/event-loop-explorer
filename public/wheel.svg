@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200">
+	<defs>
+		<path id="segment" d="M 0 0 L 97 0 A 97 97 0 0 1 92.26036 29.96953 Z"/>
+		<style>
+			.pointer-fill { fill: white; }
+			.pointer-stroke { stroke: white; }
+			.wheel {fill: #042936;}
+			.background {fill: #00131B;}
+			.rotate { transform: rotate(-99deg); }
+			.rotate-right-border { transform: rotate(-81deg); }
+		</style>
+	</defs>
+
+	<path id="pointer-top" d="M 0 0 L 100 0 A 100 100 0 0 1 95.11 30.90 Z" class="pointer-fill rotate"/>
+	<circle id="wheel-inner" cx="0" cy="0" r="97" class="wheel"/>
+	<use href="#segment" fill="#FF8B94" transform="rotate(0)"/>
+	<circle id="center-mock-outer" cx="0" cy="0" r="73" class="background"/>
+	<path id="pointer-bottom" d="M 0 0 L 73 0 A 72 72 0 0 1 69.65 22.65 Z" class="pointer-fill rotate"/>
+	<path id="pointer-left" d="M 0 0 L 100 0" class="pointer-stroke rotate" stroke-width="3" />
+	<path id="pointer-right" d="M 0 0 L 100 0" class="pointer-stroke rotate-right-border" stroke-width="3" transform="rotate(18)" />
+	<circle id="center-mock-inner" cx="0" cy="0" r="70" class="background"/>
+</svg>
+
