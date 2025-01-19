@@ -20,6 +20,7 @@ function Wheel() {
 	const theme = useTheme();
 
 	const colors = {
+		text: theme.custom.colors.onContainer.contrast,
 		pointer: theme.custom.colors.onContainer.contrast,
 		wheel: theme.custom.colors.onContainer.dim,
 		background: theme.custom.colors.container,
@@ -110,6 +111,7 @@ function Wheel() {
 					fill={colors.microtask.disabled}
 					transform={`rotate(${SEGMENT_OFFSET - 30})`}
 				/>
+
 				<use
 					href="#segment"
 					className={RENDER_CLASS}
@@ -176,6 +178,61 @@ function Wheel() {
 					r="70"
 					fill={colors.background}
 				/>
+				<text
+					x="-81"
+					y="-39"
+					fill={colors.text}
+					font-size="9px"
+					font-weight="bold"
+				>
+					mT
+				</text>
+				<text
+					x="66"
+					y="-39"
+					fill={colors.text}
+					font-size="9px"
+					font-weight="bold"
+				>
+					mT
+				</text>
+				<text
+					x="66"
+					y="45"
+					fill={colors.text}
+					font-size="9px"
+					font-weight="bold"
+				>
+					mT
+				</text>
+				<text
+					x="-81"
+					y="45"
+					fill={colors.text}
+					font-size="9px"
+					font-weight="bold"
+				>
+					mT
+				</text>
+
+				<text
+					x="82"
+					y="3"
+					fill={colors.text}
+					font-size="9px"
+					font-weight="bold"
+				>
+					R
+				</text>
+				<text
+					x="-88"
+					y="3"
+					fill={colors.text}
+					font-size="9px"
+					font-weight="bold"
+				>
+					T
+				</text>
 			</svg>
 		</Styled.CircleContainer>
 	);
