@@ -22,9 +22,21 @@ declare module '@emotion/react' {
 					normal: string;
 					contrast: string;
 				};
-				primary: string;
-				secondary: string;
-				tertiary: string;
+				primary: {
+					dim: string;
+					normal: string;
+					contrast: string;
+				};
+				secondary: {
+					dim: string;
+					normal: string;
+					contrast: string;
+				};
+				tertiary: {
+					dim: string;
+					normal: string;
+					contrast: string;
+				};
 			};
 		};
 	}

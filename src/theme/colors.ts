@@ -14,9 +14,21 @@ export const colorsDark = {
 			normal: palette.primary['50'],
 			contrast: palette.primary['90'],
 		},
-		primary: palette.primary['60'],
-		secondary: palette.secondary['60'],
-		tertiary: palette.tertiary['60'],
+		primary: {
+			dim: 'rgba(86, 121, 135, 0.3)',
+			normal: palette.primary['60'],
+			contrast: 'rgba(86, 121, 135, 1)',
+		},
+		secondary: {
+			dim: 'rgba(95, 161, 101, 0.3)',
+			normal: palette.secondary['60'],
+			contrast: 'rgba(95, 161, 101, 1)',
+		},
+		tertiary: {
+			dim: 'rgba(181, 92, 101, 0.3)',
+			normal: palette.tertiary['60'],
+			contrast: 'rgba(181, 92, 101, 1)',
+		},
 	},
 };
 
@@ -31,8 +43,20 @@ export const colorsLight = {
 			normal: palette.primary['50'],
 			contrast: palette.primary['30'],
 		},
-		primary: palette.primary['50'],
-		secondary: palette.secondary['50'],
-		tertiary: palette.tertiary['50'],
+		primary: {
+			dim: 'rgba(86, 121, 135, 0.3)',
+			normal: palette.primary['50'],
+			contrast: 'rgba(86, 121, 135, 1)',
+		},
+		secondary: {
+			dim: 'rgba(95, 161, 101, 0.3)',
+			normal: palette.secondary['50'],
+			contrast: 'rgba(95, 161, 101, 1)',
+		},
+		tertiary: {
+			dim: 'rgba(181, 92, 101, 0.3)',
+			normal: palette.tertiary['50'],
+			contrast: 'rgba(181, 92, 101, 1)',
+		},
 	},
 };
