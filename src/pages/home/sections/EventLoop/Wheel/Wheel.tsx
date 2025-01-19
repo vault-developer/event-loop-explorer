@@ -88,38 +88,49 @@ function Wheel() {
 					className={MICROTASK_CLASS}
 					fill={fill.microtask}
 					transform={`rotate(${SEGMENT_OFFSET - 30})`}
-				/>
+				>
+					<title>Microtask</title>
+				</use>
 				<use
 					href="#segment"
 					className={RENDER_CLASS}
 					fill={fill.render}
 					transform="rotate(-9)"
-				/>
+				>
+					<title>Render</title>
+				</use>
 				<use
 					href="#segment"
 					className={MICROTASK_CLASS}
 					fill={fill.microtask}
 					transform={`rotate(${SEGMENT_OFFSET + 30})`}
-				/>
+				>
+					<title>Microtask</title>
+				</use>
 				<use
 					href="#segment"
 					className={MICROTASK_CLASS}
 					fill={fill.microtask}
 					transform={`rotate(${SEGMENT_OFFSET + 150})`}
-				/>
+				>
+					<title>Microtask</title>
+				</use>
 				<use
 					href="#segment"
 					className={MACROTASK_CLASS}
 					fill={fill.macrotask}
 					transform={`rotate(${SEGMENT_OFFSET + 180})`}
-				/>
+				>
+					<title>Task</title>
+				</use>
 				<use
 					href="#segment"
 					className={MICROTASK_CLASS}
 					fill={fill.microtask}
 					transform={`rotate(${SEGMENT_OFFSET + 210})`}
-				/>
-
+				>
+					<title>Microtask</title>
+				</use>
 				<circle
 					id="center-mock-outer"
 					cx="0"
@@ -161,7 +172,7 @@ function Wheel() {
 					font-size="9px"
 					font-weight="bold"
 				>
-					mT
+					mT<title>Microtask</title>
 				</text>
 				<text
 					x="66"
@@ -170,7 +181,7 @@ function Wheel() {
 					font-size="9px"
 					font-weight="bold"
 				>
-					mT
+					mT<title>Microtask</title>
 				</text>
 				<text
 					x="66"
@@ -179,7 +190,7 @@ function Wheel() {
 					font-size="9px"
 					font-weight="bold"
 				>
-					mT
+					mT<title>Microtask</title>
 				</text>
 				<text
 					x="-81"
@@ -188,9 +199,8 @@ function Wheel() {
 					font-size="9px"
 					font-weight="bold"
 				>
-					mT
+					mT<title>Microtask</title>
 				</text>
-
 				<text
 					x="82"
 					y="3"
@@ -198,7 +208,7 @@ function Wheel() {
 					font-size="9px"
 					font-weight="bold"
 				>
-					R
+					R<title>Render</title>
 				</text>
 				<text
 					x="-88"
@@ -207,7 +217,7 @@ function Wheel() {
 					font-size="9px"
 					font-weight="bold"
 				>
-					T
+					T<title>Task</title>
 				</text>
 			</svg>
 		</Styled.CircleContainer>
