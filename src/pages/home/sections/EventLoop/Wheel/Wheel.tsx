@@ -18,6 +18,7 @@ const POINTER_OFFSET = -99;
 
 function Wheel() {
 	const theme = useTheme();
+	const { render, macrotask, microtask } = useWheelStore((state) => state);
 
 	const colors = {
 		text: theme.custom.colors.onContainer.contrast,
@@ -38,6 +39,12 @@ function Wheel() {
 		},
 	};
 
+	const fill = {
+		render: render ? colors.render.enabled : colors.render.disabled,
+		macrotask: macrotask ? colors.macrotask.enabled : colors.macrotask.disabled,
+		microtask: microtask ? colors.microtask.enabled : colors.microtask.disabled,
+	};
+
 	useEffect(() => {
 		return useTimeStore.subscribe(({ grad }) => {
 			const top = document.getElementById(POINTER_TOP_ID);
@@ -56,33 +63,6 @@ function Wheel() {
 		});
 	}, []);
 
-	useEffect(() => {
-		return useWheelStore.subscribe(({ render, macrotask, microtask }) => {
-			const wheel = document.getElementById(WHEEL_ID);
-			if (!wheel) return;
-			const microtaskNodes = wheel.querySelectorAll(`.${MICROTASK_CLASS}`);
-			const macrotaskNode = wheel.querySelector(
-				`.${MACROTASK_CLASS}`
-			) as SVGUseElement;
-			const renderNode = wheel.querySelector(
-				`.${RENDER_CLASS}`
-			) as SVGUseElement;
-
-			if (!macrotaskNode || !renderNode || !microtaskNodes) return;
-			renderNode.style.fill = render
-				? colors.render.enabled
-				: colors.render.disabled;
-			macrotaskNode.style.fill = macrotask
-				? colors.macrotask.enabled
-				: colors.macrotask.disabled;
-			microtaskNodes.forEach((node) => {
-				(node as SVGUseElement).style.fill = microtask
-					? colors.microtask.enabled
-					: colors.microtask.disabled;
-			});
-		});
-	}, []);
-
 	return (
 		<Styled.CircleContainer>
 			<svg
@@ -96,7 +76,6 @@ function Wheel() {
 						d="M 0 0 L 97 0 A 97 97 0 0 1 92.26036 29.96953 Z"
 					/>
 				</defs>
-
 				<path
 					id={POINTER_TOP_ID}
 					d="M 0 0 L 100 0 A 100 100 0 0 1 95.11 30.90 Z"
@@ -104,43 +83,40 @@ function Wheel() {
 					transform={`rotate(${POINTER_OFFSET})`}
 				/>
 				<circle id="wheel" cx="0" cy="0" r="97" fill={colors.wheel} />
-
 				<use
 					href="#segment"
 					className={MICROTASK_CLASS}
-					fill={colors.microtask.disabled}
+					fill={fill.microtask}
 					transform={`rotate(${SEGMENT_OFFSET - 30})`}
 				/>
-
 				<use
 					href="#segment"
 					className={RENDER_CLASS}
-					fill={colors.render.disabled}
+					fill={fill.render}
 					transform="rotate(-9)"
 				/>
 				<use
 					href="#segment"
 					className={MICROTASK_CLASS}
-					fill={colors.microtask.disabled}
+					fill={fill.microtask}
 					transform={`rotate(${SEGMENT_OFFSET + 30})`}
 				/>
-
 				<use
 					href="#segment"
 					className={MICROTASK_CLASS}
-					fill={colors.microtask.disabled}
+					fill={fill.microtask}
 					transform={`rotate(${SEGMENT_OFFSET + 150})`}
 				/>
 				<use
 					href="#segment"
 					className={MACROTASK_CLASS}
-					fill={colors.macrotask.disabled}
+					fill={fill.macrotask}
 					transform={`rotate(${SEGMENT_OFFSET + 180})`}
 				/>
 				<use
 					href="#segment"
 					className={MICROTASK_CLASS}
-					fill={colors.microtask.disabled}
+					fill={fill.microtask}
 					transform={`rotate(${SEGMENT_OFFSET + 210})`}
 				/>
 
