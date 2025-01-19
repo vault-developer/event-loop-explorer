@@ -15,7 +15,7 @@ export const EditorWrapper = styled.div(
 
 		.selected_lines {
 			position: absolute;
-			background: ${theme.custom.colors.tertiary};
+			background: ${theme.custom.colors.tertiary.normal};
 			opacity: 0.3;
 		}
 
