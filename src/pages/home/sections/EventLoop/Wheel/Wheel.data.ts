@@ -1,4 +1,4 @@
-import { EventInterface } from './Wheel.types.ts';
+import { EventInterface } from '../EventLoop.types.ts';
 
 export const events: EventInterface[] = [
 	{
