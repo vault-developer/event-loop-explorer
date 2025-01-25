@@ -65,7 +65,7 @@ function Wheel() {
 
 	return (
 		<Styled.CircleContainer>
-			<svg
+			<Styled.SVGContainer
 				id={WHEEL_ID}
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="-100 -100 200 200"
@@ -219,7 +219,7 @@ function Wheel() {
 				>
 					T<title>Task</title>
 				</text>
-			</svg>
+			</Styled.SVGContainer>
 		</Styled.CircleContainer>
 	);
 }

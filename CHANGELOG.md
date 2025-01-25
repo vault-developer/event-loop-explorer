@@ -1,9 +1,8 @@
 ## [1.11.4](https://github.com/vault-developer/event-loop-explorer/compare/v1.11.3...v1.11.4) (2025-01-19)
 
-
 ### Bug Fixes
 
-* fix selected lines ([ed63143](https://github.com/vault-developer/event-loop-explorer/commit/ed63143be5a6f25670e2c04805f940cea9c78bbb))
+- fix selected lines ([ed63143](https://github.com/vault-developer/event-loop-explorer/commit/ed63143be5a6f25670e2c04805f940cea9c78bbb))
 
 ## [1.11.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.11.2...v1.11.3) (2025-01-14)
 

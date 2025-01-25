@@ -61,6 +61,9 @@ export const BaseLayoutElement = styled.div(
 	({ theme }) => css`
 		border: 1px solid ${theme.custom.colors.onContainer.dim};
 		background: ${theme.custom.colors.container};
+		transition:
+			background-color ${theme.custom.colorTransition},
+			border-color ${theme.custom.colorTransition};
 		margin: 0;
 		padding: 10px;
 	`

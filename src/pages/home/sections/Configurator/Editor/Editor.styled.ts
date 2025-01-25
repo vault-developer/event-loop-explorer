@@ -7,24 +7,29 @@ export const EditorWrapper = styled.div(
 
 		.ace_layer.ace_gutter-layer {
 			background: ${theme.custom.colors.container};
+			transition: all ${theme.custom.colorTransition};
 		}
 
 		.ace_gutter {
 			background: ${theme.custom.colors.onContainer.dim};
+			transition: all ${theme.custom.colorTransition};
 		}
 
 		.selected_lines {
 			position: absolute;
 			background: ${theme.custom.colors.tertiary.normal};
+			transition: all ${theme.custom.colorTransition};
 			opacity: 0.3;
 		}
 
 		.ace_gutter-active-line {
 			background: ${theme.custom.colors.onContainer.dim};
+			transition: all ${theme.custom.colorTransition};
 		}
 
 		.ace_content {
 			background: ${theme.custom.colors.container};
+			transition: all ${theme.custom.colorTransition};
 		}
 	`
 );
