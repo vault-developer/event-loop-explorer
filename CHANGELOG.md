@@ -1,3 +1,10 @@
+## [1.11.5](https://github.com/vault-developer/event-loop-explorer/compare/v1.11.4...v1.11.5) (2025-01-25)
+
+
+### Bug Fixes
+
+* **colors:** update wheel colors ([a6be71e](https://github.com/vault-developer/event-loop-explorer/commit/a6be71e6e512280842b5ad9683d1f1aaf6ee3d25))
+
 ## [1.11.4](https://github.com/vault-developer/event-loop-explorer/compare/v1.11.3...v1.11.4) (2025-01-19)
 
 
