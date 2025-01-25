@@ -46,17 +46,17 @@ export const colorsLight = {
 		primary: {
 			dim: 'rgba(86, 121, 135, 0.3)',
 			normal: palette.primary['50'],
-			contrast: 'rgba(86, 121, 135, 1)',
+			contrast: 'rgb(100 170 198)',
 		},
 		secondary: {
 			dim: 'rgba(95, 161, 101, 0.3)',
 			normal: palette.secondary['50'],
-			contrast: 'rgba(95, 161, 101, 1)',
+			contrast: 'rgb(98 204 108)',
 		},
 		tertiary: {
 			dim: 'rgba(181, 92, 101, 0.3)',
 			normal: palette.tertiary['50'],
-			contrast: 'rgba(181, 92, 101, 1)',
+			contrast: 'rgb(233 126 137)',
 		},
 	},
 };
