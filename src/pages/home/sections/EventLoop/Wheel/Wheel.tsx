@@ -135,12 +135,12 @@ function Wheel() {
 					id="center-mock-outer"
 					cx="0"
 					cy="0"
-					r="73"
+					r="69"
 					fill={colors.background}
 				/>
 				<path
 					id={POINTER_BOTTOM_ID}
-					d="M 0 0 L 73 0 A 72 72 0 0 1 69.65 22.65 Z"
+					d="M 0 0 L 69 0 A 68 68 0 0 1 65.41 21.39 Z"
 					fill={colors.pointer}
 					transform={`rotate(${POINTER_OFFSET})`}
 				/>
@@ -162,12 +162,12 @@ function Wheel() {
 					id="center-mock-inner"
 					cx="0"
 					cy="0"
-					r="70"
+					r="66"
 					fill={colors.background}
 				/>
 				<text
-					x="-81"
-					y="-39"
+					x="-79"
+					y="-38"
 					fill={colors.text}
 					font-size="9px"
 					font-weight="bold"
@@ -175,8 +175,8 @@ function Wheel() {
 					mT<title>Microtask</title>
 				</text>
 				<text
-					x="66"
-					y="-39"
+					x="65"
+					y="-38"
 					fill={colors.text}
 					font-size="9px"
 					font-weight="bold"
@@ -184,8 +184,8 @@ function Wheel() {
 					mT<title>Microtask</title>
 				</text>
 				<text
-					x="66"
-					y="45"
+					x="65"
+					y="44"
 					fill={colors.text}
 					font-size="9px"
 					font-weight="bold"
@@ -193,8 +193,8 @@ function Wheel() {
 					mT<title>Microtask</title>
 				</text>
 				<text
-					x="-81"
-					y="45"
+					x="-79"
+					y="44"
 					fill={colors.text}
 					font-size="9px"
 					font-weight="bold"
@@ -202,7 +202,7 @@ function Wheel() {
 					mT<title>Microtask</title>
 				</text>
 				<text
-					x="82"
+					x="80"
 					y="3"
 					fill={colors.text}
 					font-size="9px"
@@ -211,7 +211,7 @@ function Wheel() {
 					R<title>Render</title>
 				</text>
 				<text
-					x="-88"
+					x="-86"
 					y="3"
 					fill={colors.text}
 					font-size="9px"
