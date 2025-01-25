@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.11.5...v1.12.0) (2025-01-25)
+
+
+### Features
+
+* **transition:** add color transition ([c57add7](https://github.com/vault-developer/event-loop-explorer/commit/c57add774c09140a844c35ca38d699dfd838f2fe))
+
 ## [1.11.5](https://github.com/vault-developer/event-loop-explorer/compare/v1.11.4...v1.11.5) (2025-01-25)
 
 
