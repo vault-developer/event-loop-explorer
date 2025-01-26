@@ -1,4 +1,4 @@
-import { ELSerialisedStep, ELStep } from '../calculator/calculator.types.ts';
+import { ELSerialisedStep, ELStep } from '../calculator/calculator.types';
 import { Node } from 'acorn';
 import { ScopeManager } from 'eslint-scope';
 import {
@@ -11,7 +11,7 @@ import {
 	isMemberExpression,
 	isProgram,
 	isSpreadElement,
-} from './ast.guards.ts';
+} from './ast.guards';
 
 export const getSerialisedSteps = (
 	steps: ELStep[],
@@ -26,7 +26,7 @@ export const getSerialisedSteps = (
 	});
 };
 
-const serialiseNode = (node: Node, scope: ScopeManager): string => {
+export const serialiseNode = (node: Node, scope: ScopeManager): string => {
 	if (isProgram(node)) return node.sourceType;
 	if (isLiteral(node)) return String(node.value);
 	if (isIdentifier(node)) return node.name;

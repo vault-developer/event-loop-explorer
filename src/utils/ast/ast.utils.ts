@@ -3,7 +3,7 @@ import {
 	isCallExpression,
 	isIdentifier,
 	isMemberExpression,
-} from './ast.guards.ts';
+} from './ast.guards';
 
 export function isConsoleExpression(expression: CallExpression): boolean {
 	const callee = expression.callee;

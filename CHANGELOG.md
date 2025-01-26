@@ -1,24 +1,21 @@
 ## [1.12.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.2...v1.12.3) (2025-01-26)
 
-
 ### Bug Fixes
 
-* **css:** fix flex columns in mobile version ([afe0448](https://github.com/vault-developer/event-loop-explorer/commit/afe044835498cd85893fa18fc1bd03fba2189c59))
+- **css:** fix flex columns in mobile version ([afe0448](https://github.com/vault-developer/event-loop-explorer/commit/afe044835498cd85893fa18fc1bd03fba2189c59))
 
 ## [1.12.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.1...v1.12.2) (2025-01-26)
 
-
 ### Bug Fixes
 
-* **zoomin:** fix zoom in animation ([a00671c](https://github.com/vault-developer/event-loop-explorer/commit/a00671cdf69f2c7fa69a6c695210a5c6f2e89816))
+- **zoomin:** fix zoom in animation ([a00671c](https://github.com/vault-developer/event-loop-explorer/commit/a00671cdf69f2c7fa69a6c695210a5c6f2e89816))
 
 ## [1.12.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.0...v1.12.1) (2025-01-26)
 
-
 ### Bug Fixes
 
-* **colors:** fix transition on page load ([884f3ac](https://github.com/vault-developer/event-loop-explorer/commit/884f3ac2724e4cd22af284dc2a44169fca36c3b6))
-* **transition:** fix wheel transitions ([cc22583](https://github.com/vault-developer/event-loop-explorer/commit/cc22583571a92305ddf7eeb895b352a2bffe2194))
+- **colors:** fix transition on page load ([884f3ac](https://github.com/vault-developer/event-loop-explorer/commit/884f3ac2724e4cd22af284dc2a44169fca36c3b6))
+- **transition:** fix wheel transitions ([cc22583](https://github.com/vault-developer/event-loop-explorer/commit/cc22583571a92305ddf7eeb895b352a2bffe2194))
 
 # [1.12.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.11.5...v1.12.0) (2025-01-25)
 
