@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 export const WebApiItem = styled.div(
 	({ theme }) => css`
 		background: ${theme.custom.colors.onContainer.dim};
+		transition: background-color ${theme.custom.colorTransition};
 		border-radius: 5px;
 		padding: 10px;
 		position: absolute;

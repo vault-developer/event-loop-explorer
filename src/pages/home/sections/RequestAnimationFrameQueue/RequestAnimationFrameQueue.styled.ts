@@ -12,6 +12,7 @@ export const CallbacksQueue = styled.div`
 export const Callback = styled.div(
 	({ theme }) => css`
 		background: ${theme.custom.colors.onContainer.dim};
+		transition: background-color ${theme.custom.colorTransition};
 		flex: 1;
 		display: flex;
 		justify-content: center;

@@ -15,7 +15,11 @@ export const SVGContainer = styled.svg(
 		path,
 		text,
 		circle {
-			transition: all ${theme.custom.colorTransition};
+			transition:
+				background-color ${theme.custom.colorTransition},
+				color ${theme.custom.colorTransition},
+				stroke ${theme.custom.colorTransition},
+				fill ${theme.custom.colorTransition};
 		}
 	`
 );
