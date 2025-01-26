@@ -1,3 +1,10 @@
+## [1.12.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.1...v1.12.2) (2025-01-26)
+
+
+### Bug Fixes
+
+* **zoomin:** fix zoom in animation ([a00671c](https://github.com/vault-developer/event-loop-explorer/commit/a00671cdf69f2c7fa69a6c695210a5c6f2e89816))
+
 ## [1.12.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.0...v1.12.1) (2025-01-26)
 
 
