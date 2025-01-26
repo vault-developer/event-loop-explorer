@@ -20,7 +20,7 @@ export const getMuiTheme = (cs: ColorsSystem) =>
 						fontSize: '14',
 						color: cs.colors.onContainer.contrast,
 						backgroundColor: cs.colors.onContainer.dim,
-						transition: 'all 1s ease',
+						transition: 'all 0.5s ease',
 					},
 				},
 			},
@@ -28,7 +28,7 @@ export const getMuiTheme = (cs: ColorsSystem) =>
 				styleOverrides: {
 					list: {
 						backgroundColor: cs.colors.onContainer.dim,
-						transition: 'all 1s ease',
+						transition: 'all 0.5s ease',
 					},
 				},
 			},
@@ -38,14 +38,14 @@ export const getMuiTheme = (cs: ColorsSystem) =>
 						'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
 							borderColor: cs.colors.onContainer.normal,
 						},
-						transition: 'all 1s ease',
+						transition: 'all 0.5s ease',
 					},
 				},
 			},
 			MuiButton: {
 				styleOverrides: {
 					root: {
-						transition: 'all 1s ease',
+						transition: 'all 0.5s ease',
 					},
 				},
 			},
@@ -71,7 +71,7 @@ export const getTheme = (cs: ColorsSystem): Theme => {
 				desktop: 768,
 			},
 			transitions: {
-				color: '1s ease',
+				color: '0.5s ease',
 			},
 			animations: {
 				zoomIn: 'zoomIn 225ms cubic-bezier(0.4, 0, 0.2, 1)',
