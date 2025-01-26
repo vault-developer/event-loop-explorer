@@ -1,3 +1,10 @@
+## [1.12.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.2...v1.12.3) (2025-01-26)
+
+
+### Bug Fixes
+
+* **css:** fix flex columns in mobile version ([afe0448](https://github.com/vault-developer/event-loop-explorer/commit/afe044835498cd85893fa18fc1bd03fba2189c59))
+
 ## [1.12.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.1...v1.12.2) (2025-01-26)
 
 
