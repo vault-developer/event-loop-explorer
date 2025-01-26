@@ -1,3 +1,11 @@
+## [1.12.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.0...v1.12.1) (2025-01-26)
+
+
+### Bug Fixes
+
+* **colors:** fix transition on page load ([884f3ac](https://github.com/vault-developer/event-loop-explorer/commit/884f3ac2724e4cd22af284dc2a44169fca36c3b6))
+* **transition:** fix wheel transitions ([cc22583](https://github.com/vault-developer/event-loop-explorer/commit/cc22583571a92305ddf7eeb895b352a2bffe2194))
+
 # [1.12.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.11.5...v1.12.0) (2025-01-25)
 
 ### Features
