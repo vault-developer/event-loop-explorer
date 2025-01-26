@@ -7,7 +7,12 @@ declare module '@emotion/react' {
 			breakpoints: {
 				desktop: number;
 			};
-			colorTransition: string;
+			transitions: {
+				color: string;
+			};
+			animations: {
+				zoomIn: string;
+			};
 			widths: {
 				eventLoopRadius: number;
 				eventLoopDiameter: number;

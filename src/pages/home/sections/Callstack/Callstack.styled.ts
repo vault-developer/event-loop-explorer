@@ -13,7 +13,8 @@ export const Callstack = styled.div`
 export const CallstackElement = styled.div(
 	({ theme }) => css`
 		background: ${theme.custom.colors.onContainer.dim};
-		transition: background-color ${theme.custom.colorTransition};
+		transition: background-color ${theme.custom.transitions.color};
+		animation: ${theme.custom.animations.zoomIn};
 		border-radius: 5px;
 		padding: 10px;
 		word-wrap: break-word;

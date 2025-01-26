@@ -70,7 +70,12 @@ export const getTheme = (cs: ColorsSystem): Theme => {
 			breakpoints: {
 				desktop: 768,
 			},
-			colorTransition: '1s ease',
+			transitions: {
+				color: '1s ease',
+			},
+			animations: {
+				zoomIn: 'zoomIn 225ms cubic-bezier(0.4, 0, 0.2, 1)',
+			},
 			widths: {
 				eventLoopRadius: 150,
 				eventLoopDiameter: 300,

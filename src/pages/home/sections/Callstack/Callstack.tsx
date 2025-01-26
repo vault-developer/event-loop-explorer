@@ -1,7 +1,6 @@
 import * as Styled from './Callstack.styled.ts';
 import InfoIcon from 'components/InfoIcon/InfoIcon.tsx';
 import useBoolean from 'utils/hooks/useBoolean.ts';
-import { Zoom } from '@mui/material';
 import { List } from '../../Home.styled.ts';
 import CallStackModal from './Callstack.modal.tsx';
 import { useQueueManagerStore } from 'store/store.ts';
@@ -16,9 +15,7 @@ function CallStack({ className }: { className?: string }) {
 			<Styled.Callstack>
 				<InfoIcon onClick={toggle} />
 				{tasks.map((task) => (
-					<Zoom in key={task}>
-						<Styled.CallstackElement>{task}</Styled.CallstackElement>
-					</Zoom>
+					<Styled.CallstackElement key={task}>{task}</Styled.CallstackElement>
 				))}
 				<CallStackModal isOpened={isOpened} toggle={toggle} />
 			</Styled.Callstack>

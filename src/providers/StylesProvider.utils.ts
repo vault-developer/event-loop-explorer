@@ -10,7 +10,7 @@ export const getGlobalStyles = ({ theme }: { theme: Theme }) => css`
 
 	body {
 		background-color: ${theme.custom.colors.background};
-		transition: background-color ${theme.custom.colorTransition};
+		transition: background-color ${theme.custom.transitions.color};
 	}
 
 	div,
@@ -31,7 +31,7 @@ export const getGlobalStyles = ({ theme }: { theme: Theme }) => css`
 
 	a {
 		color: ${theme.custom.colors.onBackground};
-		transition: all ${theme.custom.colorTransition};
+		transition: all ${theme.custom.transitions.color};
 	}
 
 	body {
@@ -67,5 +67,16 @@ export const getGlobalStyles = ({ theme }: { theme: Theme }) => css`
 
 	:focus-visible {
 		outline: 2px solid ${theme.custom.colors.onContainer.normal};
+	}
+
+	@keyframes zoomIn {
+		0% {
+			transform: scale(0);
+			opacity: 0;
+		}
+		100% {
+			transform: scale(1);
+			opacity: 1;
+		}
 	}
 `;

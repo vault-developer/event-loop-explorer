@@ -16,10 +16,10 @@ export const SVGContainer = styled.svg(
 		text,
 		circle {
 			transition:
-				background-color ${theme.custom.colorTransition},
-				color ${theme.custom.colorTransition},
-				stroke ${theme.custom.colorTransition},
-				fill ${theme.custom.colorTransition};
+				background-color ${theme.custom.transitions.color},
+				color ${theme.custom.transitions.color},
+				stroke ${theme.custom.transitions.color},
+				fill ${theme.custom.transitions.color};
 		}
 	`
 );

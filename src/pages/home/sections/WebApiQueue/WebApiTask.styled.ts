@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 export const WebApiItem = styled.div(
 	({ theme }) => css`
 		background: ${theme.custom.colors.onContainer.dim};
-		transition: background-color ${theme.custom.colorTransition};
+		transition: background-color ${theme.custom.transitions.color};
 		border-radius: 5px;
 		padding: 10px;
 		position: absolute;
@@ -27,6 +27,8 @@ export const Progress = styled.div<{ progress: number }>(
 			${theme.custom.colors.onContainer.contrast} ${progress}%,
 			transparent ${progress}%
 		);
+		transition: background-color ${theme.custom.transitions.color};
+		animation: ${theme.custom.animations.zoomIn};
 		border-radius: 5px;
 		position: relative;
 		padding: 10px;

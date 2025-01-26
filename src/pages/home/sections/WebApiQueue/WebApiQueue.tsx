@@ -2,7 +2,6 @@ import WebApiTask from './WebApiTask.tsx';
 import * as Styled from './WebApiQueue.styled.ts';
 import InfoIcon from 'components/InfoIcon/InfoIcon.tsx';
 import useBoolean from 'utils/hooks/useBoolean.ts';
-import { Zoom } from '@mui/material';
 import { List } from '../../Home.styled.ts';
 import WebApiQueueModal from './WebApiQueue.modal.tsx';
 import { useQueueManagerStore } from 'store/store.ts';
@@ -17,9 +16,7 @@ function WebApiQueue({ className }: { className?: string }) {
 			<Styled.WebApiQueue>
 				<InfoIcon onClick={toggle} />
 				{tasks.map((task) => (
-					<Zoom in key={task.value}>
-						<WebApiTask task={task} />
-					</Zoom>
+					<WebApiTask key={task.value} task={task} />
 				))}
 				<WebApiQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.WebApiQueue>

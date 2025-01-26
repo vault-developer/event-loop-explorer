@@ -2,7 +2,6 @@ import { useQueueManagerStore } from 'store/store.ts';
 import * as Styled from './MicroTasksQueue.styled.ts';
 import InfoIcon from 'components/InfoIcon/InfoIcon.tsx';
 import useBoolean from 'utils/hooks/useBoolean.ts';
-import { Zoom } from '@mui/material';
 import { List } from '../../Home.styled.ts';
 import MicroTasksQueueModal from './MicroTasksQueue.modal.tsx';
 
@@ -16,9 +15,7 @@ function MicroTasksQueue({ className }: { className?: string }) {
 			<Styled.MicroTasksQueue>
 				<InfoIcon onClick={toggle} />
 				{tasks.map((task) => (
-					<Zoom in key={task}>
-						<Styled.MicroTask>{task}</Styled.MicroTask>
-					</Zoom>
+					<Styled.MicroTask key={task}>{task}</Styled.MicroTask>
 				))}
 				<MicroTasksQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.MicroTasksQueue>
