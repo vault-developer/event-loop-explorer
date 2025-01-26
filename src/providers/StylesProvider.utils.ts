@@ -5,8 +5,12 @@ export const getGlobalStyles = ({ theme }: { theme: Theme }) => css`
 		font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 		color: ${theme.custom.colors.onBackground};
 		background-color: ${theme.custom.colors.background};
-		transition: all ${theme.custom.colorTransition};
 		height: 100%;
+	}
+
+	body {
+		background-color: ${theme.custom.colors.background};
+		transition: background-color ${theme.custom.colorTransition};
 	}
 
 	div,
