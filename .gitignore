@@ -36,3 +36,6 @@ dist-ssr
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Jest
+/coverage

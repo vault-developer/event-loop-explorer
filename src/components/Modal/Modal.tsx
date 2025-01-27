@@ -1,14 +1,20 @@
 import { PropsWithChildren } from 'react';
-import { Modal } from '@mui/material';
+import { Modal as MuiModal } from '@mui/material';
 import { StyledBox } from './Modal.styled.ts';
 
-function InfoModal({
+function CustomModal({
 	children,
 	isOpened,
 	onClose,
-}: PropsWithChildren<{ isOpened: boolean; onClose: () => void }>) {
+	testId = 'info-modal',
+}: PropsWithChildren<{
+	isOpened: boolean;
+	onClose: () => void;
+	testId?: string;
+}>) {
 	return (
-		<Modal
+		<MuiModal
+			data-testid={testId}
 			open={isOpened}
 			onClose={onClose}
 			sx={{
@@ -20,8 +26,8 @@ function InfoModal({
 			}}
 		>
 			<StyledBox>{children}</StyledBox>
-		</Modal>
+		</MuiModal>
 	);
 }
 
-export default InfoModal;
+export default CustomModal;
