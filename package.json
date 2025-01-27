@@ -13,8 +13,8 @@
 		"preview": "vite preview",
 		"prepare": "husky",
 		"commit": "cz",
-		"e2e": "playwright src/test",
-		"e2e:ui": "playwright src/test --ui",
+		"e2e": "playwright test",
+		"e2e:ui": "playwright test --ui",
 		"test": "jest",
 		"test:watch": "jest --watch",
 		"test:coverage": "jest --coverage"

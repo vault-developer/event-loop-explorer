@@ -2,7 +2,7 @@ import { render } from 'src/test/test-utils';
 import '@testing-library/jest-dom';
 import Modal from './Modal';
 
-describe('InfoModal', () => {
+describe('Modal', () => {
 	it('renders children when open', () => {
 		const { getByText } = render(
 			<Modal isOpened={true} onClose={() => {}}>
