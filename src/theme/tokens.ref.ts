@@ -1,5 +1,5 @@
 //https://coolors.co/264653-6d9f71-a65961
-export const palette = {
+export const referenceTokens = {
 	primary: {
 		'0': '#000000',
 		'5': '#00131B',
@@ -81,3 +81,5 @@ export const palette = {
 		'100': '#FFFFFF',
 	},
 };
+
+export type ReferenceTokens = typeof referenceTokens;

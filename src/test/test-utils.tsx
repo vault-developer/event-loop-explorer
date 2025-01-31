@@ -2,7 +2,7 @@ import { render, RenderOptions } from '@testing-library/react';
 import { ThemeProvider } from '@emotion/react';
 import { PropsWithChildren, ReactNode } from 'react';
 import { getTheme } from '../theme/theme.ts';
-import { colorsDark } from '../theme/colors.ts';
+import { colorsDark } from '../theme/tokens.sys.ts';
 
 const theme = getTheme(colorsDark);
 

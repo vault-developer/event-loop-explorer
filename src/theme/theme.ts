@@ -1,13 +1,14 @@
-import { ColorsSystem } from './colors.ts';
+import { SystemTokens } from './tokens.sys.ts';
 import { createTheme } from '@mui/material';
 import { Theme } from '@emotion/react';
+import { referenceTokens as ref } from './tokens.ref.ts';
 
-export const getMuiTheme = (cs: ColorsSystem) =>
+export const getMuiTheme = (st: SystemTokens, mode: 'dark' | 'light') =>
 	createTheme({
 		palette: {
-			mode: cs.mode,
+			mode,
 			primary: {
-				main: cs.colors.onContainer.contrast,
+				main: st.colors.onContainer.contrast,
 			},
 		},
 		typography: {
@@ -18,17 +19,17 @@ export const getMuiTheme = (cs: ColorsSystem) =>
 				styleOverrides: {
 					tooltip: {
 						fontSize: '14',
-						color: cs.colors.onContainer.contrast,
-						backgroundColor: cs.colors.onContainer.dim,
-						transition: 'all 0.5s ease',
+						color: st.colors.onContainer.contrast,
+						backgroundColor: st.colors.onContainer.dim,
+						transition: st.transitions.color,
 					},
 				},
 			},
 			MuiMenu: {
 				styleOverrides: {
 					list: {
-						backgroundColor: cs.colors.onContainer.dim,
-						transition: 'all 0.5s ease',
+						backgroundColor: st.colors.onContainer.dim,
+						transition: st.transitions.color,
 					},
 				},
 			},
@@ -36,16 +37,16 @@ export const getMuiTheme = (cs: ColorsSystem) =>
 				styleOverrides: {
 					root: {
 						'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-							borderColor: cs.colors.onContainer.normal,
+							borderColor: st.colors.onContainer.normal,
 						},
-						transition: 'all 0.5s ease',
+						transition: st.transitions.color,
 					},
 				},
 			},
 			MuiButton: {
 				styleOverrides: {
 					root: {
-						transition: 'all 0.5s ease',
+						transition: st.transitions.color,
 					},
 				},
 			},
@@ -53,7 +54,7 @@ export const getMuiTheme = (cs: ColorsSystem) =>
 				styleOverrides: {
 					root: {
 						'&.Mui-focused': {
-							color: cs.colors.onContainer.contrast,
+							color: st.colors.onContainer.contrast,
 						},
 					},
 				},
@@ -61,39 +62,15 @@ export const getMuiTheme = (cs: ColorsSystem) =>
 		},
 	});
 
-export const getTheme = (cs: ColorsSystem): Theme => {
-	const { colors } = cs;
+export const getTheme = (sys: SystemTokens, mode: 'dark' | 'light'): Theme => {
 	return {
-		...getMuiTheme(cs),
+		...getMuiTheme(sys, mode),
 		custom: {
-			mode: cs.mode,
-			breakpoints: {
-				desktop: 768,
-			},
-			transitions: {
-				color: '0.5s ease',
-			},
-			animations: {
-				zoomIn: 'zoomIn 225ms cubic-bezier(0.4, 0, 0.2, 1)',
-			},
-			widths: {
-				eventLoopRadius: 150,
-				eventLoopDiameter: 300,
-				eventLoopWheelWidth: 50,
-				eventLoopPointerBorderWidth: 4,
-			},
-			colors: {
-				background: colors.background,
-				onBackground: colors.onBackground,
-				container: colors.container,
-				onContainer: {
-					dim: colors.onContainer.dim,
-					normal: colors.onContainer.normal,
-					contrast: colors.onContainer.contrast,
-				},
-				primary: colors.primary,
-				secondary: colors.secondary,
-				tertiary: colors.tertiary,
+			mode,
+			ref,
+			sys,
+			com: {
+				//todo: add all components that we need
 			},
 		},
 	};
