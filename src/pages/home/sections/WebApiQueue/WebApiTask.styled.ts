@@ -2,9 +2,13 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
 export const WebApiItem = styled.div(
-	({ theme }) => css`
-		background: ${theme.custom.colors.onContainer.dim};
-		transition: background-color ${theme.custom.transitions.color};
+	({
+		theme: {
+			custom: { sys, com },
+		},
+	}) => css`
+		background: ${com.queue.element};
+		transition: background-color ${sys.transitions.color};
 		border-radius: 5px;
 		padding: 10px;
 		position: absolute;
@@ -20,15 +24,15 @@ export const WebApiItem = styled.div(
 );
 
 export const Progress = styled.div<{ progress: number }>(
-	({ theme, progress }) => css`
+	({ theme: { custom }, progress }) => css`
 		background-color: transparent;
 		background-image: conic-gradient(
-			${theme.custom.colors.onContainer.contrast},
-			${theme.custom.colors.onContainer.contrast} ${progress}%,
+			${custom.colors.onContainer.contrast},
+			${custom.colors.onContainer.contrast} ${progress}%,
 			transparent ${progress}%
 		);
-		transition: background-color ${theme.custom.transitions.color};
-		animation: ${theme.custom.animations.zoomIn};
+		transition: background-color ${custom.sys.transitions.color};
+		animation: ${custom.sys.animations.zoomIn};
 		border-radius: 5px;
 		position: relative;
 		padding: 10px;

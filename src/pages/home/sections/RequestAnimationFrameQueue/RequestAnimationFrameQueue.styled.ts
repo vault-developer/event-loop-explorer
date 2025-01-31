@@ -10,10 +10,10 @@ export const CallbacksQueue = styled.div`
 `;
 
 export const Callback = styled.div(
-	({ theme }) => css`
-		background: ${theme.custom.colors.onContainer.dim};
-		transition: background-color ${theme.custom.transitions.color};
-		animation: ${theme.custom.animations.zoomIn};
+	({ theme: { custom } }) => css`
+		background: ${custom.com.queueElement.background};
+		transition: background-color ${custom.sys.transitions.color};
+		animation: ${custom.sys.animations.zoomIn};
 		flex: 1;
 		display: flex;
 		justify-content: center;

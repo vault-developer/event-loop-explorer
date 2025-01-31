@@ -8,17 +8,21 @@ export const LogQueue = styled.div(
 		justify-content: start;
 		gap: 20px;
 
-		@media (min-width: ${theme.custom.breakpoints.desktop}px) {
+		@media (min-width: ${theme.custom.sys.breakpoints.desktop}px) {
 			flex-direction: column;
 		}
 	`
 );
 
 export const Log = styled.div(
-	({ theme }) => css`
-		background: ${theme.custom.colors.onContainer.dim};
-		transition: background-color ${theme.custom.transitions.color};
-		animation: ${theme.custom.animations.zoomIn};
+	({
+		theme: {
+			custom: { sys, com },
+		},
+	}) => css`
+		background: ${com.queueElement.background};
+		transition: background-color ${sys.transitions.color};
+		animation: ${sys.animations.zoomIn};
 		border-radius: 5px;
 		padding: 10px;
 		word-wrap: break-word;
@@ -28,7 +32,7 @@ export const Log = styled.div(
 		flex: 1;
 		max-width: 33.33%;
 
-		@media (min-width: ${theme.custom.breakpoints.desktop}px) {
+		@media (min-width: ${sys.breakpoints.desktop}px) {
 			max-width: unset;
 			flex-grow: 0;
 		}

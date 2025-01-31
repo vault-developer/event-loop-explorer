@@ -2,13 +2,13 @@ import { Global, ThemeProvider } from '@emotion/react';
 import { PropsWithChildren } from 'react';
 import { useThemeStore } from 'store/store.ts';
 import { getGlobalStyles } from './StylesProvider.utils.ts';
-import { systemColorTokens } from '../theme/tokens.sys.ts';
+import { getSystemTokens } from '../theme/tokens.sys.ts';
 import { getTheme } from '../theme/theme.ts';
 
 export function StylesProvider({ children }: PropsWithChildren) {
 	const { isDark } = useThemeStore();
 	const mode = isDark ? 'dark' : 'light';
-	const theme = getTheme(systemColorTokens[mode], mode);
+	const theme = getTheme(getSystemTokens(mode), mode);
 	const globalStyles = getGlobalStyles({ theme });
 
 	return (

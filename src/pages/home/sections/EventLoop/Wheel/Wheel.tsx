@@ -17,25 +17,27 @@ const SEGMENT_OFFSET = -9;
 const POINTER_OFFSET = -99;
 
 function Wheel() {
-	const theme = useTheme();
+	const {
+		custom: { sys, com },
+	} = useTheme();
 	const { render, macrotask, microtask } = useWheelStore((state) => state);
 
 	const colors = {
-		text: theme.custom.colors.onContainer.contrast,
-		pointer: theme.custom.colors.onContainer.contrast,
-		wheel: theme.custom.colors.onContainer.dim,
-		background: theme.custom.colors.container,
+		text: com.text,
+		pointer: com.wheel.pointer,
+		wheel: com.wheel.background,
+		background: sys.colors.container,
 		microtask: {
-			disabled: theme.custom.colors.primary.dim,
-			enabled: theme.custom.colors.primary.contrast,
+			disabled: com.wheel.microtask.dim,
+			enabled: com.wheel.microtask.contrast,
 		},
 		macrotask: {
-			disabled: theme.custom.colors.secondary.dim,
-			enabled: theme.custom.colors.secondary.contrast,
+			disabled: com.wheel.macrotask.dim,
+			enabled: com.wheel.macrotask.contrast,
 		},
 		render: {
-			disabled: theme.custom.colors.tertiary.dim,
-			enabled: theme.custom.colors.tertiary.contrast,
+			disabled: com.wheel.render.dim,
+			enabled: com.wheel.render.contrast,
 		},
 	};
 

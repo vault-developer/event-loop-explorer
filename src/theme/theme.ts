@@ -2,6 +2,7 @@ import { SystemTokens } from './tokens.sys.ts';
 import { createTheme } from '@mui/material';
 import { Theme } from '@emotion/react';
 import { referenceTokens as ref } from './tokens.ref.ts';
+import { getComponentsTokens } from './tokens.com.ts';
 
 export const getMuiTheme = (st: SystemTokens, mode: 'dark' | 'light') =>
 	createTheme({
@@ -69,9 +70,7 @@ export const getTheme = (sys: SystemTokens, mode: 'dark' | 'light'): Theme => {
 			mode,
 			ref,
 			sys,
-			com: {
-				//todo: add all components that we need
-			},
+			com: getComponentsTokens(sys),
 		},
 	};
 };

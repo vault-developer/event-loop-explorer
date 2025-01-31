@@ -10,17 +10,17 @@ export const Callstack = styled.div(
 		justify-content: end;
 		gap: 20px;
 
-		@media (min-width: ${theme.custom.breakpoints.desktop}px) {
+		@media (min-width: ${theme.custom.sys.breakpoints.desktop}px) {
 			flex-direction: column-reverse;
 		}
 	`
 );
 
 export const CallstackElement = styled.div(
-	({ theme }) => css`
-		background: ${theme.custom.colors.onContainer.dim};
-		transition: background-color ${theme.custom.transitions.color};
-		animation: ${theme.custom.animations.zoomIn};
+	({ theme: { custom } }) => css`
+		background: ${custom.com.queueElement.background};
+		transition: background-color ${custom.sys.transitions.color};
+		animation: ${custom.sys.animations.zoomIn};
 		border-radius: 5px;
 		padding: 10px;
 		word-wrap: break-word;
@@ -31,7 +31,7 @@ export const CallstackElement = styled.div(
 		flex: 1;
 		max-width: 33.33%;
 
-		@media (min-width: ${theme.custom.breakpoints.desktop}px) {
+		@media (min-width: ${custom.sys.breakpoints.desktop}px) {
 			max-width: unset;
 			flex-grow: 0;
 		}

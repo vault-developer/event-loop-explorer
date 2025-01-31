@@ -2,12 +2,12 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
 export const Closed = styled.svg(
-	({ theme }) => css`
+	({ theme: { custom } }) => css`
 		cursor: pointer;
-		fill: ${theme.custom.colors.onContainer.normal};
+		fill: ${custom.com.icon.background.default};
 
 		&:hover {
-			fill: ${theme.custom.colors.onContainer.contrast};
+			fill: ${custom.com.icon.background.hover};
 		}
 	`
 );

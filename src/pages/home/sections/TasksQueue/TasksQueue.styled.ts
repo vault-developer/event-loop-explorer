@@ -10,10 +10,14 @@ export const TasksQueue = styled.div`
 `;
 
 export const Task = styled.div(
-	({ theme }) => css`
-		background: ${theme.custom.colors.onContainer.dim};
-		transition: background-color ${theme.custom.transitions.color};
-		animation: ${theme.custom.animations.zoomIn};
+	({
+		theme: {
+			custom: { com, sys },
+		},
+	}) => css`
+		background: ${com.queue.element};
+		transition: background-color ${sys.transitions.color};
+		animation: ${sys.animations.zoomIn};
 		flex: 1;
 		display: flex;
 		justify-content: center;

@@ -4,6 +4,6 @@ import { css } from '@emotion/react';
 export const Sun = styled.svg(
 	({ theme }) => css`
 		cursor: pointer;
-		fill: ${theme.custom.colors.onContainer.contrast};
+		fill: ${theme.custom.com.text};
 	`
 );

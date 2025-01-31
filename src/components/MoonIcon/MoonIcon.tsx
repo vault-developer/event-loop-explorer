@@ -9,7 +9,7 @@ function MoonIcon({
 	onClick: () => void;
 }) {
 	const theme = useTheme();
-	const textColor = theme.custom.colors.onContainer.contrast;
+	const textColor = theme.custom.com.text;
 
 	return (
 		<Styled.Sun
