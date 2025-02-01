@@ -18,10 +18,10 @@ const POINTER_OFFSET = -99;
 
 function Wheel() {
 	const {
-		custom: { sys, com, mode },
+		custom: { sys, com },
 	} = useTheme();
 	const { render, macrotask, microtask } = useWheelStore((state) => state);
-	const fontWeight = mode === 'light' ? '500' : '800';
+	const fontWeight = 500;
 
 	const colors = {
 		text: sys.colors.onBackground,
