@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.13.0...v1.13.1) (2025-02-01)
+
+
+### Bug Fixes
+
+* update font-weight ([f1db8e6](https://github.com/vault-developer/event-loop-explorer/commit/f1db8e6f903b83069da5e7f153f0eb02e60b7db4))
+
 # [1.13.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.3...v1.13.0) (2025-02-01)
 
 
