@@ -9,7 +9,7 @@ function SunIcon({
 	onClick: () => void;
 }) {
 	const theme = useTheme();
-	const textColor = theme.custom.com.text;
+	const textColor = theme.custom.sys.colors.onBackground;
 
 	return (
 		<Styled.Sun

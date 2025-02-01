@@ -18,12 +18,13 @@ const POINTER_OFFSET = -99;
 
 function Wheel() {
 	const {
-		custom: { sys, com },
+		custom: { sys, com, mode },
 	} = useTheme();
 	const { render, macrotask, microtask } = useWheelStore((state) => state);
+	const fontWeight = mode === 'light' ? '500' : '800';
 
 	const colors = {
-		text: com.text,
+		text: sys.colors.onBackground,
 		pointer: com.wheel.pointer,
 		wheel: com.wheel.background,
 		background: sys.colors.container,
@@ -172,7 +173,7 @@ function Wheel() {
 					y="-38"
 					fill={colors.text}
 					font-size="9px"
-					font-weight="bold"
+					font-weight={fontWeight}
 				>
 					mT<title>Microtask</title>
 				</text>
@@ -181,7 +182,7 @@ function Wheel() {
 					y="-38"
 					fill={colors.text}
 					font-size="9px"
-					font-weight="bold"
+					font-weight={fontWeight}
 				>
 					mT<title>Microtask</title>
 				</text>
@@ -190,7 +191,7 @@ function Wheel() {
 					y="44"
 					fill={colors.text}
 					font-size="9px"
-					font-weight="bold"
+					font-weight={fontWeight}
 				>
 					mT<title>Microtask</title>
 				</text>
@@ -199,7 +200,7 @@ function Wheel() {
 					y="44"
 					fill={colors.text}
 					font-size="9px"
-					font-weight="bold"
+					font-weight={fontWeight}
 				>
 					mT<title>Microtask</title>
 				</text>
@@ -208,7 +209,7 @@ function Wheel() {
 					y="3"
 					fill={colors.text}
 					font-size="9px"
-					font-weight="bold"
+					font-weight={fontWeight}
 				>
 					R<title>Render</title>
 				</text>
@@ -217,7 +218,7 @@ function Wheel() {
 					y="3"
 					fill={colors.text}
 					font-size="9px"
-					font-weight="bold"
+					font-weight={fontWeight}
 				>
 					T<title>Task</title>
 				</text>

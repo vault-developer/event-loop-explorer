@@ -12,6 +12,9 @@ export const EditorWrapper = styled.div(
 		.ace_layer.ace_gutter-layer {
 			background: ${sys.colors.container};
 			transition: background-color ${sys.transitions.color};
+			> div {
+				opacity: 0.7;
+			}
 		}
 
 		.ace_gutter {

@@ -27,7 +27,6 @@ export const getComponentsTokens = (st: SystemTokens) => ({
 	queue: {
 		background: st.colors.container,
 	},
-	text: st.colors.onBackground,
 	icon: {
 		background: st.colors.onContainer.contrast,
 	},
