@@ -7,7 +7,7 @@ export const WebApiItem = styled.div(
 			custom: { sys, com },
 		},
 	}) => css`
-		background: ${com.queue.element};
+		background: ${com.queueElement.background};
 		transition: background-color ${sys.transitions.color};
 		border-radius: 5px;
 		padding: 10px;

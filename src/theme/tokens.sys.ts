@@ -3,26 +3,25 @@ import { referenceTokens } from './tokens.ref.ts';
 const systemTokens = {
 	dark: {
 		colors: {
-			border: referenceTokens.primary['15'],
-			background: referenceTokens.primary['5'],
-			onBackground: referenceTokens.primary['90'],
-			container: referenceTokens.primary['10'],
+			border: 'transparent',
+			background: '#1e2226',
+			onBackground: '#b6c2cf',
+			container: '#15191c',
 			onContainer: {
-				dim: referenceTokens.primary['15'],
-				normal: referenceTokens.primary['50'],
-				contrast: referenceTokens.primary['90'],
+				dim: '#282e33',
+				contrast: '#b6c2cf',
 			},
 			primary: {
-				dim: 'rgba(86, 121, 135, 0.3)',
-				contrast: 'rgba(86, 121, 135, 1)',
+				dim: 'rgba(174,71,135, 0.25)',
+				contrast: 'rgb(174,71,135)', // yellow 700
 			},
 			secondary: {
-				dim: 'rgba(95, 161, 101, 0.3)',
-				contrast: 'rgba(95, 161, 101, 1)',
+				dim: 'rgba(34,160,107, 0.25)',
+				contrast: 'rgb(34,160,107)', // green 700
 			},
 			tertiary: {
-				dim: 'rgba(181, 92, 101, 0.3)',
-				contrast: 'rgba(181, 92, 101, 1)',
+				dim: 'rgba(12,102,228, 0.25)',
+				contrast: 'rgb(12,102,228)', // blue 700
 			},
 		},
 	},

@@ -38,7 +38,7 @@ export const getMuiTheme = (st: SystemTokens, mode: 'dark' | 'light') =>
 				styleOverrides: {
 					root: {
 						'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-							borderColor: st.colors.onContainer.normal,
+							borderColor: st.colors.onContainer.contrast,
 						},
 						transition: st.transitions.color,
 					},

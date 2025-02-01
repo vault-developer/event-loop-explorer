@@ -30,7 +30,7 @@ export const getComponentsTokens = (st: SystemTokens) => ({
 	text: st.colors.onBackground,
 	icon: {
 		background: {
-			default: st.colors.onContainer.normal,
+			default: st.colors.onContainer.contrast,
 			hover: st.colors.onContainer.contrast,
 		},
 	},

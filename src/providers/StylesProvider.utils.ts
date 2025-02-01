@@ -68,11 +68,11 @@ export const getGlobalStyles = ({
 	}
 
 	::-webkit-scrollbar-thumb {
-		background: ${sys.colors.onContainer.normal};
+		background: ${sys.colors.onContainer.contrast};
 	}
 
 	:focus-visible {
-		outline: 2px solid ${sys.colors.onContainer.normal};
+		outline: 2px solid ${sys.colors.onContainer.contrast};
 	}
 
 	@keyframes zoomIn {

@@ -11,7 +11,7 @@ export const MicroTasksQueue = styled.div`
 
 export const MicroTask = styled.div(
 	({ theme: { custom } }) => css`
-		background: ${custom.com.queue};
+		background: ${custom.com.queueElement.background};
 		transition: background-color ${custom.sys.transitions.color};
 		animation: ${custom.sys.animations.zoomIn};
 		flex: 1;

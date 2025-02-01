@@ -15,7 +15,7 @@ export const Task = styled.div(
 			custom: { com, sys },
 		},
 	}) => css`
-		background: ${com.queue.element};
+		background: ${com.queueElement.background};
 		transition: background-color ${sys.transitions.color};
 		animation: ${sys.animations.zoomIn};
 		flex: 1;
