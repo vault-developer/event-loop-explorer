@@ -38,15 +38,15 @@ const systemTokens = {
 				contrast: referenceTokens.primary['30'],
 			},
 			primary: {
-				dim: 'rgba(86, 121, 135, 0.3)',
+				dim: 'rgba(100, 170, 198, 0.3)',
 				contrast: 'rgb(100 170 198)',
 			},
 			secondary: {
-				dim: 'rgba(95, 161, 101, 0.3)',
+				dim: 'rgba(98, 204, 108, 0.3)',
 				contrast: 'rgb(98 204 108)',
 			},
 			tertiary: {
-				dim: 'rgba(181, 92, 101, 0.3)',
+				dim: 'rgba(233, 126, 137, 0.3)',
 				contrast: 'rgb(233 126 137)',
 			},
 		},
