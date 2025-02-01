@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.3...v1.13.0) (2025-02-01)
+
+
+### Features
+
+* update design system tokens ([#39](https://github.com/vault-developer/event-loop-explorer/issues/39)) ([13be30f](https://github.com/vault-developer/event-loop-explorer/commit/13be30f0dd361f081d46b0cbea0f0f264fb5c9d7))
+
 ## [1.12.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.2...v1.12.3) (2025-01-26)
 
 ### Bug Fixes
