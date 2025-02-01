@@ -28,24 +28,24 @@ const systemTokens = {
 	light: {
 		colors: {
 			border: referenceTokens.neutral['80'],
-			background: referenceTokens.neutral['98'],
+			background: referenceTokens.neutral['95'],
 			onBackground: referenceTokens.neutral['20'],
-			container: referenceTokens.neutral['100'],
+			container: referenceTokens.neutral['98'],
 			onContainer: {
 				dim: referenceTokens.neutral['90'],
 				contrast: referenceTokens.neutral['30'],
 			},
 			primary: {
-				dim: 'rgba(100, 170, 198, 0.3)',
-				contrast: 'rgb(100 170 198)',
+				dim: 'rgba(108,195,224, 0.4)',
+				contrast: 'rgb(108,195,224)',
 			},
 			secondary: {
-				dim: 'rgba(98, 204, 108, 0.3)',
-				contrast: 'rgb(98 204 108)',
+				dim: 'rgba(75,206,151, 0.4)',
+				contrast: 'rgb(75,206,151)',
 			},
 			tertiary: {
-				dim: 'rgba(233, 126, 137, 0.3)',
-				contrast: 'rgb(233 126 137)',
+				dim: 'rgba(247,151,210, 0.3)',
+				contrast: 'rgb(247,151,210)',
 			},
 		},
 	},
