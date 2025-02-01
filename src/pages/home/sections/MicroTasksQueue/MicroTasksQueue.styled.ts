@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import InfoClosed from 'components/CloseIcon/InfoIcon.tsx';
+import InfoClosed from 'components/CloseIcon/CloseIcon.tsx';
 
 export const MicroTasksQueue = styled.div`
 	flex: 1;
@@ -10,10 +10,11 @@ export const MicroTasksQueue = styled.div`
 `;
 
 export const MicroTask = styled.div(
-	({ theme }) => css`
-		background: ${theme.custom.colors.onContainer.dim};
-		transition: background-color ${theme.custom.transitions.color};
-		animation: ${theme.custom.animations.zoomIn};
+	({ theme: { custom } }) => css`
+		background: ${custom.com.queueElement.background};
+		transition: background-color ${custom.sys.transitions.color};
+		animation: ${custom.sys.animations.zoomIn};
+		border: 1px solid ${custom.sys.colors.border};
 		flex: 1;
 		display: flex;
 		justify-content: center;

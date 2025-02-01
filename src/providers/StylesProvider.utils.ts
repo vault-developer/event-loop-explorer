@@ -1,16 +1,22 @@
 import { css, Theme } from '@emotion/react';
 
-export const getGlobalStyles = ({ theme }: { theme: Theme }) => css`
+export const getGlobalStyles = ({
+	theme: {
+		custom: { sys, com },
+	},
+}: {
+	theme: Theme;
+}) => css`
 	html {
 		font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-		color: ${theme.custom.colors.onBackground};
-		background-color: ${theme.custom.colors.background};
+		color: ${sys.colors.onBackground};
+		background-color: ${sys.colors.background};
 		height: 100%;
 	}
 
 	body {
-		background-color: ${theme.custom.colors.background};
-		transition: background-color ${theme.custom.transitions.color};
+		background-color: ${sys.colors.background};
+		transition: background-color ${sys.transitions.color};
 	}
 
 	div,
@@ -30,8 +36,8 @@ export const getGlobalStyles = ({ theme }: { theme: Theme }) => css`
 	}
 
 	a {
-		color: ${theme.custom.colors.onBackground};
-		transition: all ${theme.custom.transitions.color};
+		color: ${sys.colors.onBackground};
+		transition: all ${sys.transitions.color};
 	}
 
 	body {
@@ -57,16 +63,16 @@ export const getGlobalStyles = ({ theme }: { theme: Theme }) => css`
 	}
 
 	::-webkit-scrollbar {
-		width: 8px;
-		height: 8px;
+		width: 4px;
+		height: 4px;
 	}
 
 	::-webkit-scrollbar-thumb {
-		background: ${theme.custom.colors.onContainer.normal};
+		background: ${com.scrollbar.background};
 	}
 
 	:focus-visible {
-		outline: 2px solid ${theme.custom.colors.onContainer.normal};
+		outline: 1px solid ${sys.colors.onContainer.contrast};
 	}
 
 	@keyframes zoomIn {

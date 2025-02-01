@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import InfoClosed from 'components/CloseIcon/InfoIcon.tsx';
+import InfoClosed from 'components/CloseIcon/CloseIcon.tsx';
 
 export const TasksQueue = styled.div`
 	flex: 1;
@@ -10,10 +10,15 @@ export const TasksQueue = styled.div`
 `;
 
 export const Task = styled.div(
-	({ theme }) => css`
-		background: ${theme.custom.colors.onContainer.dim};
-		transition: background-color ${theme.custom.transitions.color};
-		animation: ${theme.custom.animations.zoomIn};
+	({
+		theme: {
+			custom: { com, sys },
+		},
+	}) => css`
+		background: ${com.queueElement.background};
+		border: 1px solid ${sys.colors.border};
+		transition: background-color ${sys.transitions.color};
+		animation: ${sys.animations.zoomIn};
 		flex: 1;
 		display: flex;
 		justify-content: center;

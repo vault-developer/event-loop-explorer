@@ -2,9 +2,9 @@ import { render, RenderOptions } from '@testing-library/react';
 import { ThemeProvider } from '@emotion/react';
 import { PropsWithChildren, ReactNode } from 'react';
 import { getTheme } from '../theme/theme.ts';
-import { colorsDark } from '../theme/colors.ts';
+import { getSystemTokens } from '../theme/tokens.sys.ts';
 
-const theme = getTheme(colorsDark);
+const theme = getTheme(getSystemTokens('dark'), 'dark');
 
 const AllTheProviders = ({ children }: PropsWithChildren) => {
 	return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
