@@ -3,38 +3,37 @@ import { referenceTokens } from './tokens.ref.ts';
 const systemTokens = {
 	dark: {
 		colors: {
-			border: 'transparent',
-			background: '#1e2226',
-			onBackground: '#b6c2cf',
-			container: '#15191c',
+			border: referenceTokens.primary['15'],
+			background: referenceTokens.primary['5'],
+			onBackground: referenceTokens.primary['90'],
+			container: referenceTokens.primary['10'],
 			onContainer: {
-				dim: '#282e33',
-				contrast: '#b6c2cf',
+				dim: referenceTokens.primary['15'],
+				contrast: referenceTokens.primary['90'],
 			},
 			primary: {
-				dim: 'rgba(174,71,135, 0.25)',
-				contrast: 'rgb(174,71,135)', // yellow 700
+				dim: 'rgba(86, 121, 135, 0.3)',
+				contrast: 'rgba(86, 121, 135, 1)',
 			},
 			secondary: {
-				dim: 'rgba(34,160,107, 0.25)',
-				contrast: 'rgb(34,160,107)', // green 700
+				dim: 'rgba(95, 161, 101, 0.3)',
+				contrast: 'rgba(95, 161, 101, 1)',
 			},
 			tertiary: {
-				dim: 'rgba(12,102,228, 0.25)',
-				contrast: 'rgb(12,102,228)', // blue 700
+				dim: 'rgba(181, 92, 101, 0.3)',
+				contrast: 'rgba(181, 92, 101, 1)',
 			},
 		},
 	},
 	light: {
 		colors: {
-			border: referenceTokens.primary['80'],
-			background: referenceTokens.primary['95'],
-			onBackground: referenceTokens.primary['20'],
-			container: referenceTokens.primary['90'],
+			border: referenceTokens.neutral['80'],
+			background: referenceTokens.neutral['98'],
+			onBackground: referenceTokens.neutral['20'],
+			container: referenceTokens.neutral['100'],
 			onContainer: {
-				dim: referenceTokens.primary['80'],
-				normal: referenceTokens.primary['50'],
-				contrast: referenceTokens.primary['30'],
+				dim: referenceTokens.neutral['90'],
+				contrast: referenceTokens.neutral['30'],
 			},
 			primary: {
 				dim: 'rgba(100, 170, 198, 0.3)',
