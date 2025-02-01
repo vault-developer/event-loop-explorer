@@ -26,11 +26,12 @@ export const Layout = styled.div(
 	({ theme }) => css`
 		flex: 1;
 		display: flex;
-		padding: 20px;
+		padding: 8px;
 		flex-direction: column;
 		gap: 20px;
 
 		@media (min-width: ${theme.custom.sys.breakpoints.desktop}px) {
+			padding: 20px;
 			flex-direction: row;
 			overflow: hidden;
 		}

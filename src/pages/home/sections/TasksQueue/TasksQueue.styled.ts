@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import InfoClosed from 'components/CloseIcon/InfoIcon.tsx';
+import InfoClosed from 'components/CloseIcon/CloseIcon.tsx';
 
 export const TasksQueue = styled.div`
 	flex: 1;

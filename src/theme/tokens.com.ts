@@ -30,6 +30,9 @@ export const getComponentsTokens = (st: SystemTokens) => ({
 	icon: {
 		background: st.colors.onContainer.contrast,
 	},
+	scrollbar: {
+		background: st.colors.primary.contrast,
+	},
 });
 
 export type ComponentTokens = ReturnType<typeof getComponentsTokens>;

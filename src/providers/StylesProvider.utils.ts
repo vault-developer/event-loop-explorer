@@ -2,7 +2,7 @@ import { css, Theme } from '@emotion/react';
 
 export const getGlobalStyles = ({
 	theme: {
-		custom: { sys },
+		custom: { sys, com },
 	},
 }: {
 	theme: Theme;
@@ -63,16 +63,16 @@ export const getGlobalStyles = ({
 	}
 
 	::-webkit-scrollbar {
-		width: 8px;
-		height: 8px;
+		width: 4px;
+		height: 4px;
 	}
 
 	::-webkit-scrollbar-thumb {
-		background: ${sys.colors.onContainer.contrast};
+		background: ${com.scrollbar.background};
 	}
 
 	:focus-visible {
-		outline: 2px solid ${sys.colors.onContainer.contrast};
+		outline: 1px solid ${sys.colors.onContainer.contrast};
 	}
 
 	@keyframes zoomIn {
