@@ -21,6 +21,7 @@ export const CallstackElement = styled.div(
 		background: ${custom.com.queueElement.background};
 		transition: background-color ${custom.sys.transitions.color};
 		animation: ${custom.sys.animations.zoomIn};
+		border: 1px solid ${custom.sys.colors.border};
 		border-radius: 5px;
 		padding: 10px;
 		word-wrap: break-word;

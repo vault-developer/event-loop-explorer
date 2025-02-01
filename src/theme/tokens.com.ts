@@ -29,10 +29,7 @@ export const getComponentsTokens = (st: SystemTokens) => ({
 	},
 	text: st.colors.onBackground,
 	icon: {
-		background: {
-			default: st.colors.onContainer.contrast,
-			hover: st.colors.onContainer.contrast,
-		},
+		background: st.colors.onContainer.contrast,
 	},
 });
 

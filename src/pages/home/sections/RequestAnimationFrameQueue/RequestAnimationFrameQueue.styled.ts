@@ -14,6 +14,7 @@ export const Callback = styled.div(
 		background: ${custom.com.queueElement.background};
 		transition: background-color ${custom.sys.transitions.color};
 		animation: ${custom.sys.animations.zoomIn};
+		border: 1px solid ${custom.sys.colors.border};
 		flex: 1;
 		display: flex;
 		justify-content: center;

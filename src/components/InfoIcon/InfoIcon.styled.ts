@@ -4,13 +4,9 @@ import { css } from '@emotion/react';
 export const Info = styled.svg(
 	({ theme: { custom } }) => css`
 		position: absolute;
-		top: 4px;
-		right: 4px;
+		top: 6px;
+		right: 6px;
 		cursor: pointer;
-		fill: ${custom.com.icon.background.default};
-
-		&:hover {
-			fill: ${custom.com.icon.background.hover};
-		}
+		fill: ${custom.com.icon.background};
 	`
 );

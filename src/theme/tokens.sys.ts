@@ -3,13 +3,13 @@ import { referenceTokens } from './tokens.ref.ts';
 const systemTokens = {
 	dark: {
 		colors: {
-			border: referenceTokens.primary['15'],
-			background: referenceTokens.primary['5'],
-			onBackground: referenceTokens.primary['90'],
-			container: referenceTokens.primary['10'],
+			border: referenceTokens.brand['15'],
+			background: referenceTokens.brand['5'],
+			onBackground: referenceTokens.brand['90'],
+			container: referenceTokens.brand['10'],
 			onContainer: {
-				dim: referenceTokens.primary['15'],
-				contrast: referenceTokens.primary['90'],
+				dim: referenceTokens.brand['15'],
+				contrast: referenceTokens.brand['90'],
 			},
 			primary: {
 				dim: 'rgba(86, 121, 135, 0.3)',
@@ -36,16 +36,16 @@ const systemTokens = {
 				contrast: referenceTokens.neutral['30'],
 			},
 			primary: {
-				dim: 'rgba(108,195,224, 0.4)',
-				contrast: 'rgb(108,195,224)',
+				dim: 'rgba(108, 195, 224, 0.3)',
+				contrast: 'rgba(108, 195, 224, 1)',
 			},
 			secondary: {
-				dim: 'rgba(75,206,151, 0.4)',
-				contrast: 'rgb(75,206,151)',
+				dim: 'rgba(75, 206, 151, 0.3)',
+				contrast: 'rgba(75, 206, 151, 1)',
 			},
 			tertiary: {
-				dim: 'rgba(247,151,210, 0.3)',
-				contrast: 'rgb(247,151,210)',
+				dim: 'rgba(247, 151, 210, 0.2)',
+				contrast: 'rgba(247, 151, 210, 1)',
 			},
 		},
 	},

@@ -23,6 +23,7 @@ export const Log = styled.div(
 		background: ${com.queueElement.background};
 		transition: background-color ${sys.transitions.color};
 		animation: ${sys.animations.zoomIn};
+		border: 1px solid ${sys.colors.border};
 		border-radius: 5px;
 		padding: 10px;
 		word-wrap: break-word;

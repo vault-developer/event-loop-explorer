@@ -4,10 +4,6 @@ import { css } from '@emotion/react';
 export const Closed = styled.svg(
 	({ theme: { custom } }) => css`
 		cursor: pointer;
-		fill: ${custom.com.icon.background.default};
-
-		&:hover {
-			fill: ${custom.com.icon.background.hover};
-		}
+		fill: ${custom.com.icon.background};
 	`
 );
