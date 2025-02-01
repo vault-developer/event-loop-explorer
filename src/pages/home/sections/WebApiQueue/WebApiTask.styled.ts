@@ -27,8 +27,8 @@ export const Progress = styled.div<{ progress: number }>(
 	({ theme: { custom }, progress }) => css`
 		background-color: transparent;
 		background-image: conic-gradient(
-			${custom.colors.onContainer.contrast},
-			${custom.colors.onContainer.contrast} ${progress}%,
+			${custom.sys.colors.onContainer.contrast},
+			${custom.sys.colors.onContainer.contrast} ${progress}%,
 			transparent ${progress}%
 		);
 		transition: background-color ${custom.sys.transitions.color};
