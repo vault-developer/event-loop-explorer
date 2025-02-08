@@ -28,6 +28,7 @@ function Wheel() {
 		pointer: com.wheel.pointer,
 		wheel: com.wheel.background,
 		background: sys.colors.container,
+		border: sys.colors.border,
 		microtask: {
 			disabled: com.wheel.microtask.dim,
 			enabled: com.wheel.microtask.contrast,

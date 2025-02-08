@@ -3,7 +3,7 @@ import { referenceTokens } from './tokens.ref.ts';
 const systemTokens = {
 	dark: {
 		colors: {
-			border: referenceTokens.brand['15'],
+			border: referenceTokens.brand['30'],
 			background: referenceTokens.brand['5'],
 			onBackground: referenceTokens.brand['90'],
 			container: referenceTokens.brand['10'],
@@ -27,7 +27,7 @@ const systemTokens = {
 	},
 	light: {
 		colors: {
-			border: referenceTokens.neutral['80'],
+			border: referenceTokens.neutral['70'],
 			background: referenceTokens.neutral['95'],
 			onBackground: referenceTokens.neutral['20'],
 			container: referenceTokens.neutral['98'],

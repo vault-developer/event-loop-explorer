@@ -9,7 +9,7 @@ export const WebApiItem = styled.div(
 	}) => css`
 		background: ${com.queueElement.background};
 		transition: background-color ${sys.transitions.color};
-		border-radius: 5px;
+		border-radius: 4px;
 		padding: 10px;
 		position: absolute;
 		word-wrap: break-word;
@@ -33,7 +33,7 @@ export const Progress = styled.div<{ progress: number }>(
 		);
 		transition: background-color ${custom.sys.transitions.color};
 		animation: ${custom.sys.animations.zoomIn};
-		border-radius: 5px;
+		border-radius: 4px;
 		position: relative;
 		padding: 10px;
 		display: flex;

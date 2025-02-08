@@ -17,6 +17,10 @@ export const EditorWrapper = styled.div(
 			}
 		}
 
+		.ace_editor {
+			border-radius: 8px;
+		}
+
 		.ace_gutter {
 			background: ${sys.colors.onContainer.dim};
 			transition: background-color ${sys.transitions.color};

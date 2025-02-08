@@ -22,7 +22,7 @@ export const CallstackElement = styled.div(
 		transition: background-color ${custom.sys.transitions.color};
 		animation: ${custom.sys.animations.zoomIn};
 		border: 1px solid ${custom.sys.colors.border};
-		border-radius: 5px;
+		border-radius: 4px;
 		padding: 10px;
 		word-wrap: break-word;
 		word-break: break-word;

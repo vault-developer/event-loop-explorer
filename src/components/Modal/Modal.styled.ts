@@ -13,6 +13,7 @@ export const StyledBox = styled(Box)(
 		padding: 40px;
 		max-width: 400px;
 		width: 90%;
+		border-radius: 8px;
 
 		@media (min-width: 768px) {
 			max-width: 480px;

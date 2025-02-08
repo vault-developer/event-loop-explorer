@@ -24,7 +24,7 @@ export const Log = styled.div(
 		transition: background-color ${sys.transitions.color};
 		animation: ${sys.animations.zoomIn};
 		border: 1px solid ${sys.colors.border};
-		border-radius: 5px;
+		border-radius: 4px;
 		padding: 10px;
 		word-wrap: break-word;
 		display: flex;

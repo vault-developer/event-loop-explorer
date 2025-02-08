@@ -23,7 +23,7 @@ export const Task = styled.div(
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		border-radius: 5px;
+		border-radius: 4px;
 		max-width: 33.33%;
 		padding: 10px;
 		word-wrap: break-word;

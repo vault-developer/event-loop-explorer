@@ -67,6 +67,7 @@ export const BaseLayoutElement = styled.div(
 			border-color ${custom.sys.transitions.color};
 		margin: 0;
 		padding: 10px;
+		border-radius: 8px;
 	`
 );
 
