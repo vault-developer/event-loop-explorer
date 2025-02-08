@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.13.1...v1.14.0) (2025-02-08)
+
+
+### Features
+
+* update styles ([e485d9d](https://github.com/vault-developer/event-loop-explorer/commit/e485d9d5c03fd81a9b2655f6aa8b66017fd418a1))
+
 ## [1.13.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.13.0...v1.13.1) (2025-02-01)
 
 
