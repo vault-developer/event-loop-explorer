@@ -1,9 +1,11 @@
 import { useThemeStore } from 'store/store.ts';
-import SunIcon from 'components/SunIcon/SunIcon.tsx';
-import MoonIcon from 'components/MoonIcon/MoonIcon.tsx';
+import { Icon } from 'components/Icon/Icon.tsx';
+import { useTheme } from '@emotion/react';
+import { TransparentButton } from 'components/TransparentButton/TransparentButton.tsx';
 
 export default function Info({ className }: { className?: string }) {
 	const { isDark, toggle } = useThemeStore((state) => state);
+	const theme = useTheme();
 	return (
 		<div className={className}>
 			<div
@@ -15,7 +17,12 @@ export default function Info({ className }: { className?: string }) {
 				}}
 			>
 				<h2>Event Loop Explorer</h2>
-				{isDark ? <MoonIcon onClick={toggle} /> : <SunIcon onClick={toggle} />}
+				<TransparentButton onClick={toggle}>
+					<Icon
+						variant={isDark ? 'moon' : 'sun'}
+						color={theme.custom.sys.colors.onBackground}
+					/>
+				</TransparentButton>
 			</div>
 
 			<p>

@@ -1,5 +1,7 @@
 import * as Styled from './MicroTasksQueue.styled.ts';
 import InfoModal from 'components/Modal/Modal.tsx';
+import { Icon } from 'components/Icon/Icon.tsx';
+import { useTheme } from '@emotion/react';
 
 function MicroTasksQueueModal({
 	isOpened,
@@ -8,10 +10,13 @@ function MicroTasksQueueModal({
 	isOpened: boolean;
 	toggle: () => void;
 }) {
+	const theme = useTheme();
 	return (
 		<InfoModal isOpened={isOpened} onClose={toggle}>
 			<h2>Microtasks</h2>
-			<Styled.CloseIcon onClick={toggle} />
+			<Styled.CloseButton onClick={toggle}>
+				<Icon variant={'close'} color={theme.custom.com.icon.background} />
+			</Styled.CloseButton>
 			<p>
 				A microtask is a short function which is executed after the function or
 				program which created it exits and only if the JavaScript execution

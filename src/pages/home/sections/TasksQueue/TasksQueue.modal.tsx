@@ -1,5 +1,7 @@
 import * as Styled from './TasksQueue.styled.ts';
 import InfoModal from 'components/Modal/Modal.tsx';
+import { Icon } from 'components/Icon/Icon.tsx';
+import { useTheme } from '@emotion/react';
 
 function TasksQueueModal({
 	isOpened,
@@ -8,10 +10,13 @@ function TasksQueueModal({
 	isOpened: boolean;
 	toggle: () => void;
 }) {
+	const theme = useTheme();
 	return (
 		<InfoModal isOpened={isOpened} onClose={toggle}>
 			<h2>Tasks</h2>
-			<Styled.CloseIcon onClick={toggle} />
+			<Styled.CloseButton onClick={toggle}>
+				<Icon variant={'close'} color={theme.custom.com.icon.background} />
+			</Styled.CloseButton>
 			<p>
 				A task is anything which is scheduled to be run by the standard
 				mechanisms such as initially starting to run a program, an event being

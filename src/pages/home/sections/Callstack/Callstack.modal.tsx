@@ -1,5 +1,7 @@
 import * as Styled from './Callstack.styled.ts';
 import InfoModal from 'components/Modal/Modal.tsx';
+import { Icon } from 'components/Icon/Icon.tsx';
+import { useTheme } from '@emotion/react';
 
 function CallStackModal({
 	isOpened,
@@ -8,10 +10,13 @@ function CallStackModal({
 	isOpened: boolean;
 	toggle: () => void;
 }) {
+	const theme = useTheme();
 	return (
 		<InfoModal isOpened={isOpened} onClose={toggle}>
 			<h2>Call stack</h2>
-			<Styled.CloseIcon onClick={toggle} />
+			<Styled.CloseButton onClick={toggle}>
+				<Icon variant={'close'} color={theme.custom.com.icon.background} />
+			</Styled.CloseButton>
 			<p>
 				A call stack is a mechanism for an interpreter to keep track of its
 				place in a script that calls multiple functions — what function is

@@ -1,5 +1,7 @@
 import * as Styled from './RequestAnimationFrameQueue.styled.ts';
 import InfoModal from 'components/Modal/Modal.tsx';
+import { Icon } from 'components/Icon/Icon.tsx';
+import { useTheme } from '@emotion/react';
 
 function RequestAnimationFrameQueueModal({
 	isOpened,
@@ -8,10 +10,13 @@ function RequestAnimationFrameQueueModal({
 	isOpened: boolean;
 	toggle: () => void;
 }) {
+	const theme = useTheme();
 	return (
 		<InfoModal isOpened={isOpened} onClose={toggle}>
 			<h2>RequestAnimationFrame</h2>
-			<Styled.CloseIcon onClick={toggle} />
+			<Styled.CloseButton onClick={toggle}>
+				<Icon variant={'close'} color={theme.custom.com.icon.background} />
+			</Styled.CloseButton>
 			<p style={{ marginBottom: 8 }}>
 				The window.requestAnimationFrame() method tells the browser you wish to
 				perform an animation. It requests the browser to call a user-supplied

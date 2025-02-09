@@ -1,5 +1,7 @@
 import * as Styled from './WebApiQueue.styled.ts';
 import InfoModal from 'components/Modal/Modal.tsx';
+import { Icon } from 'components/Icon/Icon.tsx';
+import { useTheme } from '@emotion/react';
 
 function WebApiQueueModal({
 	isOpened,
@@ -8,10 +10,13 @@ function WebApiQueueModal({
 	isOpened: boolean;
 	toggle: () => void;
 }) {
+	const theme = useTheme();
 	return (
 		<InfoModal isOpened={isOpened} onClose={toggle}>
 			<h2>Web API</h2>
-			<Styled.CloseIcon onClick={toggle} />
+			<Styled.CloseButton onClick={toggle}>
+				<Icon variant={'close'} color={theme.custom.com.icon.background} />
+			</Styled.CloseButton>
 			<p>
 				Web APIs extend the capabilities of JavaScript in web browsers, allowing
 				access to device hardware, operating system features, and more complex
