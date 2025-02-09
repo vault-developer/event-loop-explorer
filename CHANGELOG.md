@@ -1,3 +1,10 @@
+## [1.14.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.14.1...v1.14.2) (2025-02-09)
+
+
+### Bug Fixes
+
+* **editor:** fix border-radius ([42d9acd](https://github.com/vault-developer/event-loop-explorer/commit/42d9acd71311a94f87448a43751e05a096e34502))
+
 ## [1.14.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.14.0...v1.14.1) (2025-02-09)
 
 
