@@ -5,7 +5,7 @@ import EventLoopModal from './EventLoop.modal.tsx';
 import Wheel from 'pages/home/sections/EventLoop/Wheel/Wheel.tsx';
 import { Icon } from 'components/Icon/Icon.tsx';
 import { useTheme } from '@emotion/react';
-import { BaseLayoutElement } from '../BaseLayoutElement/BaseLayoutElement.tsx';
+import { BaseLayoutElement } from 'pages/home/sections/base/BaseLayoutElement/BaseLayoutElement.tsx';
 
 function EventLoop({ className }: { className?: string }) {
 	const [isOpened, toggle] = useBoolean(false);

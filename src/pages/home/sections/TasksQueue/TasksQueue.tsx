@@ -1,7 +1,7 @@
 import { useQueueManagerStore } from 'store/store.ts';
-import { BaseModalSection } from '../BaseModalSection/BaseModalSection.tsx';
-import { BaseQueueElement } from '../BaseQueueElement/BaseQueueElement.tsx';
-import { BaseQueue } from '../BaseQueue/BaseQueue.tsx';
+import { BaseModalSection } from 'pages/home/sections/base/BaseModalSection/BaseModalSection.tsx';
+import { BaseQueueElement } from 'pages/home/sections/base/BaseQueueElement/BaseQueueElement.tsx';
+import { BaseQueue } from 'pages/home/sections/base/BaseQueue/BaseQueue.tsx';
 
 const ModalContent = (
 	<>

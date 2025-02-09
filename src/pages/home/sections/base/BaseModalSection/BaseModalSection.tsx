@@ -1,5 +1,5 @@
 import { JSX, PropsWithChildren } from 'react';
-import { BaseSection } from 'pages/home/sections/BaseSection/BaseSection.tsx';
+import { BaseSection } from 'pages/home/sections/base/BaseSection/BaseSection.tsx';
 import useBoolean from 'utils/hooks/useBoolean.ts';
 import * as Styled from './BaseModalSection.styled.ts';
 import { Icon } from 'components/Icon/Icon.tsx';

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { BaseQueue } from 'pages/home/sections/BaseQueue/BaseQueue.tsx';
+import { BaseQueue } from 'pages/home/sections/base/BaseQueue/BaseQueue.tsx';
 
 export const LogQueue = styled(BaseQueue)(
 	({ theme }) => css`

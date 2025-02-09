@@ -1,7 +1,7 @@
 import { useQueueManagerStore } from 'store/store.ts';
 import * as Styled from './Console.styled.ts';
-import { BaseSection } from 'pages/home/sections/BaseSection/BaseSection.tsx';
-import { BaseQueueElement } from 'pages/home/sections/BaseQueueElement/BaseQueueElement.tsx';
+import { BaseSection } from 'pages/home/sections/base/BaseSection/BaseSection.tsx';
+import { BaseQueueElement } from 'pages/home/sections/base/BaseQueueElement/BaseQueueElement.tsx';
 
 function Console({ className }: { className?: string }) {
 	const tasks = useQueueManagerStore((state) => state.console);

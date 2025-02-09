@@ -1,7 +1,7 @@
 import WebApiTask from './WebApiTask.tsx';
 import { useQueueManagerStore } from 'store/store.ts';
-import { BaseModalSection } from '../BaseModalSection/BaseModalSection.tsx';
-import { BaseQueue } from '../BaseQueue/BaseQueue.tsx';
+import { BaseModalSection } from 'pages/home/sections/base/BaseModalSection/BaseModalSection.tsx';
+import { BaseQueue } from 'pages/home/sections/base/BaseQueue/BaseQueue.tsx';
 
 const ModalContent = (
 	<>

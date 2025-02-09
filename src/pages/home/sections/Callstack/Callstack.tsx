@@ -1,7 +1,7 @@
 import * as Styled from './Callstack.styled.ts';
 import { useQueueManagerStore } from 'store/store.ts';
-import { BaseModalSection } from '../BaseModalSection/BaseModalSection.tsx';
-import { BaseQueueElement } from 'pages/home/sections/BaseQueueElement/BaseQueueElement.tsx';
+import { BaseModalSection } from 'pages/home/sections/base/BaseModalSection/BaseModalSection.tsx';
+import { BaseQueueElement } from 'pages/home/sections/base/BaseQueueElement/BaseQueueElement.tsx';
 
 const ModalContent = (
 	<>
