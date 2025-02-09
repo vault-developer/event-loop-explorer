@@ -1,10 +1,10 @@
 import * as Styled from './RequestAnimationFrameQueue.styled.ts';
 import useBoolean from 'utils/hooks/useBoolean.ts';
-import { List } from '../../Home.styled.ts';
 import RequestAnimationFrameQueueModal from './RequestAnimationFrameQueue.modal.tsx';
 import { useQueueManagerStore } from 'store/store.ts';
 import { Icon } from 'components/Icon/Icon.tsx';
 import { useTheme } from '@emotion/react';
+import { BaseSection } from 'pages/home/sections/BaseSection/BaseSection.tsx';
 
 function RequestAnimationFrameQueue({ className }: { className?: string }) {
 	const callbacks = useQueueManagerStore((state) => state.rafCallback);
@@ -12,8 +12,10 @@ function RequestAnimationFrameQueue({ className }: { className?: string }) {
 	const theme = useTheme();
 
 	return (
-		<List className={className}>
-			<span>RequestAnimationFrame callbacks</span>
+		<BaseSection
+			className={className}
+			title={'RequestAnimationFrame callbacks'}
+		>
 			<Styled.CallbacksQueue>
 				<Styled.InfoButton onClick={toggle}>
 					<Icon variant={'info'} color={theme.custom.com.icon.background} />
@@ -23,7 +25,7 @@ function RequestAnimationFrameQueue({ className }: { className?: string }) {
 				))}
 				<RequestAnimationFrameQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.CallbacksQueue>
-		</List>
+		</BaseSection>
 	);
 }
 

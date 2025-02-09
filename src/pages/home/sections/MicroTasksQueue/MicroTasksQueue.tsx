@@ -1,10 +1,10 @@
 import { useQueueManagerStore } from 'store/store.ts';
 import * as Styled from './MicroTasksQueue.styled.ts';
 import useBoolean from 'utils/hooks/useBoolean.ts';
-import { List } from '../../Home.styled.ts';
 import MicroTasksQueueModal from './MicroTasksQueue.modal.tsx';
 import { Icon } from 'components/Icon/Icon.tsx';
 import { useTheme } from '@emotion/react';
+import { BaseSection } from '../BaseSection/BaseSection.tsx';
 
 function MicroTasksQueue({ className }: { className?: string }) {
 	const tasks = useQueueManagerStore((state) => state.microtask);
@@ -12,8 +12,7 @@ function MicroTasksQueue({ className }: { className?: string }) {
 	const theme = useTheme();
 
 	return (
-		<List className={className}>
-			<span>Microtasks Queue</span>
+		<BaseSection className={className} title={'Microtasks Queue'}>
 			<Styled.MicroTasksQueue>
 				<Styled.InfoButton onClick={toggle}>
 					<Icon variant={'info'} color={theme.custom.com.icon.background} />
@@ -23,7 +22,7 @@ function MicroTasksQueue({ className }: { className?: string }) {
 				))}
 				<MicroTasksQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.MicroTasksQueue>
-		</List>
+		</BaseSection>
 	);
 }
 

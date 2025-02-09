@@ -1,11 +1,11 @@
 import WebApiTask from './WebApiTask.tsx';
 import * as Styled from './WebApiQueue.styled.ts';
 import useBoolean from 'utils/hooks/useBoolean.ts';
-import { List } from '../../Home.styled.ts';
 import WebApiQueueModal from './WebApiQueue.modal.tsx';
 import { useQueueManagerStore } from 'store/store.ts';
 import { Icon } from 'components/Icon/Icon.tsx';
 import { useTheme } from '@emotion/react';
+import { BaseSection } from 'pages/home/sections/BaseSection/BaseSection.tsx';
 
 function WebApiQueue({ className }: { className?: string }) {
 	const tasks = useQueueManagerStore((state) => state.webApi);
@@ -13,8 +13,7 @@ function WebApiQueue({ className }: { className?: string }) {
 	const theme = useTheme();
 
 	return (
-		<List className={className}>
-			<span>Web api</span>
+		<BaseSection className={className} title={'Web Api'}>
 			<Styled.WebApiQueue>
 				<Styled.InfoButton onClick={toggle}>
 					<Icon variant={'info'} color={theme.custom.com.icon.background} />
@@ -24,7 +23,7 @@ function WebApiQueue({ className }: { className?: string }) {
 				))}
 				<WebApiQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.WebApiQueue>
-		</List>
+		</BaseSection>
 	);
 }
 

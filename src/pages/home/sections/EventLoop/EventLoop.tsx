@@ -1,11 +1,11 @@
 import * as Styled from './EventLoop.styled.ts';
 import useBoolean from 'utils/hooks/useBoolean.ts';
-import { BaseLayoutElement } from 'pages/home/Home.styled.ts';
 import { EVENT_LOOP_ID } from 'utils/constants.ts';
 import EventLoopModal from './EventLoop.modal.tsx';
 import Wheel from 'pages/home/sections/EventLoop/Wheel/Wheel.tsx';
 import { Icon } from 'components/Icon/Icon.tsx';
 import { useTheme } from '@emotion/react';
+import { BaseLayoutElement } from '../BaseLayoutElement/BaseLayoutElement.tsx';
 
 function EventLoop({ className }: { className?: string }) {
 	const [isOpened, toggle] = useBoolean(false);

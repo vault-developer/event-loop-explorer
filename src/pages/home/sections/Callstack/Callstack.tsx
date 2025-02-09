@@ -1,10 +1,10 @@
 import * as Styled from './Callstack.styled.ts';
 import useBoolean from 'utils/hooks/useBoolean.ts';
-import { List } from '../../Home.styled.ts';
 import CallStackModal from './Callstack.modal.tsx';
 import { useQueueManagerStore } from 'store/store.ts';
 import { Icon } from 'components/Icon/Icon.tsx';
 import { useTheme } from '@emotion/react';
+import { BaseSection } from 'pages/home/sections/BaseSection/BaseSection.tsx';
 
 function CallStack({ className }: { className?: string }) {
 	const tasks = useQueueManagerStore((state) => state.callstack);
@@ -12,8 +12,7 @@ function CallStack({ className }: { className?: string }) {
 	const theme = useTheme();
 
 	return (
-		<List className={className}>
-			<span>CallStack</span>
+		<BaseSection className={className} title={'CallStack'}>
 			<Styled.Callstack>
 				<Styled.InfoButton onClick={toggle}>
 					<Icon variant={'info'} color={theme.custom.com.icon.background} />
@@ -23,7 +22,7 @@ function CallStack({ className }: { className?: string }) {
 				))}
 				<CallStackModal isOpened={isOpened} toggle={toggle} />
 			</Styled.Callstack>
-		</List>
+		</BaseSection>
 	);
 }
 

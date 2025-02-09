@@ -1,10 +1,10 @@
 import { useQueueManagerStore } from 'store/store.ts';
 import * as Styled from './TasksQueue.styled.ts';
 import useBoolean from 'utils/hooks/useBoolean.ts';
-import { List } from '../../Home.styled.ts';
 import TasksQueueModal from './TasksQueue.modal.tsx';
 import { Icon } from 'components/Icon/Icon.tsx';
 import { useTheme } from '@emotion/react';
+import { BaseSection } from '../BaseSection/BaseSection.tsx';
 
 function TasksQueue({ className }: { className?: string }) {
 	const tasks = useQueueManagerStore((state) => state.macrotask);
@@ -12,8 +12,7 @@ function TasksQueue({ className }: { className?: string }) {
 	const theme = useTheme();
 
 	return (
-		<List className={className}>
-			<span>Tasks Queue</span>
+		<BaseSection className={className} title={'Tasks Queue'}>
 			<Styled.TasksQueue>
 				<Styled.InfoButton onClick={toggle}>
 					<Icon variant={'info'} color={theme.custom.com.icon.background} />
@@ -23,7 +22,7 @@ function TasksQueue({ className }: { className?: string }) {
 				))}
 				<TasksQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.TasksQueue>
-		</List>
+		</BaseSection>
 	);
 }
 
