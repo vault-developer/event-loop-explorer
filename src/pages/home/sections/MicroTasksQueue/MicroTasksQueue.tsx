@@ -1,28 +1,40 @@
 import { useQueueManagerStore } from 'store/store.ts';
 import * as Styled from './MicroTasksQueue.styled.ts';
-import useBoolean from 'utils/hooks/useBoolean.ts';
-import MicroTasksQueueModal from './MicroTasksQueue.modal.tsx';
-import { Icon } from 'components/Icon/Icon.tsx';
-import { useTheme } from '@emotion/react';
-import { BaseSection } from '../BaseSection/BaseSection.tsx';
+import { BaseModalSection } from '../BaseModalSection/BaseModalSection.tsx';
+
+const ModalContent = (
+	<>
+		<h2>Microtasks</h2>
+		<p>
+			A microtask is a short function which is executed after the function or
+			program which created it exits and only if the JavaScript execution stack
+			is empty, but before returning control to the event loop being used by the
+			user agent to drive the script's execution environment.
+		</p>
+		<p style={{ marginTop: 12 }}>Events that can trigger new microtasks:</p>
+		<ul style={{ marginTop: 8 }}>
+			<li>Promise resolution (.then(), .catch(), .finally())</li>
+			<li>Occurrence of observed DOM changes</li>
+			<li>queueMicrotask() method</li>
+		</ul>
+	</>
+);
 
 function MicroTasksQueue({ className }: { className?: string }) {
 	const tasks = useQueueManagerStore((state) => state.microtask);
-	const [isOpened, toggle] = useBoolean(false);
-	const theme = useTheme();
 
 	return (
-		<BaseSection className={className} title={'Microtasks Queue'}>
+		<BaseModalSection
+			className={className}
+			title={'Microtasks Queue'}
+			modalContent={ModalContent}
+		>
 			<Styled.MicroTasksQueue>
-				<Styled.InfoButton onClick={toggle}>
-					<Icon variant={'info'} color={theme.custom.com.icon.background} />
-				</Styled.InfoButton>
 				{tasks.map((task) => (
 					<Styled.MicroTask key={task}>{task}</Styled.MicroTask>
 				))}
-				<MicroTasksQueueModal isOpened={isOpened} toggle={toggle} />
 			</Styled.MicroTasksQueue>
-		</BaseSection>
+		</BaseModalSection>
 	);
 }
 
