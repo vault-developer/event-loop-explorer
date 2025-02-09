@@ -1,23 +1,20 @@
 # [1.14.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.13.1...v1.14.0) (2025-02-08)
 
-
 ### Features
 
-* update styles ([e485d9d](https://github.com/vault-developer/event-loop-explorer/commit/e485d9d5c03fd81a9b2655f6aa8b66017fd418a1))
+- update styles ([e485d9d](https://github.com/vault-developer/event-loop-explorer/commit/e485d9d5c03fd81a9b2655f6aa8b66017fd418a1))
 
 ## [1.13.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.13.0...v1.13.1) (2025-02-01)
 
-
 ### Bug Fixes
 
-* update font-weight ([f1db8e6](https://github.com/vault-developer/event-loop-explorer/commit/f1db8e6f903b83069da5e7f153f0eb02e60b7db4))
+- update font-weight ([f1db8e6](https://github.com/vault-developer/event-loop-explorer/commit/f1db8e6f903b83069da5e7f153f0eb02e60b7db4))
 
 # [1.13.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.3...v1.13.0) (2025-02-01)
 
-
 ### Features
 
-* update design system tokens ([#39](https://github.com/vault-developer/event-loop-explorer/issues/39)) ([13be30f](https://github.com/vault-developer/event-loop-explorer/commit/13be30f0dd361f081d46b0cbea0f0f264fb5c9d7))
+- update design system tokens ([#39](https://github.com/vault-developer/event-loop-explorer/issues/39)) ([13be30f](https://github.com/vault-developer/event-loop-explorer/commit/13be30f0dd361f081d46b0cbea0f0f264fb5c9d7))
 
 ## [1.12.3](https://github.com/vault-developer/event-loop-explorer/compare/v1.12.2...v1.12.3) (2025-01-26)
 

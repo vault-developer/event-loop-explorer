@@ -15,9 +15,9 @@ function TasksQueue({ className }: { className?: string }) {
 		<List className={className}>
 			<span>Tasks Queue</span>
 			<Styled.TasksQueue>
-				<Styled.CloseButton onClick={toggle}>
+				<Styled.InfoButton onClick={toggle}>
 					<Icon variant={'info'} color={theme.custom.com.icon.background} />
-				</Styled.CloseButton>
+				</Styled.InfoButton>
 				{tasks.map((task) => (
 					<Styled.Task key={task}>{task}</Styled.Task>
 				))}
