@@ -1,6 +1,7 @@
 import { useQueueManagerStore } from 'store/store.ts';
 import * as Styled from './MicroTasksQueue.styled.ts';
 import { BaseModalSection } from '../BaseModalSection/BaseModalSection.tsx';
+import { BaseQueueElement } from 'pages/home/sections/BaseQueueElement/BaseQueueElement.tsx';
 
 const ModalContent = (
 	<>
@@ -31,7 +32,7 @@ function MicroTasksQueue({ className }: { className?: string }) {
 		>
 			<Styled.MicroTasksQueue>
 				{tasks.map((task) => (
-					<Styled.MicroTask key={task}>{task}</Styled.MicroTask>
+					<BaseQueueElement key={task}>{task}</BaseQueueElement>
 				))}
 			</Styled.MicroTasksQueue>
 		</BaseModalSection>

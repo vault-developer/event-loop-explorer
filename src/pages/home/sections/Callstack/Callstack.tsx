@@ -1,6 +1,7 @@
 import * as Styled from './Callstack.styled.ts';
 import { useQueueManagerStore } from 'store/store.ts';
 import { BaseModalSection } from '../BaseModalSection/BaseModalSection.tsx';
+import { BaseQueueElement } from 'pages/home/sections/BaseQueueElement/BaseQueueElement.tsx';
 
 const ModalContent = (
 	<>
@@ -42,7 +43,9 @@ function CallStack({ className }: { className?: string }) {
 		>
 			<Styled.Callstack>
 				{tasks.map((task) => (
-					<Styled.CallstackElement key={task}>{task}</Styled.CallstackElement>
+					<BaseQueueElement isVertical key={task}>
+						{task}
+					</BaseQueueElement>
 				))}
 			</Styled.Callstack>
 		</BaseModalSection>

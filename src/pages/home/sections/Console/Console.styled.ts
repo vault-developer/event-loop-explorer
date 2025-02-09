@@ -13,29 +13,3 @@ export const LogQueue = styled.div(
 		}
 	`
 );
-
-export const Log = styled.div(
-	({
-		theme: {
-			custom: { sys, com },
-		},
-	}) => css`
-		background: ${com.queueElement.background};
-		transition: background-color ${sys.transitions.color};
-		animation: ${sys.animations.zoomIn};
-		border: 1px solid ${sys.colors.border};
-		border-radius: 4px;
-		padding: 10px;
-		word-wrap: break-word;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex: 1;
-		max-width: 33.33%;
-
-		@media (min-width: ${sys.breakpoints.desktop}px) {
-			max-width: unset;
-			flex-grow: 0;
-		}
-	`
-);

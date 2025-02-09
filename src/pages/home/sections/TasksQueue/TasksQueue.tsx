@@ -1,6 +1,7 @@
 import { useQueueManagerStore } from 'store/store.ts';
 import * as Styled from './TasksQueue.styled.ts';
 import { BaseModalSection } from '../BaseModalSection/BaseModalSection.tsx';
+import { BaseQueueElement } from '../BaseQueueElement/BaseQueueElement.tsx';
 
 const ModalContent = (
 	<>
@@ -43,7 +44,7 @@ function TasksQueue({ className }: { className?: string }) {
 		>
 			<Styled.TasksQueue>
 				{tasks.map((task) => (
-					<Styled.Task key={task}>{task}</Styled.Task>
+					<BaseQueueElement key={task}>{task}</BaseQueueElement>
 				))}
 			</Styled.TasksQueue>
 		</BaseModalSection>

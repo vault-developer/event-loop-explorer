@@ -14,26 +14,3 @@ export const Callstack = styled.div(
 		}
 	`
 );
-
-export const CallstackElement = styled.div(
-	({ theme: { custom } }) => css`
-		background: ${custom.com.queueElement.background};
-		transition: background-color ${custom.sys.transitions.color};
-		animation: ${custom.sys.animations.zoomIn};
-		border: 1px solid ${custom.sys.colors.border};
-		border-radius: 4px;
-		padding: 10px;
-		word-wrap: break-word;
-		word-break: break-word;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex: 1;
-		max-width: 33.33%;
-
-		@media (min-width: ${custom.sys.breakpoints.desktop}px) {
-			max-width: unset;
-			flex-grow: 0;
-		}
-	`
-);

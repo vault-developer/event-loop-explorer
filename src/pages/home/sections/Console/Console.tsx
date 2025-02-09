@@ -1,6 +1,7 @@
 import { useQueueManagerStore } from 'store/store.ts';
 import * as Styled from './Console.styled.ts';
 import { BaseSection } from 'pages/home/sections/BaseSection/BaseSection.tsx';
+import { BaseQueueElement } from 'pages/home/sections/BaseQueueElement/BaseQueueElement.tsx';
 
 function Console({ className }: { className?: string }) {
 	const tasks = useQueueManagerStore((state) => state.console);
@@ -9,7 +10,9 @@ function Console({ className }: { className?: string }) {
 		<BaseSection className={className} title={'Console'}>
 			<Styled.LogQueue>
 				{tasks.map((log, i) => (
-					<Styled.Log key={log + i}>{log}</Styled.Log>
+					<BaseQueueElement isVertical key={log + i}>
+						{log}
+					</BaseQueueElement>
 				))}
 			</Styled.LogQueue>
 		</BaseSection>
