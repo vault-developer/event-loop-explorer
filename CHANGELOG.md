@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/vault-developer/event-loop-explorer/compare/v1.14.0...v1.14.1) (2025-02-09)
+
+
+### Bug Fixes
+
+* **icon:** fix icon position ([b43df1d](https://github.com/vault-developer/event-loop-explorer/commit/b43df1dd1f5e8813faf5b54c916adf9bf4aad209))
+
 # [1.14.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.13.1...v1.14.0) (2025-02-08)
 
 ### Features
