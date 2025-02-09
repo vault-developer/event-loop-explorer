@@ -16,6 +16,7 @@ export const BaseQueueElement = styled.div<{ isVertical?: boolean }>(
 		align-items: center;
 		justify-content: center;
 		max-width: 33.33%;
+		min-width: 10%;
 
 		@media (min-width: ${custom.sys.breakpoints.desktop}px) {
 			${isVertical &&

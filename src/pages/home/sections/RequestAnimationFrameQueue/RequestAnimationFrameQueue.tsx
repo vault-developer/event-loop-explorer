@@ -1,7 +1,7 @@
-import * as Styled from './RequestAnimationFrameQueue.styled.ts';
 import { useQueueManagerStore } from 'store/store.ts';
 import { BaseModalSection } from '../BaseModalSection/BaseModalSection.tsx';
 import { BaseQueueElement } from '../BaseQueueElement/BaseQueueElement.tsx';
+import { BaseQueue } from '../BaseQueue/BaseQueue.tsx';
 
 const ModalContent = (
 	<>
@@ -34,11 +34,11 @@ function RequestAnimationFrameQueue({ className }: { className?: string }) {
 			title={'RequestAnimationFrame callbacks'}
 			modalContent={ModalContent}
 		>
-			<Styled.CallbacksQueue>
+			<BaseQueue>
 				{callbacks.map((callback) => (
 					<BaseQueueElement key={callback}>{callback}</BaseQueueElement>
 				))}
-			</Styled.CallbacksQueue>
+			</BaseQueue>
 		</BaseModalSection>
 	);
 }

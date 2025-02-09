@@ -1,7 +1,7 @@
 import WebApiTask from './WebApiTask.tsx';
-import * as Styled from './WebApiQueue.styled.ts';
 import { useQueueManagerStore } from 'store/store.ts';
-import { BaseModalSection } from 'pages/home/sections/BaseModalSection/BaseModalSection.tsx';
+import { BaseModalSection } from '../BaseModalSection/BaseModalSection.tsx';
+import { BaseQueue } from '../BaseQueue/BaseQueue.tsx';
 
 const ModalContent = (
 	<>
@@ -32,11 +32,11 @@ function WebApiQueue({ className }: { className?: string }) {
 			title={'Web Api'}
 			modalContent={ModalContent}
 		>
-			<Styled.WebApiQueue>
+			<BaseQueue>
 				{tasks.map((task) => (
 					<WebApiTask key={task.value} task={task} />
 				))}
-			</Styled.WebApiQueue>
+			</BaseQueue>
 		</BaseModalSection>
 	);
 }

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const MicroTasksQueue = styled.div`
+export const BaseQueue = styled.div`
 	flex: 1;
 	display: flex;
 	justify-content: start;
