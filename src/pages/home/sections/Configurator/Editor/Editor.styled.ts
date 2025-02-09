@@ -18,7 +18,8 @@ export const EditorWrapper = styled.div(
 		}
 
 		.ace_editor {
-			border-radius: 8px;
+			border-bottom-left-radius: 8px;
+			border-bottom-right-radius: 8px;
 		}
 
 		.ace_gutter {
