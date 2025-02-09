@@ -1,29 +1,53 @@
 import { useQueueManagerStore } from 'store/store.ts';
-import * as Styled from './TasksQueue.styled.ts';
-import useBoolean from 'utils/hooks/useBoolean.ts';
-import { List } from '../../Home.styled.ts';
-import TasksQueueModal from './TasksQueue.modal.tsx';
-import { Icon } from 'components/Icon/Icon.tsx';
-import { useTheme } from '@emotion/react';
+import { BaseModalSection } from 'pages/home/sections/base/BaseModalSection/BaseModalSection.tsx';
+import { BaseQueueElement } from 'pages/home/sections/base/BaseQueueElement/BaseQueueElement.tsx';
+import { BaseQueue } from 'pages/home/sections/base/BaseQueue/BaseQueue.tsx';
+
+const ModalContent = (
+	<>
+		<h2>Tasks</h2>
+		<p>
+			A task is anything which is scheduled to be run by the standard mechanisms
+			such as initially starting to run a program, an event being dispatched
+			asynchronously, or an interval or timeout being fired. These all get
+			scheduled on the task queue.
+		</p>
+		<p style={{ marginTop: 12 }}>
+			For example, tasks get added to the task queue when:
+		</p>
+		<ul style={{ marginTop: 8 }}>
+			<li>
+				A new JavaScript program or subprogram is executed (such as from a
+				console, or by running the code in a {'<script>'} element) directly.
+			</li>
+			<li>
+				The user clicks an element. A task is then created and executes all
+				event callbacks.
+			</li>
+			<li>
+				A timeout or interval created with setTimeout() or setInterval() is
+				reached, causing the corresponding callback to be added to the task
+				queue.
+			</li>
+		</ul>
+	</>
+);
 
 function TasksQueue({ className }: { className?: string }) {
 	const tasks = useQueueManagerStore((state) => state.macrotask);
-	const [isOpened, toggle] = useBoolean(false);
-	const theme = useTheme();
 
 	return (
-		<List className={className}>
-			<span>Tasks Queue</span>
-			<Styled.TasksQueue>
-				<Styled.InfoButton onClick={toggle}>
-					<Icon variant={'info'} color={theme.custom.com.icon.background} />
-				</Styled.InfoButton>
+		<BaseModalSection
+			className={className}
+			title={'Tasks Queue'}
+			modalContent={ModalContent}
+		>
+			<BaseQueue>
 				{tasks.map((task) => (
-					<Styled.Task key={task}>{task}</Styled.Task>
+					<BaseQueueElement key={task}>{task}</BaseQueueElement>
 				))}
-				<TasksQueueModal isOpened={isOpened} toggle={toggle} />
-			</Styled.TasksQueue>
-		</List>
+			</BaseQueue>
+		</BaseModalSection>
 	);
 }
 

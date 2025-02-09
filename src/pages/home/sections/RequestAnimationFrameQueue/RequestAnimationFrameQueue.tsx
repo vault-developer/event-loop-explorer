@@ -1,29 +1,45 @@
-import * as Styled from './RequestAnimationFrameQueue.styled.ts';
-import useBoolean from 'utils/hooks/useBoolean.ts';
-import { List } from '../../Home.styled.ts';
-import RequestAnimationFrameQueueModal from './RequestAnimationFrameQueue.modal.tsx';
 import { useQueueManagerStore } from 'store/store.ts';
-import { Icon } from 'components/Icon/Icon.tsx';
-import { useTheme } from '@emotion/react';
+import { BaseModalSection } from 'pages/home/sections/base/BaseModalSection/BaseModalSection.tsx';
+import { BaseQueueElement } from 'pages/home/sections/base/BaseQueueElement/BaseQueueElement.tsx';
+import { BaseQueue } from 'pages/home/sections/base/BaseQueue/BaseQueue.tsx';
+
+const ModalContent = (
+	<>
+		<h2>RequestAnimationFrame</h2>
+		<p style={{ marginBottom: 8 }}>
+			The window.requestAnimationFrame() method tells the browser you wish to
+			perform an animation. It requests the browser to call a user-supplied
+			callback function before the next repaint.
+		</p>
+		<p style={{ marginBottom: 8 }}>
+			The frequency of calls to the callback function will generally match the
+			display refresh rate. The most common refresh rate is 60hz, (60
+			cycles/frames per second), though 75hz, 120hz, and 144hz are also widely
+			used.
+		</p>
+		<p>
+			requestAnimationFrame() calls are paused in most browsers when running in
+			background tabs or hidden iframes, in order to improve performance and
+			battery life.
+		</p>
+	</>
+);
 
 function RequestAnimationFrameQueue({ className }: { className?: string }) {
 	const callbacks = useQueueManagerStore((state) => state.rafCallback);
-	const [isOpened, toggle] = useBoolean(false);
-	const theme = useTheme();
 
 	return (
-		<List className={className}>
-			<span>RequestAnimationFrame callbacks</span>
-			<Styled.CallbacksQueue>
-				<Styled.InfoButton onClick={toggle}>
-					<Icon variant={'info'} color={theme.custom.com.icon.background} />
-				</Styled.InfoButton>
+		<BaseModalSection
+			className={className}
+			title={'RequestAnimationFrame callbacks'}
+			modalContent={ModalContent}
+		>
+			<BaseQueue>
 				{callbacks.map((callback) => (
-					<Styled.Callback key={callback}>{callback}</Styled.Callback>
+					<BaseQueueElement key={callback}>{callback}</BaseQueueElement>
 				))}
-				<RequestAnimationFrameQueueModal isOpened={isOpened} toggle={toggle} />
-			</Styled.CallbacksQueue>
-		</List>
+			</BaseQueue>
+		</BaseModalSection>
 	);
 }
 

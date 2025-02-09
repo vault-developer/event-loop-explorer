@@ -1,30 +1,43 @@
 import WebApiTask from './WebApiTask.tsx';
-import * as Styled from './WebApiQueue.styled.ts';
-import useBoolean from 'utils/hooks/useBoolean.ts';
-import { List } from '../../Home.styled.ts';
-import WebApiQueueModal from './WebApiQueue.modal.tsx';
 import { useQueueManagerStore } from 'store/store.ts';
-import { Icon } from 'components/Icon/Icon.tsx';
-import { useTheme } from '@emotion/react';
+import { BaseModalSection } from 'pages/home/sections/base/BaseModalSection/BaseModalSection.tsx';
+import { BaseQueue } from 'pages/home/sections/base/BaseQueue/BaseQueue.tsx';
+
+const ModalContent = (
+	<>
+		<h2>Web API</h2>
+		<p>
+			Web APIs extend the capabilities of JavaScript in web browsers, allowing
+			access to device hardware, operating system features, and more complex
+			browser functions.
+		</p>
+		<p style={{ marginTop: 12 }}>Examples:</p>
+		<ul style={{ marginTop: 8 }}>
+			<li>DOM API: For manipulating web page content and structure</li>
+			<li>Fetch API: For making HTTP requests</li>
+			<li>Web Storage API: For storing data in the browser</li>
+			<li>Geolocation API: For accessing device location</li>
+			<li>Canvas API: For drawing graphics</li>
+			<li>Web Audio API: For processing and synthesizing audio</li>
+		</ul>
+	</>
+);
 
 function WebApiQueue({ className }: { className?: string }) {
 	const tasks = useQueueManagerStore((state) => state.webApi);
-	const [isOpened, toggle] = useBoolean(false);
-	const theme = useTheme();
 
 	return (
-		<List className={className}>
-			<span>Web api</span>
-			<Styled.WebApiQueue>
-				<Styled.InfoButton onClick={toggle}>
-					<Icon variant={'info'} color={theme.custom.com.icon.background} />
-				</Styled.InfoButton>
+		<BaseModalSection
+			className={className}
+			title={'Web Api'}
+			modalContent={ModalContent}
+		>
+			<BaseQueue>
 				{tasks.map((task) => (
 					<WebApiTask key={task.value} task={task} />
 				))}
-				<WebApiQueueModal isOpened={isOpened} toggle={toggle} />
-			</Styled.WebApiQueue>
-		</List>
+			</BaseQueue>
+		</BaseModalSection>
 	);
 }
 

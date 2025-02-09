@@ -1,9 +1,9 @@
 import * as Styled from './Configurator.styled.ts';
-import { BaseLayoutElement } from '../../Home.styled.ts';
 import Controls from './Controls/Controls.tsx';
 import Editor from './Editor/Editor.tsx';
 import { codeExamples } from './Configurator.data.tsx';
 import { useState } from 'react';
+import { BaseLayoutElement } from 'pages/home/sections/base/BaseLayoutElement/BaseLayoutElement.tsx';
 
 export default function Configurator({ className }: { className?: string }) {
 	const [text, setText] = useState(codeExamples[3].code);
