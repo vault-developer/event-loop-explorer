@@ -17,7 +17,7 @@ It visualizes the Call Stack, Web APIs, Tasks, Microtasks, and Render phase.
 
 ### Demo:
 
-Feel free to try it here: https://vault-developer.github.io/event-loop-explorer/
+Feel free to try it here: https://event-loop-explorer.vercel.app/
 
 ### Known limitations & simplifications:
 
@@ -50,12 +50,11 @@ npm run dev
 
 ### Future Plans:
 
-- [ ] create a unified Icon component;
-- [ ] handle todos in the codebase;
 - [ ] add unit tests;
+- [ ] handle todos in the codebase;
 - [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
 - [ ] replace window.confirm with error boundary
-- [ ] add comments inside wheel
+- [ ] add progress percentage inside wheel
 - [ ] add node.js event loop
 
 ### Inspired by:
