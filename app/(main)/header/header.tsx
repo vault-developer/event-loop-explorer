@@ -13,10 +13,7 @@ export function Header() {
 
 			<div className="flex items-center gap-2">
 				<Button asChild variant="ghost" size="iconBig">
-					<Link
-						href="https://github.com/vault-developer/event-loop-explorer"
-						target="_blank"
-					>
+					<Link href="https://event-loop-explorer.vercel.app" target="_blank">
 						<Github className="size-6" />
 					</Link>
 				</Button>
