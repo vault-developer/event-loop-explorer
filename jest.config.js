@@ -1,9 +1,14 @@
-export default {
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const nextJest = require('next/jest');
+
+const createJestConfig = nextJest({ dir: './' });
+
+const customJestConfig = {
 	testEnvironment: 'jsdom',
-	collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
+	collectCoverageFrom: ['{app,components,store,utils}/**/*.{ts,tsx}'],
 	testMatch: ['**/*.test.(ts|tsx)'],
 	transform: {
-		'^.+\\.tsx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.app.json' }],
+		'^.+\\.tsx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.json' }],
 	},
 	setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 	moduleNameMapper: {
@@ -12,3 +17,5 @@ export default {
 		'^src/(.*)$': '<rootDir>/src/$1',
 	},
 };
+
+module.exports = createJestConfig(customJestConfig);

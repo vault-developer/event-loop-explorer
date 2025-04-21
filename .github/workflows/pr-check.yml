@@ -22,16 +22,16 @@ jobs:
           node-version: 22.13.0
 
       - name: Install dependencies
-        run: yarn install
+        run: npm install
 
       - name: Run linter
-        run: yarn lint
+        run: npm run lint
 
       - name: Run type check
-        run: yarn typecheck
+        run: npm run typecheck
 
       - name: Run unit tests
-        run: yarn test
+        run: npm run test
 
       - name: Run build
-        run: yarn build
+        run: npm run build

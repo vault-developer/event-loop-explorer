@@ -43,9 +43,9 @@ git clone git@github.com:vault-developer/event-loop-explorer.git
 
 cd event-loop-explorer
 
-yarn install
+npm install
 
-yarn dev
+npm run dev
 ```
 
 ### Future Plans:

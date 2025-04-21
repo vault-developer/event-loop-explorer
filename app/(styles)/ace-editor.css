@@ -1,0 +1,18 @@
+@reference "tailwindcss";
+@reference "tw-animate-css";
+
+#ace-editor {
+	.ace_content {
+		background: var(--color-card);
+	}
+
+	.ace_bracket {
+		display: none;
+	}
+
+	.selected_lines {
+		position: absolute;
+		background: var(--color-chart-3);
+		opacity: 0.3;
+	}
+}

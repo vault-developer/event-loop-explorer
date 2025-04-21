@@ -5,70 +5,73 @@ test.describe('Explorer', () => {
 		await page.goto('/');
 	});
 
-	test('Run synchronous loop', async ({ page }) => {
-		const exampleSelect = await page.getByTestId('example-select');
+	test('Running tasks queue', async ({ page }) => {
+		const select = page.getByRole('combobox');
+		const option = page.getByRole('option', { name: 'tasks queue' });
+		const slider = page.getByRole('slider');
+		const script = page.getByText('script');
+		const tasksQueue = page
+			.getByTestId('info-container')
+			.filter({ has: script });
 
-		await exampleSelect.click();
-		await page.getByTestId('example-menu-item').nth(0).click();
-		await expect(exampleSelect.locator('input')).toHaveValue('synchronous');
-		await page.getByTestId('run-button').click();
-		await expect(page.getByTestId('speed-slider')).toBeVisible();
-	});
+		const run = page.getByRole('button', { name: 'RUN' });
+		const stop = page.getByRole('button', { name: 'STOP' });
+		const pause = page.getByRole('button', { name: 'PAUSE' });
+		const resume = page.getByRole('button', { name: 'RESUME' });
 
-	test('Run task queue loop', async ({ page }) => {
-		const exampleSelect = await page.getByTestId('example-select');
+		// Controls: idle state
+		await expect(select).toBeVisible();
+		await expect(run).toBeVisible();
+		await expect(stop).not.toBeVisible();
+		await expect(pause).not.toBeVisible();
+		await expect(resume).not.toBeVisible();
+		await expect(slider).not.toBeVisible();
 
-		await exampleSelect.click();
-		await page.getByTestId('example-menu-item').nth(1).click();
-		await expect(exampleSelect.locator('input')).toHaveValue('tasks queue');
-		await page.getByTestId('run-button').click();
-		await expect(page.getByTestId('speed-slider')).toBeVisible();
-	});
+		await select.click();
+		await option.click();
+		await expect(select).toContainText('tasks queue');
+		await run.click();
 
-	test('Run callstack loop', async ({ page }) => {
-		const exampleSelect = await page.getByTestId('example-select');
+		// Controls: running state
+		await expect(slider).toBeVisible();
+		await expect(stop).toBeVisible();
+		await expect(pause).toBeVisible();
+		await expect(select).not.toBeVisible();
+		await expect(run).not.toBeVisible();
+		await expect(resume).not.toBeVisible();
 
-		await exampleSelect.click();
-		await page.getByTestId('example-menu-item').nth(2).click();
-		await expect(exampleSelect.locator('input')).toHaveValue('callstack');
-		await page.getByTestId('run-button').click();
-		await expect(page.getByTestId('speed-slider')).toBeVisible();
-	});
+		await pause.click();
 
-	test('Run microtasks loop', async ({ page }) => {
-		const exampleSelect = await page.getByTestId('example-select');
+		// Controls: paused state
+		await expect(slider).toBeVisible();
+		await expect(stop).toBeVisible();
+		await expect(resume).toBeVisible();
+		await expect(select).not.toBeVisible();
+		await expect(pause).not.toBeVisible();
+		await expect(run).not.toBeVisible();
 
-		await expect(exampleSelect.locator('input')).toHaveValue('microtasks');
-		await page.getByTestId('run-button').click();
-		await expect(page.getByTestId('speed-slider')).toBeVisible();
-	});
+		// Populating queue
+		await expect(script).toBeVisible();
+		await expect(tasksQueue).toBeVisible();
 
-	test('Run request animation frame loop', async ({ page }) => {
-		const exampleSelect = await page.getByTestId('example-select');
+		await stop.click();
 
-		await exampleSelect.click();
-		await page.getByTestId('example-menu-item').nth(4).click();
-		await expect(exampleSelect.locator('input')).toHaveValue(
-			'requestAnimationFrame'
-		);
-		await page.getByTestId('run-button').click();
-		await expect(page.getByTestId('speed-slider')).toBeVisible();
-	});
+		// Controls: initial idle state
+		await expect(select).toBeVisible();
+		await expect(run).toBeVisible();
+		await expect(stop).not.toBeVisible();
+		await expect(pause).not.toBeVisible();
+		await expect(resume).not.toBeVisible();
+		await expect(slider).not.toBeVisible();
 
-	test('Run everything loop', async ({ page }) => {
-		const exampleSelect = await page.getByTestId('example-select');
-
-		await exampleSelect.click();
-		await page.getByTestId('example-menu-item').nth(5).click();
-		await expect(exampleSelect.locator('input')).toHaveValue('everything');
-		await page.getByTestId('run-button').click();
-		await expect(page.getByTestId('speed-slider')).toBeVisible();
+		// Cleared queue
+		await expect(script).not.toBeVisible();
 	});
 
 	test('Visit github repo link', async ({ page, context }) => {
 		const [repoPage] = await Promise.all([
 			context.waitForEvent('page'),
-			page.getByTestId('github-repo-link').click(),
+			page.getByRole('link').click(),
 		]);
 
 		await repoPage.waitForLoadState();
