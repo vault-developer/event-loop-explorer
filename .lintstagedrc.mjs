@@ -1,9 +1,9 @@
 export default {
 	'*.{js,jsx,ts,tsx}': [
-		'yarn prettier --write',
-		'yarn eslint --fix',
-		'yarn test',
-		() => 'yarn typecheck',
+		'prettier --write',
+		'eslint --fix',
+		'jest --passWithNoTests',
+		() => 'npm run typecheck',
 	],
-	'*.{json,css,scss,md}': ['yarn prettier --write', 'yarn eslint --fix'],
+	'*.{json,css,scss,md}': ['prettier --write', 'eslint --fix'],
 };

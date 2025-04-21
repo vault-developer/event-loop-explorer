@@ -1,0 +1,74 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--primary);
+	--font: 'Nunito', monospace;
+	--color-chart-3: var(--chart-3);
+	--color-chart-2: var(--chart-2);
+	--color-chart-1: var(--chart-1);
+	--color-ring: var(--border);
+	--color-input: var(--secondary);
+	--color-border: var(--border);
+	--color-accent-foreground: var(--primary);
+	--color-accent: var(--secondary);
+	--color-muted-foreground: var(--primary);
+	--color-muted: var(--secondary);
+	--color-secondary-foreground: var(--primary);
+	--color-secondary: var(--secondary);
+	--color-primary-foreground: var(--background);
+	--color-primary: var(--primary);
+	--color-popover-foreground: var(--primary);
+	--color-popover: var(--card);
+	--color-card-foreground: var(--primary);
+	--color-card: var(--card);
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+	--radius: 0.625rem;
+
+	--primary: #09090b;
+	--background: #fff;
+	--card: #fff;
+	--secondary: #e4e4e7;
+	--border: #b9b9c6;
+	--chart-1: #60a5fa;
+	--chart-2: #4ade80;
+	--chart-3: #fb7185;
+}
+
+.dark {
+	--primary: #dbe2f0;
+	--background: #18181b;
+	--card: #21222c;
+	--secondary: #2b2e3b;
+	--border: #414558;
+	--chart-1: #60a5fa;
+	--chart-2: #4ade80;
+	--chart-3: #fb7185;
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+html,
+body {
+	@apply h-full;
+}
+
+body {
+	font-family: var(--font), monospace;
+}
