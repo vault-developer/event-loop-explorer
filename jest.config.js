@@ -5,7 +5,10 @@ const createJestConfig = nextJest({ dir: './' });
 
 const customJestConfig = {
 	testEnvironment: 'jsdom',
-	collectCoverageFrom: ['{app,components,store,utils}/**/*.{ts,tsx}'],
+	collectCoverageFrom: [
+		'{app,components,store,utils}/**/*.{ts,tsx}',
+		'!components/chadcdn',
+	],
 	testMatch: ['**/*.test.(ts|tsx)'],
 	transform: {
 		'^.+\\.tsx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.json' }],
@@ -14,7 +17,7 @@ const customJestConfig = {
 	moduleNameMapper: {
 		'\\.(css|less|sass|scss)$': 'identity-obj-proxy',
 		'^.+\\.svg$': 'jest-transformer-svg',
-		'^src/(.*)$': '<rootDir>/src/$1',
+		'^@/(.*)$': '<rootDir>/$1',
 	},
 };
 

@@ -3,7 +3,7 @@
 import { Header } from './header/header';
 import { Configurator } from '@/app/(main)/sections/configurator/configurator';
 import { WebApi } from '@/app/(main)/sections/webApi';
-import { RequestAnimationFrame } from '@/app/(main)/sections/requestAnimaitionFrame';
+import { RequestAnimationFrame } from '@/app/(main)/sections/requestAnimationFrame';
 import { Callstack } from '@/app/(main)/sections/callstack';
 import { Console } from '@/app/(main)/sections/console';
 import { TasksQueue } from '@/app/(main)/sections/tasksQueue';

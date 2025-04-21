@@ -29,7 +29,11 @@ export function InfoContainer({
 			<div className="flex items-center justify-between gap-2">
 				<h3>{title}</h3>
 				<Modal title={title} description={description}>
-					<Button variant="ghost" size="iconSmall">
+					<Button
+						variant="ghost"
+						size="iconSmall"
+						data-testid="info-container-button"
+					>
 						<Info className="size-5" />
 					</Button>
 				</Modal>

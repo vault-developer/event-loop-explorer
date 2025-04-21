@@ -7,7 +7,12 @@ export function ThemeToggle() {
 	const onToggle = () => setTheme(theme === 'light' ? 'dark' : 'light');
 
 	return (
-		<Button variant="ghost" size="iconBig" onClick={onToggle}>
+		<Button
+			variant="ghost"
+			size="iconBig"
+			onClick={onToggle}
+			data-testid="theme-toggle"
+		>
 			<Sun
 				className="absolute scale-100 dark:scale-0 rotate-0 dark:rotate-90 transition-all size-6"
 				size={24}
