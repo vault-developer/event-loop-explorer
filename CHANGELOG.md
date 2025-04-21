@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.14.2...v1.15.0) (2025-04-21)
+
+
+### Features
+
+* **core:** upgrade to next.js ([#42](https://github.com/vault-developer/event-loop-explorer/issues/42)) ([a00e026](https://github.com/vault-developer/event-loop-explorer/commit/a00e026765cbf66063570377642d37e4e30fe752))
+
 ## [1.14.2](https://github.com/vault-developer/event-loop-explorer/compare/v1.14.1...v1.14.2) (2025-02-09)
 
 
