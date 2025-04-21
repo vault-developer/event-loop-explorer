@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.15.0...v1.16.0) (2025-04-21)
+
+
+### Features
+
+* **core:** fix url link ([5b6aa3a](https://github.com/vault-developer/event-loop-explorer/commit/5b6aa3a954ab8e773668ef2a21a0c3c8916dcbfd))
+
 # [1.15.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.14.2...v1.15.0) (2025-04-21)
 
 
