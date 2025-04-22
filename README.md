@@ -16,7 +16,6 @@ It visualizes the Call Stack, Web APIs, Tasks, Microtasks, and Render phase.
 ![event-loop-image-1](https://github.com/user-attachments/assets/72b9efe9-1480-49a0-88d5-5c31461a4276)
 ![event-loop-image-2](https://github.com/user-attachments/assets/b6dccbd4-58a0-44ce-a6be-73bbd549b84e)
 
-
 ### Demo:
 
 Feel free to try it here: https://event-loop-explorer.vercel.app/
@@ -52,7 +51,6 @@ npm run dev
 
 ### Future Plans:
 
-- [ ] add unit tests;
 - [ ] handle todos in the codebase;
 - [ ] check js parsing edge cases, including `new Promise((res) => {res(console.log(4))})`;
 - [ ] replace window.confirm with error boundary

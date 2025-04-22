@@ -7,7 +7,7 @@ const customJestConfig = {
 	testEnvironment: 'jsdom',
 	collectCoverageFrom: [
 		'{app,components,store,utils}/**/*.{ts,tsx}',
-		'!components/chadcdn',
+		'!components/chadcdn/*.tsx',
 	],
 	testMatch: ['**/*.test.(ts|tsx)'],
 	transform: {

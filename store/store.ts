@@ -94,7 +94,8 @@ export const useEditorStore = create<Editor>((set, get) => ({
 	},
 	clearOldMarkers: () => {
 		if (!get().ref?.current?.editor) return;
-		const session = get().ref!.current!.editor.getSession();
+		const session = get().ref!.current!.editor?.getSession?.();
+		if (!session) return;
 		session.clearAnnotations();
 		const markers = session.getMarkers();
 		for (const id in markers) {
@@ -106,7 +107,8 @@ export const useEditorStore = create<Editor>((set, get) => ({
 		const markers = get().markers;
 		const latest = markers[markers.length - 1];
 		if (!latest) return;
-		const session = get().ref!.current!.editor.getSession();
+		const session = get().ref!.current!.editor?.getSession?.();
+		if (!session) return;
 
 		const code = get().source;
 		const start = getRowColByCursorPosition(code, latest[0]);
