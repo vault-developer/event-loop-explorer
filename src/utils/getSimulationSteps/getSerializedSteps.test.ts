@@ -8,6 +8,7 @@ import {
 	Identifier,
 	Literal,
 	MemberExpression,
+	Node,
 	Program,
 } from 'acorn';
 import { ELStep } from '@/utils/types';
@@ -212,7 +213,7 @@ describe('AST serialise:', () => {
 		});
 
 		it('throws error for unsupported node type', () => {
-			const node = { type: 'UnsupportedType' } as any;
+			const node = { type: 'UnsupportedType' } as unknown as Node;
 			expect(() => serialiseNode(node, mockScope)).toThrow(
 				'Serialisation for node type UnsupportedType is not implemented'
 			);

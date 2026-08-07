@@ -1,10 +1,10 @@
-import js from '@eslint/js';
+import eslint from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import babelParser from '@babel/eslint-parser';
+import tseslint from 'typescript-eslint';
 
-export default [
+export default tseslint.config(
 	{
 		ignores: [
 			'dist',
@@ -14,25 +14,27 @@ export default [
 			'e2e-tests',
 		],
 	},
+	eslint.configs.recommended,
+	...tseslint.configs.recommendedTypeChecked,
 	{
-		files: ['**/*.{js,mjs,cjs,ts,tsx}'],
 		languageOptions: {
-			ecmaVersion: 2022,
-			sourceType: 'module',
+			parserOptions: {
+				projectService: true,
+				allowDefaultProject: ['*.config.*', 'commitlint.config.cjs'],
+				tsconfigRootDir: import.meta.dirname,
+			},
+		},
+		rules: {
+			// Zustand selectors / store actions commonly trip this rule.
+			'@typescript-eslint/unbound-method': 'off',
+		},
+	},
+	{
+		files: ['**/*.{ts,tsx}'],
+		languageOptions: {
 			globals: {
 				...globals.browser,
 				...globals.node,
-			},
-			parser: babelParser,
-			parserOptions: {
-				requireConfigFile: false,
-				babelOptions: {
-					presets: ['@babel/preset-typescript'],
-					plugins: [
-						['@babel/plugin-syntax-jsx', {}],
-					],
-				},
-				ecmaFeatures: { jsx: true },
 			},
 		},
 		plugins: {
@@ -40,15 +42,20 @@ export default [
 			'react-refresh': reactRefresh,
 		},
 		rules: {
-			...js.configs.recommended.rules,
 			...reactHooks.configs.recommended.rules,
 			'react-refresh/only-export-components': [
 				'warn',
 				{ allowConstantExport: true },
 			],
-			// TypeScript handles unused locals; Babel parser can't distinguish type-only params.
-			'no-unused-vars': 'off',
-			'no-undef': 'off',
 		},
 	},
-];
+	{
+		files: ['**/*.{js,mjs,cjs}'],
+		extends: [tseslint.configs.disableTypeChecked],
+		languageOptions: {
+			globals: {
+				...globals.node,
+			},
+		},
+	},
+);

@@ -38,16 +38,18 @@ export const simulate = (steps: ELSerialisedStep[], onStop: () => void) => {
 				}
 			}
 			const { speed } = useControlsStore.getState();
-			const { time, setTime } = useTimeStore.getState();
+			const time = useTimeStore.getState().time;
 			const nextTime = getNextTime({ time, speed, groupedSteps });
-			setTime(nextTime);
-			requestAnimationFrame(animate);
+			useTimeStore.getState().setTime(nextTime);
+			requestAnimationFrame(() => {
+				void animate();
+			});
 		} else if (useControlsStore.getState().status === 'paused') {
 			await delay(250);
-			return animate();
+			void animate();
 		}
 	};
-	animate();
+	void animate();
 };
 
 const getNextTime = ({

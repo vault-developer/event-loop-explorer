@@ -14,8 +14,9 @@ export const getSimulationSteps = (text: string) => {
 
 		return serialised;
 	} catch (error) {
+		const message = error instanceof Error ? error.message : String(error);
 		window.confirm(
-			`${error}\nIt looks like something is not implemented yet 🦝.\nFeel free to raise an issue on Github 🖥️.`
+			`${message}\nIt looks like something is not implemented yet 🦝.\nFeel free to raise an issue on Github 🖥️.`
 		);
 		throw error;
 	}
