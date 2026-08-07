@@ -35,7 +35,7 @@ export function ProgressCard({
 
 	return (
 		<div
-			className={`relative flex items-center p-1 flex-1 rounded-lg`}
+			className="relative flex items-center p-1 flex-1 rounded-lg animate-in fade-in-0 slide-in-from-bottom-1 duration-200"
 			style={{
 				backgroundImage: `conic-gradient(
           currentColor,
@@ -46,11 +46,11 @@ export function ProgressCard({
 		>
 			<div
 				className={cn(
-					'bg-[var(--color-secondary)] border rounded-lg grow h-full',
+					'bg-secondary border border-border/70 rounded-lg grow h-full',
 					className
 				)}
 			>
-				<div className="flex grow h-full items-center justify-center p-2 break-all">
+				<div className="flex grow h-full items-center justify-center p-2 break-all text-sm">
 					{text}
 				</div>
 			</div>

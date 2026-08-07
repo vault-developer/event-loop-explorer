@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark" style="color-scheme: dark">
+<html lang="en" class="dark" data-theme="midnight" style="color-scheme: dark">
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="/icon.svg" />
@@ -13,8 +13,25 @@
 		<script>
 			(function () {
 				try {
-					var theme = localStorage.getItem('theme');
-					if (theme === 'light') {
+					var stored = localStorage.getItem('theme');
+					var theme = stored;
+					if (stored === 'dark') theme = 'midnight';
+					else if (stored === 'light') theme = 'paper';
+					var lightThemes = { paper: 1, github: 1 };
+					var known = {
+						midnight: 1,
+						paper: 1,
+						nord: 1,
+						dracula: 1,
+						monokai: 1,
+						catppuccin: 1,
+						solarized: 1,
+						github: 1,
+					};
+					if (!theme || !known[theme]) theme = 'midnight';
+					var isLight = !!lightThemes[theme];
+					document.documentElement.setAttribute('data-theme', theme);
+					if (isLight) {
 						document.documentElement.classList.remove('dark');
 						document.documentElement.style.colorScheme = 'light';
 					} else {

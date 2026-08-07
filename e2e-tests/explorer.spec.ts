@@ -6,7 +6,7 @@ test.describe('Explorer', () => {
 	});
 
 	test('Running tasks queue', async ({ page }) => {
-		const select = page.getByRole('combobox');
+		const select = page.getByTestId('example-select');
 		const option = page.getByRole('option', { name: 'tasks queue' });
 		const slider = page.getByRole('slider');
 		const script = page.getByText('script');

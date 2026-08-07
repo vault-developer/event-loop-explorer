@@ -18,13 +18,22 @@ function GitHubIcon({ className }: { className?: string }) {
 
 export function Header() {
 	return (
-		<div className="flex px-4 py-2 lg:px-6 lg:py-4 items-center justify-between border-b">
-			<div className="flex items-center gap-2">
-				<Repeat />
-				<h2>Event loop explorer</h2>
+		<header className="flex shrink-0 items-center justify-between gap-3 border-b border-border/80 px-4 py-3 lg:px-6 lg:py-4 backdrop-blur-sm bg-background/70 transition-[background-color,border-color] duration-200">
+			<div className="flex items-center gap-3 min-w-0">
+				<span className="flex size-10 shrink-0 items-center justify-center self-center rounded-lg bg-secondary text-foreground">
+					<Repeat className="size-5" aria-hidden="true" />
+				</span>
+				<div className="flex min-w-0 flex-col justify-center leading-none">
+					<h2 className="m-0 truncate text-lg font-semibold leading-tight tracking-tight md:text-xl">
+						Event loop explorer
+					</h2>
+					<p className="m-0 mt-1 hidden text-xs leading-tight text-muted-foreground sm:block">
+						Step through the browser event loop
+					</p>
+				</div>
 			</div>
 
-			<div className="flex items-center gap-2">
+			<div className="flex items-center gap-1">
 				<Button asChild variant="ghost" size="iconBig">
 					<a
 						href="https://github.com/vault-developer/event-loop-explorer"
@@ -32,11 +41,11 @@ export function Header() {
 						rel="noreferrer"
 						aria-label="GitHub repository"
 					>
-						<GitHubIcon className="size-6" />
+						<GitHubIcon className="size-5" />
 					</a>
 				</Button>
 				<ThemeToggle />
 			</div>
-		</div>
+		</header>
 	);
 }

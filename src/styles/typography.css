@@ -1,22 +1,19 @@
-@reference "tailwindcss";
-@reference "tw-animate-css";
+@reference "./globals.css";
 
-h2 {
-	@apply scroll-m-20 pb-1 text-xl md:text-2xl font-semibold tracking-tight first:mt-0;
-}
+@layer base {
+	h2 {
+		@apply scroll-m-20 text-xl md:text-2xl font-semibold tracking-tight first:mt-0;
+	}
 
-h3 {
-	@apply scroll-m-20 text-base font-semibold tracking-tight;
-}
+	h3 {
+		@apply scroll-m-20 text-sm lg:text-base font-semibold tracking-tight text-foreground;
+	}
 
-div {
-	@apply text-sm;
-}
+	p {
+		@apply mb-4 text-muted-foreground;
+	}
 
-p {
-	@apply text-sm mb-4;
-}
-
-li {
-	@apply mb-2 last:mb-0;
+	li {
+		@apply mb-2 last:mb-0;
+	}
 }

@@ -12,8 +12,8 @@ export default function App() {
 	return (
 		<div className="flex flex-col grow min-h-screen">
 			<Header />
-			<div className="grow grid grid-cols-2 md:grid-cols-5 p-4 gap-4 lg:p-6 lg:gap-6">
-				<div className="col-span-2 h-full grid grid-rows-5 gap-4 lg:gap-6">
+			<main className="grow grid grid-cols-2 md:grid-cols-5 p-3 gap-3 sm:p-4 sm:gap-4 lg:p-6 lg:gap-5 xl:gap-6">
+				<div className="col-span-2 h-full grid grid-rows-5 gap-3 sm:gap-4 lg:gap-5 xl:gap-6">
 					<div className="row-span-3 flex overflow-auto">
 						<Configurator />
 					</div>
@@ -24,7 +24,7 @@ export default function App() {
 						<RequestAnimationFrame />
 					</div>
 				</div>
-				<div className="col-span-2 md:col-span-1 h-full grid grid-rows-2 gap-4 lg:gap-6">
+				<div className="col-span-2 md:col-span-1 h-full grid grid-rows-2 gap-3 sm:gap-4 lg:gap-5 xl:gap-6">
 					<div className="row-span-1 flex overflow-auto">
 						<Callstack />
 					</div>
@@ -32,7 +32,7 @@ export default function App() {
 						<Console />
 					</div>
 				</div>
-				<div className="col-span-2 h-full grid grid-rows-5 gap-4 lg:gap-6">
+				<div className="col-span-2 h-full grid grid-rows-5 gap-3 sm:gap-4 lg:gap-5 xl:gap-6">
 					<div className="row-span-1 flex overflow-auto">
 						<TasksQueue />
 					</div>
@@ -43,7 +43,7 @@ export default function App() {
 						<EventLoop />
 					</div>
 				</div>
-			</div>
+			</main>
 		</div>
 	);
 }
