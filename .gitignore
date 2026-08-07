@@ -4,11 +4,8 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-
 # production
+/dist
 /build
 
 # misc
@@ -26,7 +23,6 @@ npm-debug.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
 #IDEs
 .idea
@@ -37,8 +33,3 @@ next-env.d.ts
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-
-# Jest
-/coverage
-
-

@@ -2,8 +2,8 @@ export default {
 	'*.{js,jsx,ts,tsx}': [
 		'prettier --write',
 		'eslint --fix',
-		'jest --passWithNoTests',
+		'vitest related --run',
 		() => 'npm run typecheck',
 	],
-	'*.{json,css,scss,md}': ['prettier --write', 'eslint --fix'],
+	'*.{json,css,scss,md}': ['prettier --write'],
 };
