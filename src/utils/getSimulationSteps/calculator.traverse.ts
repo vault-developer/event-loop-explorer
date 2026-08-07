@@ -24,12 +24,12 @@ const traverseChildren = (
 				// Traverse all array children
 				child.forEach((subNode) => {
 					if (subNode && typeof subNode === 'object') {
-						c(subNode as Node, state); // Recursively visit the child node
+						c(subNode as never, state); // Recursively visit the child node
 					}
 				});
 			} else if (child && typeof child === 'object') {
 				// Visit individual child
-				c(child as Node, state);
+				c(child as never, state);
 			}
 		}
 	}
@@ -97,6 +97,8 @@ export const calculatorTraverse = ({
 				} else if (isIdentifier(callExpression.callee)) {
 					const node = callExpression.callee;
 					const nodeScope = scope.acquire(node) ?? scope.globalScope;
+					if (!nodeScope)
+						throw new Error('Unsupported identifier in the scope');
 					const variable = nodeScope.set.get(node.name);
 					if (!variable) throw new Error('Unsupported identifier in the scope');
 					const definition = variable.defs[0];
