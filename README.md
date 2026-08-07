@@ -49,6 +49,17 @@ npm install
 npm run dev
 ```
 
+App runs at http://localhost:3000 (Vite).
+
+Useful scripts:
+
+- `npm run typecheck` — TypeScript check
+- `npm test` — Vitest unit tests
+- `npm run build` — production build to `dist/`
+- `npm run e2e` — Playwright end-to-end tests
+
+Deployed as a static Vite app on Vercel (`dist` output).
+
 ### Future Plans:
 
 - [ ] handle todos in the codebase;
