@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.16.0...v1.17.0) (2026-08-07)
+
+
+### Features
+
+* chore: upd deps ([7fd48ab](https://github.com/vault-developer/event-loop-explorer/commit/7fd48abb3adec6ab4a68bf0eebcd9ec75a7a04de))
+
 # [1.16.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.15.0...v1.16.0) (2025-04-21)
 
 
