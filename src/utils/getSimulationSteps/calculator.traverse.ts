@@ -19,18 +19,17 @@ const traverseChildren = (
 	// Traverse the children of the node
 	for (const key in node) {
 		if (Object.prototype.hasOwnProperty.call(node, key)) {
-			// @ts-expect-error index access on AST node
-			const child = node[key];
+			const child = (node as unknown as Record<string, unknown>)[key];
 			if (Array.isArray(child)) {
 				// Traverse all array children
 				child.forEach((subNode) => {
 					if (subNode && typeof subNode === 'object') {
-						c(subNode, state); // Recursively visit the child node
+						c(subNode as Node, state); // Recursively visit the child node
 					}
 				});
 			} else if (child && typeof child === 'object') {
 				// Visit individual child
-				c(child, state);
+				c(child as Node, state);
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Callstack } from '@/features/sections/callstack';
 
 vi.mock('@/store/store', () => ({
@@ -24,16 +24,16 @@ describe('Callstack Component', () => {
 		expect(callstack2).toBeInTheDocument();
 	});
 
-	it('should not render the modal by default', async () => {
+	it('should not render the modal by default', () => {
 		const descriptionElements = screen.queryAllByText(
 			/A call stack is a mechanism for an interpreter to keep track of its place/i
 		);
 		expect(descriptionElements.length).toBe(0);
 	});
 
-	it('should render the modal after icon click', async () => {
+	it('should render the modal after icon click', () => {
 		const modalButton = screen.getByRole('button');
-		await modalButton.click();
+		fireEvent.click(modalButton);
 		const descriptionElement = screen.getByText(
 			/A call stack is a mechanism for an interpreter to keep track of its place/i
 		);

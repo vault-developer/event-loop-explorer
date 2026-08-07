@@ -11,44 +11,88 @@ import {
 	ExpressionStatement,
 } from 'acorn';
 
-export function isMemberExpression(node: any): node is MemberExpression {
-	return node?.type === 'MemberExpression';
+export function isMemberExpression(node: unknown): node is MemberExpression {
+	return (
+		typeof node === 'object' &&
+		node !== null &&
+		(node as { type?: string }).type === 'MemberExpression'
+	);
 }
 
-export function isIdentifier(node: any): node is Identifier {
-	return node?.type === 'Identifier';
+export function isIdentifier(node: unknown): node is Identifier {
+	return (
+		typeof node === 'object' &&
+		node !== null &&
+		(node as { type?: string }).type === 'Identifier'
+	);
 }
 
-export function isCallExpression(node: any): node is CallExpression {
-	return node?.type === 'CallExpression';
+export function isCallExpression(node: unknown): node is CallExpression {
+	return (
+		typeof node === 'object' &&
+		node !== null &&
+		(node as { type?: string }).type === 'CallExpression'
+	);
 }
 
-export function isBlockStatement(node: any): node is BlockStatement {
-	return node?.type === 'BlockStatement';
+export function isBlockStatement(node: unknown): node is BlockStatement {
+	return (
+		typeof node === 'object' &&
+		node !== null &&
+		(node as { type?: string }).type === 'BlockStatement'
+	);
 }
 
-export function isExpressionStatement(node: any): node is ExpressionStatement {
-	return node?.type === 'ExpressionStatement';
+export function isExpressionStatement(
+	node: unknown
+): node is ExpressionStatement {
+	return (
+		typeof node === 'object' &&
+		node !== null &&
+		(node as { type?: string }).type === 'ExpressionStatement'
+	);
 }
 
-export function isFunctionDeclaration(node: any): node is FunctionDeclaration {
-	return node?.type === 'FunctionDeclaration';
+export function isFunctionDeclaration(
+	node: unknown
+): node is FunctionDeclaration {
+	return (
+		typeof node === 'object' &&
+		node !== null &&
+		(node as { type?: string }).type === 'FunctionDeclaration'
+	);
 }
 
-export function isLiteral(node: any): node is Literal {
-	return node?.type === 'Literal';
+export function isLiteral(node: unknown): node is Literal {
+	return (
+		typeof node === 'object' &&
+		node !== null &&
+		(node as { type?: string }).type === 'Literal'
+	);
 }
 
 export function isArrowFunctionExpression(
-	node: any
+	node: unknown
 ): node is ArrowFunctionExpression {
-	return node?.type === 'ArrowFunctionExpression';
+	return (
+		typeof node === 'object' &&
+		node !== null &&
+		(node as { type?: string }).type === 'ArrowFunctionExpression'
+	);
 }
 
-export function isProgram(node: any): node is Program {
-	return node?.type === 'Program';
+export function isProgram(node: unknown): node is Program {
+	return (
+		typeof node === 'object' &&
+		node !== null &&
+		(node as { type?: string }).type === 'Program'
+	);
 }
 
-export function isSpreadElement(node: any): node is SpreadElement {
-	return node?.type === 'SpreadElement';
+export function isSpreadElement(node: unknown): node is SpreadElement {
+	return (
+		typeof node === 'object' &&
+		node !== null &&
+		(node as { type?: string }).type === 'SpreadElement'
+	);
 }
