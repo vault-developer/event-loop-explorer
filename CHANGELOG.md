@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.17.0...v1.18.0) (2026-08-08)
+
+
+### Features
+
+* new design ([#48](https://github.com/vault-developer/event-loop-explorer/issues/48)) ([2c13dfd](https://github.com/vault-developer/event-loop-explorer/commit/2c13dfd267190401e74ffcf641dc790be01e6fba))
+
 # [1.17.0](https://github.com/vault-developer/event-loop-explorer/compare/v1.16.0...v1.17.0) (2026-08-07)
 
 
