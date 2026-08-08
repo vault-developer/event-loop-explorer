@@ -51,7 +51,11 @@ export const ControlsUi: FC<ControlsUiProps> = ({
 						defaultValue={DEFAULT_EXAMPLE_KEY}
 						onValueChange={onExampleSelect}
 					>
-						<SelectTrigger className="w-[210px]">
+						<SelectTrigger
+							className="w-[210px]"
+							aria-label="Select example"
+							data-testid="example-select"
+						>
 							<SelectValue placeholder="select an example" />
 						</SelectTrigger>
 						<SelectContent>

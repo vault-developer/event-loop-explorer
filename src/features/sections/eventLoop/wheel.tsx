@@ -8,9 +8,10 @@ const POINTER_LEFT_ID = 'wheel-pointer-left';
 const POINTER_RIGHT_ID = 'wheel-pointer-right';
 const WHEEL_ID = 'wheel';
 
-const MICROTASK_CLASS = 'microtask fill-[var(--chart-1)]';
-const MACROTASK_CLASS = 'macrotask fill-[var(--chart-2)]';
-const RENDER_CLASS = 'render fill-[var(--chart-3)]';
+const SEGMENT_TRANSITION = 'transition-opacity duration-200 ease-out';
+const MICROTASK_CLASS = `microtask fill-[var(--chart-1)] ${SEGMENT_TRANSITION}`;
+const MACROTASK_CLASS = `macrotask fill-[var(--chart-2)] ${SEGMENT_TRANSITION}`;
+const RENDER_CLASS = `render fill-[var(--chart-3)] ${SEGMENT_TRANSITION}`;
 
 const SEGMENT_OFFSET = -9;
 const POINTER_OFFSET = -99;

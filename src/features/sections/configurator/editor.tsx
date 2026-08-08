@@ -1,8 +1,14 @@
 import { type FC, type RefObject, useEffect, useRef } from 'react';
 import { AceEditor, type AceEditorInstance } from '@/utils/aceEditor';
 import 'ace-builds/src-noconflict/mode-javascript';
-import 'ace-builds/src-noconflict/theme-solarized_dark';
+import 'ace-builds/src-noconflict/theme-one_dark';
 import 'ace-builds/src-noconflict/theme-textmate';
+import 'ace-builds/src-noconflict/theme-nord_dark';
+import 'ace-builds/src-noconflict/theme-dracula';
+import 'ace-builds/src-noconflict/theme-monokai';
+import 'ace-builds/src-noconflict/theme-tomorrow_night';
+import 'ace-builds/src-noconflict/theme-solarized_dark';
+import 'ace-builds/src-noconflict/theme-github';
 import { useControlsStore, useEditorStore } from '@/store/store';
 import { useTheme } from '@/theme';
 
@@ -12,11 +18,10 @@ interface EditorProps {
 }
 
 export const Editor: FC<EditorProps> = ({ code, setCode }) => {
-	const { theme } = useTheme();
+	const { themeDefinition } = useTheme();
 	const editorRef = useRef<AceEditorInstance>(null);
 	const setEditorRef = useEditorStore((state) => state.setRef);
 	const status = useControlsStore((state) => state.status);
-	const textTheme = theme === 'light' ? 'textmate' : 'solarized_dark';
 	const readOnly = status !== 'idle';
 
 	useEffect(() => {
@@ -32,7 +37,7 @@ export const Editor: FC<EditorProps> = ({ code, setCode }) => {
 			value={code}
 			height={'100%'}
 			mode="javascript"
-			theme={textTheme}
+			theme={themeDefinition.aceTheme}
 			setOptions={{
 				useWorker: false,
 				readOnly: readOnly,

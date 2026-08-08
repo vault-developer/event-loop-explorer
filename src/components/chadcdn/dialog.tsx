@@ -100,7 +100,10 @@ function DialogTitle({
 	return (
 		<DialogPrimitive.Title
 			data-slot="dialog-title"
-			className={cn('text-lg leading-none font-semibold', className)}
+			className={cn(
+				'text-xl md:text-2xl leading-snug font-semibold tracking-tight',
+				className
+			)}
 			{...props}
 		/>
 	);
@@ -111,11 +114,16 @@ function DialogDescription({
 	...props
 }: React.ComponentProps<typeof DialogPrimitive.Description>) {
 	return (
-		<DialogPrimitive.Description
-			data-slot="dialog-description"
-			className={cn('text-muted-foreground text-sm', className)}
-			{...props}
-		/>
+		<DialogPrimitive.Description asChild>
+			<div
+				data-slot="dialog-description"
+				className={cn(
+					'text-muted-foreground text-base md:text-lg leading-relaxed space-y-3 [&_p]:mb-0 [&_p]:text-inherit [&_li]:text-inherit',
+					className
+				)}
+				{...props}
+			/>
+		</DialogPrimitive.Description>
 	);
 }
 

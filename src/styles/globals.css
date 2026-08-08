@@ -15,7 +15,7 @@
 	--color-border: var(--border);
 	--color-accent-foreground: var(--primary);
 	--color-accent: var(--secondary);
-	--color-muted-foreground: var(--primary);
+	--color-muted-foreground: var(--muted-foreground);
 	--color-muted: var(--secondary);
 	--color-secondary-foreground: var(--primary);
 	--color-secondary: var(--secondary);
@@ -25,6 +25,7 @@
 	--color-popover: var(--card);
 	--color-card-foreground: var(--primary);
 	--color-card: var(--card);
+	--shadow-panel: var(--shadow-panel);
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
@@ -32,27 +33,156 @@
 }
 
 :root {
-	--radius: 0.625rem;
-
-	--primary: #09090b;
-	--background: #fff;
-	--card: #fff;
-	--secondary: #e4e4e7;
-	--border: #b9b9c6;
-	--chart-1: #60a5fa;
-	--chart-2: #4ade80;
-	--chart-3: #fb7185;
+	--radius: 0.75rem;
+	--transition-theme:
+		background-color 200ms ease, color 200ms ease, border-color 200ms ease,
+		fill 200ms ease, stroke 200ms ease, box-shadow 200ms ease;
 }
 
-.dark {
-	--primary: #dbe2f0;
-	--background: #18181b;
-	--card: #21222c;
-	--secondary: #2b2e3b;
-	--border: #414558;
+[data-theme='midnight'] {
+	--primary: #e2e8f0;
+	--muted-foreground: #94a3b8;
+	--background: #0f1117;
+	--card: #181c27;
+	--secondary: #252a38;
+	--border: #3a4155;
 	--chart-1: #60a5fa;
 	--chart-2: #4ade80;
 	--chart-3: #fb7185;
+	--shadow-panel: 0 1px 2px rgb(0 0 0 / 0.35), 0 8px 24px rgb(0 0 0 / 0.2);
+	--atmosphere: radial-gradient(
+		120% 80% at 50% -10%,
+		rgb(58 65 85 / 0.45),
+		transparent 55%
+	);
+}
+
+[data-theme='paper'] {
+	--primary: #1e293b;
+	--muted-foreground: #64748b;
+	--background: #f4f6f9;
+	--card: #ffffff;
+	--secondary: #e8ecf2;
+	--border: #c9d1dc;
+	--chart-1: #2563eb;
+	--chart-2: #16a34a;
+	--chart-3: #e11d48;
+	--shadow-panel:
+		0 1px 2px rgb(15 23 42 / 0.06), 0 8px 24px rgb(15 23 42 / 0.06);
+	--atmosphere: radial-gradient(
+		120% 80% at 50% -10%,
+		rgb(148 163 184 / 0.28),
+		transparent 55%
+	);
+}
+
+[data-theme='nord'] {
+	--primary: #eceff4;
+	--muted-foreground: #88c0d0;
+	--background: #2e3440;
+	--card: #3b4252;
+	--secondary: #434c5e;
+	--border: #4c566a;
+	--chart-1: #81a1c1;
+	--chart-2: #a3be8c;
+	--chart-3: #bf616a;
+	--shadow-panel: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.18);
+	--atmosphere: radial-gradient(
+		120% 80% at 50% -10%,
+		rgb(136 192 208 / 0.18),
+		transparent 55%
+	);
+}
+
+[data-theme='dracula'] {
+	--primary: #f8f8f2;
+	--muted-foreground: #bd93f9;
+	--background: #282a36;
+	--card: #343746;
+	--secondary: #44475a;
+	--border: #6272a4;
+	--chart-1: #8be9fd;
+	--chart-2: #50fa7b;
+	--chart-3: #ff79c6;
+	--shadow-panel: 0 1px 2px rgb(0 0 0 / 0.35), 0 8px 24px rgb(0 0 0 / 0.22);
+	--atmosphere: radial-gradient(
+		120% 80% at 50% -10%,
+		rgb(189 147 249 / 0.16),
+		transparent 55%
+	);
+}
+
+[data-theme='monokai'] {
+	--primary: #f8f8f2;
+	--muted-foreground: #a6a39d;
+	--background: #272822;
+	--card: #2f3129;
+	--secondary: #3e3d32;
+	--border: #75715e;
+	--chart-1: #66d9ef;
+	--chart-2: #a6e22e;
+	--chart-3: #f92672;
+	--shadow-panel: 0 1px 2px rgb(0 0 0 / 0.35), 0 8px 24px rgb(0 0 0 / 0.22);
+	--atmosphere: radial-gradient(
+		120% 80% at 50% -10%,
+		rgb(249 38 114 / 0.12),
+		transparent 55%
+	);
+}
+
+[data-theme='catppuccin'] {
+	--primary: #cdd6f4;
+	--muted-foreground: #a6adc8;
+	--background: #1e1e2e;
+	--card: #262637;
+	--secondary: #313244;
+	--border: #45475a;
+	--chart-1: #89b4fa;
+	--chart-2: #a6e3a1;
+	--chart-3: #f38ba8;
+	--shadow-panel: 0 1px 2px rgb(0 0 0 / 0.35), 0 8px 24px rgb(0 0 0 / 0.22);
+	--atmosphere: radial-gradient(
+		120% 80% at 50% -10%,
+		rgb(137 180 250 / 0.14),
+		transparent 55%
+	);
+}
+
+[data-theme='solarized'] {
+	--primary: #839496;
+	--muted-foreground: #657b83;
+	--background: #002b36;
+	--card: #073642;
+	--secondary: #0a4553;
+	--border: #586e75;
+	--chart-1: #268bd2;
+	--chart-2: #859900;
+	--chart-3: #dc322f;
+	--shadow-panel: 0 1px 2px rgb(0 0 0 / 0.35), 0 8px 24px rgb(0 0 0 / 0.25);
+	--atmosphere: radial-gradient(
+		120% 80% at 50% -10%,
+		rgb(38 139 210 / 0.16),
+		transparent 55%
+	);
+}
+
+[data-theme='github'] {
+	--primary: #1f2328;
+	--muted-foreground: #656d76;
+	--background: #f6f8fa;
+	--card: #ffffff;
+	--secondary: #eff2f5;
+	--border: #d0d7de;
+	--chart-1: #0969da;
+	--chart-2: #1a7f37;
+	--chart-3: #cf222e;
+	--shadow-panel:
+		0 1px 2px rgb(31 35 40 / 0.06), 0 8px 24px rgb(31 35 40 / 0.06);
+	--atmosphere: radial-gradient(
+		120% 80% at 50% -10%,
+		rgb(9 105 218 / 0.08),
+		transparent 55%
+	);
 }
 
 @layer base {
@@ -60,7 +190,10 @@
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-background text-foreground text-sm;
+		background-image: var(--atmosphere);
+		background-attachment: fixed;
+		transition: var(--transition-theme);
 	}
 }
 

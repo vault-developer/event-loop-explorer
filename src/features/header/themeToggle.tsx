@@ -1,29 +1,49 @@
-import { useTheme } from '@/theme';
-import { Button } from '@/components/chadcdn/button';
-import { Moon, Sun } from 'lucide-react';
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+} from '@/components/chadcdn/select';
+import { THEME_IDS, THEMES, useTheme, type ThemeId } from '@/theme';
+
+function ThemeSwatch({ colors }: { colors: [string, string, string] }) {
+	return (
+		<span className="flex items-center gap-0.5" aria-hidden="true">
+			{colors.map((color) => (
+				<span
+					key={color}
+					className="size-2 rounded-full"
+					style={{ backgroundColor: color }}
+				/>
+			))}
+		</span>
+	);
+}
 
 export function ThemeToggle() {
-	const { setTheme, theme } = useTheme();
-	const onToggle = () => setTheme(theme === 'light' ? 'dark' : 'light');
+	const { theme, setTheme } = useTheme();
 
 	return (
-		<Button
-			variant="ghost"
-			size="iconBig"
-			onClick={onToggle}
-			data-testid="theme-toggle"
-		>
-			<Sun
-				data-testid="sun-icon"
-				className="absolute scale-100 dark:scale-0 rotate-0 dark:rotate-90 transition-all size-6"
-				size={24}
-			/>
-			<Moon
-				data-testid="moon-icon"
-				className="absolute scale-0 dark:scale-100 rotate-90 dark:rotate-0 transition-all size-6"
-				size={24}
-			/>
-			<span className="sr-only">Toggle theme</span>
-		</Button>
+		<Select value={theme} onValueChange={(value) => setTheme(value as ThemeId)}>
+			<SelectTrigger
+				size="sm"
+				data-testid="theme-toggle"
+				aria-label="Select theme"
+				className="min-w-0 gap-2 border-transparent bg-transparent shadow-none hover:bg-accent dark:hover:bg-accent/50 transition-colors"
+			>
+				<ThemeSwatch colors={THEMES[theme].swatch} />
+				<span className="hidden sm:inline">{THEMES[theme].label}</span>
+			</SelectTrigger>
+			<SelectContent align="end" className="min-w-[11rem]">
+				{THEME_IDS.map((id) => (
+					<SelectItem key={id} value={id}>
+						<span className="flex items-center gap-2">
+							<ThemeSwatch colors={THEMES[id].swatch} />
+							{THEMES[id].label}
+						</span>
+					</SelectItem>
+				))}
+			</SelectContent>
+		</Select>
 	);
 }
